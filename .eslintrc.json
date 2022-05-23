@@ -1,0 +1,11 @@
+{
+  "env": {
+    "node": true,
+    "cypress/globals": true
+  },
+  "extends": ["next/core-web-vitals", "eslint:recommended"],
+  "plugins": ["cypress", "prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}

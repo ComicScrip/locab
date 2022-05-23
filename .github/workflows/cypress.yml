@@ -1,0 +1,50 @@
+name: Cypress
+on: [push]
+jobs:
+  run-e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Setup mySQL"
+        uses: haltuf/mysql-action@master
+        with:
+          host port: 3306
+          mysql database: "test"
+          mysql root password: "root"
+      - name: Setup Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up pnpm and install deps
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.0.2
+          run_install: true
+      - name: Migrate DB
+        run: DATABASE_URL=mysql://root:root@localhost:3306/test npx prisma migrate deploy
+      - name: Start dev server
+        run: (yarn run dev:test &)
+        env:
+          CI: true
+          HOST: http://localhost:3000
+          SECRET: VRdzayiObk6c7SaadzzaTxP+YZpIJ9AfhrbnZ+Q
+          NEXTAUTH_URL: http://localhost:3000
+          NEXT_PUBLIC_UPLOADCARE_KEY: demopublickey
+          MAILER_FROM: user@app.com
+          DATABASE_URL: mysql://root:root@localhost:3306/test
+          NEXT_PUBLIC_HCAPTCHA_SITEKEY: "10000000-ffff-ffff-ffff-000000000001"
+          HCAPTCHA_SECRET: "0x0000000000000000000000000000000000000000"
+          UPLOAD_API_URL: ${{ secrets.UPLOAD_API_URL }}
+      - name: Run Cypress 🌲
+        uses: cypress-io/github-action@v2
+        timeout-minutes: 30
+        with:
+          install: false
+          record: false
+          browser: chrome
+          config: pageLoadTimeout=30000,defaultCommandTimeout=30000
+        env:
+          DATABASE_URL: mysql://root:root@localhost:3306/test
+          CONTACT_FORM_RECIPIENT: "user@app.com"
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
