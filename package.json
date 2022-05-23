@@ -1,0 +1,52 @@
+{
+  "name": "p3-template",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:test": "CI=true NEXT_PUBLIC_UPLOADCARE_KEY=demopublickey CONTACT_FORM_RECIPIENT=user@app.com NEXT_PUBLIC_HCAPTCHA_SITEKEY=10000000-ffff-ffff-ffff-000000000001 HCAPTCHA_SECRET=0x0000000000000000000000000000000000000000 next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "migrateDB": "npx prisma migrate dev",
+    "resetDB": "npx prisma migrate reset",
+    "generate-db-client": "npx prisma generate",
+    "showDB": "npx prisma studio",
+    "migrate:deploy": "npx prisma migrate deploy",
+    "pre-start": "NODE_ENV=production npm-run-all migrate:deploy generate-db-client build",
+    "serve:lhci": "npm start",
+    "test:gui": "cypress open",
+    "test": "cypress run",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@prisma/client": "3.14.0",
+    "next": "12.1.6",
+    "npm-run-all": "^4.1.5",
+    "prisma": "^3.14.0",
+    "react": "18.1.0",
+    "react-dom": "18.1.0"
+  },
+  "devDependencies": {
+    "cypress": "^9.6.1",
+    "eslint": "8.16.0",
+    "eslint-config-next": "12.1.6",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^12.3.7",
+    "prettier": "2.6.2"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "lint-staged": {
+    "*.{json,js,ts,jsx,tsx,html,css}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --quiet --cache --fix"
+    ]
+  }
+}
