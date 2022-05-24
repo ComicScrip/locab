@@ -1,4 +1,4 @@
-import ResProduct from "../components/r_product";
+import ResProduct from "../components/res_product";
 import styles from "../styles/Reservation.module.css";
 import { useState } from "react";
 
@@ -8,35 +8,52 @@ const productsList = [
     name: "Poussette",
     category: "poussette",
     price: 20,
+    isAvailable: true,
   },
   {
     id: 2,
     name: "Poussette",
     category: "poussette",
     price: 30,
+    isAvailable: true,
   },
   {
     id: 3,
     name: "Poussette",
     category: "poussette",
     price: 10,
+    isAvailable: true,
   },
   {
     id: 4,
     name: "Poussette",
     category: "poussette",
     price: 25,
+    isAvailable: true,
   },
   {
     id: 5,
     name: "Lit à barreaux",
     category: "lit_barreaux",
     price: 12,
+    isAvailable: false,
+  },
+  {
+    id: 6,
+    name: "Lit à barreaux",
+    category: "lit_barreaux",
+    price: 12,
+    isAvailable: true,
   },
 ];
 
 export default function ReservationPage() {
   const [searchValue, setSearchValue] = useState("");
+  const [showNotAvailable, setShowNotAvailable] = useState(true);
+
+  const handleCheckAvailability = () => {
+    setShowNotAvailable(!showNotAvailable);
+  };
 
   return (
     <div className={styles.mainWrapper}>
@@ -50,11 +67,21 @@ export default function ReservationPage() {
         />
       </section>
       <section className={styles.productNotAvailable}>
-        <input type="checkbox" />
-        Afficher les produits indisponibles
+        <label htmlFor="availability" style={{ cursor: "pointer" }}>
+          <input
+            type="checkbox"
+            onClick={() => handleCheckAvailability()}
+            id="availability"
+            defaultChecked={true}
+          />
+          Afficher les produits indisponibles
+        </label>
       </section>
 
       {productsList
+        .filter((product) =>
+          product.isAvailable ? !showNotAvailable : showNotAvailable
+        )
         .filter((product) => product.category.includes(searchValue))
         .map((product) => (
           <ResProduct product={product} key={product.id} id={product.id} />

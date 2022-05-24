@@ -26,6 +26,17 @@
   cursor: pointer;
 }
 
+.productWrapperNotAvailable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ededed;
+  background: #ededed;
+  border-radius: 8px;
+  padding: 50px 0px;
+}
+
 /* MEDIA QUERIES */
 
 @media screen and (min-width: 800px) {

@@ -11,10 +11,16 @@ export default function ResProduct({ product }) {
 
   return (
     <div
-      className={styles.productWrapper}
+      className={
+        product.isAvailable
+          ? styles.productWrapper
+          : styles.productWrapperNotAvailable
+      }
       onClick={handleClickProduct}
       style={
-        addedCart ? { borderColor: "#96C0C0" } : { borderColor: "#ededed" }
+        addedCart && product.isAvailable
+          ? { borderColor: "#96C0C0" }
+          : { borderColor: "#ededed" }
       }
     >
       <Image
