@@ -26,7 +26,9 @@ export default function Home() {
             height={692}
           />
         </div>
-        <div></div>
+        <div className={styles.secondparagraphe}>
+          <h3>Comment ça marche ?</h3>
+        </div>
       </main>
     </div>
   );
