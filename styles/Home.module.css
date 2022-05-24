@@ -3,6 +3,8 @@
 
 .firstparagraphe {
   text-align: center;
+  background-color: #fbfbfb;
+  font-size: 14px;
 }
 
 .title {
@@ -10,19 +12,67 @@
   font-family: "Poppins", sans-serif;
   font-weight: bold;
   font-size: 40px;
-  margin-top: 61px;
-  margin-bottom: 5px;
+  padding-top: 61px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .title2 {
   color: #96c0c0;
   font-family: "relation-one", sans-serif;
   font-size: 40px;
-  margin: 5px;
+  margin: 0px;
+  margin-bottom: 18px;
 }
 
 .designhome {
   display: none;
+}
+
+.textfirst {
+  width: 70%;
+  margin: auto;
+  font-family: "Poppins", sans-serif;
+}
+
+.title3 {
+  color: #96c0c0;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 28px;
+}
+
+.title4 {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  text-align: center;
+}
+
+.homeimage {
+  border-radius: 50%;
+  width: 57px;
+  height: 57px;
+}
+
+.searchimage {
+  background-color: #ebc575;
+  padding: 10px;
+}
+
+.strollerimage {
+  background-color: #96c0c0;
+  padding: 10px;
+}
+
+.orderimage {
+  background-color: #d28f71;
+  padding: 10px;
+}
+
+.shipimage {
+  background-color: #d9c2aa;
+  padding: 10px;
 }
 
 @media screen and (min-width: 800px) {
