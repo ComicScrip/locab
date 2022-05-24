@@ -13,6 +13,26 @@ export default function Home() {
       </Head>
       <main>
         <h2>Here is the Home page</h2>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
+        perferendis voluptates exercitationem? Doloribus omnis cumque dolor
+        eligendi blanditiis excepturi iusto! Inventore harum nam numquam. Autem,
+        deserunt. Sint maiores aspernatur debitis. Lorem ipsum dolor sit, amet
+        consectetur adipisicing elit. Officia facilis quia numquam dolorem neque
+        voluptatem, aliquid repellendus iusto consequatur optio, libero, at
+        incidunt ex perferendis sint delectus. Nemo, ipsam voluptate? Lorem
+        ipsum dolor, sit amet consectetur adipisicing elit. Dolore accusamus
+        quae adipisci nihil a quidem, eum voluptates ullam deleniti non
+        temporibus neque soluta rem saepe hic. Alias, quo! Expedita, id! Lorem
+        ipsum dolor sit amet consectetur adipisicing elit. Illum perferendis
+        voluptates exercitationem? Doloribus omnis cumque dolor eligendi
+        blanditiis excepturi iusto! Inventore harum nam numquam. Autem,
+        deserunt. Sint maiores aspernatur debitis. Lorem ipsum dolor sit, amet
+        consectetur adipisicing elit. Officia facilis quia numquam dolorem neque
+        voluptatem, aliquid repellendus iusto consequatur optio, libero, at
+        incidunt ex perferendis sint delectus. Nemo, ipsam voluptate? Lorem
+        ipsum dolor, sit amet consectetur adipisicing elit. Dolore accusamus
+        quae adipisci nihil a quidem, eum voluptates ullam deleniti non
+        temporibus neque soluta rem saepe hic. Alias, quo! Expedita, id!
       </main>
     </div>
   );

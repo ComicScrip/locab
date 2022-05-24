@@ -9,7 +9,7 @@ export default function footer() {
     <div className={styles.container}>
       <div className={styles.footer}>
         <div>
-          <h5>Liens utiles</h5>
+          <h4 className={styles.footerTitle}>Liens utiles</h4>
           <div className={styles.links}>
             <Link href="/reservation">
               <a>Réservation</a>
@@ -32,77 +32,77 @@ export default function footer() {
           </div>
         </div>
         <div>
-          <h5>Mon compte</h5>
-          <div>
-            <Link href="/commandes">
-              <a>Commandes</a>
-            </Link>
-          </div>
-          <div>
-            <Link href="/Mes informations">
-              <a>Mes informations personnelles</a>
-            </Link>
-          </div>
-          <div>
-            <Link href="/newsletter">
-              <a>Newsletter</a>
-            </Link>
+          <h4 className={styles.footerTitle}>Mon compte</h4>
+          <div className={styles.links}>
+            <div>
+              <Link href="/commandes">
+                <a>Commandes</a>
+              </Link>
+            </div>
+            <div>
+              <Link href="/Mes informations">
+                <a>Mes informations personnelles</a>
+              </Link>
+            </div>
+            <div>
+              <Link href="/newsletter">
+                <a>Newsletter</a>
+              </Link>
+            </div>
           </div>
         </div>
         <div>
-          <h5>Nous contacter</h5>
-          <div>&#9990; +33 6 26 85 90 46 </div>
-          <div>&#9993; contact@loca-b.fr</div>
+          <h4 className={styles.footerTitle}>Nous contacter</h4>
+          <div className={styles.footerContact}>&#9990; +33 6 26 85 90 46 </div>
+          <div className={styles.footerContact}>&#9993; contact@loca-b.fr</div>
 
-          <div className={styles.icons}>
+          <div className={styles.socialsicons}>
             <div className={styles.image}>
-              <Link href="">
-                <a>
-                  <Image
-                    src="/icons/facebook.png"
-                    alt="facebook"
-                    width={10}
-                    height={10}
-                    className={styles.img_icon}
-                  />
-                </a>
-              </Link>
+              <div className={styles.icons}>
+                <Link href="">
+                  <a>
+                    <Image
+                      src="/icons/facebook.png"
+                      alt="facebook"
+                      width={20}
+                      height={20}
+                    />
+                  </a>
+                </Link>
+              </div>
             </div>
-            <div className={styles.image}>
+            <div className={styles.icons}>
               <Link href="">
                 <a>
                   <Image
                     src="/icons/instagram.png"
                     alt="instagram"
-                    width={10}
-                    height={10}
-                    className={styles.img_icon}
+                    width={20}
+                    height={20}
                   />
                 </a>
               </Link>
             </div>
-            <div className={styles.image}>
+            <div className={styles.icons}>
               <Link href="">
                 <a>
                   <Image
                     src="/icons/linkedin.png"
                     alt="linkedin"
-                    width={10}
-                    height={10}
-                    className={styles.img_icon}
+                    width={20}
+                    height={20}
                   />
                 </a>
               </Link>
             </div>
-            <div className={styles.image}>
+            <div className={styles.icons}>
               <Link href="">
                 <a>
                   <Image
                     src="/icons/whatsapp.png"
                     alt="Whatsapp"
-                    width={10}
-                    height={10}
-                    className={styles.img_icon}
+                    width={20}
+                    height={20}
                   />
                 </a>
               </Link>

@@ -1,13 +1,13 @@
 .container {
   background: #ebc575;
   align-items: center;
-  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
 }
 .footer {
   display: flex;
+  margin: auto 8px;
   justify-content: space-between;
 }
 .logo {
@@ -22,15 +22,41 @@
   font-size: x-small;
   color: white;
 }
-.icons {
+.socialsicons {
   display: flex;
 }
-.image {
-  margin: auto 8px;
+.icons {
+  margin: 11px 4px;
 }
-.links a {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  color: white;
+.links a,
+.footerContact {
+  color: #ffffff;
+  font-size: 12px;
+}
+.footerTitle {
+  color: #ffffff;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    display: flex;
+    position: fixed;
+    padding: 0 200px;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .footer {
+    margin-right: 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 110px;
+  }
+  .links a,
+  .footerContact {
+    font-size: 16px;
+  }
+  .logoText {
+    font-size: small;
+    padding-top: 50px;
+  }
 }
