@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("https://use.typekit.net/qql6zfk.css");
 
-.firstparagraphe {
+.firstParagraphe {
   text-align: center;
   background-color: #fbfbfb;
   font-size: 14px;
@@ -73,6 +73,16 @@
 .shipimage {
   background-color: #d9c2aa;
   padding: 10px;
+}
+
+.logohome {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
 }
 
 @media screen and (min-width: 800px) {

@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div className={styles.firstparagraphe}>
+        <div className={styles.firstParagraphe}>
           <h1 className={styles.title}>Voyagez léger</h1>
           <h2 className={styles.title2}>avec bébé</h2>
           <p className={styles.textfirst}>
@@ -29,63 +29,75 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className={styles.secondparagraphe}>
+        <div className={styles.secondParagraphe}>
           <h3 className={styles.title3}>Comment ça marche ?</h3>
-          <div className={styles.homesearch}>
-            <img
-              src="/image/search.png"
-              alt="search"
-              className={styles.homeimage + " " + styles.searchimage}
-            />
+          <div className={styles.logohome}>
+            <div className={styles.homesearch}>
+              <div className={styles.imageContainer}>
+                <img
+                  src="/image/search.png"
+                  alt="search"
+                  className={styles.homeimage + " " + styles.searchimage}
+                />
+              </div>
 
-            <h4 className={styles.title4}>Recherche</h4>
-            <p className={styles.paragraphhome}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-              bibendum ligula at volutpat mollis. Fusce finibus mi et massa
-              varius.{" "}
-            </p>
-          </div>
-          <div className={styles.homestroller}>
-            <img
-              src="/image/stroller.png"
-              alt="stroller"
-              className={styles.homeimage + " " + styles.strollerimage}
-            />
+              <h4 className={styles.title4}>Recherche</h4>
+              <p className={styles.paragraphhome}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                bibendum ligula at volutpat mollis. Fusce finibus mi et massa
+                varius.{" "}
+              </p>
+            </div>
+            <div className={styles.homestroller}>
+              <div className={styles.imageContainer}>
+                {" "}
+                <img
+                  src="/image/stroller.png"
+                  alt="stroller"
+                  className={styles.homeimage + " " + styles.strollerimage}
+                />
+              </div>
 
-            <h4 className={styles.title4}>Choix</h4>
-            <p className={styles.paragraphhome}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-              bibendum ligula at volutpat mollis. Fusce finibus mi et massa
-              varius.{" "}
-            </p>
-          </div>
-          <div className={styles.homeorder}>
-            <img
-              src="/image/shopping.png"
-              alt="order"
-              className={styles.homeimage + " " + styles.orderimage}
-            />
+              <h4 className={styles.title4}>Choix</h4>
+              <p className={styles.paragraphhome}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                bibendum ligula at volutpat mollis. Fusce finibus mi et massa
+                varius.{" "}
+              </p>
+            </div>
+            <div className={styles.homeorder}>
+              <div className={styles.imageContainer}>
+                <img
+                  src="/image/shopping.png"
+                  alt="order"
+                  className={styles.homeimage + " " + styles.orderimage}
+                />
+              </div>
 
-            <h4 className={styles.title4}>Commande</h4>
-            <p className={styles.paragraphhome}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-              bibendum ligula at volutpat mollis. Fusce finibus mi et massa
-              varius.{" "}
-            </p>
-          </div>
-          <div className={styles.homeship}>
-            <img
-              src="/image/shipped.png"
-              alt="ship"
-              className={styles.homeimage + " " + styles.shipimage}
-            />
+              <h4 className={styles.title4}>Commande</h4>
+              <p className={styles.paragraphhome}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                bibendum ligula at volutpat mollis. Fusce finibus mi et massa
+                varius.{" "}
+              </p>
+            </div>
+            <div className={styles.homeship}>
+              <div className={styles.imageContainer}>
+                {" "}
+                <img
+                  src="/image/shipped.png"
+                  alt="ship"
+                  className={styles.homeimage + " " + styles.shipimage}
+                />
+              </div>
 
-            <h4 className={styles.title4}>Livraison</h4>
-            <p className={styles.paragraphhome}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-              bibendum ligula at volutpat mollis. Fusce finibus mi et massa
-              varius.{" "}
-            </p>
+              <h4 className={styles.title4}>Livraison</h4>
+              <p className={styles.paragraphhome}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                bibendum ligula at volutpat mollis. Fusce finibus mi et massa
+                varius.{" "}
+              </p>
+            </div>
           </div>
         </div>
         <div className={styles.thirdparagraphe}>
