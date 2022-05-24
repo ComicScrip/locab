@@ -1,0 +1,67 @@
+.mainTitle {
+  display: flex;
+  justify-content: center;
+}
+.infoContainer {
+  border: solid 2px #ededed;
+  border-radius: 8px;
+  margin-right: 10px;
+  padding: 5px 100px 5px 10px;
+  display: flex;
+  justify-content: flex-start;
+  width: 90%;
+}
+.fullContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.strollerStyle {
+  display: flex;
+  align-items: center;
+}
+.rentInformations {
+  line-height: 5pt;
+}
+.inputStyle {
+  text-align: center;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+  border: none;
+  font-weight: bold;
+  font-size: 15pt;
+}
+
+.strollerStyle {
+  padding-right: 10px;
+}
+.validerContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.totalContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  margin-top: 30px;
+  padding: 0px 20px;
+  line-height: 5px;
+}
+.totalInfoContainer {
+  display: flex;
+  flex-direction: column;
+}
+.cautionContainer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f8f8f8;
+  align-items: center;
+  padding: 0px 20px;
+  font-size: 13pt;
+  margin-top: 20px;
+}
