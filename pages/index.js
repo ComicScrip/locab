@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
-    <Layout>
+    <Layout pageTitle="Home">
       <div className={styles.container}>
         <Head>
           <title>Create Next App</title>

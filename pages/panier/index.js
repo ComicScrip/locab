@@ -4,7 +4,9 @@ import Layout from "../../components/Layout";
 export default function Panier() {
   return (
     <Layout>
-      <h1>hello world, voici ma page panier</h1>
+      <main>
+        <h1>Hello world, voici ma page panier</h1>
+      </main>
     </Layout>
   );
 }

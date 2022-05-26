@@ -1,9 +1,10 @@
 .container {
   background: #ebc575;
   align-items: center;
+  position: fixed;
   /* left: 0; */
   bottom: 0;
-  width: 105%;
+  width: 100%;
 }
 .footer {
   display: flex;
@@ -44,7 +45,7 @@
   .container {
     display: flex;
     position: fixed;
-    padding: 0 200px;
+    padding: 0 100px;
     flex-direction: row-reverse;
     justify-content: space-between;
   }
