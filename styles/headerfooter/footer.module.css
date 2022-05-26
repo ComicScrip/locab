@@ -1,13 +1,13 @@
 .container {
   background: #ebc575;
   align-items: center;
-  left: 0;
+  /* left: 0; */
   bottom: 0;
-  width: 100%;
+  width: 105%;
 }
 .footer {
   display: flex;
-  margin: auto 8px;
+  margin: auto 5px;
   justify-content: space-between;
 }
 .logo {
@@ -31,7 +31,10 @@
 .links a,
 .footerContact {
   color: #ffffff;
-  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 17px;
 }
 .footerTitle {
   color: #ffffff;
@@ -53,7 +56,10 @@
   }
   .links a,
   .footerContact {
-    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 25px;
   }
   .logoText {
     font-size: small;

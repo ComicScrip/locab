@@ -1,12 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import styles from "./navbar.module.css";
+import styles from "../styles/headerfooter/navbar.module.css";
 
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <Link href="/">
-        <a> Acceuil </a>
+        <a> Accueil </a>
       </Link>
       <Link href="panier">
         <a> Panier </a>

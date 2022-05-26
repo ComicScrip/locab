@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./footer.module.css";
-import Logo from "../../public/logo.png";
+import Logo from "../public/logo.png";
+import styles from "../styles/headerfooter/footer.module.css";
 
 export default function footer() {
   return (
