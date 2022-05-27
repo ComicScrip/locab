@@ -80,7 +80,7 @@ export default function ReservationPage() {
 
       {productsList
         .filter((product) =>
-          product.isAvailable ? !showNotAvailable : showNotAvailable
+          product.isAvailable ? productsList : showNotAvailable
         )
         .filter((product) => product.category.includes(searchValue))
         .map((product) => (
