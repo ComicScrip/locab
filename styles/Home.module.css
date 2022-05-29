@@ -85,6 +85,34 @@
   justify-content: center;
 }
 
+.paragraphhome {
+  margin: 20px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.thirdtitlehome {
+  color: #96c0c0;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 28px;
+}
+
+.thirdparagraphetext {
+  margin: 20px;
+  font-size: 13px;
+}
+
+.thirdparagraphe {
+  background-color: #fbfbfb;
+  text-align: center;
+}
+
+.imgcouple {
+  margin: 20px;
+}
+
 @media screen and (min-width: 800px) {
   .designhome {
     display: initial;
@@ -96,5 +124,10 @@
 
   .title2 {
     font-size: 64px;
+  }
+
+  .imgcouple {
+    width: 517px;
+    height: 518px;
   }
 }

@@ -101,8 +101,8 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.thirdparagraphe}>
-          <h3>Pourquoi Loca-b ?</h3>
-          <p>
+          <h3 className={styles.thirdtitlehome}>Pourquoi Loca-b ?</h3>
+          <p className={styles.thirdparagraphetext}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
             luctus accumsan purus, nec tempor magna pharetra quis. Integer eget
             commodo urna, eget blandit elit. Class aptent taciti sociosqu ad
@@ -114,9 +114,10 @@ export default function Home() {
           </p>
           <Image
             src="/image/couple.png"
-            width={517}
-            height={518}
+            width={215}
+            height={216}
             alt="couple"
+            className={styles.imgcouple}
           />
         </div>
       </main>
