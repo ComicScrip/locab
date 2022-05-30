@@ -25,11 +25,11 @@
   margin-bottom: 18px;
 }
 
-.designhome {
+.designHome {
   display: none;
 }
 
-.textfirst {
+.textFirst {
   width: 70%;
   margin: auto;
   font-family: "Poppins", sans-serif;
@@ -49,33 +49,33 @@
   text-align: center;
 }
 
-.homeimage {
+.homeImage {
   border-radius: 50%;
   width: 57px;
   height: 57px;
 }
 
-.searchimage {
+.searchImage {
   background-color: #ebc575;
   padding: 10px;
 }
 
-.strollerimage {
+.strollerImage {
   background-color: #96c0c0;
   padding: 10px;
 }
 
-.orderimage {
+.orderImage {
   background-color: #d28f71;
   padding: 10px;
 }
 
-.shipimage {
+.shipImage {
   background-color: #d9c2aa;
   padding: 10px;
 }
 
-.logohome {
+.logoHome {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
@@ -85,13 +85,13 @@
   justify-content: center;
 }
 
-.paragraphhome {
+.paragraphHome {
   margin: 20px;
   text-align: center;
   font-size: 12px;
 }
 
-.thirdtitlehome {
+.thirdTitleHome {
   color: #96c0c0;
   font-family: "Poppins", sans-serif;
   font-weight: bold;
@@ -99,23 +99,69 @@
   font-size: 28px;
 }
 
-.thirdparagraphetext {
+.thirdParagrapheText {
   margin: 20px;
   font-size: 13px;
 }
 
-.thirdparagraphe {
+.thirdParagraphe {
   background-color: #fbfbfb;
   text-align: center;
 }
 
-.imgcouple {
+.imgCouple {
   margin: 20px;
+  width: 215px;
+  height: 216px;
+}
+
+.choixHome {
+  display: flex;
+  flex-direction: column;
+}
+
+.whereHome {
+  border-radius: 10px;
+  height: 31px;
+  margin: 10px auto;
+  padding-left: 10px;
+  width: 70%;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  background-color: #ededed;
+}
+
+.whenHome {
+  border-radius: 10px;
+  height: 31px;
+  margin: 10px auto;
+  padding-left: 10px;
+  width: 70%;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  background-color: #ededed;
+}
+
+.buttonHome {
+  border-radius: 10px;
+  height: 31px;
+  margin: 10px auto;
+  width: 70%;
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  color: white;
+  background-color: #d28f71;
 }
 
 @media screen and (min-width: 800px) {
-  .designhome {
+  .designHome {
     display: initial;
+    width: 50%;
+  }
+
+  .bebeHomeImage {
+    width: 50%;
+    height: auto;
   }
 
   .title {
@@ -126,8 +172,46 @@
     font-size: 64px;
   }
 
-  .imgcouple {
+  .imgCouple {
     width: 517px;
     height: 518px;
+  }
+
+  .firstParagraphe {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .titleandtextHome {
+    width: 50%;
+  }
+
+  .whereHome {
+    border-radius: 10px;
+    height: 52px;
+    margin: 15px auto;
+    padding: 20px;
+    width: 70%;
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+  }
+
+  .whenHome {
+    border-radius: 10px;
+    height: 52px;
+    margin: 15px auto;
+    padding: 20px;
+    width: 70%;
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+  }
+
+  .buttonHome {
+    border-radius: 10px;
+    height: 55px;
+    margin: 15px auto;
+    width: 50%;
+    font-family: "Poppins", sans-serif;
+    font-size: 27px;
   }
 }
