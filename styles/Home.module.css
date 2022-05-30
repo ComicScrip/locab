@@ -164,7 +164,7 @@
   }
 
   .bebeHomeImage {
-    width: 50%;
+    width: 70%;
     height: auto;
   }
 
@@ -192,6 +192,7 @@
 
   .titleandtextHome {
     width: 50%;
+    margin-right: 90px;
   }
 
   .whereHome {
@@ -210,6 +211,7 @@
     height: 55px;
     width: 50%;
     font-size: 27px;
+    margin-bottom: 100px;
   }
 
   .logoHome {
@@ -224,5 +226,9 @@
 
   .thirdParagraphe {
     display: flex;
+  }
+
+  .paragraphHome {
+    margin-bottom: 50px;
   }
 }
