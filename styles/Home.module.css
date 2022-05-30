@@ -129,6 +129,7 @@
   font-family: "Poppins", sans-serif;
   font-size: 13px;
   background-color: #ededed;
+  opacity: 20%;
 }
 
 .whenHome {
@@ -140,6 +141,7 @@
   font-family: "Poppins", sans-serif;
   font-size: 13px;
   background-color: #ededed;
+  opacity: 20%;
 }
 
 .buttonHome {
@@ -151,12 +153,14 @@
   font-size: 13px;
   color: white;
   background-color: #d28f71;
+  opacity: 20%;
 }
 
 @media screen and (min-width: 800px) {
   .designHome {
     display: initial;
     width: 50%;
+    margin: auto;
   }
 
   .bebeHomeImage {
@@ -173,8 +177,8 @@
   }
 
   .imgCouple {
-    width: 517px;
-    height: 518px;
+    width: 50%;
+    height: auto;
   }
 
   .firstParagraphe {
@@ -182,36 +186,43 @@
     flex-direction: row-reverse;
   }
 
+  .thirdTextTitle {
+    width: 50%;
+  }
+
   .titleandtextHome {
     width: 50%;
   }
 
   .whereHome {
-    border-radius: 10px;
     height: 52px;
-    margin: 15px auto;
-    padding: 20px;
-    width: 70%;
-    font-family: "Poppins", sans-serif;
+    padding-right: 20px;
     font-size: 18px;
   }
 
   .whenHome {
-    border-radius: 10px;
     height: 52px;
-    margin: 15px auto;
-    padding: 20px;
-    width: 70%;
-    font-family: "Poppins", sans-serif;
+    padding-right: 20px;
     font-size: 18px;
   }
 
   .buttonHome {
-    border-radius: 10px;
     height: 55px;
-    margin: 15px auto;
     width: 50%;
-    font-family: "Poppins", sans-serif;
     font-size: 27px;
+  }
+
+  .logoHome {
+    display: flex;
+    width: 90%;
+    margin: auto;
+  }
+
+  .title3 {
+    margin: 20px;
+  }
+
+  .thirdParagraphe {
+    display: flex;
   }
 }

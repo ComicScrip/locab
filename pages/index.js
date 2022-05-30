@@ -119,22 +119,26 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.thirdParagraphe}>
-          <h3 className={styles.thirdTitleHome}>Pourquoi Loca-b ?</h3>
-          <p className={styles.thirdParagrapheText}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            luctus accumsan purus, nec tempor magna pharetra quis. Integer eget
-            commodo urna, eget blandit elit. Class aptent taciti sociosqu ad
-            litora torquent per conubia nostra, per inceptos himenaeos.
-            Vestibulum eu vehicula justo, sit amet sodales enim. Pellentesque
-            sem neque, porttitor eget lobortis vel, elementum eget arcu. Nam
-            tellus risus, pulvinar eget metus vel, lacinia bibendum orci.
-            Interdum et malesuada fames ac.{" "}
-          </p>
-          <img
-            src="/image/couple.png"
-            alt="couple"
-            className={styles.imgCouple}
-          />
+          <div className={styles.thirdTextTitle}>
+            <h3 className={styles.thirdTitleHome}>Pourquoi Loca-b ?</h3>
+            <p className={styles.thirdParagrapheText}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+              luctus accumsan purus, nec tempor magna pharetra quis. Integer
+              eget commodo urna, eget blandit elit. Class aptent taciti sociosqu
+              ad litora torquent per conubia nostra, per inceptos himenaeos.
+              Vestibulum eu vehicula justo, sit amet sodales enim. Pellentesque
+              sem neque, porttitor eget lobortis vel, elementum eget arcu. Nam
+              tellus risus, pulvinar eget metus vel, lacinia bibendum orci.
+              Interdum et malesuada fames ac.{" "}
+            </p>
+          </div>
+          <div>
+            <img
+              src="/image/couple.png"
+              alt="couple"
+              className={styles.imgCouple}
+            />
+          </div>
         </div>
       </main>
     </div>
