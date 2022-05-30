@@ -97,11 +97,14 @@
   font-weight: bold;
   text-align: center;
   font-size: 28px;
+  padding-top: 20px;
 }
 
 .thirdParagrapheText {
-  margin: 20px;
+  margin: auto;
+  width: 70%;
   font-size: 13px;
+  text-align: justify;
 }
 
 .thirdParagraphe {
@@ -147,7 +150,7 @@
 .buttonHome {
   border-radius: 10px;
   height: 31px;
-  margin: 10px auto;
+  margin: 10px auto 50px auto;
   width: 70%;
   font-family: "Poppins", sans-serif;
   font-size: 13px;
@@ -222,6 +225,7 @@
 
   .title3 {
     margin: 20px;
+    margin-bottom: 60px;
   }
 
   .thirdParagraphe {
@@ -230,5 +234,16 @@
 
   .paragraphHome {
     margin-bottom: 50px;
+  }
+
+  .thirdParagrapheText {
+    width: 60%;
+    margin-left: 100px;
+    text-align: justify;
+  }
+
+  .homeImage {
+    width: 90px;
+    height: 90px;
   }
 }

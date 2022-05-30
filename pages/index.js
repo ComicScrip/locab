@@ -105,7 +105,7 @@ export default function Home() {
                 <img
                   src="/image/shipped.png"
                   alt="ship"
-                  className={styles.homeImage + " " + styles.shipSmage}
+                  className={styles.homeImage + " " + styles.shipImage}
                 />
               </div>
 
