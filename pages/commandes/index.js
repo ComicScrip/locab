@@ -5,7 +5,7 @@ export default function Commandes() {
   return (
     <Layout>
       <main>
-        <h1>hello world, voici ma page commandes</h1>
+        <h1>Hello world, voici ma page commandes</h1>
       </main>
     </Layout>
   );
