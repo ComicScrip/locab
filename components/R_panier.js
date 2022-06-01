@@ -1,7 +1,11 @@
 import Image from "next/image";
+import { useState } from "react";
 import styles from "../styles/Panier.module.css";
 
-const r_panier = (products) => {
+const R_panier = (products) => {
+  const [quantity, setQuantity] = useState();
+  console.log(quantity);
+
   return (
     <>
       <div className={styles.fullContainer}>
@@ -19,10 +23,15 @@ const r_panier = (products) => {
             <p>{products.prix}€/jour</p>
           </div>
         </div>
-        <input className={styles.inputStyle} type="quantity" />
+        <input
+          className={styles.inputStyle}
+          type="quantity"
+          onChange={(e) => setQuantity(e.target.value)}
+          value={quantity}
+        />
       </div>
     </>
   );
 };
 
-export default r_panier;
+export default R_panier;

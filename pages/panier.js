@@ -1,4 +1,4 @@
-import R_panier from "../components/r_panier";
+import R_panier from "../components/R_panier";
 import styles from "../styles/Panier.module.css";
 import { AiFillInfoCircle } from "react-icons/ai";
 import Button from "@mui/material/Button";
@@ -22,7 +22,7 @@ const productList = [
   {
     id: "4",
     name: "bavoir",
-    prix: 3,
+    prix: 8,
   },
 ];
 
