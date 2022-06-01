@@ -49,10 +49,10 @@ const productsList = [
 
 export default function ReservationPage() {
   const [searchValue, setSearchValue] = useState("");
-  const [showNotAvailable, setShowNotAvailable] = useState(true);
+  const [showAvailable, setShowAvailable] = useState(true);
 
   const handleCheckAvailability = () => {
-    setShowNotAvailable(!showNotAvailable);
+    setShowAvailable(!showAvailable);
   };
 
   return (
@@ -82,7 +82,7 @@ export default function ReservationPage() {
 
       {productsList
         .filter((product) =>
-          product.isAvailable ? productsList : showNotAvailable
+          product.isAvailable ? productsList : showAvailable
         )
         .filter((product) => product.category.includes(searchValue))
         .map((product) => (
