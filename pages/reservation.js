@@ -59,6 +59,7 @@ export default function ReservationPage() {
     <div className={styles.mainWrapper}>
       <section className={styles.searchContainer}>
         <input
+          data-cy="searchBar"
           value={searchValue}
           type="text"
           placeholder="Poussette, lit à barreaux, chaise haute..."
@@ -69,6 +70,7 @@ export default function ReservationPage() {
       <section className={styles.productNotAvailable}>
         <label htmlFor="availability" style={{ cursor: "pointer" }}>
           <input
+            data-cy="availabilityBtn"
             type="checkbox"
             onClick={() => handleCheckAvailability()}
             id="availability"
