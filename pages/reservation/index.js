@@ -1,5 +1,5 @@
-import ResProduct from "../components/res_product";
-import styles from "../styles/Reservation.module.css";
+import ResProduct from "../../components/ResProduct";
+import styles from "../../styles/Reservation.module.css";
 import { useState } from "react";
 
 const productsList = [

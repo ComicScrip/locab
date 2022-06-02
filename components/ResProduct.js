@@ -3,10 +3,10 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function ResProduct({ product }) {
-  const [addedCart, setAddedCart] = useState(false);
+  const [addedToCart, setAddedToCart] = useState(false);
 
   const handleClickProduct = () => {
-    setAddedCart(!addedCart);
+    setAddedToCart(!addedToCart);
   };
 
   return (
@@ -18,7 +18,7 @@ export default function ResProduct({ product }) {
       }
       onClick={handleClickProduct}
       style={
-        addedCart && product.isAvailable
+        addedToCart && product.isAvailable
           ? { borderColor: "#96C0C0" }
           : { borderColor: "#ededed" }
       }
