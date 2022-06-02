@@ -2,7 +2,14 @@ const db = require("../db");
 
 async function seed() {
   await db.thing.deleteMany();
-  await db.thing.create({ data: { name: "something" } });
+  await db.user.create({
+    data: {
+      name: "admin",
+      email: "admin@website.com",
+      role: "admin",
+      hashedPassword: "OkCool",
+    },
+  });
 }
 
 seed();
