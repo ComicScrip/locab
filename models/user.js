@@ -30,3 +30,15 @@ const hashPassword = (plainPassword) =>
   argon2.hash(plainPassword, hashingOptions);
 
 module.exports.hashPassword = hashPassword;
+
+const verifyPassword = (plainPassword, hashedPassword) =>
+  argon2.verify(hashedPassword, plainPassword, hashingOptions);
+
+module.exports.verifyPassword = verifyPassword;
+
+module.exports.createUser = async ({ email, password, name, role }) => {
+  const hashedPassword = await hashPassword(password);
+  return db.user.create({
+    data: { email, hashedPassword, name, role },
+  });
+};
