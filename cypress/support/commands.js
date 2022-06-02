@@ -23,3 +23,35 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add(
+  "signup",
+  ({
+    email = "visitor@website.com",
+    role = "visitor",
+    password = "verysecure",
+    name = "visitor",
+  } = {}) => {
+    cy.dataSession({
+      name: "userInDb",
+      setup: () => {
+        cy.task("deleteUserByEmail", email);
+        cy.task("createUser", {
+          email,
+          password,
+          role,
+          name,
+        }).then((user) => {
+          return Promise.resolve(user);
+        });
+      },
+      validate: (saved) => {
+        return cy.task("findUserByEmail", saved.email).then((user) => {
+          if (user?.email === email && user?.role === role)
+            return Promise.resolve(!!user);
+          else return Promise.resolve(false);
+        });
+      },
+    });
+  }
+);
