@@ -1,6 +1,6 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import Welcome from "../components/welcome";
+import styles from "../../styles/Home.module.css";
+import Welcome from "../../components/recap/welcome";
 
 export default function Recap() {
   return (
