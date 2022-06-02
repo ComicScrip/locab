@@ -65,3 +65,10 @@
   font-size: 13pt;
   margin-top: 20px;
 }
+
+.emptyShop {
+  display: flex;
+  justify-content: center;
+  font-style: italic;
+  font-size: 10pt;
+}

@@ -2,53 +2,59 @@ import React from "react";
 import Button from "@mui/material/Button";
 import { AiFillInfoCircle } from "react-icons/ai";
 import styles from "../styles/Panier.module.css";
+import { useState } from "react";
 
-const productList = [
-  {
-    id: "1",
-    name: "poussette",
-    price: 7,
-  },
-  {
-    id: "2",
-    name: "baignoire",
-    price: 9,
-  },
-];
-
-export default function R_panier() {
+export default function R_panier({ cartItems }) {
+  const [quantity, setQuantity] = useState(1);
+  const totalPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
   return (
     <div className={styles.mainContainer}>
       <div className={styles.mainTitle}>
-        <h1>Votre panier</h1>
+        <h2>Votre panier</h2>
       </div>
-      {productList.map((products) => (
-        <R_panier
-          name={products.name}
-          prix={products.prix}
-          products={products}
-          key={products.id}
-          id={products.id}
-        />
+      {cartItems.length === 0 && (
+        <div className={styles.emptyShop}>Votre panier est vide</div>
+      )}
+      {cartItems.map((item) => (
+        <div key={item.id}>
+          <div>{item.name}</div>
+          <div>
+            <input
+              type="quantity"
+              onChange={(e) => setQuantity(e.target.value)}
+              value={quantity}
+              min="1"
+            />
+          </div>
+          <div>
+            {quantity} x ${item.price.toFixed(2)}
+          </div>
+        </div>
       ))}
       <div className={styles.totalContainer}>
         <div className={styles.totalInfoContainer}>
           <h3>Total</h3>
           <p>du XX/XX au XX/XX</p>
         </div>
-        <h2>Total €</h2>
+        <h2>{totalPrice.toFixed(2)}€</h2>
       </div>
       <div className={styles.cautionContainer}>
         <p>
-          Montant de la caution &nbsp;
+          Montant de la caution
           <AiFillInfoCircle
-            style={{ verticalAlign: "middle", cursor: "pointer" }}
+            style={{
+              verticalAlign: "middle",
+              cursor: "pointer",
+              marginBottom: "3px",
+            }}
           />
         </p>
         <p>X€</p>
       </div>
+
       <div className={styles.validerContainer}>
         <Button
+          onClick={() => alert("Commande enregistrée")}
           variant="contained"
           style={{
             backgroundColor: "#D28F71",

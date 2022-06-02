@@ -1,93 +1,47 @@
-import ResProduct from "../../components/ResProduct";
-import styles from "../../styles/Reservation.module.css";
+import R_panier from "../../components/R_panier";
+import Products from "../../components/Products";
 import { useState } from "react";
+import data from "../../components/data";
+import styles from "../../styles/Reservation.module.css";
 
-const productsList = [
-  {
-    id: 1,
-    name: "Poussette",
-    category: "poussette",
-    price: 20,
-    isAvailable: true,
-  },
-  {
-    id: 2,
-    name: "Poussette",
-    category: "poussette",
-    price: 30,
-    isAvailable: true,
-  },
-  {
-    id: 3,
-    name: "Poussette",
-    category: "poussette",
-    price: 10,
-    isAvailable: true,
-  },
-  {
-    id: 4,
-    name: "Poussette",
-    category: "poussette",
-    price: 25,
-    isAvailable: true,
-  },
-  {
-    id: 5,
-    name: "Lit à barreaux",
-    category: "lit_barreaux",
-    price: 12,
-    isAvailable: false,
-  },
-  {
-    id: 6,
-    name: "Lit à barreaux",
-    category: "lit_barreaux",
-    price: 12,
-    isAvailable: true,
-  },
-];
+function ReservationPage() {
+  const { products } = data;
+  const [cartItems, setCartItems] = useState([]);
 
-export default function ReservationPage() {
-  const [searchValue, setSearchValue] = useState("");
-  const [showAvailable, setShowAvailable] = useState(true);
-
-  const handleCheckAvailability = () => {
-    setShowAvailable(!showAvailable);
+  //add products
+  const onAdd = (product) => {
+    const exist = cartItems.find((x) => x.id === product.id);
+    if (!exist) {
+      setCartItems([...cartItems, { ...product, qty: 1 }]);
+    }
   };
 
-  return (
-    <div className={styles.mainWrapper}>
-      <section className={styles.searchContainer}>
-        <input
-          data-cy="searchBar"
-          value={searchValue}
-          type="text"
-          placeholder="Poussette, lit à barreaux, chaise haute..."
-          onChange={(event) => setSearchValue(event.target.value)}
-          className={styles.searchBar}
-        />
-      </section>
-      <section className={styles.productNotAvailable}>
-        <label htmlFor="availability" style={{ cursor: "pointer" }}>
-          <input
-            data-cy="availabilityBtn"
-            type="checkbox"
-            onClick={() => handleCheckAvailability()}
-            id="availability"
-            defaultChecked={true}
-          />
-          Afficher les produits indisponibles
-        </label>
-      </section>
-
-      {productsList
-        .filter((product) =>
-          product.isAvailable ? productsList : showAvailable
+  //remove products
+  const onRemove = (product) => {
+    const exist = cartItems.find((x) => x.id === product.id);
+    if (exist.qty === 1) {
+      setCartItems(cartItems.filter((x) => x.id !== product.id));
+    } else {
+      setCartItems(
+        cartItems.map((x) =>
+          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
         )
-        .filter((product) => product.category.includes(searchValue))
-        .map((product) => (
-          <ResProduct product={product} key={product.id} id={product.id} />
-        ))}
-    </div>
+      );
+    }
+  };
+  return (
+    <>
+      <div className={styles.main_title}>
+        <h1>De quoi avez-vous besoin ?</h1>
+      </div>
+      <div className={styles.main_container}>
+        <Products products={products} onAdd={onAdd} onRemove={onRemove} />
+        <div className={styles.panier_style}>
+          <R_panier cartItems={cartItems} />
+        </div>
+      </div>
+    </>
   );
 }
+
+export default ReservationPage;
