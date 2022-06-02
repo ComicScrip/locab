@@ -1,37 +1,52 @@
-import Image from "next/image";
-import { useState } from "react";
-import styles from "../styles/Panier.module.css";
+import React from "react";
 
-const R_panier = (products) => {
-  const [quantity, setQuantity] = useState();
-  console.log(quantity);
+export default function R_panier(props) {
+  const { cartItems, onAdd, onRemove } = props;
+  const totalPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
 
   return (
-    <>
-      <div className={styles.fullContainer}>
-        <div className={styles.infoContainer}>
-          <div className={styles.strollerStyle}>
-            <Image
-              src="/image/baby-stroller.png"
-              alt="poussette image"
-              height={40}
-              width={40}
-            />
-          </div>
-          <div className={styles.rentInformations}>
-            <h3>{products.name}</h3>
-            <p>{products.prix}€/jour</p>
-          </div>
-        </div>
-        <input
-          className={styles.inputStyle}
-          type="quantity"
-          onChange={(e) => setQuantity(e.target.value)}
-          value={quantity}
-        />
-      </div>
-    </>
-  );
-};
+    <aside className="block col-1">
+      <h2>Cart Items</h2>
+      <div>
+        {cartItems.length === 0 && <div>Cart is empty</div>}
+        {cartItems.map((item) => (
+          <div key={item.id} className="row">
+            <div className="col-2">{item.name}</div>
+            <div className="col-2">
+              <button onClick={() => onRemove(item)} className="remove">
+                -
+              </button>{" "}
+              <button onClick={() => onAdd(item)} className="add">
+                +
+              </button>
+            </div>
 
-export default R_panier;
+            <div className="col-2 text-right">
+              {item.qty} x ${item.price.toFixed(2)}
+            </div>
+          </div>
+        ))}
+
+        {cartItems.length !== 0 && (
+          <>
+            <hr></hr>
+            <div className="row">
+              <div className="col-2">
+                <strong>Total Price</strong>
+              </div>
+              <div className="col-1 text-right">
+                <strong>${totalPrice.toFixed(2)}</strong>
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <button onClick={() => alert("Implement Checkout!")}>
+                Checkout
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+    </aside>
+  );
+}
