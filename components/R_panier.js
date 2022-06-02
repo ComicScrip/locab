@@ -1,37 +1,68 @@
-import Image from "next/image";
-import { useState } from "react";
+import React from "react";
+import Button from "@mui/material/Button";
+import { AiFillInfoCircle } from "react-icons/ai";
 import styles from "../styles/Panier.module.css";
 
-const R_panier = (products) => {
-  const [quantity, setQuantity] = useState();
-  console.log(quantity);
+const productList = [
+  {
+    id: "1",
+    name: "poussette",
+    price: 7,
+  },
+  {
+    id: "2",
+    name: "baignoire",
+    price: 9,
+  },
+];
 
+export default function R_panier() {
   return (
-    <>
-      <div className={styles.fullContainer}>
-        <div className={styles.infoContainer}>
-          <div className={styles.strollerStyle}>
-            <Image
-              src="/image/baby-stroller.png"
-              alt="poussette image"
-              height={40}
-              width={40}
-            />
-          </div>
-          <div className={styles.rentInformations}>
-            <h3>{products.name}</h3>
-            <p>{products.prix}€/jour</p>
-          </div>
-        </div>
-        <input
-          className={styles.inputStyle}
-          type="quantity"
-          onChange={(e) => setQuantity(e.target.value)}
-          value={quantity}
-        />
+    <div className={styles.mainContainer}>
+      <div className={styles.mainTitle}>
+        <h1>Votre panier</h1>
       </div>
-    </>
+      {productList.map((products) => (
+        <R_panier
+          name={products.name}
+          prix={products.prix}
+          products={products}
+          key={products.id}
+          id={products.id}
+        />
+      ))}
+      <div className={styles.totalContainer}>
+        <div className={styles.totalInfoContainer}>
+          <h3>Total</h3>
+          <p>du XX/XX au XX/XX</p>
+        </div>
+        <h2>Total €</h2>
+      </div>
+      <div className={styles.cautionContainer}>
+        <p>
+          Montant de la caution &nbsp;
+          <AiFillInfoCircle
+            style={{ verticalAlign: "middle", cursor: "pointer" }}
+          />
+        </p>
+        <p>X€</p>
+      </div>
+      <div className={styles.validerContainer}>
+        <Button
+          variant="contained"
+          style={{
+            backgroundColor: "#D28F71",
+            borderRadius: "8px",
+            width: "100%",
+            color: "white",
+            fontWeight: "bold",
+            fontSize: "13pt",
+            padding: "15px 0px",
+          }}
+        >
+          Valider votre panier
+        </Button>
+      </div>
+    </div>
   );
-};
-
-export default R_panier;
+}
