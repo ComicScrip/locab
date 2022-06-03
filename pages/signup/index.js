@@ -28,7 +28,7 @@ export default function SignUpPage() {
       </div>
       <div className={styles.inscRegisterForm}>
         <h1 className={styles.titleSignUp}>Je souhaite m&lsquo;inscire</h1>
-        <form onSubmit={handleSubmit}>
+        <form className={styles.formSignUp} onSubmit={handleSubmit}>
           <label htmlFor="name">
             Nom
             <input
