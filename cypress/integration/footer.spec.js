@@ -4,8 +4,8 @@ describe("footer", () => {
     cy.visit("/");
   });
 
-  it("displays links, img", () => {
+  it("displays links, Image", () => {
     cy.get("a").should("not.be.empty");
-    cy.get("img").should("not.be.empty");
+    cy.get("Image").should("not.be.empty");
   });
 });
