@@ -1,6 +1,7 @@
 describe("/signup", () => {
   const email = "admin@website.com";
   beforeEach(() => {
+    cy.task("resetDB");
     cy.visit("/signup");
   });
 
@@ -12,7 +13,7 @@ describe("/signup", () => {
 
     cy.get("button[type=submit]").click();
 
-    cy.contains("Merci pour votre particiption !").should("be.visible");
+    cy.contains("Merci pour votre inscription !").should("be.visible");
 
     cy.get('[data-cy="name"]').should("have.value", "");
     cy.get('[data-cy="email"]').should("have.value", "");

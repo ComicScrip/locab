@@ -27,20 +27,21 @@
 Cypress.Commands.add(
   "signup",
   ({
-    email = "visitor@website.com",
-    role = "visitor",
-    password = "verysecure",
     name = "visitor",
+    email = "visitor@website.com",
+
+    password = "verysecure",
+    role = "visitor",
   } = {}) => {
     cy.dataSession({
       name: "userInDb",
       setup: () => {
         cy.task("deleteUserByEmail", email);
         cy.task("createUser", {
+          name,
           email,
           password,
           role,
-          name,
         }).then((user) => {
           return Promise.resolve(user);
         });
