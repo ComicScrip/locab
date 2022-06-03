@@ -12,6 +12,8 @@ describe("/signup", () => {
 
     cy.get("button[type=submit]").click();
 
+    cy.contains("Merci pour votre particiption !").should("be.visible");
+
     cy.get('[data-cy="name"]').should("have.value", "");
     cy.get('[data-cy="email"]').should("have.value", "");
     cy.get('[data-cy="password"]').should("have.value", "");

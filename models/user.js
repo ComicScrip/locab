@@ -36,10 +36,10 @@ const verifyPassword = (plainPassword, hashedPassword) =>
 
 module.exports.verifyPassword = verifyPassword;
 
-module.exports.createUser = async ({ email, password, name, role }) => {
+module.exports.createUser = async ({ name, email, role, password }) => {
   const hashedPassword = await hashPassword(password);
   return db.user.create({
-    data: { email, hashedPassword, name, role },
+    data: { name, email, role, hashedPassword },
   });
 };
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Toaster } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
 
 export default function SignUpPage() {
@@ -10,11 +10,15 @@ export default function SignUpPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setName("");
-    setEmail("");
-    setPassword("");
-    setPasswordConfirmation("");
-    axios.post("/api/users", { email, name, password, passwordConfirmation });
+    axios
+      .post("/api/users", { name, email, password, role: "admin" })
+      .then(() => {
+        toast.success("Merci pour votre inscription !");
+        setName("");
+        setEmail("");
+        setPassword("");
+        setPasswordConfirmation("");
+      });
   };
   return (
     <>
