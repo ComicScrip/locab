@@ -29,12 +29,12 @@ export default function Home() {
                   <input
                     className={styles.whereHome}
                     type="text"
-                    placeHolder="Où allez-vous ?"
+                    placeholder="Où allez-vous ?"
                   ></input>
                   <input
                     className={styles.whenHome}
                     type="text"
-                    placeHolder="Quand ?"
+                    placeholder="Quand ?"
                   ></input>
                   <button className={styles.buttonHome} type="submit">
                     JE CHERCHE !
