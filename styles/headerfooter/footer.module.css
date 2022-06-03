@@ -52,7 +52,7 @@
     margin-right: 100px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 110px;
+    grid-gap: 100px;
   }
   .links a,
   .footerContact {

@@ -22,7 +22,7 @@ export default function Home() {
               <h2 className={styles.title2}>avec bébé</h2>
               <p className={styles.textFirst}>
                 Matériel de puériculture en location. Livré, installé et
-                récupéré directement sur votre lieu de séjour.{" "}
+                récupéré directement sur votre lieu de séjour.
               </p>
               <div>
                 <form className={styles.choixHome}>
