@@ -1,14 +1,28 @@
 import { useState } from "react";
+import { Toaster } from "react-hot-toast";
+import axios from "axios";
 
 export default function SignUpPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setName("");
+    setEmail("");
+    setPassword("");
+    setPasswordConfirmation("");
+    axios.post("/api/users", { email, name, password, passwordConfirmation });
+  };
   return (
     <>
+      <div>
+        <Toaster />
+      </div>
       <h1>Sign Up</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="name">
           Name
           <input
@@ -16,7 +30,7 @@ export default function SignUpPage() {
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            data-cy="name-cy"
+            data-cy="name"
             required
           />
         </label>
@@ -27,7 +41,7 @@ export default function SignUpPage() {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            data-cy="email-cy"
+            data-cy="email"
             required
           />
         </label>
@@ -38,7 +52,7 @@ export default function SignUpPage() {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            data-cy="password-cy"
+            data-cy="password"
             required
           />
         </label>
@@ -49,7 +63,7 @@ export default function SignUpPage() {
             id="passwordConfirmation"
             value={passwordConfirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)}
-            data-cy="passwordConfirmation-cy"
+            data-cy="passwordConfirmation"
             required
           />
         </label>

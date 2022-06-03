@@ -1,7 +1,7 @@
 const db = require("../db");
 
 async function seed() {
-  await db.thing.deleteMany();
+  await db.user.deleteMany();
   await db.user.create({
     data: {
       name: "admin",

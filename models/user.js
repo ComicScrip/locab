@@ -42,3 +42,7 @@ module.exports.createUser = async ({ email, password, name, role }) => {
     data: { email, hashedPassword, name, role },
   });
 };
+
+module.exports.deleteUserByEmail = async (email) => {
+  return await db.user.delete({ where: { email } });
+};
