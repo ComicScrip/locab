@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.btnInscrSignUp {
+  color: white;
+  background-color: #d28f71;
+  border-radius: 10px;
+  width: 450px;
+  height: 64px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 27px;
+  cursor: pointer;
+}
+
+.inputGrandSignUp {
+  border-radius: 10px;
+  width: 450px;
+  height: 50px;
+  background-color: #f8f8f8;
+  border: 1px solid rgba(185, 185, 185, 0, 74);
+}
+
+.inputPetitSignUp {
+  border-radius: 10px;
+  width: 215px;
+  height: 50px;
+  background-color: #f8f8f8;
+  border: 1px solid rgba(185, 185, 185, 0, 74);
+  outline: none;
+}
+
+.inscRegisterForm {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+}

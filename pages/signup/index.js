@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
+import styles from "../../styles/SignUp.module.css";
 
 export default function SignUpPage() {
   const [name, setName] = useState("");
@@ -25,54 +26,62 @@ export default function SignUpPage() {
       <div>
         <Toaster />
       </div>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">
-          Name
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            data-cy="name"
-            required
-          />
-        </label>
-        <label htmlFor="email">
-          Email
-          <input
-            type="text"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            data-cy="email"
-            required
-          />
-        </label>
-        <label htmlFor="password">
-          Password{" "}
-          <input
-            type="text"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            data-cy="password"
-            required
-          />
-        </label>
-        <label htmlFor="passwordConfirmation">
-          Password Confirmation
-          <input
-            type="text"
-            id="passwordConfirmation"
-            value={passwordConfirmation}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
-            data-cy="passwordConfirmation"
-            required
-          />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
+      <div className={styles.inscRegisterForm}>
+        <h1 className={styles.titleSignUp}>Je souhaite m&lsquo;inscire</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="name">
+            Nom
+            <input
+              className={styles.inputPetitSignUp}
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              data-cy="name"
+              required
+            />
+          </label>
+          <label htmlFor="email">
+            Adresse mail
+            <input
+              className={styles.inputGrandSignUp}
+              type="text"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              data-cy="email"
+              required
+            />
+          </label>
+          <label htmlFor="password">
+            Mot de passe{" "}
+            <input
+              className={styles.inputGrandSignUp}
+              type="text"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              data-cy="password"
+              required
+            />
+          </label>
+          <label htmlFor="passwordConfirmation">
+            Confirmez votre mot de passe
+            <input
+              className={styles.inputGrandSignUp}
+              type="text"
+              id="passwordConfirmation"
+              value={passwordConfirmation}
+              onChange={(e) => setPasswordConfirmation(e.target.value)}
+              data-cy="passwordConfirmation"
+              required
+            />
+          </label>
+          <button className={styles.btnInscrSignUp} type="submit">
+            S&lsquo;INSCRIRE
+          </button>
+        </form>
+      </div>
     </>
   );
 }

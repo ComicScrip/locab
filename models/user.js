@@ -7,6 +7,9 @@ module.exports.emailAlreadyExists = (email) =>
 
 module.exports.validateUser = (data, forUpdate = false) =>
   Joi.object({
+    name: Joi.string()
+      .max(255)
+      .presence(forUpdate ? "optional" : "required"),
     email: Joi.string()
       .email()
       .max(255)
@@ -15,7 +18,7 @@ module.exports.validateUser = (data, forUpdate = false) =>
       .min(8)
       .max(100)
       .presence(forUpdate ? "optional" : "required"),
-    name: Joi.string()
+    role: Joi.string()
       .max(255)
       .presence(forUpdate ? "optional" : "required"),
   }).validate(data, { abortEarly: false }).error;
