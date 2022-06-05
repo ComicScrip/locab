@@ -9,7 +9,7 @@ export default function footer() {
     <div className={styles.container}>
       <div className={styles.footer}>
         <div>
-          <h4 className={styles.footerTitle}>Liens utiles</h4>
+          <h5 className={styles.footerTitle}>Liens utiles</h5>
           <div className={styles.links}>
             <Link href="/reservation">
               <a>Réservation</a>
@@ -32,7 +32,7 @@ export default function footer() {
           </div>
         </div>
         <div>
-          <h4 className={styles.footerTitle}>Mon compte</h4>
+          <h5 className={styles.footerTitle}>Mon compte</h5>
           <div className={styles.links}>
             <div>
               <Link href="/commandes">
@@ -52,7 +52,7 @@ export default function footer() {
           </div>
         </div>
         <div>
-          <h4 className={styles.footerTitle}>Nous contacter</h4>
+          <h5 className={styles.footerTitle}>Nous contacter</h5>
           <div className={styles.footerContact}>&#9990; +33 6 26 85 90 46 </div>
           <div className={styles.footerContact}>&#9993; contact@loca-b.fr</div>
 

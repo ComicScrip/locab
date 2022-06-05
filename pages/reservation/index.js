@@ -1,5 +1,7 @@
+/* eslint-disable prettier/prettier */
 import ResProduct from "../../components/ResProduct";
 import styles from "../../styles/Reservation.module.css";
+import Layout from "../../components/Layout";
 import { useState } from "react";
 
 const productsList = [
@@ -56,38 +58,40 @@ export default function ReservationPage() {
   };
 
   return (
-    <div className={styles.mainWrapper}>
-      <section className={styles.searchContainer}>
-        <input
-          data-cy="searchBar"
-          value={searchValue}
-          type="text"
-          placeholder="Poussette, lit à barreaux, chaise haute..."
-          onChange={(event) => setSearchValue(event.target.value)}
-          className={styles.searchBar}
-        />
-      </section>
-      <section className={styles.productNotAvailable}>
-        <label htmlFor="availability" style={{ cursor: "pointer" }}>
+    <Layout>
+      <div className={styles.mainWrapper}>
+        <section className={styles.searchContainer}>
           <input
-            data-cy="availabilityBtn"
-            type="checkbox"
-            onClick={() => handleCheckAvailability()}
-            id="availability"
-            defaultChecked={true}
+            data-cy="searchBar"
+            value={searchValue}
+            type="text"
+            placeholder="Poussette, lit à barreaux, chaise haute..."
+            onChange={(event) => setSearchValue(event.target.value)}
+            className={styles.searchBar}
           />
-          Afficher les produits indisponibles
-        </label>
-      </section>
+        </section>
+        <section className={styles.productNotAvailable}>
+          <label htmlFor="availability" style={{ cursor: "pointer" }}>
+            <input
+              data-cy="availabilityBtn"
+              type="checkbox"
+              onClick={() => handleCheckAvailability()}
+              id="availability"
+              defaultChecked={true}
+            />
+            Afficher les produits indisponibles
+          </label>
+        </section>
 
-      {productsList
-        .filter((product) =>
-          product.isAvailable ? productsList : showAvailable
-        )
-        .filter((product) => product.category.includes(searchValue))
-        .map((product) => (
-          <ResProduct product={product} key={product.id} id={product.id} />
-        ))}
-    </div>
+        {productsList
+          .filter((product) =>
+            product.isAvailable ? productsList : showAvailable
+          )
+          .filter((product) => product.category.includes(searchValue))
+          .map((product) => (
+            <ResProduct product={product} key={product.id} id={product.id} />
+          ))}
+      </div>
+    </Layout>
   );
 }

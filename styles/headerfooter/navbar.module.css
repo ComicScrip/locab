@@ -1,11 +1,8 @@
 .navbar {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
-  height: 8vh;
-  padding: 1rem;
-  background: #ffffff;
+  height: 5vh;
+  background: #ebc575;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   font-size: 3vw;
   /* display: flex;
@@ -16,20 +13,55 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   font-size: 18px; */
 }
-
+.logocontainer {
+  display: none;
+}
+.reservationButton {
+  display: none;
+}
 .navbar a {
-  padding: 0 16px;
+  padding: 0 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
   color: #626262;
-  list-style: none;
-  text-decoration: none;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 18px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 800px) {
   .navbar {
     display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 65px;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
     flex-direction: initial;
     font-size: 1vw;
-    justify-content: flex-end;
-    align-items: flex-end;
+    font-family: "Roboto", sans-serif;
+    z-index: 2 !important;
+  }
+  .logocontainer {
+    display: flex;
+    align-items: center;
+  }
+
+  .reservationButton {
+    height: 32px;
+    display: initial;
+    background: #d28f71;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
   }
 }
