@@ -9,10 +9,10 @@ const Navbar = () => {
       <Link href="/">
         <a> Accueil </a>
       </Link>
-      <Link href="panier">
+      <Link href="aboutUs">
         <a> Qui sommes-nous ? </a>
       </Link>
-      <Link href="commandes">
+      <Link href="blog">
         <a> Blog</a>
       </Link>
       <Link href="contact">
@@ -26,3 +26,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// RiShoppingBasket2Line

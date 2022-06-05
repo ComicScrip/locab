@@ -1,11 +1,11 @@
 import React from "react";
 import Layout from "../../components/Layout";
 
-export default function Panier() {
+export default function AboutUS() {
   return (
     <Layout>
       <main>
-        <h1>Hello world, voici ma page panier</h1>
+        <h1>Bienvenue sur la page A propos de nous</h1>
       </main>
     </Layout>
   );

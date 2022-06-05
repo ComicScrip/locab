@@ -59,7 +59,7 @@ export default function footer() {
           <div className={styles.socialsicons}>
             <div className={styles.image}>
               <div className={styles.icons}>
-                <Link href="">
+                <Link href="/">
                   <a>
                     <Image
                       src="/icons/facebook.png"
@@ -72,7 +72,7 @@ export default function footer() {
               </div>
             </div>
             <div className={styles.icons}>
-              <Link href="">
+              <Link href="/">
                 <a>
                   <Image
                     src="/icons/instagram.png"
@@ -84,7 +84,7 @@ export default function footer() {
               </Link>
             </div>
             <div className={styles.icons}>
-              <Link href="">
+              <Link href="/">
                 <a>
                   <Image
                     src="/icons/linkedin.png"
@@ -96,7 +96,7 @@ export default function footer() {
               </Link>
             </div>
             <div className={styles.icons}>
-              <Link href="">
+              <Link href="/">
                 <a>
                   <Image
                     src="/icons/whatsapp.png"
