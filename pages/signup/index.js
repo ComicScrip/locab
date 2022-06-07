@@ -4,7 +4,7 @@ import axios from "axios";
 import SignIn from "../../components/SignIn";
 import styles from "../../styles/SignUp.module.css";
 
-export default function SignUpPage() {
+export default function SignUpPage({ csrfToken }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,7 +28,7 @@ export default function SignUpPage() {
       <div>
         <Toaster />
       </div>
-      <SignIn />
+      <SignIn csrfToken={csrfToken} />
       <div className={styles.inscRegisterForm}>
         <h1 className={styles.titleSignUp}>Je souhaite m&lsquo;inscire</h1>
         <form className={styles.formSignUp} onSubmit={handleSubmit}>
@@ -80,11 +80,44 @@ export default function SignUpPage() {
               required
             />
           </label>
-          <button className={styles.btnInscrSignUp} type="submit">
+          <button
+            className={styles.btnInscrSignUp}
+            type="submit"
+            id="credentials-login-btn"
+          >
             S&lsquo;INSCRIRE
           </button>
         </form>
       </div>
     </>
   );
+}
+
+const getCsrfTokenAndSetCookies = async ({ res, query }) => {
+  // to make it work on Vercel
+  let baseUrl = process.env.NEXTAUTH_URL || `https://${process.env.VERCEL_URL}`;
+  // capturing the callback url if any, which should include the current domain for security ?
+  const callbackUrlIsPresent = typeof query?.callbackUrl === "string";
+  const callbackUrlIsValid =
+    callbackUrlIsPresent && query?.callbackUrl.startsWith(baseUrl);
+  const host = callbackUrlIsValid ? query?.callbackUrl : baseUrl;
+  const redirectURL = encodeURIComponent(host);
+  // getting both the csrf form token and (next-auth.csrf-token cookie + next-auth.callback-url cookie)
+  const csrfUrl = `${baseUrl}/api/auth/csrf?callbackUrl=${redirectURL}`;
+  const csrfResponse = await fetch(csrfUrl);
+  const { csrfToken } = await csrfResponse.json();
+  const { headers } = csrfResponse;
+  // placing the cookies
+  const [csrfCookie, redirectCookie] = headers.get("set-cookie").split(",");
+  res.setHeader("set-cookie", [csrfCookie, redirectCookie]);
+  // placing form csrf token
+  return csrfToken;
+};
+
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      csrfToken: await getCsrfTokenAndSetCookies(context),
+    },
+  };
 }
