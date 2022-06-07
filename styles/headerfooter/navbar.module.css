@@ -1,17 +1,11 @@
 .navbar {
   display: flex;
+  height: 63px;
+  align-items: center;
   flex-direction: column;
-  height: 5vh;
   background: #ebc575;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   font-size: 3vw;
-  /* display: flex;
-  height: 8vh;
-  align-items: center;
-  flex-direction: column;
-  background: #ffffff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
-  font-size: 18px; */
 }
 .logocontainer {
   display: none;
@@ -19,19 +13,46 @@
 .reservationButton {
   display: none;
 }
+
 .navbar a {
+  position: absolute;
+  visibility: hidden;
   padding: 0 10px;
   font-family: "Poppins";
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16px;
-  line-height: 24px;
   color: #626262;
 }
-.logo {
+.divlogoIcon1 a {
   display: flex;
+  visibility: visible;
+  align-items: center;
   justify-content: center;
-  padding-bottom: 18px;
+  margin-top: -7px;
+}
+.divlogoIcon a {
+  display: flex;
+  visibility: visible;
+  align-items: center;
+  justify-content: center;
+  margin-top: -7px;
+}
+.divlogoIcon {
+  padding-left: 75%;
+}
+.divlogoIcon1 {
+  padding-right: 40%;
+}
+.btnBurger {
+  display: block;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  cursor: pointer;
+}
+.btnBurger:hover {
+  cursor: pointer;
 }
 
 @media screen and (min-width: 800px) {
@@ -44,14 +65,24 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
     flex-direction: initial;
     font-size: 1vw;
-    font-family: "Roboto", sans-serif;
-    z-index: 2 !important;
+    font-family: "Poppins";
+  }
+
+  .navbar a {
+    display: initial;
+    position: relative;
+    visibility: visible;
+    padding: 0 15px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #626262;
   }
   .logocontainer {
     display: flex;
     align-items: center;
   }
-
   .reservationButton {
     height: 32px;
     display: initial;
@@ -63,5 +94,21 @@
     font-size: 16px;
     line-height: 24px;
     text-transform: uppercase;
+    cursor: pointer;
+  }
+  .btnBurger {
+    width: 40px;
+    height: 40px;
+    display: none;
+    background: transparent;
+    border: none;
+    color: inherit;
+  }
+
+  .divlogoIcon1 {
+    display: none;
+  }
+  .divlogoIcon {
+    display: none;
   }
 }
