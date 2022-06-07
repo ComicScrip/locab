@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
+import SignIn from "../../components/SignIn";
 import styles from "../../styles/SignUp.module.css";
 
 export default function SignUpPage() {
@@ -22,41 +23,12 @@ export default function SignUpPage() {
       });
   };
 
-  const handleSignUp = () => {};
   return (
     <>
       <div>
         <Toaster />
       </div>
-      <div>
-        <h1 className={styles.titleSignUp}>Je suis déja inscrit</h1>
-        <form className={styles.formSignUp} onSubmit={handleSignUp}>
-          <label htmlFor="email">
-            Adresse mail
-            <input
-              className={styles.inputGrandSignUp}
-              type="text"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              data-cy="email"
-              required
-            />
-          </label>
-          <label htmlFor="password">
-            Mot de passe{" "}
-            <input
-              className={styles.inputGrandSignUp}
-              type="text"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              data-cy="password"
-              required
-            />
-          </label>
-        </form>
-      </div>
+      <SignIn />
       <div className={styles.inscRegisterForm}>
         <h1 className={styles.titleSignUp}>Je souhaite m&lsquo;inscire</h1>
         <form className={styles.formSignUp} onSubmit={handleSubmit}>
