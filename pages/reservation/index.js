@@ -20,16 +20,23 @@ function Panier() {
     setProductList(productList.filter((x) => x.id !== product.id));
   };
 
-  const onModifie = (id, newQuantity) => {
-    const quantity = parseInt(newQuantity, 10);
-    if (quantity === 0) {
-      if (window.confirm("Etes vous sûr de vouloir supprimer cet article ?")) {
-        setProductList((prevList) => prevList.filter((p) => p.id !== id));
-      }
-    } else {
+  const onUpdate = (id, newQuantity) => {
+    let quantity = parseInt(newQuantity, 10);
+    if (isNaN(quantity)) {
+      quantity = 0;
+    }
+    setProductList((prevList) =>
+      prevList.map((product) =>
+        product.id === id ? { ...product, quantity } : product
+      )
+    );
+  };
+
+  const onValidate = (id, newQuantity) => {
+    if (newQuantity === "" || newQuantity === "0") {
       setProductList((prevList) =>
         prevList.map((product) =>
-          product.id === id ? { ...product, quantity } : product
+          product.id === id ? { ...product, quantity: 1 } : product
         )
       );
     }
@@ -43,7 +50,13 @@ function Panier() {
       <div className={styles.paiement_container}>
         <div className={styles.trait_gauche}></div>
         <p className={styles.paiementSecurColor}>
-          <AiFillLock style={{ color: "#66c65e", verticalAlign: "middle" }} />{" "}
+          <AiFillLock
+            style={{
+              color: "#66c65e",
+              verticalAlign: "middle",
+              marginTop: "-4px",
+            }}
+          />{" "}
           Paiement sécurisé
         </p>
         <div className={styles.trait_droit}></div>
@@ -51,7 +64,11 @@ function Panier() {
       <div className={styles.main_container}>
         <Products products={products} onAdd={onAdd} onRemove={onRemove} />
         <div className={styles.panier_style}>
-          <R_panier productList={productList} onModifie={onModifie} />
+          <R_panier
+            productList={productList}
+            onUpdate={onUpdate}
+            onValidate={onValidate}
+          />
         </div>
       </div>
     </>

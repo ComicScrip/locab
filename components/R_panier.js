@@ -5,7 +5,7 @@ import ErrorIcon from "@mui/icons-material/Error";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 
-export default function R_panier({ productList, onModifie }) {
+export default function R_panier({ productList, onUpdate, onValidate }) {
   const cartTotal = productList.reduce(
     (acc, cur) => acc + cur.price * cur.quantity,
     0
@@ -29,8 +29,9 @@ export default function R_panier({ productList, onModifie }) {
                 size="1"
                 type="quantity"
                 min="1"
-                value={product.quantity}
-                onChange={(event) => onModifie(product.id, event.target.value)}
+                value={product.quantity || ""}
+                onChange={(event) => onUpdate(product.id, event.target.value)}
+                onBlur={(e) => onValidate(product.id, e.target.value)}
               />
             </div>
           </div>
@@ -55,7 +56,7 @@ export default function R_panier({ productList, onModifie }) {
 
       <div className={styles.validerContainer}>
         <Button
-          onClick={() => alert("Commande enregistrée")}
+          //onClick={() => alert("Commande enregistrée")}
           variant="contained"
           style={{
             backgroundColor: "#D28F71",
@@ -65,9 +66,10 @@ export default function R_panier({ productList, onModifie }) {
             fontWeight: "bold",
             fontSize: "13pt",
             padding: "15px 0px",
+            opacity: "0.4",
           }}
         >
-          Valider votre panier
+          Valider mon panier
         </Button>
       </div>
     </div>
