@@ -1,30 +1,34 @@
+import { useState } from "react";
 import R_panier from "../../components/R_panier";
 import Products from "../../components/Products";
-import { useState } from "react";
 import data from "../../components/data";
 import styles from "../../styles/Reservation.module.css";
 
-function ReservationPage() {
+function Panier() {
   const { products } = data;
-  const [cartItems, setCartItems] = useState([]);
+  const [productList, setProductList] = useState([]);
 
-  //add products
   const onAdd = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
+    const exist = productList.find((x) => x.id === product.id);
     if (!exist) {
-      setCartItems([...cartItems, { ...product, qty: 1 }]);
+      setProductList([...productList, { ...product, quantity: 1 }]);
     }
   };
 
-  //remove products
   const onRemove = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
-    if (exist.qty === 1) {
-      setCartItems(cartItems.filter((x) => x.id !== product.id));
+    setProductList(productList.filter((x) => x.id !== product.id));
+  };
+
+  const onModifie = (id, newQuantity) => {
+    const quantity = parseInt(newQuantity, 10);
+    if (quantity === 0) {
+      if (window.confirm("Etes vous sûr de vouloir supprimer cet article ?")) {
+        setProductList((prevList) => prevList.filter((p) => p.id !== id));
+      }
     } else {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
+      setProductList((prevList) =>
+        prevList.map((product) =>
+          product.id === id ? { ...product, quantity } : product
         )
       );
     }
@@ -37,11 +41,11 @@ function ReservationPage() {
       <div className={styles.main_container}>
         <Products products={products} onAdd={onAdd} onRemove={onRemove} />
         <div className={styles.panier_style}>
-          <R_panier cartItems={cartItems} />
+          <R_panier productList={productList} onModifie={onModifie} />
         </div>
       </div>
     </>
   );
 }
 
-export default ReservationPage;
+export default Panier;

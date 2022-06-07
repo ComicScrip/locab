@@ -1,54 +1,55 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import { AiFillInfoCircle } from "react-icons/ai";
 import styles from "../styles/Panier.module.css";
-import { useState } from "react";
+import ErrorIcon from "@mui/icons-material/Error";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
 
-export default function R_panier({ cartItems }) {
-  const [quantity, setQuantity] = useState(1);
-  const totalPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
+export default function R_panier({ productList, onModifie }) {
+  const cartTotal = productList.reduce(
+    (acc, cur) => acc + cur.price * cur.quantity,
+    0
+  );
+
   return (
     <div className={styles.mainContainer}>
       <div className={styles.mainTitle}>
         <h2>Votre panier</h2>
       </div>
-      {cartItems.length === 0 && (
+      {productList.length === 0 && (
         <div className={styles.emptyShop}>Votre panier est vide</div>
       )}
-      {cartItems.map((item) => (
-        <div key={item.id}>
-          <div>{item.name}</div>
-          <div>
-            <input
-              type="quantity"
-              onChange={(e) => setQuantity(e.target.value)}
-              value={quantity}
-              min="1"
-            />
+      {productList.map((product) => {
+        return (
+          <div key={product.id}>
+            <div>{product.name}</div>
+            <div>
+              <input
+                type="quantity"
+                min="1"
+                placeholder="1"
+                value={productList.quantity}
+                onChange={(event) => onModifie(product.id, event.target.value)}
+              />
+            </div>
+            <div>{product.price * product.quantity}</div>
           </div>
-          <div>
-            {quantity} x ${item.price.toFixed(2)}
-          </div>
-        </div>
-      ))}
+        );
+      })}
       <div className={styles.totalContainer}>
         <div className={styles.totalInfoContainer}>
           <h3>Total</h3>
           <p>du XX/XX au XX/XX</p>
         </div>
-        <h2>{totalPrice.toFixed(2)}€</h2>
+        <h2>{cartTotal}€</h2>
       </div>
       <div className={styles.cautionContainer}>
-        <p>
-          Montant de la caution
-          <AiFillInfoCircle
-            style={{
-              verticalAlign: "middle",
-              cursor: "pointer",
-              marginBottom: "3px",
-            }}
-          />
-        </p>
+        <p>Montant de la caution</p>
+        <Tooltip title="Une empreinte sera faite sur votre carte au moment du paiement. Vous ne serez pas débité">
+          <IconButton>
+            <ErrorIcon />
+          </IconButton>
+        </Tooltip>
         <p>X€</p>
       </div>
 
