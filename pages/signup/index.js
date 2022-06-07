@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
 import SignIn from "../../components/SignIn";
+import { useContext } from "react";
+import { signOut } from "next-auth/react";
+import { CurrentUserContext } from "../../contexts/currentUserContext";
 import styles from "../../styles/SignUp.module.css";
 
 export default function SignUpPage({ csrfToken }) {
@@ -22,73 +25,88 @@ export default function SignUpPage({ csrfToken }) {
         setPasswordConfirmation("");
       });
   };
+  const { profile } = useContext(CurrentUserContext);
 
   return (
     <>
-      <div>
-        <Toaster />
-      </div>
-      <SignIn csrfToken={csrfToken} />
-      <div className={styles.inscRegisterForm}>
-        <h1 className={styles.titleSignUp}>Je souhaite m&lsquo;inscire</h1>
-        <form className={styles.formSignUp} onSubmit={handleSubmit}>
-          <label htmlFor="name">
-            Nom
-            <input
-              className={styles.inputPetitSignUp}
-              type="text"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              data-cy="name"
-              required
-            />
-          </label>
-          <label htmlFor="email">
-            Adresse mail
-            <input
-              className={styles.inputGrandSignUp}
-              type="text"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              data-cy="email"
-              required
-            />
-          </label>
-          <label htmlFor="password">
-            Mot de passe{" "}
-            <input
-              className={styles.inputGrandSignUp}
-              type="text"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              data-cy="password"
-              required
-            />
-          </label>
-          <label htmlFor="passwordConfirmation">
-            Confirmez votre mot de passe
-            <input
-              className={styles.inputGrandSignUp}
-              type="text"
-              id="passwordConfirmation"
-              value={passwordConfirmation}
-              onChange={(e) => setPasswordConfirmation(e.target.value)}
-              data-cy="passwordConfirmation"
-              required
-            />
-          </label>
-          <button
-            className={styles.btnInscrSignUp}
-            type="submit"
-            id="credentials-login-btn"
-          >
-            S&lsquo;INSCRIRE
-          </button>
-        </form>
-      </div>
+      {profile ? (
+        `Vous êtes connectés en tant que ${profile.name}`
+      ) : (
+        <div>
+          <div>
+            <Toaster />
+          </div>
+          <SignIn csrfToken={csrfToken} />
+          <div className={styles.inscRegisterForm}>
+            <h1 className={styles.titleSignUp}>Je souhaite m&lsquo;inscire</h1>
+            <form className={styles.formSignUp} onSubmit={handleSubmit}>
+              <label htmlFor="name">
+                Nom
+                <input
+                  className={styles.inputPetitSignUp}
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  data-cy="name"
+                  required
+                />
+              </label>
+              <label htmlFor="email">
+                Adresse mail
+                <input
+                  className={styles.inputGrandSignUp}
+                  type="text"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  data-cy="email"
+                  required
+                />
+              </label>
+              <label htmlFor="password">
+                Mot de passe{" "}
+                <input
+                  className={styles.inputGrandSignUp}
+                  type="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  data-cy="password"
+                  required
+                />
+              </label>
+              <label htmlFor="passwordConfirmation">
+                Confirmez votre mot de passe
+                <input
+                  className={styles.inputGrandSignUp}
+                  type="password"
+                  id="passwordConfirmation"
+                  value={passwordConfirmation}
+                  onChange={(e) => setPasswordConfirmation(e.target.value)}
+                  data-cy="passwordConfirmation"
+                  required
+                />
+              </label>
+              <button
+                className={styles.btnInscrSignUp}
+                type="submit"
+                id="credentials-login-btn"
+              >
+                S&lsquo;INSCRIRE
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+      <button
+        className={styles.btnInscrSignUp}
+        type="submit"
+        id="credentials-login-btn"
+        onClick={() => signOut()}
+      >
+        SE DECONNECTER
+      </button>
     </>
   );
 }

@@ -1,10 +1,6 @@
-import { useContext } from "react";
-import { CurrentUserContext } from "../contexts/currentUserContext";
 import styles from "../styles/SignUp.module.css";
 
 export default function SignIn({ csrfToken }) {
-  const { profile } = useContext(CurrentUserContext);
-  console.log(profile);
   return (
     <div>
       <h1 className={styles.titleSignUp}>Je suis déja inscrit</h1>
@@ -34,7 +30,7 @@ export default function SignIn({ csrfToken }) {
           Mot de passe{" "}
           <input
             className={styles.inputGrandSignUp}
-            type="text"
+            type="password"
             id="password"
             name="password"
             data-cy="password"
