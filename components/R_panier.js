@@ -21,18 +21,18 @@ export default function R_panier({ productList, onModifie }) {
       )}
       {productList.map((product) => {
         return (
-          <div key={product.id}>
-            <div>{product.name}</div>
-            <div>
+          <div key={product.id} className={styles.input_container}>
+            <div className={styles.name_style}>{product.name}</div>
+            <div className={styles.input_style}>
               <input
+                className={styles.input}
+                size="1"
                 type="quantity"
                 min="1"
-                placeholder="1"
-                value={productList.quantity}
+                value={product.quantity}
                 onChange={(event) => onModifie(product.id, event.target.value)}
               />
             </div>
-            <div>{product.price * product.quantity}</div>
           </div>
         );
       })}
@@ -50,7 +50,7 @@ export default function R_panier({ productList, onModifie }) {
             <ErrorIcon />
           </IconButton>
         </Tooltip>
-        <p>X€</p>
+        <p>XX€</p>
       </div>
 
       <div className={styles.validerContainer}>

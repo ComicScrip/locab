@@ -3,6 +3,7 @@ import R_panier from "../../components/R_panier";
 import Products from "../../components/Products";
 import data from "../../components/data";
 import styles from "../../styles/Reservation.module.css";
+import { AiFillLock } from "react-icons/ai";
 
 function Panier() {
   const { products } = data;
@@ -33,10 +34,19 @@ function Panier() {
       );
     }
   };
+
   return (
     <>
       <div className={styles.main_title}>
         <h1>De quoi avez-vous besoin ?</h1>
+      </div>
+      <div className={styles.paiement_container}>
+        <div className={styles.trait_gauche}></div>
+        <p className={styles.paiementSecurColor}>
+          <AiFillLock style={{ color: "#66c65e", verticalAlign: "middle" }} />{" "}
+          Paiement sécurisé
+        </p>
+        <div className={styles.trait_droit}></div>
       </div>
       <div className={styles.main_container}>
         <Products products={products} onAdd={onAdd} onRemove={onRemove} />

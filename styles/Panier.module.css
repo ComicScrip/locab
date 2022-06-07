@@ -1,40 +1,9 @@
 .mainTitle {
   display: flex;
   justify-content: center;
-}
-.infoContainer {
-  border: solid 2px #ededed;
-  border-radius: 8px;
-  margin-right: 10px;
-  padding: 5px 100px 5px 10px;
-  display: flex;
-  justify-content: flex-start;
-  width: 90%;
-}
-.fullContainer {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-.strollerStyle {
-  display: flex;
-  align-items: center;
-}
-.rentInformations {
-  line-height: 5pt;
-}
-.inputStyle {
-  text-align: center;
-  border-radius: 8px;
-  background-color: #f8f8f8;
-  border: none;
-  font-weight: bold;
-  font-size: 15pt;
+  font-size: 17pt;
 }
 
-.strollerStyle {
-  padding-right: 10px;
-}
 .validerContainer {
   display: flex;
   justify-content: center;
@@ -73,9 +42,36 @@
   font-size: 10pt;
 }
 
-.myText {
-  display: none;
+.input_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-  .icon:hover .myText {
-  display: initial;
+
+.input {
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 8px;
+  font-size: 15pt;
+  font-weight: bold;
+  padding: 15px 15px;
+  margin-bottom: 5px;
+  text-align: center;
+  width: 70px;
+}
+
+.name_style {
+  font-size: 15pt;
+  border-radius: 8px;
+  border: solid 4px #f8f8f8;
+  width: 70%;
+}
+
+@media screen and (max-width: 700px) {
+  .mainContainer {
+    display: none;
+  }
+  .mainTitle {
+    display: none;
+  }
 }
