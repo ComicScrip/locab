@@ -26,6 +26,10 @@ export default function SignUpPage() {
       <div>
         <Toaster />
       </div>
+      <div>
+        <h1 className={styles.titleSignUp}>Je suis déja inscrit</h1>
+        <form className={styles.formSignUp}> </form>
+      </div>
       <div className={styles.inscRegisterForm}>
         <h1 className={styles.titleSignUp}>Je souhaite m&lsquo;inscire</h1>
         <form className={styles.formSignUp} onSubmit={handleSubmit}>

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import { signIn } from "next-auth/react";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <button onClick={() => signIn()}>Log in</button>
         <div className={styles.firstParagraphe}>
           <div className={styles.titleandtextHome}>
             <h1 className={styles.title}>Voyagez léger</h1>
@@ -122,14 +124,21 @@ export default function Home() {
           <div className={styles.thirdTextTitle}>
             <h3 className={styles.thirdTitleHome}>Pourquoi Loca-b ?</h3>
             <p className={styles.thirdParagrapheText}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              luctus accumsan purus, nec tempor magna pharetra quis. Integer
-              eget commodo urna, eget blandit elit. Class aptent taciti sociosqu
-              ad litora torquent per conubia nostra, per inceptos himenaeos.
-              Vestibulum eu vehicula justo, sit amet sodales enim. Pellentesque
-              sem neque, porttitor eget lobortis vel, elementum eget arcu. Nam
-              tellus risus, pulvinar eget metus vel, lacinia bibendum orci.
-              Interdum et malesuada fames ac.{" "}
+              Nous c’est Débora et Antoine, on est un couple franco-brésilien et
+              ensemble depuis plus de 15 ans et les heureux parents de deux
+              jeunes enfants. C’est lors de notre premier déplacement avec notre
+              aîné que nous avons compris : plus les bébés sont petits, plus ils
+              prennent de la place ! Comme c’est souvent le cas pour les jeunes
+              parents, nous sommes partis en vacances avec les 3/4 de la maison
+              dans la voiture : poussette, nacelle, lit, baignoire, couches,
+              transat, et bien évidemment, l’indispensable pour un bébé de 45
+              jours, un parc d’1m² ! À ce moment-là, on n’avait pas encore bien
+              compris qu’un bébé de 45 jours ne bouge pas tellement ! Et pour
+              notre enfant, nous voulions le meilleur, le plus confortable et le
+              plus spacieux ! Et c’est là, après 8h de route avec le petit, dans
+              une voiture bien remplie que nous nous sommes posé la question qui
+              allait changer notre vie : il n’existe pas un service de location
+              pour tout ça ? On ne le savait pas encore, mais Loca-b était né !
             </p>
           </div>
           <div>

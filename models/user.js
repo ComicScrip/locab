@@ -5,6 +5,9 @@ const argon2 = require("argon2");
 module.exports.emailAlreadyExists = (email) =>
   db.user.findFirst({ where: { email } }).then((user) => !!user);
 
+module.exports.findByEmail = (email = "") =>
+  db.user.findUnique({ where: { email } });
+
 module.exports.validateUser = (data, forUpdate = false) =>
   Joi.object({
     name: Joi.string()

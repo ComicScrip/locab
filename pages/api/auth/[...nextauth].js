@@ -6,11 +6,11 @@ export default NextAuth({
   providers: [
     CredentialsProvider({
       name: "Credentials",
+
       async authorize(credentials) {
         const user = await findByEmail(credentials.username);
         if (
           user &&
-          user.emailVerificationCode === null && // can only login via credentials if email confirmed after signup
           user.hashedPassword &&
           (await verifyPassword(credentials.password, user.hashedPassword))
         ) {
@@ -23,7 +23,7 @@ export default NextAuth({
   secret: process.env.SECRET,
   callbacks: {
     async jwt({ token, profile, account }) {
-      if (account && account.provider === "google" && profile) {
+      if (account && profile) {
         const matchingUser = await findByEmail(profile.email);
         if (!matchingUser)
           await createUser({
@@ -51,6 +51,6 @@ export default NextAuth({
     },
   },
   pages: {
-    signIn: "/login",
+    signIn: "/signup",
   },
 });
