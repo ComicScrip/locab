@@ -29,17 +29,17 @@
   visibility: visible;
   align-items: center;
   justify-content: center;
-  margin-top: -7px;
+  margin-top: -6px;
 }
 .divlogoIcon a {
   display: flex;
   visibility: visible;
   align-items: center;
   justify-content: center;
-  margin-top: -7px;
+  margin-top: -6px;
 }
 .divlogoIcon {
-  padding-left: 75%;
+  padding-left: 70%;
 }
 .divlogoIcon1 {
   padding-right: 40%;
@@ -72,17 +72,24 @@
     display: initial;
     position: relative;
     visibility: visible;
-    padding: 0 15px;
+    padding: 0 25px;
     font-family: "Poppins";
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
-    color: #626262;
+    /* font-size: 16px; */
+    /* color: #ebc575; */
   }
   .logocontainer {
     display: flex;
+    padding: 0 10px;
     align-items: center;
   }
+  .logocontainer a {
+    display: flex;
+    margin: 0 -18px;
+    align-items: center;
+  }
+
   .reservationButton {
     height: 32px;
     display: initial;
@@ -104,11 +111,13 @@
     border: none;
     color: inherit;
   }
-
   .divlogoIcon1 {
     display: none;
   }
   .divlogoIcon {
     display: none;
+  }
+  .navbar a:active {
+    color: #ebc575;
   }
 }

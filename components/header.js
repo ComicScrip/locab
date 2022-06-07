@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable no-undef */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable prettier/prettier */
@@ -14,9 +15,14 @@ import styles from "../styles/headerfooter/navbar.module.css";
 const Navbar = () => {
   const [showLinks, setshowLinks] = useState(false);
 
+  const getActiveLinkStyle = ({ isActive }) => ({
+    color: isActive ? "#ebc575" : "#626262",
+  });
+
   const handleShowLinks = () => {
     setshowLinks(!showLinks);
   };
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.logocontainer}>
@@ -29,23 +35,26 @@ const Navbar = () => {
             />
           </a>
         </Link>
-        <Link href="/" className={styles.logo}>
+        <Link href="/" className={styles.logo2}>
           <a>
             <Image src={LogoText} className={styles.logo_imtextg} alt="logo" />
           </a>
         </Link>
       </div>
+
+      {/* Debut navbar a */}
+
       <ul className={styles.items}>
-        <Link href="/">
+        <Link href="/" style={getActiveLinkStyle}>
           <a> Accueil </a>
         </Link>
-        <Link href="aboutUs">
+        <Link href="aboutUs" style={getActiveLinkStyle}>
           <a> Qui sommes-nous ? </a>
         </Link>
-        <Link href="blog">
+        <Link href="blog" style={getActiveLinkStyle}>
           <a>Blog</a>
         </Link>
-        <Link href="contact">
+        <Link href="contact" style={getActiveLinkStyle}>
           <a>Contact</a>
         </Link>
         <Link href="reservation">
@@ -54,6 +63,8 @@ const Navbar = () => {
           </a>
         </Link>
       </ul>
+      {/* Fin navbar a */}
+
       <div className={styles.divlogoIcon1}>
         <Link href="/" className={styles.linklogotransparent}>
           <a>
@@ -86,7 +97,6 @@ const Navbar = () => {
     </nav>
   );
 };
-
 export default Navbar;
 
 // RiShoppingBasket2Line
