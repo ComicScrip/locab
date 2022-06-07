@@ -3,8 +3,8 @@ import { CurrentUserContext } from "../contexts/currentUserContext";
 import styles from "../styles/SignUp.module.css";
 
 export default function SignIn({ csrfToken }) {
-  const { name } = useContext(CurrentUserContext);
-  console.log(name);
+  const { profile } = useContext(CurrentUserContext);
+  console.log(profile);
   return (
     <div>
       <h1 className={styles.titleSignUp}>Je suis déja inscrit</h1>
