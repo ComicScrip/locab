@@ -1,3 +1,5 @@
+/* ----- PARTIE BIENVENUE ---- */
+
 /* ----- PAGE GENERALE ----- */
 
 .title {
@@ -9,6 +11,8 @@
 
 .h3 {
   margin-top: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .h2 {
@@ -67,7 +71,7 @@
 
 .textarea {
   height: 50px;
-  width: 450px;
+  width: 100%;
   left: 298px;
   top: 560px;
   border-radius: 10px;
@@ -83,7 +87,7 @@
   top: 757px;
   background: #d28f71;
   border-radius: 10px;
-  font-size: 27px;
+  font-size: 25px;
   font-weight: 600;
   line-height: 41px;
   letter-spacing: 0em;
@@ -91,4 +95,58 @@
   color: #ffffff;
   text-align: center;
   border: none;
+}
+
+/* ----- FIN PARTIE BIENVENUE ---- */
+
+/* ----- PARTIE INFORMATIONS ----- */
+
+.name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.button2 {
+  height: 64px;
+  width: 450px;
+  left: 298px;
+  top: 757px;
+  background: #d28f71;
+  border-radius: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 41px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #ffffff;
+  text-align: center;
+  border: none;
+}
+
+/* ----- FIN PARTIE INFORMATIONS ---- */
+
+.textarea2 {
+  height: 75px;
+  width: 100%;
+  left: 298px;
+  top: 560px;
+  border-radius: 10px;
+  margin-top: 0.4rem;
+  background-color: #f8f8f8;
+  border: 1px solid rgba(185, 185, 185, 0.74);
+}
+
+.payment {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #66c65e;
 }
