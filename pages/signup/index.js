@@ -6,14 +6,20 @@ import { useContext } from "react";
 import { signOut } from "next-auth/react";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
 import styles from "../../styles/SignUp.module.css";
+import { passwordStrength } from "check-password-strength";
 
 export default function SignUpPage({ csrfToken }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
+    if (["Too Weak", "Weak"].includes(passwordStrength(password).value))
+      return setError(
+        "Votre mot de passe doit contenir au moins une majuscune, une minuscule, un caractère spécial et un chiffre"
+      );
     e.preventDefault();
     axios.post("/api/users", { name, email, password }).then(() => {
       toast.success("Merci pour votre inscription !");
@@ -86,6 +92,7 @@ export default function SignUpPage({ csrfToken }) {
                   required
                 />
               </label>
+              <p>{error}</p>
               <button
                 className={styles.btnInscrSignUp}
                 type="submit"
