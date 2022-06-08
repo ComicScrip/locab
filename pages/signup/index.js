@@ -46,7 +46,7 @@ export default function SignUpPage({ csrfToken }) {
       {currentUserProfile ? (
         `Vous êtes connectés en tant que ${currentUserProfile.name}`
       ) : (
-        <div>
+        <div className="containerForm">
           <div>
             <Toaster />
           </div>
@@ -54,7 +54,7 @@ export default function SignUpPage({ csrfToken }) {
           <div className={styles.inscRegisterForm}>
             <h1 className={styles.titleSignUp}>Je souhaite m&lsquo;inscire</h1>
             <form className={styles.formSignUp} onSubmit={handleSubmit}>
-              <label htmlFor="name">
+              <label className={styles.labelForm} htmlFor="name">
                 Nom
                 <input
                   className={styles.inputPetitSignUp}
@@ -66,7 +66,7 @@ export default function SignUpPage({ csrfToken }) {
                   required
                 />
               </label>
-              <label htmlFor="email">
+              <label className={styles.labelForm} htmlFor="email">
                 Adresse mail
                 <input
                   className={styles.inputGrandSignUp}
@@ -78,7 +78,7 @@ export default function SignUpPage({ csrfToken }) {
                   required
                 />
               </label>
-              <label htmlFor="password">
+              <label className={styles.labelForm} htmlFor="password">
                 Mot de passe{" "}
                 <input
                   className={styles.inputGrandSignUp}
@@ -90,7 +90,10 @@ export default function SignUpPage({ csrfToken }) {
                   required
                 />
               </label>
-              <label htmlFor="passwordConfirmation">
+              <label
+                className={styles.labelForm}
+                htmlFor="passwordConfirmation"
+              >
                 Confirmez votre mot de passe
                 <input
                   className={styles.inputGrandSignUp}

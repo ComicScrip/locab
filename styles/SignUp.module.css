@@ -34,16 +34,16 @@
   margin: 17px;
 }
 
-.inscRegisterForm {
+.labelForm {
+  margin: 17px;
+}
+
+/* .inscRegisterForm {
   display: flex;
   flex-direction: column;
 }
 
-.formSignUp {
+.containerForm {
   display: flex;
   flex-direction: column;
-}
-
-.logOutBtn {
-  display: none;
-}
+} */
