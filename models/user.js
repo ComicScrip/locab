@@ -21,10 +21,11 @@ module.exports.validateUser = (data, forUpdate = false) =>
       .min(8)
       .max(100)
       .presence(forUpdate ? "optional" : "required"),
-    role: Joi.string()
-      .max(255)
-      .presence(forUpdate ? "optional" : "required"),
   }).validate(data, { abortEarly: false }).error;
+
+// role: Joi.string()
+// .max(255)
+// .presence(forUpdate ? "optional" : "required"),
 
 const hashingOptions = {
   memoryCost: 2 ** 16,
@@ -47,10 +48,10 @@ module.exports.getSafeAttributes = (user) => ({
   hashedPassword: undefined,
 });
 
-module.exports.createUser = async ({ name, email, role, password }) => {
+module.exports.createUser = async ({ name, email, password }) => {
   const hashedPassword = await hashPassword(password);
   return db.user.create({
-    data: { name, email, role, hashedPassword },
+    data: { name, email, hashedPassword },
   });
 };
 

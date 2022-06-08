@@ -15,15 +15,13 @@ export default function SignUpPage({ csrfToken }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("/api/users", { name, email, password, role: "admin" })
-      .then(() => {
-        toast.success("Merci pour votre inscription !");
-        setName("");
-        setEmail("");
-        setPassword("");
-        setPasswordConfirmation("");
-      });
+    axios.post("/api/users", { name, email, password }).then(() => {
+      toast.success("Merci pour votre inscription !");
+      setName("");
+      setEmail("");
+      setPassword("");
+      setPasswordConfirmation("");
+    });
   };
   const { profile } = useContext(CurrentUserContext);
 

@@ -7,7 +7,6 @@ async function seed() {
       name: "admin",
       email: "admin@website.com",
       hashedPassword: "OkCool",
-      role: "admin",
     },
   });
 }

@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useSession, signIn } from "next-auth/react";
 import { useContext } from "react";
-import CurrentUserContext from "../../contexts/currentUserContext";
+import { CurrentUserContext } from "../contexts/currentUserContext";
 
 export default function LayoutAdmin({ children, pageTitle }) {
   const { status } = useSession();

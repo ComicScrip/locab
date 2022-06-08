@@ -5,9 +5,11 @@ import { createContext, useState, useEffect } from "react";
 export const CurrentUserContext = createContext();
 
 export const CurrentUserContextProvider = ({ children }) => {
-  const { data, status } = useSession();
+  const { status } = useSession();
   const [profile, setProfile] = useState(null);
-  console.log(data, status);
+
+  const currentUserIsAdmin = profile?.role === "admin";
+
   useEffect(() => {
     if (status === "authenticated") {
       axios
@@ -26,6 +28,7 @@ export const CurrentUserContextProvider = ({ children }) => {
     <CurrentUserContext.Provider
       value={{
         profile,
+        currentUserIsAdmin,
       }}
     >
       {children}

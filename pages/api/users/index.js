@@ -9,9 +9,13 @@ async function handlePost(req, res) {
   if (validationErrors) return res.status(422).send(validationErrors);
   const alreadyExists = await emailAlreadyExists(req.body.email);
   if (alreadyExists) return res.status(409).send("email already taken");
-  const { id, name, email, hashedPassword, role } = await createUser(req.body);
+  const { id, name, email, hashedPassword } = await createUser({
+    email: req.body.email,
+    name: req.body.name,
+    password: req.body.password,
+  });
 
-  res.status(201).send({ id, name, email, hashedPassword, role });
+  res.status(201).send({ id, name, email, hashedPassword });
 }
 
 export default handlePost;
