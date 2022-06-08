@@ -23,12 +23,12 @@ export default function SignUpPage({ csrfToken }) {
       setPasswordConfirmation("");
     });
   };
-  const { profile } = useContext(CurrentUserContext);
+  const { currentUserProfile } = useContext(CurrentUserContext);
 
   return (
     <>
-      {profile ? (
-        `Vous êtes connectés en tant que ${profile.name}`
+      {currentUserProfile ? (
+        `Vous êtes connectés en tant que ${currentUserProfile.name}`
       ) : (
         <div>
           <div>
@@ -97,7 +97,7 @@ export default function SignUpPage({ csrfToken }) {
           </div>
         </div>
       )}
-      {profile && (
+      {currentUserProfile && (
         <button
           className={styles.btnInscrSignUp}
           type="submit"

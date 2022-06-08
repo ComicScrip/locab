@@ -10,7 +10,6 @@ export default NextAuth({
         const user = await findByEmail(credentials.username);
         if (
           user &&
-          // user.hashedPassword &&
           (await verifyPassword(credentials.password, user.hashedPassword))
         ) {
           return user;

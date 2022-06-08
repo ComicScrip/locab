@@ -23,10 +23,6 @@ module.exports.validateUser = (data, forUpdate = false) =>
       .presence(forUpdate ? "optional" : "required"),
   }).validate(data, { abortEarly: false }).error;
 
-// role: Joi.string()
-// .max(255)
-// .presence(forUpdate ? "optional" : "required"),
-
 const hashingOptions = {
   memoryCost: 2 ** 16,
   timeCost: 5,
@@ -62,3 +58,5 @@ module.exports.deleteUserByEmail = async (email) => {
 module.exports.deleteDB = async () => {
   return await db.user.deleteMany();
 };
+
+module.exports.findAllUsers = () => db.user.findMany();

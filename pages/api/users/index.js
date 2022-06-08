@@ -1,8 +1,12 @@
+import base from "../../../middlewares/common";
+
 import {
   createUser,
   emailAlreadyExists,
+  findAllUsers,
   validateUser,
 } from "../../../models/user";
+import requireAdmin from "../../../middlewares/requireAdmin";
 
 async function handlePost(req, res) {
   const validationErrors = validateUser(req.body);
@@ -18,4 +22,9 @@ async function handlePost(req, res) {
   res.status(201).send({ id, name, email, hashedPassword });
 }
 
-export default handlePost;
+async function handleGet(req, res) {
+  console.log(req.currentUser);
+  res.send(await findAllUsers());
+}
+
+export default base().post(handlePost).get(requireAdmin, handleGet);

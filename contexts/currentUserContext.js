@@ -6,16 +6,16 @@ export const CurrentUserContext = createContext();
 
 export const CurrentUserContextProvider = ({ children }) => {
   const { status } = useSession();
-  const [profile, setProfile] = useState(null);
+  const [currentUserProfile, setCurrentUserProfile] = useState(null);
 
-  const currentUserIsAdmin = profile?.role === "admin";
+  const currentUserIsAdmin = currentUserProfile?.role === "admin";
 
   useEffect(() => {
     if (status === "authenticated") {
       axios
-        .get("/api/profile")
+        .get("/api/currentUserProfile")
         .then(({ data }) => {
-          setProfile(data);
+          setCurrentUserProfile(data);
         })
         .catch(() => {
           // when we have a stale cookie, disconnect
@@ -27,7 +27,7 @@ export const CurrentUserContextProvider = ({ children }) => {
   return (
     <CurrentUserContext.Provider
       value={{
-        profile,
+        currentUserProfile,
         currentUserIsAdmin,
       }}
     >
