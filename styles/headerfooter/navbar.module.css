@@ -4,7 +4,7 @@
   align-items: center;
   flex-direction: column;
   background: #ebc575;
-  height: 63px;
+  height: 68px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   font-size: 3vw;
   /* z-index: 100 !important; */
@@ -12,11 +12,17 @@
 
 .navbar .items a {
   display: flex;
+  position: inherit;
   flex-direction: column;
   visibility: visible;
-  padding: 0 25px;
+  bottom: 15px;
+  /* width: 5%;
+  
+  bottom: 0; */
+  margin-left: -13rem;
+  padding: 0 20px;
   font-family: "Poppins";
-  font-weight: 400;
+  /* font-weight: 400; */
   font-size: 15px;
   color: #626262;
 }
@@ -34,7 +40,7 @@
   visibility: visible;
   align-items: center;
   justify-content: center;
-  margin-top: -72px;
+  margin-top: -77px;
 }
 .divlogoIcon {
   padding-left: 70%;
@@ -76,6 +82,7 @@
     display: initial;
     position: relative;
     visibility: visible;
+    margin-left: initial;
     padding: 0 20px;
     font-family: "Poppins";
     font-style: normal;
