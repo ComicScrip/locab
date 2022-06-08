@@ -99,14 +99,16 @@ export default function SignUpPage({ csrfToken }) {
           </div>
         </div>
       )}
-      <button
-        className={styles.btnInscrSignUp}
-        type="submit"
-        id="credentials-login-btn"
-        onClick={() => signOut()}
-      >
-        SE DECONNECTER
-      </button>
+      {profile && (
+        <button
+          className={styles.btnInscrSignUp}
+          type="submit"
+          id="credentials-login-btn"
+          onClick={() => signOut()}
+        >
+          SE DECONNECTER
+        </button>
+      )}
     </>
   );
 }
