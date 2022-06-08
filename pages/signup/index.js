@@ -16,18 +16,28 @@ export default function SignUpPage({ csrfToken }) {
   const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
-    if (["Too Weak", "Weak"].includes(passwordStrength(password).value))
+    e.preventDefault();
+    if (password !== passwordConfirmation)
+      return setError("Vos mots de passe ne sont pas identiques");
+
+    if (["Too weak", "Weak"].includes(passwordStrength(password).value))
       return setError(
         "Votre mot de passe doit contenir au moins une majuscune, une minuscule, un caractère spécial et un chiffre"
       );
-    e.preventDefault();
-    axios.post("/api/users", { name, email, password }).then(() => {
-      toast.success("Merci pour votre inscription !");
-      setName("");
-      setEmail("");
-      setPassword("");
-      setPasswordConfirmation("");
-    });
+
+    axios
+      .post("/api/users", { name, email, password })
+      .then(() => {
+        toast.success("Merci pour votre inscription !");
+        setName("");
+        setEmail("");
+        setPassword("");
+        setPasswordConfirmation("");
+      })
+      .catch((err) => {
+        if (err.response && err.response.status === 409)
+          setError("Email déjà utilisé");
+      });
   };
   const { currentUserProfile } = useContext(CurrentUserContext);
 
