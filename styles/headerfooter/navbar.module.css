@@ -1,48 +1,52 @@
 .navbar {
   display: flex;
-  height: 63px;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   background: #ebc575;
+  height: 63px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   font-size: 3vw;
-}
-.logocontainer {
-  display: none;
-}
-.reservationButton {
-  display: none;
+  /* z-index: 100 !important; */
 }
 
-.navbar a {
-  position: absolute;
-  visibility: hidden;
-  padding: 0 10px;
+.navbar .items a {
+  display: flex;
+  flex-direction: column;
+  visibility: visible;
+  padding: 0 25px;
   font-family: "Poppins";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
+  font-weight: 400;
+  font-size: 15px;
   color: #626262;
 }
 .divlogoIcon1 a {
   display: flex;
+  position: fixed;
   visibility: visible;
   align-items: center;
   justify-content: center;
-  margin-top: -6px;
+  margin-top: -65px;
 }
 .divlogoIcon a {
+  position: fixed;
   display: flex;
   visibility: visible;
   align-items: center;
   justify-content: center;
-  margin-top: -6px;
+  margin-top: -72px;
 }
 .divlogoIcon {
   padding-left: 70%;
 }
 .divlogoIcon1 {
   padding-right: 40%;
+}
+.logocontainer {
+  display: none;
+}
+.reservationButton {
+  display: none;
 }
 .btnBurger {
   display: block;
@@ -58,7 +62,7 @@
 @media screen and (min-width: 800px) {
   .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
     height: 65px;
     background: #ffffff;
@@ -68,25 +72,25 @@
     font-family: "Poppins";
   }
 
-  .navbar a {
+  .navbar .items a {
     display: initial;
     position: relative;
     visibility: visible;
-    padding: 0 25px;
+    padding: 0 20px;
     font-family: "Poppins";
     font-style: normal;
-    font-weight: 600;
-    /* font-size: 16px; */
-    /* color: #ebc575; */
+    font-weight: 400;
+    font-size: 15px;
+    color: #626262;
   }
   .logocontainer {
     display: flex;
-    padding: 0 10px;
+    padding: 0 20px;
     align-items: center;
   }
   .logocontainer a {
     display: flex;
-    margin: 0 -18px;
+    padding: 0 12px;
     align-items: center;
   }
 
@@ -116,8 +120,5 @@
   }
   .divlogoIcon {
     display: none;
-  }
-  .navbar a:active {
-    color: #ebc575;
   }
 }

@@ -4,7 +4,7 @@
 /* eslint-disable prettier/prettier */
 import React from "react";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import Logo from "../public/logo/logo.png";
 import LogoText from "../public/logo/logoText.png";
@@ -13,15 +13,8 @@ import LogoIcon from "../public/logo/icon_logo.png";
 import styles from "../styles/headerfooter/navbar.module.css";
 
 const Navbar = () => {
-  const [showLinks, setshowLinks] = useState(false);
-
-  const getActiveLinkStyle = ({ isActive }) => ({
-    color: isActive ? "#ebc575" : "#626262",
-  });
-
-  const handleShowLinks = () => {
-    setshowLinks(!showLinks);
-  };
+  const router = useRouter();
+  const currentRoute = router.pathname;
 
   return (
     <nav className={styles.navbar}>
@@ -43,28 +36,36 @@ const Navbar = () => {
       </div>
 
       {/* Debut navbar a */}
-
       <ul className={styles.items}>
-        <Link href="/" style={getActiveLinkStyle}>
-          <a> Accueil </a>
+        <Link href="/" className={styles.navbar__link}>
+          <a className={currentRoute === "/" ? "active" : "non-active"}>
+            {" "}
+            Accueil{" "}
+          </a>
         </Link>
-        <Link href="aboutUs" style={getActiveLinkStyle}>
-          <a> Qui sommes-nous ? </a>
+        <Link href="aboutUs" className={styles.navbar__link}>
+          <a className={currentRoute === "/aboutUs" ? "active" : "non-active"}>
+            {" "}
+            Qui sommes-nous ?{" "}
+          </a>
         </Link>
-        <Link href="blog" style={getActiveLinkStyle}>
-          <a>Blog</a>
+        <Link href="blog" className={styles.navbar__link}>
+          <a className={currentRoute === "/blog" ? "active" : "non-active"}>
+            Blog
+          </a>
         </Link>
-        <Link href="contact" style={getActiveLinkStyle}>
-          <a>Contact</a>
+        <Link href="contact" className={styles.navbar__link}>
+          <a className={currentRoute === "/contact" ? "active" : "non-active"}>
+            Contact
+          </a>
         </Link>
-        <Link href="reservation">
+        <Link href="reservation" className={styles.navbar__link}>
           <a>
             <button className={styles.reservationButton}>Réservation</button>
           </a>
         </Link>
       </ul>
       {/* Fin navbar a */}
-
       <div className={styles.divlogoIcon1}>
         <Link href="/" className={styles.linklogotransparent}>
           <a>
@@ -83,17 +84,23 @@ const Navbar = () => {
               src={LogoIcon}
               className={styles.logo_icon}
               alt="logo_icon"
+              height={48}
+              width={48}
             />
           </a>
         </Link>
       </div>
-      <button
-        type="button"
-        className={styles.btnBurger}
-        onClick={handleShowLinks}
-      >
+      <button type="button" className={styles.btnBurger}>
         <span className="Burger_Line towLine" />
       </button>
+      <style jsx>{`
+        .non-active {
+          color: #626262 !important;
+        }
+        .active {
+          color: #ebc575 !important;
+        }
+      `}</style>
     </nav>
   );
 };
