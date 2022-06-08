@@ -21,10 +21,12 @@
   padding: 0px 20px;
   line-height: 5px;
 }
+
 .totalInfoContainer {
   display: flex;
   flex-direction: column;
 }
+
 .cautionContainer {
   display: flex;
   justify-content: space-between;
@@ -61,12 +63,14 @@
 }
 
 .name_style {
-  font-size: 15pt;
+  font-size: 13pt;
+  font-weight: bold;
   border-radius: 8px;
   border: solid 4px #f8f8f8;
   width: 70%;
 }
 
+/* Media queries */
 @media screen and (max-width: 700px) {
   .mainContainer {
     display: none;

@@ -37,6 +37,7 @@
   padding: 30px 30px;
 }
 
+/* Index style */
 .main_container {
   display: flex;
   justify-content: center;
@@ -89,6 +90,8 @@
     grid-column: 3 / 5;
     align-self: end;
   }
+
+  /* Media Queries index */
   .trait_droit {
     display: none;
   }
