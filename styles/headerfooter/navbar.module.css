@@ -4,27 +4,33 @@
   align-items: center;
   flex-direction: column;
   background: #ebc575;
-  height: 68px;
+  height: 65px;
+  /* height: 20vh; */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   font-size: 3vw;
-  /* z-index: 100 !important; */
 }
-
-.navbar .items a {
+.navbar .items {
   display: flex;
-  position: inherit;
+  position: fixed;
   flex-direction: column;
-  visibility: visible;
-  bottom: 15px;
-  /* width: 5%;
-  
-  bottom: 0; */
-  margin-left: -13rem;
-  padding: 0 20px;
-  font-family: "Poppins";
-  /* font-weight: 400; */
-  font-size: 15px;
+  /* visibility: visible; */
+  /* margin-left: -11rem; */
+  /* padding: 5px 18px; */
+  /* font-family: "Poppins"; */
+  top: 64px;
+  background-color: #ebc575;
+  left: 0;
+  padding: 1.5rem;
+  /* visibility: hidden; */
+  bottom: 0;
+  font-size: 20px;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
   color: #626262;
+}
+.navbar .navbar__link {
+  display: block !important;
+  padding: 2.5rem !important;
 }
 .divlogoIcon1 a {
   display: flex;
@@ -32,7 +38,7 @@
   visibility: visible;
   align-items: center;
   justify-content: center;
-  margin-top: -65px;
+  margin-top: -19px;
 }
 .divlogoIcon a {
   position: fixed;
@@ -40,7 +46,7 @@
   visibility: visible;
   align-items: center;
   justify-content: center;
-  margin-top: -77px;
+  margin-top: -29px;
 }
 .divlogoIcon {
   padding-left: 70%;
@@ -52,7 +58,15 @@
   display: none;
 }
 .reservationButton {
-  display: none;
+  background: #d28f71;
+  /* font-family: 'Poppins'; */
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  border: none;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 .btnBurger {
   display: block;
@@ -64,18 +78,43 @@
 .btnBurger:hover {
   cursor: pointer;
 }
+.Burger_Line,
+.Burger_Line::before,
+.Burger_Line::after {
+  display: block;
+  width: 45px;
+  height: 3px;
+  position: relative;
+  border-radius: 5px;
+  background: black;
+  /* transition: all 0.5s ease-in-out;
+  z-index: 100 !important; */
+}
+.Burger_Line::before,
+.Burger_Line::after {
+  content: "";
+  position: absolute;
+}
+.Burger_Line::before {
+  transform: translateY(-12px);
+}
+.Burger_Line::after {
+  transform: translateX(-10px);
+}
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 765px) {
   .navbar {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     width: 100%;
-    height: 65px;
+    height: 70px;
+    padding: 1rem;
     background: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
     flex-direction: initial;
     font-size: 1vw;
-    font-family: "Poppins";
+    /* font-family: "Poppins"; */
   }
 
   .navbar .items a {
@@ -84,11 +123,21 @@
     visibility: visible;
     margin-left: initial;
     padding: 0 20px;
-    font-family: "Poppins";
+    /* font-family: "Poppins"; */
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
     color: #626262;
+  }
+
+  .navbar .items {
+    display: initial;
+    background-color: initial;
+    position: initial;
+    height: initial;
+    width: initial;
+    flex-direction: initial;
+    /* font-family: "Poppins"; */
   }
   .logocontainer {
     display: flex;

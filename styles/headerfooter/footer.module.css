@@ -1,7 +1,7 @@
 .container {
   background: #ebc575;
   align-items: center;
-  position: relative;
+  position: fixed;
   /* left: 0; */
   bottom: 0;
 }
@@ -44,15 +44,15 @@
   .container {
     display: flex;
     position: relative;
-    padding: 0 100px;
+    padding: 0 110px;
     flex-direction: row-reverse;
     justify-content: space-between;
   }
   .footer {
-    margin-right: 100px;
+    margin-right: 40px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 100px;
+    grid-gap: 90px;
   }
   .links a,
   .footerContact {

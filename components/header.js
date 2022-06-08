@@ -39,14 +39,12 @@ const Navbar = () => {
       <ul className={styles.items}>
         <Link href="/" className={styles.navbar__link}>
           <a className={currentRoute === "/" ? "active" : "non-active"}>
-            {" "}
-            Accueil{" "}
+            Accueil
           </a>
         </Link>
         <Link href="aboutUs" className={styles.navbar__link}>
           <a className={currentRoute === "/aboutUs" ? "active" : "non-active"}>
-            {" "}
-            Qui sommes-nous ?{" "}
+            Qui sommes-nous ?
           </a>
         </Link>
         <Link href="blog" className={styles.navbar__link}>
@@ -61,7 +59,7 @@ const Navbar = () => {
         </Link>
         <Link href="reservation" className={styles.navbar__link}>
           <a>
-            <button className={styles.reservationButton}>Réservation</button>
+            <button className={styles.reservationButton}>Reservation</button>
           </a>
         </Link>
       </ul>
