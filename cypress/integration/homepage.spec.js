@@ -1,11 +1,4 @@
-/// <reference types="cypress" />
-
-// Welcome to Cypress!
-//
-// To learn more about how Cypress works and
-// what makes it such an awesome testing tool,
-// please read our getting started guide:
-// https://on.cypress.io/introduction-to-cypress
+<reference types="cypress" />;
 
 describe("homepage", () => {
   beforeEach(() => {
