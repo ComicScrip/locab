@@ -150,3 +150,16 @@
   justify-content: center;
   color: #66c65e;
 }
+
+.paymentparent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.paymentcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 50%;
+}
