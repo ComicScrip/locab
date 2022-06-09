@@ -32,11 +32,11 @@ export default function SignUpPage({ csrfToken }) {
 
     axios
       .post("/api/users", {
-        firstName,
-        name,
+        firstname: firstName,
+        lastname: name,
         address,
-        pCode,
-        town,
+        zip: pCode,
+        city: town,
         phone,
         email,
         password,

@@ -19,15 +19,15 @@ model User {
 }
 
 model Customer {
-  id        Int    @id @default(autoincrement())
-  lastname  String @db.VarChar(20)
-  firstname String @db.VarChar(20)
-  address   String @db.VarChar(100)
-  zip       String @db.VarChar(10)
-  city      String @db.VarChar(60)
-  email     String @db.VarChar(50)
-  password  String @db.VarChar(50)
-  phone     String @db.VarChar(50)
+  id             Int    @id @default(autoincrement())
+  lastname       String @db.VarChar(20)
+  firstname      String @db.VarChar(20)
+  address        String @db.VarChar(100)
+  zip            String @db.VarChar(10)
+  city           String @db.VarChar(60)
+  email          String @db.VarChar(50)
+  hashedPassword String @db.VarChar(50)
+  phone          String @db.VarChar(50)
 }
 
 model PriceCategory {
