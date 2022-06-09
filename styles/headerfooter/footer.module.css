@@ -55,7 +55,7 @@
   .footer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 15vh;
+    grid-gap: 20vh;
   }
   .links a,
   .footerContact {
