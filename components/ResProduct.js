@@ -31,9 +31,9 @@ export default function ResProduct({ product, onAdd, onRemove }) {
       }
     >
       <Image
-        src="/image/r_baby-stroller.png"
-        height={70}
-        width={70}
+        src={product.picture}
+        height={"70px"}
+        width={"70px"}
         alt="poussette logo"
       />
       <p style={{ textAlign: "center", margin: "20px 0px 0px 0px" }}>

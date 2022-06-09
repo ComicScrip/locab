@@ -6,6 +6,7 @@ const data = {
       category: "poussette",
       price: 20,
       isAvailable: true,
+      picture: "/image/r_baby-stroller.png",
     },
     {
       id: 2,
@@ -13,6 +14,7 @@ const data = {
       category: "poussette",
       price: 30,
       isAvailable: true,
+      picture: "/image/r_baby-stroller.png",
     },
     {
       id: 3,
@@ -20,6 +22,7 @@ const data = {
       category: "poussette",
       price: 10,
       isAvailable: true,
+      picture: "/image/r_baby-stroller.png",
     },
     {
       id: 4,
@@ -27,6 +30,7 @@ const data = {
       category: "poussette",
       price: 25,
       isAvailable: true,
+      picture: "/image/r_baby-stroller.png",
     },
     {
       id: 5,
@@ -34,6 +38,7 @@ const data = {
       category: "lit_barreaux",
       price: 12,
       isAvailable: false,
+      picture: "/image/r_baby-stroller.png",
     },
     {
       id: 6,
@@ -41,6 +46,7 @@ const data = {
       category: "lit_barreaux",
       price: 12,
       isAvailable: true,
+      picture: "/image/r_baby-stroller.png",
     },
     {
       id: 7,
@@ -48,6 +54,7 @@ const data = {
       category: "poussette",
       price: 20,
       isAvailable: true,
+      picture: "/image/r_baby-stroller.png",
     },
     {
       id: 8,
@@ -55,6 +62,7 @@ const data = {
       category: "poussette",
       price: 30,
       isAvailable: true,
+      picture: "/image/r_baby-stroller.png",
     },
     {
       id: 9,
@@ -62,6 +70,7 @@ const data = {
       category: "poussette",
       price: 10,
       isAvailable: true,
+      picture: "/image/r_baby-stroller.png",
     },
     {
       id: 10,
@@ -69,6 +78,7 @@ const data = {
       category: "poussette",
       price: 25,
       isAvailable: true,
+      picture: "/image/r_baby-stroller.png",
     },
     {
       id: 11,
@@ -76,6 +86,7 @@ const data = {
       category: "lit_barreaux",
       price: 12,
       isAvailable: false,
+      picture: "/image/r_baby-stroller.png",
     },
     {
       id: 12,
@@ -83,6 +94,7 @@ const data = {
       category: "lit_barreaux",
       price: 12,
       isAvailable: true,
+      picture: "/image/r_baby-stroller.png",
     },
   ],
 };

@@ -4,6 +4,7 @@ import styles from "../styles/Panier.module.css";
 import ErrorIcon from "@mui/icons-material/Error";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
+import Image from "next/image";
 
 export default function R_panier({ productList, onUpdate, onValidate }) {
   const cartTotal = productList.reduce(
@@ -22,7 +23,16 @@ export default function R_panier({ productList, onUpdate, onValidate }) {
       {productList.map((product) => {
         return (
           <div key={product.id} className={styles.input_container}>
-            <div className={styles.name_style}>{product.name}</div>
+            <div className={styles.name_style}>
+              <Image
+                src={product.picture}
+                height={"35px"}
+                width={"35px"}
+                alt="poussette logo"
+              />
+
+              {product.name}
+            </div>
             <div className={styles.input_style}>
               <input
                 className={styles.input}
