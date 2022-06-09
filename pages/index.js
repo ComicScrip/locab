@@ -142,8 +142,8 @@ export default function Home() {
               className={styles.imgcpl}
               src="/image/couple.webp"
               alt="couple"
-              height="200vh"
-              width="200vh"
+              height="200"
+              width="200"
             />
           </div>
         </div>
