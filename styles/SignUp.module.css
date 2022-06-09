@@ -30,6 +30,7 @@
   height: 50px;
   background-color: #f8f8f8;
   border: 1px solid #b9b9b9bd;
+
   display: block;
   margin: 17px;
 }
@@ -38,12 +39,16 @@
   margin: 17px;
 }
 
-/* .inscRegisterForm {
-  display: flex;
-  flex-direction: column;
-}
-
 .containerForm {
   display: flex;
-  flex-direction: column;
-} */
+}
+
+.inputPetitSignUp:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f8f8f8 inset;
+  -webkit-text-fill-color: #f8f8f8 !important;
+}
+
+.inputGrandSignUp:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f8f8f8 inset;
+  -webkit-text-fill-color: #f8f8f8 !important;
+}

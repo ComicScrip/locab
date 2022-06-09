@@ -46,7 +46,7 @@ export default function SignUpPage({ csrfToken }) {
       {currentUserProfile ? (
         `Vous êtes connectés en tant que ${currentUserProfile.name}`
       ) : (
-        <div className="containerForm">
+        <div className={styles.containerForm}>
           <div>
             <Toaster />
           </div>
