@@ -73,8 +73,11 @@ export default function SignUpPage({ csrfToken }) {
             <div>
               <Toaster />
             </div>
+            <div className={styles.composantSignInContainer}>
+              {" "}
+              <SignIn csrfToken={csrfToken} />
+            </div>
 
-            <SignIn csrfToken={csrfToken} />
             <div className={styles.inscRegisterForm}>
               <h1 className={styles.titleSignUp}>
                 Je souhaite m&lsquo;inscire

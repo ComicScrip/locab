@@ -16,7 +16,7 @@
 
 .inputGrandSignUp {
   border-radius: 10px;
-  width: 450px;
+  width: 90%;
   height: 50px;
   background-color: #f8f8f8;
   border: 1px solid #b9b9b9bd;
@@ -26,12 +26,12 @@
 
 .inputPetitSignUp {
   border-radius: 10px;
-  width: 215px;
+  width: 200px;
   height: 50px;
   background-color: #f8f8f8;
   border: 1px solid #b9b9b9bd;
   display: block;
-  margin: 17px;
+  margin-top: 17px;
 }
 
 .labelForm {
@@ -41,6 +41,8 @@
 .containerForm {
   display: flex;
   justify-content: center;
+  width: 80%;
+  margin: auto;
 }
 
 .inputPetitSignUp:-webkit-autofill {
@@ -67,4 +69,22 @@
 .nameLastName,
 .codeVille {
   display: flex;
+}
+
+.composantSignInContainer {
+  margin-right: 50px;
+}
+
+@media screen and (max-width: 800px) {
+  .containerForm,
+  .nameLastName,
+  .codeVille {
+    flex-wrap: wrap;
+  }
+  .composantSignInContainer,
+  .inscRegisterForm,
+  .btnInscrSignUp {
+    width: 95%;
+    margin: auto;
+  }
 }
