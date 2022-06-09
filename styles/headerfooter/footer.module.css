@@ -39,20 +39,23 @@
 .footerTitle {
   color: #ffffff;
 }
+.logo {
+  margin-bottom: initial;
+}
 
 @media screen and (min-width: 768px) {
   .container {
     display: flex;
+    position: fixed;
     position: relative;
-    padding: 0 110px;
+    width: 100%;
     flex-direction: row-reverse;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   .footer {
-    margin-right: 40px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 90px;
+    grid-gap: 15vh;
   }
   .links a,
   .footerContact {
@@ -64,5 +67,8 @@
   .logoText {
     font-size: small;
     padding-top: 50px;
+  }
+  .logo {
+    margin-bottom: 2rem;
   }
 }

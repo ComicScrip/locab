@@ -2,7 +2,7 @@
 import ResProduct from "../../components/ResProduct";
 import styles from "../../styles/Reservation.module.css";
 import Layout from "../../components/Layout";
-import IconDesktop from "../../components/iconsDesktop";
+//import IconDesktop from "../../components/iconsDesktop";
 import { useState } from "react";
 
 const productsList = [
@@ -60,7 +60,7 @@ export default function ReservationPage() {
 
   return (
     <Layout>
-      <IconDesktop />
+      {/* <IconDesktop /> */}
       <div className={styles.mainWrapper}>
         <section className={styles.searchContainer}>
           <input
