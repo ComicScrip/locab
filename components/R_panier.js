@@ -26,8 +26,8 @@ export default function R_panier({ productList, onUpdate, onValidate }) {
             <div className={styles.name_style}>
               <Image
                 src={product.picture}
-                height={"35px"}
-                width={"35px"}
+                height="35px"
+                width="35px"
                 alt="poussette logo"
               />
 
