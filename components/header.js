@@ -37,27 +37,27 @@ const Navbar = () => {
 
       {/* Debut navbar a */}
       <ul className={styles.items}>
-        <Link href="/" className={styles.navbar__link}>
+        <Link href="/" className={styles.navbarlink}>
           <a className={currentRoute === "/" ? "active" : "non-active"}>
             Accueil
           </a>
         </Link>
-        <Link href="aboutUs" className={styles.navbar__link}>
+        <Link href="aboutUs" className={styles.navbarlink}>
           <a className={currentRoute === "/aboutUs" ? "active" : "non-active"}>
             Qui sommes-nous ?
           </a>
         </Link>
-        <Link href="blog" className={styles.navbar__link}>
+        <Link href="blog" className={styles.navbarlink}>
           <a className={currentRoute === "/blog" ? "active" : "non-active"}>
             Blog
           </a>
         </Link>
-        <Link href="contact" className={styles.navbar__link}>
+        <Link href="contact" className={styles.navbarlink}>
           <a className={currentRoute === "/contact" ? "active" : "non-active"}>
             Contact
           </a>
         </Link>
-        <Link href="reservation" className={styles.navbar__link}>
+        <Link href="reservation" className={styles.navbarlink}>
           <a>
             <button className={styles.reservationButton}>Reservation</button>
           </a>
@@ -88,9 +88,9 @@ const Navbar = () => {
           </a>
         </Link>
       </div>
-      <button type="button" className={styles.btnBurger}>
-        <span className="Burger_Line towLine" />
-      </button>
+      <div>
+        <span className={styles.Burger_Line} />
+      </div>
       <style jsx>{`
         .non-active {
           color: #626262 !important;
@@ -104,4 +104,4 @@ const Navbar = () => {
 };
 export default Navbar;
 
-// RiShoppingBasket2Line
+// RiShoppingBasket2Line style={towLine} className={styles.btnBurger}

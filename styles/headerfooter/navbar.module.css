@@ -13,22 +13,17 @@
   display: flex;
   position: fixed;
   flex-direction: column;
-  /* visibility: visible; */
-  /* margin-left: -11rem; */
-  /* padding: 5px 18px; */
-  /* font-family: "Poppins"; */
-  top: 64px;
-  background-color: #ebc575;
+  justify-content: center;
+  top: -450px;
   left: 0;
-  padding: 1.5rem;
-  /* visibility: hidden; */
+  padding: 2rem;
   bottom: 0;
   font-size: 20px;
   align-items: center;
   transition: all 0.3s ease-in-out;
-  color: #626262;
+  color: inherit;
 }
-.navbar .navbar__link {
+.navbar .navbarlink a {
   display: block !important;
   padding: 2.5rem !important;
 }
@@ -59,7 +54,6 @@
 }
 .reservationButton {
   background: #d28f71;
-  /* font-family: 'Poppins'; */
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -68,14 +62,13 @@
   text-transform: uppercase;
   color: #ffffff;
 }
-.btnBurger {
+.Burger_Line {
   display: block;
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  right: 155px;
   cursor: pointer;
 }
-.btnBurger:hover {
+.Burger_Line:hover {
   cursor: pointer;
 }
 .Burger_Line,
@@ -83,38 +76,37 @@
 .Burger_Line::after {
   display: block;
   width: 45px;
-  height: 3px;
+  height: 4px;
   position: relative;
   border-radius: 5px;
-  background: black;
-  /* transition: all 0.5s ease-in-out;
-  z-index: 100 !important; */
+  background: white;
 }
+
 .Burger_Line::before,
 .Burger_Line::after {
   content: "";
   position: absolute;
+  right: 0;
 }
 .Burger_Line::before {
   transform: translateY(-12px);
 }
 .Burger_Line::after {
-  transform: translateX(-10px);
+  transform: translateY(12px) !important;
 }
 
 @media screen and (min-width: 765px) {
   .navbar {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 70px;
-    padding: 1rem;
+    padding: 0.5rem;
     background: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
     flex-direction: initial;
     font-size: 1vw;
-    /* font-family: "Poppins"; */
   }
 
   .navbar .items a {
@@ -122,8 +114,7 @@
     position: relative;
     visibility: visible;
     margin-left: initial;
-    padding: 0 20px;
-    /* font-family: "Poppins"; */
+    padding: 0 25px;
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -137,7 +128,6 @@
     height: initial;
     width: initial;
     flex-direction: initial;
-    /* font-family: "Poppins"; */
   }
   .logocontainer {
     display: flex;
@@ -149,7 +139,6 @@
     padding: 0 12px;
     align-items: center;
   }
-
   .reservationButton {
     height: 32px;
     display: initial;
@@ -164,12 +153,7 @@
     cursor: pointer;
   }
   .btnBurger {
-    width: 40px;
-    height: 40px;
     display: none;
-    background: transparent;
-    border: none;
-    color: inherit;
   }
   .divlogoIcon1 {
     display: none;
