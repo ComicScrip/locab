@@ -30,7 +30,6 @@
   height: 50px;
   background-color: #f8f8f8;
   border: 1px solid #b9b9b9bd;
-
   display: block;
   margin: 17px;
 }
@@ -41,6 +40,7 @@
 
 .containerForm {
   display: flex;
+  justify-content: center;
 }
 
 .inputPetitSignUp:-webkit-autofill {
@@ -51,4 +51,20 @@
 .inputGrandSignUp:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px #f8f8f8 inset;
   -webkit-text-fill-color: #f8f8f8 !important;
+}
+
+.titleContainerSignUp {
+  font-size: 40px;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+
+.titleSignUp {
+  font-size: 30px;
+  font-family: "Poppins", sans-serif;
+}
+
+.nameLastName,
+.codeVille {
+  display: flex;
 }

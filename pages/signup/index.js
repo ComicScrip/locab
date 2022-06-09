@@ -10,6 +10,11 @@ import { passwordStrength } from "check-password-strength";
 
 export default function SignUpPage({ csrfToken }) {
   const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [address, setAddress] = useState("");
+  const [pCode, setPCode] = useState("");
+  const [town, setTown] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -26,10 +31,24 @@ export default function SignUpPage({ csrfToken }) {
       );
 
     axios
-      .post("/api/users", { name, email, password })
+      .post("/api/users", {
+        firstName,
+        name,
+        address,
+        pCode,
+        town,
+        phone,
+        email,
+        password,
+      })
       .then(() => {
         toast.success("Merci pour votre inscription !");
+        setFirstName("");
         setName("");
+        setAddress("");
+        setPCode("");
+        setTown("");
+        setPhone("");
         setEmail("");
         setPassword("");
         setPasswordConfirmation("");
@@ -46,74 +65,146 @@ export default function SignUpPage({ csrfToken }) {
       {currentUserProfile ? (
         `Vous êtes connectés en tant que ${currentUserProfile.name}`
       ) : (
-        <div className={styles.containerForm}>
-          <div>
-            <Toaster />
-          </div>
-          <SignIn csrfToken={csrfToken} />
-          <div className={styles.inscRegisterForm}>
-            <h1 className={styles.titleSignUp}>Je souhaite m&lsquo;inscire</h1>
-            <form className={styles.formSignUp} onSubmit={handleSubmit}>
-              <label className={styles.labelForm} htmlFor="name">
-                Nom
-                <input
-                  className={styles.inputPetitSignUp}
-                  type="text"
-                  id="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  data-cy="name"
-                  required
-                />
-              </label>
-              <label className={styles.labelForm} htmlFor="email">
-                Adresse mail
-                <input
-                  className={styles.inputGrandSignUp}
-                  type="text"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  data-cy="email"
-                  required
-                />
-              </label>
-              <label className={styles.labelForm} htmlFor="password">
-                Mot de passe{" "}
-                <input
-                  className={styles.inputGrandSignUp}
-                  type="password"
-                  id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  data-cy="password"
-                  required
-                />
-              </label>
-              <label
-                className={styles.labelForm}
-                htmlFor="passwordConfirmation"
-              >
-                Confirmez votre mot de passe
-                <input
-                  className={styles.inputGrandSignUp}
-                  type="password"
-                  id="passwordConfirmation"
-                  value={passwordConfirmation}
-                  onChange={(e) => setPasswordConfirmation(e.target.value)}
-                  data-cy="passwordConfirmation"
-                  required
-                />
-              </label>
-              <p>{error}</p>
-              <button
-                className={styles.btnInscrSignUp}
-                type="submit"
-                id="credentials-login-btn"
-              >
-                S&lsquo;INSCRIRE
-              </button>
-            </form>
+        <div>
+          <h1 className={styles.titleContainerSignUp}>
+            Souhaitez-vous vous connecter ?
+          </h1>
+          <div className={styles.containerForm}>
+            <div>
+              <Toaster />
+            </div>
+
+            <SignIn csrfToken={csrfToken} />
+            <div className={styles.inscRegisterForm}>
+              <h1 className={styles.titleSignUp}>
+                Je souhaite m&lsquo;inscire
+              </h1>
+              <form className={styles.formSignUp} onSubmit={handleSubmit}>
+                <div className={styles.nameLastName}>
+                  <label className={styles.labelForm} htmlFor="firstName">
+                    Prénom
+                    <input
+                      className={styles.inputPetitSignUp}
+                      type="text"
+                      id="firstName"
+                      value={name}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      data-cy="firstName"
+                      required
+                    />
+                  </label>
+                  <label className={styles.labelForm} htmlFor="name">
+                    Nom
+                    <input
+                      className={styles.inputPetitSignUp}
+                      type="text"
+                      id="name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      data-cy="name"
+                      required
+                    />
+                  </label>
+                </div>
+                <label className={styles.labelForm} htmlFor="adresse">
+                  Adresse
+                  <input
+                    className={styles.inputGrandSignUp}
+                    type="text"
+                    id="adresse"
+                    value={email}
+                    onChange={(e) => setAddress(e.target.value)}
+                    data-cy="adresse"
+                    required
+                  />
+                </label>
+                <div className={styles.codeVille}>
+                  <label className={styles.labelForm} htmlFor="codePostal">
+                    Code Postal
+                    <input
+                      className={styles.inputPetitSignUp}
+                      type="text"
+                      id="codePostal"
+                      value={email}
+                      onChange={(e) => setPCode(e.target.value)}
+                      data-cy="codePostal"
+                      // required
+                    />
+                  </label>
+                  <label className={styles.labelForm} htmlFor="ville">
+                    Ville
+                    <input
+                      className={styles.inputPetitSignUp}
+                      type="text"
+                      id="ville"
+                      value={email}
+                      onChange={(e) => setTown(e.target.value)}
+                      data-cy="ville"
+                      // required
+                    />
+                  </label>
+                </div>
+                <label className={styles.labelForm} htmlFor="telephone">
+                  Numéro de téléphone
+                  <input
+                    className={styles.inputGrandSignUp}
+                    type="text"
+                    id="telephone"
+                    value={email}
+                    onChange={(e) => setPhone(e.target.value)}
+                    data-cy="telephone"
+                    // required
+                  />
+                </label>
+                <label className={styles.labelForm} htmlFor="email">
+                  Adresse mail
+                  <input
+                    className={styles.inputGrandSignUp}
+                    type="text"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    data-cy="email"
+                    required
+                  />
+                </label>
+                <label className={styles.labelForm} htmlFor="password">
+                  Mot de passe{" "}
+                  <input
+                    className={styles.inputGrandSignUp}
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    data-cy="password"
+                    required
+                  />
+                </label>
+                <label
+                  className={styles.labelForm}
+                  htmlFor="passwordConfirmation"
+                >
+                  Confirmez votre mot de passe
+                  <input
+                    className={styles.inputGrandSignUp}
+                    type="password"
+                    id="passwordConfirmation"
+                    value={passwordConfirmation}
+                    onChange={(e) => setPasswordConfirmation(e.target.value)}
+                    data-cy="passwordConfirmation"
+                    required
+                  />
+                </label>
+                <p>{error}</p>
+                <button
+                  className={styles.btnInscrSignUp}
+                  type="submit"
+                  id="credentials-login-btn"
+                >
+                  S&lsquo;INSCRIRE
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       )}
