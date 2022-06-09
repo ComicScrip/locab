@@ -14,19 +14,22 @@
   position: fixed;
   flex-direction: column;
   justify-content: center;
-  top: -450px;
   left: 0;
+  right: 0;
+  height: 100vh;
   padding: 2rem;
+  background-color: #ebc575;
   bottom: 0;
   font-size: 20px;
   align-items: center;
-  transition: all 0.3s ease-in-out;
-  color: inherit;
+  color: #ffffff;
 }
-.navbar .navbarlink a {
+/* .navbar .navbarlink a {
   display: block !important;
   padding: 2.5rem !important;
-}
+  font-size: 5vw !important;
+  color : red !important
+} */
 .divlogoIcon1 a {
   display: flex;
   position: fixed;
@@ -47,7 +50,7 @@
   padding-left: 70%;
 }
 .divlogoIcon1 {
-  padding-right: 40%;
+  padding-right: 33%;
 }
 .logocontainer {
   display: none;
@@ -61,6 +64,14 @@
   border: none;
   text-transform: uppercase;
   color: #ffffff;
+}
+.btnBurger {
+  display: block;
+  position: absolute;
+  cursor: pointer;
+}
+.btnBurger:hover {
+  cursor: pointer;
 }
 .Burger_Line {
   display: block;
@@ -108,7 +119,6 @@
     flex-direction: initial;
     font-size: 1vw;
   }
-
   .navbar .items a {
     display: initial;
     position: relative;
@@ -120,7 +130,9 @@
     font-size: 15px;
     color: #626262;
   }
-
+  .btnBurger {
+    display: none;
+  }
   .navbar .items {
     display: initial;
     background-color: initial;

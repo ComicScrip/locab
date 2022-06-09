@@ -5,6 +5,7 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import Image from "next/image";
 import Logo from "../public/logo/logo.png";
 import LogoText from "../public/logo/logoText.png";
@@ -13,6 +14,11 @@ import LogoIcon from "../public/logo/icon_logo.png";
 import styles from "../styles/headerfooter/navbar.module.css";
 
 const Navbar = () => {
+  const [showLinks, setshowLinks] = useState(false);
+
+  const handleShowLinks = () => {
+    setshowLinks(!showLinks);
+  };
   const router = useRouter();
   const currentRoute = router.pathname;
 
@@ -88,7 +94,7 @@ const Navbar = () => {
           </a>
         </Link>
       </div>
-      <div>
+      <div className={styles.btnBurger} onClick={handleShowLinks}>
         <span className={styles.Burger_Line} />
       </div>
       <style jsx>{`
@@ -104,4 +110,4 @@ const Navbar = () => {
 };
 export default Navbar;
 
-// RiShoppingBasket2Line style={towLine} className={styles.btnBurger}
+// RiShoppingBasket2Line style={towLine}
