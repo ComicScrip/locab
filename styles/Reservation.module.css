@@ -76,6 +76,11 @@
     display: initial;
     grid-column: 1 / 3;
   }
+  .panier_style {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
   .searchBar {
     background: #f8f8f8;
