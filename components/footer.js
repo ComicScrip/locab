@@ -68,7 +68,7 @@ export default function footer() {
                 <Link href="/">
                   <a>
                     <Image
-                      src="/icons/facebook.png"
+                      src="/icons/facebook.webp"
                       alt="facebook"
                       width={20}
                       height={20}
@@ -81,7 +81,7 @@ export default function footer() {
               <Link href="/">
                 <a>
                   <Image
-                    src="/icons/instagram.png"
+                    src="/icons/instagram.webp"
                     alt="instagram"
                     width={20}
                     height={20}
@@ -93,7 +93,7 @@ export default function footer() {
               <Link href="/">
                 <a>
                   <Image
-                    src="/icons/linkedin.png"
+                    src="/icons/linkedin.webp"
                     alt="linkedin"
                     width={20}
                     height={20}
@@ -105,7 +105,7 @@ export default function footer() {
               <Link href="/">
                 <a>
                   <Image
-                    src="/icons/whatsapp.png"
+                    src="/icons/whatsapp.webp"
                     alt="Whatsapp"
                     width={20}
                     height={20}

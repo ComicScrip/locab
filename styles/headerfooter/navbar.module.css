@@ -24,7 +24,7 @@
   font-size: 20px;
   align-items: center;
   color: #ffffff;
-  z-index: 100px;
+  transition: all 0.3s ease-in-out;
 }
 .shownav .items {
   width: 100vw;
