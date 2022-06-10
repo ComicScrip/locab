@@ -10,16 +10,31 @@ module.exports.findByEmail = (email = "") =>
 
 module.exports.validateCustomer = (data, forUpdate = false) =>
   Joi.object({
-    name: Joi.string()
-      .max(255)
+    firstname: Joi.string()
+      .max(20)
+      .presence(forUpdate ? "optional" : "required"),
+    lastname: Joi.string()
+      .max(20)
+      .presence(forUpdate ? "optional" : "required"),
+    address: Joi.string()
+      .max(100)
+      .presence(forUpdate ? "optional" : "required"),
+    zip: Joi.string()
+      .max(10)
+      .presence(forUpdate ? "optional" : "required"),
+    city: Joi.string()
+      .max(60)
       .presence(forUpdate ? "optional" : "required"),
     email: Joi.string()
       .email()
-      .max(255)
+      .max(50)
+      .presence(forUpdate ? "optional" : "required"),
+    phone: Joi.string()
+      .max(50)
       .presence(forUpdate ? "optional" : "required"),
     password: Joi.string()
       .min(8)
-      .max(100)
+      .max(50)
       .presence(forUpdate ? "optional" : "required"),
   }).validate(data, { abortEarly: false }).error;
 
@@ -44,10 +59,28 @@ module.exports.getSafeAttributes = (customer) => ({
   hashedPassword: undefined,
 });
 
-module.exports.createCustomer = async ({ name, email, password }) => {
+module.exports.createCustomer = async ({
+  firstname,
+  lastname,
+  address,
+  zip,
+  city,
+  phone,
+  email,
+  password,
+}) => {
   const hashedPassword = await hashPassword(password);
   return db.customer.create({
-    data: { name, email, hashedPassword },
+    data: {
+      firstname,
+      lastname,
+      address,
+      zip,
+      city,
+      phone,
+      email,
+      hashedPassword,
+    },
   });
 };
 

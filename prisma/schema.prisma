@@ -26,7 +26,7 @@ model Customer {
   zip            String @db.VarChar(10)
   city           String @db.VarChar(60)
   email          String @db.VarChar(50)
-  hashedPassword String @db.VarChar(50)
+  hashedPassword String
   phone          String @db.VarChar(50)
 }
 

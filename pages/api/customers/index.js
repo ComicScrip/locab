@@ -2,36 +2,36 @@ import base from "../../../middlewares/common";
 
 import {
   createCustomer,
-  emailAlreadyExists,
+  // emailAlreadyExists,
   findAllCustomers,
-  validateUser,
+  // validateCustomer,
 } from "../../../models/customer";
 import requireAdmin from "../../../middlewares/requireAdmin";
 
 async function handlePost(req, res) {
-  const validationErrors = validateUser(req.body);
-  if (validationErrors) return res.status(422).send(validationErrors);
-  const alreadyExists = await emailAlreadyExists(req.body.email);
-  if (alreadyExists) return res.status(409).send("email déja utilisé");
+  // const validationErrors = validateCustomer(req.body);
+  // if (validationErrors) return res.status(422).send(validationErrors);
+  // const alreadyExists = await emailAlreadyExists(req.body.email);
+  // if (alreadyExists) return res.status(409).send("email déja utilisé");
   const {
     id,
-    lastname,
     firstname,
+    lastname,
     address,
     zip,
     city,
-    email,
-    hashedPassword,
     phone,
+    hashedPassword,
+    email,
   } = await createCustomer({
-    email: req.body.email,
-    lastname: req.body.lastname,
     firstname: req.body.firstname,
+    lastname: req.body.lastname,
     address: req.body.address,
     zip: req.body.zip,
     city: req.body.city,
-    password: req.body.password,
     phone: req.body.phone,
+    email: req.body.email,
+    password: req.body.password,
   });
 
   res.status(201).send({
