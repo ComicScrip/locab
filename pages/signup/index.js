@@ -31,7 +31,7 @@ export default function SignUpPage({ csrfToken }) {
       );
 
     axios
-      .post("/api/users", {
+      .post("/api/customers", {
         firstname: firstName,
         lastname: name,
         address,
@@ -90,7 +90,7 @@ export default function SignUpPage({ csrfToken }) {
                       className={styles.inputPetitSignUp}
                       type="text"
                       id="firstName"
-                      value={name}
+                      value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
                       data-cy="firstName"
                       required
@@ -115,7 +115,7 @@ export default function SignUpPage({ csrfToken }) {
                     className={styles.inputGrandSignUp}
                     type="text"
                     id="adresse"
-                    value={email}
+                    value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     data-cy="adresse"
                     required
@@ -128,7 +128,7 @@ export default function SignUpPage({ csrfToken }) {
                       className={styles.inputPetitSignUp}
                       type="text"
                       id="codePostal"
-                      value={email}
+                      value={pCode}
                       onChange={(e) => setPCode(e.target.value)}
                       data-cy="codePostal"
                       // required
@@ -140,7 +140,7 @@ export default function SignUpPage({ csrfToken }) {
                       className={styles.inputPetitSignUp}
                       type="text"
                       id="ville"
-                      value={email}
+                      value={town}
                       onChange={(e) => setTown(e.target.value)}
                       data-cy="ville"
                       // required
@@ -153,7 +153,7 @@ export default function SignUpPage({ csrfToken }) {
                     className={styles.inputGrandSignUp}
                     type="text"
                     id="telephone"
-                    value={email}
+                    value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     data-cy="telephone"
                     // required
