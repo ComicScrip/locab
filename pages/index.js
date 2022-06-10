@@ -9,8 +9,8 @@ export default function Home() {
         <title>Loca-b</title>
         <meta name="description" content="Locab" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preload" as="font"></link>
       </Head>
-
       <main className={styles.main}>
         <button onClick={() => signIn()}>Log in</button>
         <div className={styles.firstParagraphe}>
@@ -26,12 +26,12 @@ export default function Home() {
                 <input
                   className={styles.whereHome}
                   type="text"
-                  placeHolder="Où allez-vous ?"
+                  placeholder="Où allez-vous ?"
                 ></input>
                 <input
                   className={styles.whenHome}
                   type="text"
-                  placeHolder="Quand ?"
+                  placeholder="Quand ?"
                 ></input>
                 <button className={styles.buttonHome} type="submit">
                   JE CHERCHE !
@@ -43,9 +43,10 @@ export default function Home() {
           <div className={styles.designHome}>
             {" "}
             <img
-              src="/image/design1.png"
+              src="/image/design1.webp"
               alt="design"
-              className={styles.bebeHomeImage}
+              height="500vh"
+              width="500vh"
             />
           </div>
         </div>
@@ -55,9 +56,10 @@ export default function Home() {
             <div className={styles.homeSearch}>
               <div className={styles.imageContainer}>
                 <img
-                  src="/image/search.png"
+                  src="/image/Group-1.webp"
                   alt="search"
-                  className={styles.homeImage + " " + styles.searchImage}
+                  width="90px"
+                  height="90px"
                 />
               </div>
 
@@ -72,9 +74,10 @@ export default function Home() {
               <div className={styles.imageContainer}>
                 {" "}
                 <img
-                  src="/image/stroller.png"
+                  src="/image/Group-3.webp"
                   alt="stroller"
-                  className={styles.homeImage + " " + styles.strollerImage}
+                  width="90px"
+                  height="90px"
                 />
               </div>
 
@@ -88,9 +91,10 @@ export default function Home() {
             <div className={styles.homeOrder}>
               <div className={styles.imageContainer}>
                 <img
-                  src="/image/shopping.png"
+                  src="/image/Group-5.webp"
                   alt="order"
-                  className={styles.homeImage + " " + styles.orderImage}
+                  width="90px"
+                  height="90px"
                 />
               </div>
 
@@ -105,9 +109,10 @@ export default function Home() {
               <div className={styles.imageContainer}>
                 {" "}
                 <img
-                  src="/image/shipped.png"
+                  src="/image/Group-4.webp"
                   alt="ship"
-                  className={styles.homeImage + " " + styles.shipImage}
+                  width="90px"
+                  height="90px"
                 />
               </div>
 
@@ -141,11 +146,13 @@ export default function Home() {
               pour tout ça ? On ne le savait pas encore, mais Loca-b était né !
             </p>
           </div>
-          <div>
+          <div className={styles.imgCouple}>
             <img
-              src="/image/couple.png"
+              className={styles.imgcpl}
+              src="/image/couple.webp"
               alt="couple"
-              className={styles.imgCouple}
+              height="200"
+              width="200"
             />
           </div>
         </div>
