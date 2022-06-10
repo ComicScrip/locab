@@ -3,19 +3,19 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: #ebc575;
+  background-color: #ebc575;
   height: 65px;
+  font-family: "Poppins", sans-serif;
   /* height: 20vh; */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
-  font-size: 3vw;
-  z-index: 100px;
+  font-size: 2vw;
 }
 .navbar .items {
   display: flex;
   position: fixed;
   flex-direction: column;
   justify-content: center;
-  /* right: -5vw; */
+  right: -100vw;
   height: 145vh;
   padding: 1rem;
   visibility: hidden;
@@ -24,17 +24,18 @@
   font-size: 20px;
   align-items: center;
   color: #ffffff;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 .shownav .items {
   width: 100vw;
   visibility: visible;
   right: 0;
 }
+
 .divlogoIcon1 a {
   display: flex;
   position: fixed;
-  visibility: visible;
+  /* visibility: visible; */
   align-items: center;
   justify-content: center;
   margin-top: -12px;

@@ -27,7 +27,7 @@ export default function footer() {
             </div>
             <div>
               <Link href="/cgps">
-                <a>CGPS</a>
+                <a>Conditions Générales de prestation de service</a>
               </Link>
             </div>
             <div>
