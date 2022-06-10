@@ -1,5 +1,6 @@
 import ResProduct from "./ResProduct";
 import styles from "../styles/Products.module.css";
+import styles from "../styles/Reservation.module.css";
 import { useState } from "react";
 
 export default function Products({ products, onAdd, onRemove }) {
@@ -38,6 +39,9 @@ export default function Products({ products, onAdd, onRemove }) {
       {products
         .filter((product) => (product.isAvailable ? products : showAvailable))
         .filter((product) => product.category.includes(searchValue))
+        .filter((product) =>
+          product.category.includes(searchValue.toLowerCase())
+        )
         .map((product) => (
           <ResProduct
             product={product}
