@@ -4,6 +4,7 @@ import Products from "../../components/Products";
 import data from "../../components/data";
 import styles from "../../styles/Reservation.module.css";
 import { AiFillLock } from "react-icons/ai";
+import Pack from "../../components/Pack";
 
 function Panier() {
   const { products } = data;
@@ -69,6 +70,7 @@ function Panier() {
             onUpdate={onUpdate}
             onValidate={onValidate}
           />
+          <Pack />
         </div>
       </div>
     </>
