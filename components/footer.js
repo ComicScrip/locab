@@ -6,15 +6,15 @@ import styles from "../styles/headerfooter/footer.module.css";
 
 export default function footer() {
   return (
-    <div className={styles.container}>
-      <div className={styles.footer}>
+    <div className={styles.mainContainerFooter}>
+      <div className={styles.containerFooter}>
         <div className={styles.logo}>
           <div className={styles.imgLogo}>
             <Image src={Logo} alt="logo" />
           </div>
-          <p className={styles.logoText}>Bouger leger avec bébé</p>
+          <p className={styles.logoText}>Bouger léger avec bébé</p>
         </div>
-        <div>
+        <div className={styles.sectionFooter}>
           <h4 className={styles.footerTitle}>Liens utiles</h4>
           <div className={styles.links}>
             <Link href="/reservation">
@@ -37,7 +37,7 @@ export default function footer() {
             </div>
           </div>
         </div>
-        <div>
+        <div className={styles.sectionFooter}>
           <h4 className={styles.footerTitle}>Mon compte</h4>
           <div className={styles.links}>
             <div>
@@ -57,7 +57,7 @@ export default function footer() {
             </div>
           </div>
         </div>
-        <div>
+        <div className={styles.sectionFooter}>
           <h4 className={styles.footerTitle}>Nous contacter</h4>
           <div className={styles.footerContact}>&#9990; +33 6 26 85 90 46 </div>
           <div className={styles.footerContact}>&#9993; contact@loca-b.fr</div>
