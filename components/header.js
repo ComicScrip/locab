@@ -4,6 +4,7 @@
 /* eslint-disable prettier/prettier */
 import React from "react";
 import Link from "next/link";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Logo from "../public/logo/logo.png";
@@ -13,11 +14,20 @@ import LogoIcon from "../public/logo/icon_logo.png";
 import styles from "../styles/headerfooter/navbar.module.css";
 
 const Navbar = () => {
+  const [showLinks, setshowLinks] = useState(false);
+
+  const handleShowLinks = () => {
+    setshowLinks(!showLinks);
+  };
   const router = useRouter();
   const currentRoute = router.pathname;
 
   return (
-    <nav className={styles.navbar}>
+    <nav
+      className={`${styles.navbar} ${
+        showLinks ? styles.shownav : "hidden-nav"
+      }`}
+    >
       <div className={styles.logocontainer}>
         <Link href="/" className={styles.logo}>
           <a>
@@ -88,7 +98,7 @@ const Navbar = () => {
           </a>
         </Link>
       </div>
-      <div className={styles.btnBurger}>
+      <div className={styles.btnBurger} onClick={handleShowLinks}>
         <span className={styles.Burger_Line} />
       </div>
       <style jsx>{`

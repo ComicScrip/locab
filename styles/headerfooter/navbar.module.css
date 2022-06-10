@@ -8,30 +8,36 @@
   /* height: 20vh; */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   font-size: 3vw;
+  z-index: 100px;
 }
 .navbar .items {
   display: flex;
   position: fixed;
   flex-direction: column;
   justify-content: center;
-  left: 0;
-  right: 0;
-  height: 100vh;
-  padding: 2rem;
+  /* right: -5vw; */
+  height: 145vh;
+  padding: 1rem;
+  visibility: hidden;
   background-color: #ebc575;
   bottom: 0;
   font-size: 20px;
   align-items: center;
   color: #ffffff;
+  z-index: 100px;
 }
-
+.shownav .items {
+  width: 100vw;
+  visibility: visible;
+  right: 0;
+}
 .divlogoIcon1 a {
   display: flex;
   position: fixed;
   visibility: visible;
   align-items: center;
   justify-content: center;
-  margin-top: -19px;
+  margin-top: -12px;
 }
 .divlogoIcon a {
   position: fixed;
@@ -39,7 +45,7 @@
   visibility: visible;
   align-items: center;
   justify-content: center;
-  margin-top: -29px;
+  margin-top: -20px;
 }
 .divlogoIcon {
   padding-left: 70%;
@@ -60,18 +66,15 @@
   text-transform: uppercase;
   color: #ffffff;
 }
-.btnBurger {
-  display: block;
-  position: absolute;
-  cursor: pointer;
-}
+
 .btnBurger:hover {
   cursor: pointer;
 }
-.Burger_Line {
+.btnBurger {
   display: block;
-  position: absolute;
-  right: 155px;
+  position: fixed;
+  top: 2rem;
+  left: 1rem;
   cursor: pointer;
 }
 .Burger_Line:hover {
@@ -81,13 +84,12 @@
 .Burger_Line::before,
 .Burger_Line::after {
   display: block;
-  width: 45px;
-  height: 4px;
+  width: 40px;
+  height: 3px;
   position: relative;
-  border-radius: 5px;
+  border-radius: 4px;
   background: white;
 }
-
 .Burger_Line::before,
 .Burger_Line::after {
   content: "";
@@ -104,7 +106,7 @@
 @media screen and (min-width: 765px) {
   .navbar {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 70px;
@@ -125,9 +127,7 @@
     font-size: 15px;
     color: #626262;
   }
-  .btnBurger {
-    display: none;
-  }
+
   .navbar .items {
     display: initial;
     background-color: initial;
@@ -135,6 +135,11 @@
     height: initial;
     width: initial;
     flex-direction: initial;
+  }
+  .navbar ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
   }
   .logocontainer {
     display: flex;
@@ -160,7 +165,10 @@
     cursor: pointer;
   }
   .btnBurger {
+    width: 40px;
+    height: 40px;
     display: none;
+    border: none;
   }
   .divlogoIcon1 {
     display: none;

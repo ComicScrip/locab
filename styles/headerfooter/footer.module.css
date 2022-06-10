@@ -1,9 +1,8 @@
 .container {
   background: #ebc575;
   align-items: center;
-  position: fixed;
-  /* left: 0; */
   bottom: 0;
+  padding-bottom: 2rem;
 }
 .footer {
   display: flex;
@@ -12,13 +11,12 @@
 }
 .logo {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding-bottom: 18px;
 }
 .logoText {
   text-align: center;
-  position: absolute;
-  padding-top: 55px;
   font-size: x-small;
   color: white;
 }
@@ -39,23 +37,17 @@
 .footerTitle {
   color: #ffffff;
 }
-.logo {
-  margin-bottom: initial;
-}
 
 @media screen and (min-width: 768px) {
   .container {
     display: flex;
-    position: fixed;
-    position: relative;
     width: 100%;
-    flex-direction: row-reverse;
-    justify-content: space-around;
+    justify-content: center;
   }
   .footer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20vh;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
   }
   .links a,
   .footerContact {
@@ -66,9 +58,5 @@
   }
   .logoText {
     font-size: small;
-    padding-top: 50px;
-  }
-  .logo {
-    margin-bottom: 2rem;
   }
 }
