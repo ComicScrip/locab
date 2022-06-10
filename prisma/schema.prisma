@@ -20,19 +20,19 @@ model User {
 
 model Customer {
   id             Int    @id @default(autoincrement())
-  lastname       String @db.VarChar(20)
-  firstname      String @db.VarChar(20)
-  address        String @db.VarChar(100)
+  lastname       String @db.VarChar(255)
+  firstname      String @db.VarChar(255)
+  address        String @db.VarChar(255)
   zip            String @db.VarChar(10)
   city           String @db.VarChar(60)
-  email          String @db.VarChar(50)
+  email          String @db.VarChar(100)
   hashedPassword String
   phone          String @db.VarChar(50)
 }
 
 model PriceCategory {
   id           Int     @id @default(autoincrement())
-  name         String  @db.VarChar(50)
+  name         String  @db.VarChar(255)
   price        String  @db.VarChar(50)
   oneDay       Float
   twoDays      Float
@@ -58,7 +58,7 @@ model PriceCategory {
 
 model Pack {
   id                 Int             @id @default(autoincrement())
-  name               String          @db.VarChar(50)
+  name               String          @db.VarChar(255)
   discountPercentage String?         @db.VarChar(50)
   productNumber      String          @db.VarChar(50)
   priceCategoryId    PriceCategory[]
@@ -72,11 +72,11 @@ model Order {
   orderDate        DateTime         @default(now())
   paymentType      String           @db.VarChar(50)
   price            Float
-  address          String           @db.VarChar(100)
+  address          String           @db.VarChar(255)
   zip              String           @db.VarChar(10)
   city             String           @db.VarChar(60)
   startTime        DateTime
-  comment          String?          @db.VarChar(250)
+  comment          String?          @db.VarChar(255)
   premiseId        Premise[]
   delegateParentId DelegateParent[]
   partnerId        Partner[]
@@ -94,11 +94,11 @@ model ProductOnOrder {
 
 model Product {
   id              Int              @id @default(autoincrement())
-  code            String           @db.VarChar(20)
-  name            String           @db.VarChar(50)
-  brand           String           @db.VarChar(50)
+  code            String           @db.VarChar(50)
+  name            String           @db.VarChar(255)
+  brand           String           @db.VarChar(255)
   quantity        String           @db.VarChar(50)
-  description     String           @db.VarChar(250)
+  description     String           @db.VarChar(255)
   priceCategoryId PriceCategory[]
   reference       Reference        @relation(fields: [referenceId], references: [id])
   referenceId     Int
@@ -117,15 +117,15 @@ model Reference {
   id              Int       @id @default(autoincrement())
   referenceNumber String    @db.VarChar(50)
   dateOfPurchase  DateTime  @default(now())
-  comment         String?   @db.VarChar(250)
+  comment         String?   @db.VarChar(255)
   premiseId       Premise[]
   productId       Product[]
-  condition       String    @db.VarChar(50)
+  condition       String    @db.VarChar(255)
 }
 
 model Premise {
   id          Int       @id @default(autoincrement())
-  address     String    @db.VarChar(100)
+  address     String    @db.VarChar(255)
   zip         String    @db.VarChar(10)
   city        String    @db.VarChar(60)
   premiseType String    @db.VarChar(10)
@@ -137,11 +137,11 @@ model Premise {
 
 model DelegateParent {
   id               Int    @id @default(autoincrement())
-  lastname         String @db.VarChar(20)
-  firstname        String @db.VarChar(20)
+  lastname         String @db.VarChar(255)
+  firstname        String @db.VarChar(255)
   city             String @db.VarChar(60)
   phone            String @db.VarChar(20)
-  email            String @db.VarChar(50)
+  email            String @db.VarChar(100)
   productReference String @db.VarChar(50)
   order            Order  @relation(fields: [orderId], references: [id])
   orderId          Int
@@ -149,11 +149,11 @@ model DelegateParent {
 
 model Partner {
   id          Int    @id @default(autoincrement())
-  company     String @db.VarChar(100)
+  company     String @db.VarChar(255)
   city        String @db.VarChar(60)
-  contactName String @db.VarChar(50)
+  contactName String @db.VarChar(255)
   phone       String @db.VarChar(20)
-  email       String @db.VarChar(50)
+  email       String @db.VarChar(100)
   order       Order  @relation(fields: [orderId], references: [id])
   orderId     Int
 }
