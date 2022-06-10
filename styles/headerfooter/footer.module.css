@@ -1,13 +1,11 @@
 .container {
   background: #ebc575;
   align-items: center;
-  bottom: 0;
-  padding-bottom: 2rem;
+  padding: 2rem 0 2rem 0;
 }
 .footer {
   display: flex;
-  margin: auto 5px;
-  justify-content: space-between;
+  flex-direction: column-reverse;
 }
 .logo {
   display: flex;
@@ -19,6 +17,7 @@
   text-align: center;
   font-size: x-small;
   color: white;
+  margin: 0;
 }
 .socialsicons {
   display: flex;
@@ -36,6 +35,13 @@
 }
 .footerTitle {
   color: #ffffff;
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+.imgLogo {
+  height: 110px;
+  width: 120px;
 }
 
 @media screen and (min-width: 768px) {

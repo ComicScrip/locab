@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "../public/logo.png";
+import Logo from "../public/logo/logo_blanc.svg";
 import styles from "../styles/headerfooter/footer.module.css";
 
 export default function footer() {
@@ -9,8 +9,8 @@ export default function footer() {
     <div className={styles.container}>
       <div className={styles.footer}>
         <div className={styles.logo}>
-          <div>
-            <Image className={styles.imgLogo} src={Logo} alt="logo" />
+          <div className={styles.imgLogo}>
+            <Image src={Logo} alt="logo" />
           </div>
           <p className={styles.logoText}>Bouger leger avec bébé</p>
         </div>
