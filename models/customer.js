@@ -5,8 +5,8 @@ const argon2 = require("argon2");
 module.exports.emailAlreadyExists = (email) =>
   db.customer.findFirst({ where: { email } }).then((customer) => !!customer);
 
-module.exports.findByEmail = (email = "") =>
-  db.customer.findUnique({ where: { email } });
+module.exports.findByEmailCustomer = (email = "") =>
+  db.customer.findFirst({ where: { email } });
 
 module.exports.validateCustomer = (data, forUpdate = false) =>
   Joi.object({
@@ -49,10 +49,10 @@ const hashPassword = (plainPassword) =>
 
 module.exports.hashPassword = hashPassword;
 
-const verifyPassword = (plainPassword, hashedPassword) =>
+const verifyPasswordCustomer = (plainPassword, hashedPassword) =>
   argon2.verify(hashedPassword, plainPassword, hashingOptions);
 
-module.exports.verifyPassword = verifyPassword;
+module.exports.verifyPasswordCustomer = verifyPasswordCustomer;
 
 module.exports.getSafeAttributes = (customer) => ({
   ...customer,
