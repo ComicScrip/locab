@@ -33,9 +33,9 @@ Cypress.Commands.add(
     zip = "69002",
     city = "Lyon",
     email = "visitor@website.com",
-
     password = "verysecure",
     role = "visitor",
+    phone = "06 12 34 56 78",
   } = {}) => {
     cy.dataSession({
       name: "userInDb",
@@ -49,6 +49,7 @@ Cypress.Commands.add(
           city,
           email,
           password,
+          phone,
         }).then((user) => {
           return Promise.resolve(user);
         });

@@ -6,20 +6,35 @@ module.exports.emailAlreadyExists = (email) =>
   db.user.findFirst({ where: { email } }).then((user) => !!user);
 
 module.exports.findByEmail = (email = "") =>
-  db.user.findUnique({ where: { email } });
+  db.user.findUnique({ where: { email } }).catch(() => null);
 
 module.exports.validateUser = (data, forUpdate = false) =>
   Joi.object({
-    name: Joi.string()
+    firstname: Joi.string()
       .max(255)
+      .presence(forUpdate ? "optional" : "required"),
+    lastname: Joi.string()
+      .max(255)
+      .presence(forUpdate ? "optional" : "required"),
+    address: Joi.string()
+      .max(255)
+      .presence(forUpdate ? "optional" : "required"),
+    zip: Joi.string()
+      .max(10)
+      .presence(forUpdate ? "optional" : "required"),
+    city: Joi.string()
+      .max(60)
       .presence(forUpdate ? "optional" : "required"),
     email: Joi.string()
       .email()
-      .max(255)
+      .max(100)
+      .presence(forUpdate ? "optional" : "required"),
+    phone: Joi.string()
+      .max(50)
       .presence(forUpdate ? "optional" : "required"),
     password: Joi.string()
       .min(8)
-      .max(100)
+      .max(50)
       .presence(forUpdate ? "optional" : "required"),
   }).validate(data, { abortEarly: false }).error;
 
@@ -44,15 +59,33 @@ module.exports.getSafeAttributes = (user) => ({
   hashedPassword: undefined,
 });
 
-module.exports.createUser = async ({ name, email, password }) => {
+module.exports.createUser = async ({
+  firstname,
+  lastname,
+  address,
+  zip,
+  city,
+  phone,
+  email,
+  password,
+}) => {
   const hashedPassword = await hashPassword(password);
   return db.user.create({
-    data: { name, email, hashedPassword },
+    data: {
+      firstname,
+      lastname,
+      address,
+      zip,
+      city,
+      phone,
+      email,
+      hashedPassword,
+    },
   });
 };
 
 module.exports.deleteUserByEmail = async (email) => {
-  return await db.user.delete({ where: { email } });
+  return await db.user.delete({ where: { email } }).catch(() => false);
 };
 
 module.exports.deleteDB = async () => {

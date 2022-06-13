@@ -24,5 +24,7 @@ module.exports = (on, config) => {
   on("task", {
     deleteUserByEmail: User.deleteUserByEmail,
     resetDB: User.deleteDB,
+    createUser: User.createUser,
+    findUserByEmail: User.findByEmail,
   });
 };

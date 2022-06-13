@@ -11,17 +11,18 @@ datasource db {
 }
 
 model User {
-  id             Int     @id @default(autoincrement())
-  lastname       String  @db.VarChar(255)
-  firstname      String  @db.VarChar(255)
-  address        String  @db.VarChar(255)
-  zip            String  @db.VarChar(10)
-  city           String  @db.VarChar(60)
-  email          String  @db.VarChar(100)
+  id             Int         @id @default(autoincrement())
+  lastname       String      @db.VarChar(255)
+  firstname      String      @db.VarChar(255)
+  address        String      @db.VarChar(255)
+  zip            String      @db.VarChar(10)
+  city           String      @db.VarChar(60)
+  email          String      @unique @db.VarChar(100)
   hashedPassword String
-  phone          String  @db.VarChar(50)
-  role           String  @default("customer")
-  Order          Order[]
+  phone          String      @db.VarChar(50)
+  role           String      @default("customer")
+  orders         Order[]
+  cartItems      CartItems[]
 }
 
 model PriceCategory {
@@ -57,9 +58,18 @@ model Pack {
   priceCategory      PriceCategory @relation(fields: [priceCategoryId], references: [id])
 }
 
+model CartItems {
+  id         Int     @id @default(autoincrement())
+  productId  Int
+  product    Product @relation(fields: [productId], references: [id])
+  customerId Int
+  customer   User    @relation(fields: [customerId], references: [id])
+  quantity   Int     @default(1)
+}
+
 model Order {
   id               Int              @id @default(autoincrement())
-  orderNumber      String           @db.VarChar(50)
+  orderNumber      String           @unique @db.VarChar(50)
   startDate        DateTime
   startTime        DateTime
   endDate          DateTime
@@ -89,6 +99,16 @@ model ProductOnOrder {
   @@id([productId, orderId])
 }
 
+model Reference {
+  id              Int       @id @default(autoincrement())
+  referenceNumber String    @db.VarChar(50)
+  dateOfPurchase  DateTime  @default(now())
+  comment         String?   @db.VarChar(255)
+  premiseId       Premise[]
+  productId       Product[]
+  condition       String    @db.VarChar(255)
+}
+
 model Product {
   id              Int              @id @default(autoincrement())
   code            String           @db.VarChar(50)
@@ -102,6 +122,7 @@ model Product {
   referenceId     Int
   orders          ProductOnOrder[]
   pictures        ProductPicture[]
+  cartItems       CartItems[]
 }
 
 model ProductPicture {
@@ -109,16 +130,6 @@ model ProductPicture {
   url       String  @db.VarChar(50)
   productId Int
   product   Product @relation(fields: [productId], references: [id])
-}
-
-model Reference {
-  id              Int       @id @default(autoincrement())
-  referenceNumber String    @db.VarChar(50)
-  dateOfPurchase  DateTime  @default(now())
-  comment         String?   @db.VarChar(255)
-  premiseId       Premise[]
-  productId       Product[]
-  condition       String    @db.VarChar(255)
 }
 
 model Premise {
@@ -152,33 +163,3 @@ model Partner {
   email       String  @db.VarChar(100)
   orders      Order[]
 }
-
-//@db.timeStamp
-
-// model Promotion_code {
-//   id   Int    @id @default(autoincrement())
-//   code String @db.VarChar(100)
-//   reduction String @db.VarChar(50)
-//   premise String @db.VarChar(50)
-//   partner String @db.VarChar(50)
-//   product String @db.VarChar(50)
-//   price_category String @db.VarChar(50)
-// }
-
-// model Promotion {
-//   id   Int    @id @default(autoincrement())
-//   name String @db.VarChar(50)
-//   start_date DateTime
-//   end_date DateTime
-//   description String @db.VarChar(250)
-//   type String @db.VarChar(50)
-//   values String @db.VarChar(50)
-// }
-
-// model User {
-//   id   Int    @id @default(autoincrement())
-//   identifiant String @db.VarChar(50)
-//   password String @db.VarChar(50)
-//   trigger_condition String @db.VarChar(100)
-//   minimum_product_number  String @db.VarChar(50)
-// }
