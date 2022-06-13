@@ -34,13 +34,19 @@ function Panier() {
   };
 
   const onValidate = (id, newQuantity) => {
-    if (newQuantity === "" || newQuantity === "0") {
+    if (newQuantity === "") {
       setProductList((prevList) =>
         prevList.map((product) =>
           product.id === id ? { ...product, quantity: 1 } : product
         )
       );
     }
+  };
+
+  const onDelete = (id) => {
+    setProductList((prevList) =>
+      prevList.filter((product) => product.id !== id)
+    );
   };
 
   return (
@@ -69,8 +75,9 @@ function Panier() {
             productList={productList}
             onUpdate={onUpdate}
             onValidate={onValidate}
+            onDelete={onDelete}
           />
-          <Pack />
+          <Pack className={styles.packStyle} />
         </div>
       </div>
     </>
