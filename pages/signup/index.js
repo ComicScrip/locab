@@ -203,6 +203,7 @@ export default function SignUpPage({ csrfToken }) {
                   className={styles.btnInscrSignUp}
                   type="submit"
                   id="credentials-login-btn"
+                  data-cy="sign_up_button"
                 >
                   S&lsquo;INSCRIRE
                 </button>
