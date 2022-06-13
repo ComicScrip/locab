@@ -3,8 +3,8 @@ import { GiPadlock } from "react-icons/gi";
 import { BsPaypal } from "react-icons/bs";
 import { FaCcVisa } from "react-icons/fa";
 import { FaCcMastercard } from "react-icons/fa";
+import { AiOutlineCheck } from "react-icons/ai";
 import styles from "../../styles/Welcome.module.css";
-import valide from "../../public/image/valide.png";
 /* import Welcome from "../../components/recap/welcome"; */
 /* import Informations from "../..//components/recap/Informations"; */
 /* import Livraison from "../../components/recap/livraison"; */
@@ -75,7 +75,6 @@ export default function Recap() {
 
   const setStyle = {
     color: "#ACACAC",
-    background: valide.png,
   };
 
   return (
@@ -110,7 +109,7 @@ export default function Recap() {
             onClick={OpenWelcome}
             style={showWelcome ? styleDefault : setStyle}
           >
-            Bienvenue
+            {activeInformations ? <AiOutlineCheck /> : ""}Bienvenue
           </h2>
         </div>
         <div className={styles.ligne}>
@@ -194,7 +193,7 @@ export default function Recap() {
             onClick={OpenInformations}
             style={activeInformations ? styleDefault : setStyle}
           >
-            {activeLivraison ? "icon" : ""} Informations
+            {activeLivraison ? <AiOutlineCheck /> : ""} Informations
           </h2>
         </div>
         <div className={styles.ligne}>
@@ -300,7 +299,7 @@ export default function Recap() {
               onClick={OpenLivraison}
               style={activeLivraison ? styleDefault : setStyle}
             >
-              Livraison
+              {activePayment ? <AiOutlineCheck /> : ""} Livraison
             </h2>
           </div>
           <div className={styles.ligne}>
