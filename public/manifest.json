@@ -1,0 +1,28 @@
+{
+  "short_name": "Loca-B",
+  "name": "Loca-B",
+  "description": "Location de matériel puericulture",
+  "lang": "fr-FR",
+  "icons": [
+    {
+      "src": "/image/icon-144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "/image/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/image/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#222222",
+  "display": "standalone",
+  "theme_color": "#222222"
+}

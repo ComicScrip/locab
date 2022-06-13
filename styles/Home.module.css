@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "Pacifico";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Pacifico Regular"), local("Pacifico-Regular"),
+    url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2)
+      format("woff2");
+  font-display: swap;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("https://use.typekit.net/qql6zfk.css");
 
@@ -49,32 +59,6 @@
   text-align: center;
 }
 
-.homeImage {
-  border-radius: 50%;
-  width: 57px;
-  height: 57px;
-}
-
-.searchImage {
-  background-color: #ebc575;
-  padding: 10px;
-}
-
-.strollerImage {
-  background-color: #96c0c0;
-  padding: 10px;
-}
-
-.orderImage {
-  background-color: #d28f71;
-  padding: 10px;
-}
-
-.shipImage {
-  background-color: #d9c2aa;
-  padding: 10px;
-}
-
 .logoHome {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -113,9 +97,7 @@
 }
 
 .imgCouple {
-  margin: 20px;
-  width: 215px;
-  height: 216px;
+  margin: 30px;
 }
 
 .choixHome {
@@ -182,6 +164,11 @@
   .imgCouple {
     width: 50%;
     height: auto;
+  }
+
+  .imgcpl {
+    width: 35vh;
+    height: 35vh;
   }
 
   .firstParagraphe {

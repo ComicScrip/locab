@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.mainWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 0px 15px 0px 15px;
+  font-family: "Poppins", sans-serif;
+}
+
+.searchContainer,
+.productNotAvailable {
+  display: none;
+}
+
+/* COMPONENT PRODUCT */
+
+.productWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ededed;
+  border-radius: 8px;
+  padding: 30px 30px;
+  cursor: pointer;
+}
+
+.productWrapperNotAvailable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ededed;
+  background: #ededed;
+  border-radius: 8px;
+  padding: 30px 30px;
+}
+
+/* Index style */
+.main_container {
+  display: flex;
+  justify-content: center;
+}
+
+.main_title {
+  display: none;
+}
+
+.paiementSecurColor {
+  color: #66c65e;
+}
+.paiement_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.trait_gauche {
+  border-top: 2px solid #66c65e;
+  width: 70px;
+}
+.trait_droit {
+  border-top: 2px solid #66c65e;
+  width: 70px;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 700px) {
+  .mainWrapper {
+    grid-template-columns: repeat(4, 1fr);
+    margin: 40px 100px 0px 0px;
+  }
+
+  .searchContainer {
+    display: initial;
+    grid-column: 1 / 3;
+  }
+  .panier_style {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .searchBar {
+    background: #f8f8f8;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px 20px;
+  }
+
+  .productNotAvailable {
+    display: initial;
+    grid-column: 3 / 5;
+    align-self: end;
+  }
+
+  /* Media Queries index */
+  .trait_droit {
+    display: none;
+  }
+  .trait_gauche {
+    display: none;
+  }
+  .paiement_container {
+    display: none;
+  }
+  .main_title {
+    display: flex;
+    justify-content: center;
+  }
+}
