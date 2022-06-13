@@ -31,7 +31,7 @@ export default function SignUpPage({ csrfToken }) {
       );
 
     axios
-      .post("/api/customers", {
+      .post("/api/users", {
         firstname: firstName,
         lastname: name,
         address,
