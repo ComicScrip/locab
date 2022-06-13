@@ -8,6 +8,7 @@ export default function SignIn({ csrfToken }) {
         className={styles.formSignUp}
         method="post"
         action="/api/auth/callback/credentials"
+        data-cy="signin_form"
       >
         <input
           id="csrfToken"
@@ -22,7 +23,7 @@ export default function SignIn({ csrfToken }) {
             type="text"
             id="email"
             name="username"
-            data-cy="email"
+            data-cy="signin_email"
             required
           />
         </label>
@@ -33,7 +34,7 @@ export default function SignIn({ csrfToken }) {
             type="password"
             id="password"
             name="password"
-            data-cy="password"
+            data-cy="signin_password"
             required
           />
         </label>

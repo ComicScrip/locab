@@ -27,7 +27,11 @@
 Cypress.Commands.add(
   "signup",
   ({
-    name = "visitor",
+    lastname = "visitor",
+    firstname = "visitor",
+    address = "rue de la Wild",
+    zip = "69002",
+    city = "Lyon",
     email = "visitor@website.com",
 
     password = "verysecure",
@@ -38,10 +42,13 @@ Cypress.Commands.add(
       setup: () => {
         cy.task("deleteUserByEmail", email);
         cy.task("createUser", {
-          name,
+          lastname,
+          firstname,
+          address,
+          zip,
+          city,
           email,
           password,
-          role,
         }).then((user) => {
           return Promise.resolve(user);
         });

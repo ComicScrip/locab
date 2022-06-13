@@ -12,28 +12,22 @@ datasource db {
 
 model User {
   id             Int     @id @default(autoincrement())
-  name           String?
-  email          String? @unique
-  hashedPassword String?
-  role           String  @default("admin")
-}
-
-model Customer {
-  id             Int    @id @default(autoincrement())
-  lastname       String @db.VarChar(255)
-  firstname      String @db.VarChar(255)
-  address        String @db.VarChar(255)
-  zip            String @db.VarChar(10)
-  city           String @db.VarChar(60)
-  email          String @db.VarChar(100)
+  lastname       String  @db.VarChar(255)
+  firstname      String  @db.VarChar(255)
+  address        String  @db.VarChar(255)
+  zip            String  @db.VarChar(10)
+  city           String  @db.VarChar(60)
+  email          String  @db.VarChar(100)
   hashedPassword String
-  phone          String @db.VarChar(50)
+  phone          String  @db.VarChar(50)
+  role           String  @default("customer")
+  Order          Order[]
 }
 
 model PriceCategory {
-  id           Int     @id @default(autoincrement())
-  name         String  @db.VarChar(255)
-  price        String  @db.VarChar(50)
+  id           Int       @id @default(autoincrement())
+  name         String    @db.VarChar(255)
+  price        String    @db.VarChar(50)
   oneDay       Float
   twoDays      Float
   threeDays    Float
@@ -50,37 +44,39 @@ model PriceCategory {
   fourteenDays Float
   fifteenDays  Float
   sixteenDays  Float
-  product      Product @relation(fields: [productId], references: [id])
-  productId    Int
-  pack         Pack    @relation(fields: [packId], references: [id])
-  packId       Int
+  products     Product[]
+  packs        Pack[]
 }
 
 model Pack {
-  id                 Int             @id @default(autoincrement())
-  name               String          @db.VarChar(255)
-  discountPercentage String?         @db.VarChar(50)
-  productNumber      String          @db.VarChar(50)
-  priceCategoryId    PriceCategory[]
+  id                 Int           @id @default(autoincrement())
+  name               String        @db.VarChar(255)
+  discountPercentage String?       @db.VarChar(50)
+  productNumber      String        @db.VarChar(50)
+  priceCategoryId    Int
+  priceCategory      PriceCategory @relation(fields: [priceCategoryId], references: [id])
 }
 
 model Order {
   id               Int              @id @default(autoincrement())
   orderNumber      String           @db.VarChar(50)
   startDate        DateTime
+  startTime        DateTime
   endDate          DateTime
   orderDate        DateTime         @default(now())
   paymentType      String           @db.VarChar(50)
-  price            Float
-  address          String           @db.VarChar(255)
-  zip              String           @db.VarChar(10)
-  city             String           @db.VarChar(60)
-  startTime        DateTime
+  paidPrice        Float
   comment          String?          @db.VarChar(255)
-  premiseId        Premise[]
-  delegateParentId DelegateParent[]
-  partnerId        Partner[]
+  premiseId        Int              @unique
+  premise          Premise          @relation(fields: [premiseId], references: [id])
+  delegateParentId Int?
+  delegateParent   DelegateParent?  @relation(fields: [delegateParentId], references: [id])
+  partnerId        Int?             @unique
+  partner          Partner?         @relation(fields: [partnerId], references: [id])
   products         ProductOnOrder[]
+  status           String           @default("pending")
+  customerId       Int
+  customer         User             @relation(fields: [customerId], references: [id])
 }
 
 model ProductOnOrder {
@@ -88,6 +84,7 @@ model ProductOnOrder {
   productId Int
   order     Order   @relation(fields: [orderId], references: [id])
   orderId   Int
+  quantity  Int     @default(1)
 
   @@id([productId, orderId])
 }
@@ -99,7 +96,8 @@ model Product {
   brand           String           @db.VarChar(255)
   quantity        String           @db.VarChar(50)
   description     String           @db.VarChar(255)
-  priceCategoryId PriceCategory[]
+  priceCategoryId Int
+  priceCategory   PriceCategory    @relation(fields: [priceCategoryId], references: [id])
   reference       Reference        @relation(fields: [referenceId], references: [id])
   referenceId     Int
   orders          ProductOnOrder[]
@@ -129,33 +127,30 @@ model Premise {
   zip         String    @db.VarChar(10)
   city        String    @db.VarChar(60)
   premiseType String    @db.VarChar(10)
-  order       Order     @relation(fields: [orderId], references: [id])
-  orderId     Int
+  orders      Order[]
   reference   Reference @relation(fields: [referenceId], references: [id])
   referenceId Int
 }
 
 model DelegateParent {
-  id               Int    @id @default(autoincrement())
-  lastname         String @db.VarChar(255)
-  firstname        String @db.VarChar(255)
-  city             String @db.VarChar(60)
-  phone            String @db.VarChar(20)
-  email            String @db.VarChar(100)
-  productReference String @db.VarChar(50)
-  order            Order  @relation(fields: [orderId], references: [id])
-  orderId          Int
+  id               Int     @id @default(autoincrement())
+  lastname         String  @db.VarChar(255)
+  firstname        String  @db.VarChar(255)
+  city             String  @db.VarChar(60)
+  phone            String  @db.VarChar(20)
+  email            String  @db.VarChar(100)
+  productReference String  @db.VarChar(50)
+  orders           Order[]
 }
 
 model Partner {
-  id          Int    @id @default(autoincrement())
-  company     String @db.VarChar(255)
-  city        String @db.VarChar(60)
-  contactName String @db.VarChar(255)
-  phone       String @db.VarChar(20)
-  email       String @db.VarChar(100)
-  order       Order  @relation(fields: [orderId], references: [id])
-  orderId     Int
+  id          Int     @id @default(autoincrement())
+  company     String  @db.VarChar(255)
+  city        String  @db.VarChar(60)
+  contactName String  @db.VarChar(255)
+  phone       String  @db.VarChar(20)
+  email       String  @db.VarChar(100)
+  orders      Order[]
 }
 
 //@db.timeStamp
