@@ -3,42 +3,35 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #ebc575;
+  background: #ebc575;
   height: 65px;
-  font-family: "Poppins", sans-serif;
-  /* height: 20vh; */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
-  font-size: 2vw;
+  font-size: 3vw;
 }
 .navbar .items {
-  display: flex;
+  display: none;
   position: fixed;
   flex-direction: column;
   justify-content: center;
-  right: -100vw;
-  height: 145vh;
-  padding: 1rem;
-  visibility: hidden;
+  left: 0;
+  right: 0;
+  padding: 2rem;
   background-color: #ebc575;
   bottom: 0;
   font-size: 20px;
   align-items: center;
   color: #ffffff;
-  transition: all 0.5s ease-in-out;
 }
-.shownav .items {
-  width: 100vw;
-  visibility: visible;
-  right: 0;
+.navbar .items li {
+  display: inline-flex;
 }
-
 .divlogoIcon1 a {
   display: flex;
   position: fixed;
-  /* visibility: visible; */
+  visibility: visible;
   align-items: center;
   justify-content: center;
-  margin-top: -12px;
+  margin-top: -19px;
 }
 .divlogoIcon a {
   position: fixed;
@@ -46,13 +39,13 @@
   visibility: visible;
   align-items: center;
   justify-content: center;
-  margin-top: -20px;
+  margin-top: -29px;
 }
 .divlogoIcon {
   padding-left: 70%;
 }
 .divlogoIcon1 {
-  padding-right: 29%;
+  padding-right: 33%;
 }
 .logocontainer {
   display: none;
@@ -67,41 +60,70 @@
   text-transform: uppercase;
   color: #ffffff;
 }
-
+.btnBurger {
+  width: 45px;
+  display: block;
+  position: absolute;
+  left: 15px;
+  cursor: pointer;
+}
 .btnBurger:hover {
   cursor: pointer;
 }
-.btnBurger {
+.burger_Line {
   display: block;
-  position: fixed;
-  top: 2rem;
-  left: 1rem;
+  position: absolute;
   cursor: pointer;
 }
-.Burger_Line:hover {
+.burger_Line:hover {
   cursor: pointer;
 }
-.Burger_Line,
-.Burger_Line::before,
-.Burger_Line::after {
+.burger_Line,
+.burger_Line::before,
+.burger_Line::after {
   display: block;
-  width: 40px;
-  height: 3px;
+  width: 45px;
+  height: 4px;
   position: relative;
-  border-radius: 4px;
+  border-radius: 5px;
   background: white;
 }
-.Burger_Line::before,
-.Burger_Line::after {
+
+.burger_Line::before,
+.burger_Line::after {
   content: "";
   position: absolute;
-  right: 0;
+  left: 0;
 }
-.Burger_Line::before {
+.burger_Line::before {
   transform: translateY(-12px);
 }
-.Burger_Line::after {
-  transform: translateY(12px) !important;
+.burger_Line::after {
+  transform: translateY(12px);
+}
+.show_nav .items {
+  top: 65px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-arround;
+}
+.show_nav .items li {
+  padding: 2rem;
+}
+.show_nav .items a {
+  color: #fff;
+}
+.show_nav .burger_Line {
+  width: 0;
+  background: transparent;
+}
+.show_nav .burger_Line::before {
+  left: 0;
+  transform: rotate(45deg) !important;
+}
+.show_nav .burger_Line::after {
+  transform: rotate(-45deg) !important;
 }
 
 @media screen and (min-width: 765px) {
@@ -128,7 +150,15 @@
     font-size: 15px;
     color: #626262;
   }
-
+  .navbar .items .non_active {
+    color: #626262;
+  }
+  .navbar .items .active {
+    color: #ebc575;
+  }
+  .btnBurger {
+    display: none;
+  }
   .navbar .items {
     display: initial;
     background-color: initial;
@@ -136,11 +166,6 @@
     height: initial;
     width: initial;
     flex-direction: initial;
-  }
-  .navbar ul {
-    display: flex;
-    align-items: center;
-    list-style-type: none;
   }
   .logocontainer {
     display: flex;
@@ -166,10 +191,7 @@
     cursor: pointer;
   }
   .btnBurger {
-    width: 40px;
-    height: 40px;
     display: none;
-    border: none;
   }
   .divlogoIcon1 {
     display: none;

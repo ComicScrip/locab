@@ -4,8 +4,8 @@
 /* eslint-disable prettier/prettier */
 import React from "react";
 import Link from "next/link";
-import { useState } from "react";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import Image from "next/image";
 import Logo from "../public/logo/logo.png";
 import LogoText from "../public/logo/logoText.png";
@@ -15,18 +15,14 @@ import styles from "../styles/headerfooter/navbar.module.css";
 
 const Navbar = () => {
   const [showLinks, setshowLinks] = useState(false);
-
   const handleShowLinks = () => {
     setshowLinks(!showLinks);
   };
   const router = useRouter();
   const currentRoute = router.pathname;
-
   return (
     <nav
-      className={`${styles.navbar} ${
-        showLinks ? styles.shownav : "hidden-nav"
-      }`}
+      className={`${styles.navbar} ${showLinks ? styles.show_nav : "hidden"}`}
     >
       <div className={styles.logocontainer}>
         <Link href="/" className={styles.logo}>
@@ -44,36 +40,59 @@ const Navbar = () => {
           </a>
         </Link>
       </div>
-
-      {/* Debut navbar a */}
       <ul className={styles.items}>
-        <Link href="/" className={styles.navbarlink}>
-          <a className={currentRoute === "/" ? "active" : "non-active"}>
-            Accueil
-          </a>
-        </Link>
-        <Link href="aboutUs" className={styles.navbarlink}>
-          <a className={currentRoute === "/aboutUs" ? "active" : "non-active"}>
-            Qui sommes-nous ?
-          </a>
-        </Link>
-        <Link href="blog" className={styles.navbarlink}>
-          <a className={currentRoute === "/blog" ? "active" : "non-active"}>
-            Blog
-          </a>
-        </Link>
-        <Link href="contact" className={styles.navbarlink}>
-          <a className={currentRoute === "/contact" ? "active" : "non-active"}>
-            Contact
-          </a>
-        </Link>
-        <Link href="reservation" className={styles.navbarlink}>
-          <a>
-            <button className={styles.reservationButton}>Reservation</button>
-          </a>
-        </Link>
+        <li>
+          <Link href="/" className={styles.navbarlink}>
+            <a
+              className={
+                currentRoute === "/" ? styles.active : styles.non_active
+              }
+            >
+              Accueil
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="aboutUs" className={styles.navbarlink}>
+            <a
+              className={
+                currentRoute === "/aboutUs" ? styles.active : styles.non_active
+              }
+            >
+              Qui sommes-nous ?
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="blog" className={styles.navbarlink}>
+            <a
+              className={
+                currentRoute === "/blog" ? styles.active : styles.non_active
+              }
+            >
+              Blog
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="contact" className={styles.navbarlink}>
+            <a
+              className={
+                currentRoute === "/contact" ? styles.active : styles.non_active
+              }
+            >
+              Contact
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="reservation" className={styles.navbarlink}>
+            <a>
+              <button className={styles.reservationButton}>Reservation</button>
+            </a>
+          </Link>
+        </li>
       </ul>
-      {/* Fin navbar a */}
       <div className={styles.divlogoIcon1}>
         <Link href="/" className={styles.linklogotransparent}>
           <a>
@@ -99,16 +118,8 @@ const Navbar = () => {
         </Link>
       </div>
       <div className={styles.btnBurger} onClick={handleShowLinks}>
-        <span className={styles.Burger_Line} />
+        <span className={styles.burger_Line} />
       </div>
-      <style jsx>{`
-        .non-active {
-          color: #626262 !important;
-        }
-        .active {
-          color: #ebc575 !important;
-        }
-      `}</style>
     </nav>
   );
 };
