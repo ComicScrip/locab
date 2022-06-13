@@ -92,7 +92,7 @@ export default function SignUpPage({ csrfToken }) {
                       id="firstName"
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
-                      data-cy="firstName"
+                      data-cy="sign_up_firstName"
                       required
                     />
                   </label>
@@ -104,7 +104,7 @@ export default function SignUpPage({ csrfToken }) {
                       id="name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      data-cy="name"
+                      data-cy="sign_up_name"
                       required
                     />
                   </label>
@@ -117,7 +117,7 @@ export default function SignUpPage({ csrfToken }) {
                     id="adresse"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
-                    data-cy="adresse"
+                    data-cy="sign_up_adresse"
                     required
                   />
                 </label>
@@ -130,8 +130,8 @@ export default function SignUpPage({ csrfToken }) {
                       id="codePostal"
                       value={pCode}
                       onChange={(e) => setPCode(e.target.value)}
-                      data-cy="codePostal"
-                      // required
+                      data-cy="sign_up_codePostal"
+                      required
                     />
                   </label>
                   <label className={styles.labelForm} htmlFor="ville">
@@ -142,8 +142,8 @@ export default function SignUpPage({ csrfToken }) {
                       id="ville"
                       value={town}
                       onChange={(e) => setTown(e.target.value)}
-                      data-cy="ville"
-                      // required
+                      data-cy="sign_up_ville"
+                      required
                     />
                   </label>
                 </div>
@@ -155,8 +155,8 @@ export default function SignUpPage({ csrfToken }) {
                     id="telephone"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    data-cy="telephone"
-                    // required
+                    data-cy="sign_up_telephone"
+                    required
                   />
                 </label>
                 <label className={styles.labelForm} htmlFor="email">
@@ -167,7 +167,7 @@ export default function SignUpPage({ csrfToken }) {
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    data-cy="email"
+                    data-cy="sign_up_email"
                     required
                   />
                 </label>
@@ -179,7 +179,7 @@ export default function SignUpPage({ csrfToken }) {
                     id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    data-cy="password"
+                    data-cy="sign_up_password"
                     required
                   />
                 </label>
@@ -194,7 +194,7 @@ export default function SignUpPage({ csrfToken }) {
                     id="passwordConfirmation"
                     value={passwordConfirmation}
                     onChange={(e) => setPasswordConfirmation(e.target.value)}
-                    data-cy="passwordConfirmation"
+                    data-cy="sign_up_passwordConfirmation"
                     required
                   />
                 </label>
