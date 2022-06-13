@@ -68,12 +68,12 @@ export default function Recap() {
     setActivePayment(!activePayment);
   };
 
-  const style = {
-    color: "red",
+  const styleDefault = {
+    color: "#000000",
   };
 
-  const styleblack = {
-    color: "black",
+  const setStyle = {
+    color: "#ACACAC",
   };
 
   return (
@@ -104,7 +104,10 @@ export default function Recap() {
           <hr className={styles.hr} />
         </div>
         <div className={styles.h2}>
-          <h2 onClick={OpenWelcome} style={showWelcome ? styleblack : style}>
+          <h2
+            onClick={OpenWelcome}
+            style={showWelcome ? styleDefault : setStyle}
+          >
             Bienvenue
           </h2>
         </div>
@@ -185,7 +188,12 @@ export default function Recap() {
           <hr className={styles.hr} />
         </div>
         <div className={styles.h2}>
-          <h2 onClick={OpenInformations}>Informations</h2>
+          <h2
+            onClick={OpenInformations}
+            style={activeInformations ? styleDefault : setStyle}
+          >
+            Informations
+          </h2>
         </div>
         <div className={styles.ligne}>
           <hr className={styles.hr} />
@@ -286,7 +294,12 @@ export default function Recap() {
             <hr className={styles.hr} />
           </div>
           <div className={styles.h2}>
-            <h2 onClick={OpenLivraison}>Livraison</h2>
+            <h2
+              onClick={OpenLivraison}
+              style={activeLivraison ? styleDefault : setStyle}
+            >
+              Livraison
+            </h2>
           </div>
           <div className={styles.ligne}>
             <hr className={styles.hr} />
@@ -422,7 +435,12 @@ export default function Recap() {
             <hr className={styles.hr} />
           </div>
           <div className={styles.h2}>
-            <h2 onClick={OpenPayment}>Paiement</h2>
+            <h2
+              onClick={OpenPayment}
+              style={activePayment ? styleDefault : setStyle}
+            >
+              Paiement
+            </h2>
           </div>
           <div className={styles.ligne}>
             <hr className={styles.hr} />
