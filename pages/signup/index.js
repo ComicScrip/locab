@@ -27,7 +27,7 @@ export default function SignUpPage({ csrfToken }) {
 
     if (["Too weak", "Weak"].includes(passwordStrength(password).value))
       return setError(
-        "Votre mot de passe doit contenir au moins une majuscune, une minuscule, un caractère spécial et un chiffre"
+        "Votre mot de passe doit contenir au moins une majuscule, une minuscule, un caractère spécial et un chiffre"
       );
 
     axios
@@ -82,7 +82,11 @@ export default function SignUpPage({ csrfToken }) {
               <h1 className={styles.titleSignUp}>
                 Je souhaite m&lsquo;inscire
               </h1>
-              <form className={styles.formSignUp} onSubmit={handleSubmit}>
+              <form
+                className={styles.formSignUp}
+                onSubmit={handleSubmit}
+                data-cy="registerForm"
+              >
                 <div className={styles.nameLastName}>
                   <label className={styles.labelForm} htmlFor="firstName">
                     Prénom
@@ -163,7 +167,7 @@ export default function SignUpPage({ csrfToken }) {
                   Adresse mail
                   <input
                     className={styles.inputGrandSignUp}
-                    type="text"
+                    type="email"
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
