@@ -4,6 +4,7 @@ import { BsPaypal } from "react-icons/bs";
 import { FaCcVisa } from "react-icons/fa";
 import { FaCcMastercard } from "react-icons/fa";
 import styles from "../../styles/Welcome.module.css";
+import valide from "../../public/image/valide.png";
 /* import Welcome from "../../components/recap/welcome"; */
 /* import Informations from "../..//components/recap/Informations"; */
 /* import Livraison from "../../components/recap/livraison"; */
@@ -74,6 +75,7 @@ export default function Recap() {
 
   const setStyle = {
     color: "#ACACAC",
+    background: valide.png,
   };
 
   return (
@@ -192,7 +194,7 @@ export default function Recap() {
             onClick={OpenInformations}
             style={activeInformations ? styleDefault : setStyle}
           >
-            Informations
+            {activeLivraison ? "icon" : ""} Informations
           </h2>
         </div>
         <div className={styles.ligne}>
