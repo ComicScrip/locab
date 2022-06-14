@@ -22,7 +22,6 @@ export const CurrentUserContextProvider = ({ children }) => {
           signOut();
         });
     }
-    console.log(status);
   }, [status]);
   return (
     <CurrentUserContext.Provider

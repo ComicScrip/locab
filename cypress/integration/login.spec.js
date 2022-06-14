@@ -2,7 +2,7 @@ describe("without session", () => {
   const email = "visitor@website.com";
   beforeEach(() => {
     cy.task("resetDB");
-    cy.signup({ password: "verysecure1!" });
+    cy.signup({ password: "verysecure1!", firstname: "jeanne" });
     cy.visit("/signup");
   });
 
@@ -37,16 +37,11 @@ describe("without session", () => {
 });
 
 describe("with an active session", () => {
-  const email = "visitor@website.com";
   beforeEach(() => {
     cy.task("resetDB");
-    cy.signup({ password: "verysecure1!" });
-    cy.visit("/signup");
   });
   it("shows the name of the current user and a disconnect button", () => {
-    cy.get('[data-cy="signin_email"]').type(email);
-    cy.get('[data-cy="signin_password"]').type("verysecure1!");
-    cy.get('[data-cy="signin_button"]').click();
+    cy.setupCurrentUser({ firstname: "jeanne" });
     cy.visit("/signup");
     cy.contains("Vous êtes connecté en tant que jeanne");
     cy.get('[data-cy="logout_button"]').click();
@@ -59,5 +54,13 @@ describe("admin login", () => {
     cy.setupCurrentUser({ role: "admin" });
     cy.visit("/admin");
     cy.contains("Réservation");
+  });
+
+  it("cannot access back-office without an admin account", () => {
+    cy.setupCurrentUser({ role: "visitor" });
+    cy.visit("/admin");
+    cy.contains(
+      "Vous devez vous identifier en tant qu'admin pour accéder au back office"
+    );
   });
 });
