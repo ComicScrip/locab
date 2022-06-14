@@ -82,13 +82,12 @@
 .burger_Line::before,
 .burger_Line::after {
   display: block;
-  width: 45px;
+  width: 40px;
   height: 4px;
   position: relative;
   border-radius: 5px;
   background: white;
 }
-
 .burger_Line::before,
 .burger_Line::after {
   content: "";
@@ -136,13 +135,16 @@
 .show_nav .burger_Line {
   width: 0;
   background: transparent;
+  transition: 0.7s;
 }
 .show_nav .burger_Line::before {
   left: 0;
   transform: rotate(45deg) !important;
+  transition: 0.7s;
 }
 .show_nav .burger_Line::after {
   transform: rotate(-45deg) !important;
+  transition: 0.7s;
 }
 
 @media screen and (min-width: 765px) {
