@@ -1,5 +1,4 @@
 import ResProduct from "./ResProduct";
-import styles from "../styles/Products.module.css";
 import styles from "../styles/Reservation.module.css";
 import { useState } from "react";
 
