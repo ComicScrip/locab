@@ -10,5 +10,10 @@
   "livraison": "Delivery",
   "recherche": "Research",
   "choix": "Choice",
-  "commande": "Order"
+  "commande": "Order",
+  "rechercheTexte": "We take care of the delivery of childcare equipment to your place of accommodation.",
+  "choixTexte": "We take care of the delivery of childcare equipment to your place of accommodation.",
+  "commandeTexte": "We take care of the delivery of childcare equipment to your place of accommodation.",
+  "livraisonTexte": "We take care of the delivery of childcare equipment to your place of accommodation.",
+  "pourquoiLocabTexte": "Loca-b was designed as a local service, at affordable prices and impeccable customer service. We are available 7 days a week and we are on site, at your place of stay. No relay point or constraining trip to get a bed for your baby!"
 }

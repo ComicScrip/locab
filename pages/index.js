@@ -27,6 +27,7 @@ export default function Home() {
         id="language-select"
         onChange={onSelectChange}
         value={router.locale}
+        className={styles.languageBtn}
       >
         {router.locales.map((language, index) => (
           <option value={language} key={index}>
@@ -83,11 +84,7 @@ export default function Home() {
               </div>
 
               <h4 className={styles.title4}>{t("recherche")}</h4>
-              <p className={styles.paragraphHome}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                bibendum ligula at volutpat mollis. Fusce finibus mi et massa
-                varius.{" "}
-              </p>
+              <p className={styles.paragraphHome}>{t("rechercheTexte")} </p>
             </div>
             <div className={styles.homeStroller}>
               <div className={styles.imageContainer}>
@@ -101,11 +98,7 @@ export default function Home() {
               </div>
 
               <h4 className={styles.title4}>{t("choix")}</h4>
-              <p className={styles.paragraphHome}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                bibendum ligula at volutpat mollis. Fusce finibus mi et massa
-                varius.{" "}
-              </p>
+              <p className={styles.paragraphHome}>{t("choixTexte")} </p>
             </div>
             <div className={styles.homeOrder}>
               <div className={styles.imageContainer}>
@@ -118,11 +111,7 @@ export default function Home() {
               </div>
 
               <h4 className={styles.title4}>{t("commande")}</h4>
-              <p className={styles.paragraphHome}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                bibendum ligula at volutpat mollis. Fusce finibus mi et massa
-                varius.{" "}
-              </p>
+              <p className={styles.paragraphHome}>{t("commandeTexte")} </p>
             </div>
             <div className={styles.homeShip}>
               <div className={styles.imageContainer}>
@@ -136,11 +125,7 @@ export default function Home() {
               </div>
 
               <h4 className={styles.title4}>{t("livraison")}</h4>
-              <p className={styles.paragraphHome}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                bibendum ligula at volutpat mollis. Fusce finibus mi et massa
-                varius.{" "}
-              </p>
+              <p className={styles.paragraphHome}>{t("livraisonTexte")} </p>
             </div>
           </div>
         </div>
@@ -148,14 +133,7 @@ export default function Home() {
           <div className={styles.thirdTextTitle}>
             <h3 className={styles.thirdTitleHome}>{t("pourquoiLocab")}</h3>
             <p className={styles.thirdParagrapheText}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              luctus accumsan purus, nec tempor magna pharetra quis. Integer
-              eget commodo urna, eget blandit elit. Class aptent taciti sociosqu
-              ad litora torquent per conubia nostra, per inceptos himenaeos.
-              Vestibulum eu vehicula justo, sit amet sodales enim. Pellentesque
-              sem neque, porttitor eget lobortis vel, elementum eget arcu. Nam
-              tellus risus, pulvinar eget metus vel, lacinia bibendum orci.
-              Interdum et malesuada fames ac.{" "}
+              {t("pourquoiLocabTexte")}{" "}
             </p>
           </div>
           <div className={styles.imgCouple}>
