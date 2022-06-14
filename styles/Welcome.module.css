@@ -163,3 +163,7 @@
   align-items: flex-start;
   width: 50%;
 }
+
+.check {
+  color: #66c65e;
+}

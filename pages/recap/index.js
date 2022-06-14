@@ -118,7 +118,8 @@ export default function Recap() {
             onClick={OpenWelcome}
             style={showWelcome ? styleDefault : setStyle}
           >
-            {checkedWelcome ? <AiOutlineCheck /> : ""}Bienvenue
+            {checkedWelcome ? <AiOutlineCheck className={styles.check} /> : ""}
+            Bienvenue
           </h2>
         </div>
         <div className={styles.ligne}>
@@ -202,7 +203,12 @@ export default function Recap() {
             onClick={OpenInformations}
             style={activeInformations ? styleDefault : setStyle}
           >
-            {checkedInformations ? <AiOutlineCheck /> : ""} Informations
+            {checkedInformations ? (
+              <AiOutlineCheck className={styles.check} />
+            ) : (
+              ""
+            )}{" "}
+            Informations
           </h2>
         </div>
         <div className={styles.ligne}>
@@ -308,7 +314,12 @@ export default function Recap() {
               onClick={OpenLivraison}
               style={activeLivraison ? styleDefault : setStyle}
             >
-              {checkedLivraison ? <AiOutlineCheck /> : ""} Livraison
+              {checkedLivraison ? (
+                <AiOutlineCheck className={styles.check} />
+              ) : (
+                ""
+              )}{" "}
+              Livraison
             </h2>
           </div>
           <div className={styles.ligne}>
