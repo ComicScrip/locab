@@ -1,16 +1,191 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
 }
+
 
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-model Thing {
+
+model Customer {
   id   Int    @id @default(autoincrement())
-  name String
+  lastname String @db.VarChar(20)
+  firstname String @db.VarChar(20)
+  address String @db.VarChar(100)
+  zip String @db.VarChar(10)
+  city String @db.VarChar(60)
+  email String @db.VarChar(50)
+  password String @db.VarChar(50)
+  phone String @db.VarChar(50)
 }
+
+
+model PriceCategory {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(50)
+  price String @db.VarChar(50)
+  oneDay Float 
+  twoDays Float 
+  threeDays Float 
+  fourDays Float 
+  fiveDays Float 
+  sixDays Float 
+  sevenDays Float 
+  eightDays Float 
+  nineDays Float 
+  tenDays Float 
+  elevenDays Float 
+  twelveDays Float 
+  thirteenDays Float 
+  fourteenDays Float
+  fifteenDays Float 
+  sixteenDays Float 
+  product Product @relation(fields: [productId], references: [id])
+  productId Int
+  pack Pack @relation(fields: [packId], references: [id])
+  packId Int
+}
+
+
+model Pack {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(50)
+  discountPercentage String? @db.VarChar(50)
+  productNumber String @db.VarChar(50)
+  priceCategoryId PriceCategory[]
+}
+
+
+model Order {
+  id   Int    @id @default(autoincrement())
+  orderNumber String @db.VarChar(50)
+  startDate DateTime
+  endDate DateTime 
+  orderDate DateTime @default(now())
+  paymentType  String @db.VarChar(50)
+  price Float
+  address String @db.VarChar(100)
+  zip String @db.VarChar(10)
+  city String @db.VarChar(60)
+  startTime DateTime 
+  comment String? @db.VarChar(250)
+  premiseId Premise[]
+  delegateParentId DelegateParent[]
+  partnerId Partner[]
+  products ProductOnOrder[]
+}
+
+
+model ProductOnOrder{
+  product Product @relation(fields: [productId], references: [id])
+  productId Int
+  order Order @relation(fields: [orderId], references: [id])
+  orderId Int
+
+  @@id([productId, orderId])
+}
+
+
+model Product {
+  id   Int    @id @default(autoincrement())
+  code String @db.VarChar(20)
+  name String @db.VarChar(50)
+  brand String @db.VarChar(50)
+  quantity String @db.VarChar(50)
+  description String @db.VarChar(250)
+  priceCategoryId PriceCategory[]
+  reference Reference @relation(fields: [referenceId], references: [id])
+  referenceId Int
+  orders ProductOnOrder[]
+  pictures ProductPicture[]
+}
+
+model ProductPicture {
+  id   Int    @id @default(autoincrement())
+  url String @db.VarChar(50)
+  productId Int
+  product Product @relation(fields: [productId], references: [id])
+}
+
+
+model Reference {
+  id   Int    @id @default(autoincrement())
+  referenceNumber String @db.VarChar(50)
+  dateOfPurchase DateTime @default(now()) 
+  comment String? @db.VarChar(250)
+  premiseId Premise[]
+  productId Product[]
+  condition String @db.VarChar(50)
+}
+
+
+model Premise {
+  id   Int    @id @default(autoincrement())
+  address String @db.VarChar(100)
+  zip String @db.VarChar(10)
+  city String @db.VarChar(60)
+  premiseType String @db.VarChar(10)
+  order Order @relation(fields: [orderId], references: [id])
+  orderId Int
+  reference Reference @relation(fields: [referenceId], references: [id])
+  referenceId Int
+}
+
+
+model DelegateParent {
+  id   Int    @id @default(autoincrement())
+  lastname  String @db.VarChar(20)
+  firstname String @db.VarChar(20)
+  city String @db.VarChar(60)
+  phone String @db.VarChar(20)
+  email String @db.VarChar(50)
+  productReference String @db.VarChar(50)
+  order Order @relation(fields: [orderId], references: [id])
+  orderId Int
+}
+
+
+model Partner {
+  id   Int    @id @default(autoincrement())
+  company String @db.VarChar(100)
+  city String @db.VarChar(60)
+  contactName  String @db.VarChar(50)
+  phone String @db.VarChar(20)
+  email String @db.VarChar(50)
+  order Order @relation(fields: [orderId], references: [id])
+  orderId Int
+}
+
+
+//@db.timeStamp
+
+// model Promotion_code {
+//   id   Int    @id @default(autoincrement())
+//   code String @db.VarChar(100)
+//   reduction String @db.VarChar(50)
+//   premise String @db.VarChar(50)
+//   partner String @db.VarChar(50)
+//   product String @db.VarChar(50)
+//   price_category String @db.VarChar(50)
+// }
+
+// model Promotion {
+//   id   Int    @id @default(autoincrement())
+//   name String @db.VarChar(50)
+//   start_date DateTime
+//   end_date DateTime
+//   description String @db.VarChar(250)
+//   type String @db.VarChar(50)
+//   values String @db.VarChar(50)
+// }
+
+// model User {
+//   id   Int    @id @default(autoincrement())
+//   identifiant String @db.VarChar(50)
+//   password String @db.VarChar(50)
+//   trigger_condition String @db.VarChar(100)
+//   minimum_product_number  String @db.VarChar(50)
+// }

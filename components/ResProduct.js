@@ -1,12 +1,17 @@
+import { useContext } from "react";
 import styles from "../styles/Reservation.module.css";
 import Image from "next/image";
-import { useState } from "react";
+import { SelectCartContext } from "../contexts/selectCart";
 
 export default function ResProduct({ product }) {
-  const [addedToCart, setAddedToCart] = useState(false);
+  const { productList, onAdd } = useContext(SelectCartContext);
+
+  const existInCart = productList.find((x) => x.id === product.id);
 
   const handleClickProduct = () => {
-    setAddedToCart(!addedToCart);
+    if (product.isAvailable) {
+      onAdd(product);
+    }
   };
 
   return (
@@ -18,15 +23,15 @@ export default function ResProduct({ product }) {
       }
       onClick={handleClickProduct}
       style={
-        addedToCart && product.isAvailable
+        existInCart && product.isAvailable
           ? { borderColor: "#96C0C0" }
           : { borderColor: "#ededed" }
       }
     >
       <Image
-        src="/image/r_baby-stroller.png"
-        height={70}
-        width={70}
+        src={product.picture}
+        height={"70px"}
+        width={"70px"}
         alt="poussette logo"
       />
       <p style={{ textAlign: "center", margin: "20px 0px 0px 0px" }}>
