@@ -60,7 +60,7 @@ describe("admin login", () => {
     cy.setupCurrentUser({ role: "visitor" });
     cy.visit("/admin");
     cy.contains(
-      "Vous devez vous identifier en tant qu'admin pour accéder au back office"
+      "Vous devez vous identifier en tant qu‘admin pour accéder au back office"
     );
   });
 });
