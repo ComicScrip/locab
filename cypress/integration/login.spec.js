@@ -55,17 +55,8 @@ describe("with an active session", () => {
 });
 
 describe("admin login", () => {
-  const email = "admin@website.com";
-  beforeEach(() => {
-    cy.task("resetDB");
-  });
-  it.only("can access back-office with an admin account", () => {
-    cy.signup({ role: "admin" });
-    cy.visit("/admin");
-    cy.get('[data-cy="admin_logInBtn"]').click();
-    cy.get('[data-cy="signin_email"]').type(email);
-    cy.get('[data-cy="signin_password"]').type("verysecure");
-    cy.get('[data-cy="signin_button"]').click();
+  it("can access back-office with an admin account", () => {
+    cy.setupCurrentUser({ role: "admin" });
     cy.visit("/admin");
     cy.contains("Réservation");
   });

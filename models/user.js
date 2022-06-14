@@ -68,6 +68,7 @@ module.exports.createUser = async ({
   phone,
   email,
   password,
+  role,
 }) => {
   const hashedPassword = await hashPassword(password);
   return db.user.create({
@@ -80,6 +81,7 @@ module.exports.createUser = async ({
       phone,
       email,
       hashedPassword,
+      role,
     },
   });
 };

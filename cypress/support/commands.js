@@ -65,3 +65,88 @@ Cypress.Commands.add(
     });
   }
 );
+
+Cypress.Commands.add(
+  "login",
+  ({ email = "visitor@website.com", password = "verysecure" } = {}) => {
+    cy.dataSession({
+      name: "userSession",
+      setup: () => {
+        cy.request({ url: "/api/auth/csrf" })
+          .then(({ body: { csrfToken } }) =>
+            cy.request({
+              url: "/api/auth/callback/credentials",
+              method: "POST",
+              body: {
+                csrfToken,
+                username: email,
+                password,
+              },
+            })
+          )
+          .then(() => cy.getCookie("next-auth.session-token").should("exist"))
+          .then((cookie) =>
+            cy
+              .request({ url: "/api/currentUserProfile" })
+              .then(({ body: user }) => ({
+                cookie,
+                user,
+              }))
+          );
+      },
+      validate: (saved) => {
+        return cy
+          .request({
+            url: "/api/currentUserProfile",
+            failOnStatusCode: false,
+            headers: {
+              Cookie: `next-auth.session-token=${saved.cookie.value}`,
+            },
+          })
+          .then(
+            ({ body: user }) =>
+              user.email === saved.user.email && user.role === saved.user.role
+          );
+      },
+      recreate: (saved) => {
+        cy.setCookie("next-auth.session-token", saved.cookie.value);
+      },
+      dependsOn: ["userInDb"],
+    });
+  }
+);
+
+Cypress.Commands.add(
+  "setupCurrentUser",
+  ({
+    lastname = "doe",
+    firstname = "jeanne",
+    address = "rue de la Wild",
+    zip = "69002",
+    city = "Lyon",
+    email = "visitor@website.com",
+    password = "verysecure",
+    role = "admin",
+    phone = "06 12 34 56 78",
+  } = {}) => {
+    cy.dataSession({
+      name: "currentUser",
+      setup: () => {
+        cy.signup({
+          lastname,
+          firstname,
+          address,
+          zip,
+          city,
+          email,
+          password,
+          phone,
+          role,
+        });
+        cy.login({ email });
+        cy.get("@userSession").then((session) => session.user);
+      },
+      validate: () => false,
+    });
+  }
+);
