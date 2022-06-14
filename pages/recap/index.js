@@ -1,16 +1,14 @@
 import Head from "next/head";
+import styles from "../../styles/Welcome.module.css";
 import { GiPadlock } from "react-icons/gi";
 import { BsPaypal } from "react-icons/bs";
 import { FaCcVisa } from "react-icons/fa";
 import { FaCcMastercard } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
-import styles from "../../styles/Welcome.module.css";
-/* import Welcome from "../../components/recap/welcome"; */
-/* import Informations from "../..//components/recap/Informations"; */
-/* import Livraison from "../../components/recap/livraison"; */
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 
-export default function Recap() {
+export default function Recap({ csrfToken }) {
   /* PARTIE WELCOME */
 
   const [showWelcome, setShowWelcome] = useState(true);
@@ -23,6 +21,9 @@ export default function Recap() {
   const [checkedLivraison, setCheckedLivraison] = useState(false);
   const [checkedPayment, setCheckedPayment] = useState(false);
 
+  const [mail, setMail] = useState("");
+  const [password, setPassword] = useState("");
+
   /* PARTIE BIENVENUE */
 
   const HandleSubmitWelcome = (e) => {
@@ -30,6 +31,10 @@ export default function Recap() {
     setShowWelcome(!showWelcome);
     setActiveInformations(!activeInformations);
     setCheckedWelcome(!checkedWelcome);
+    signIn("credentials", { username: mail, password: password });
+    console.log(signIn);
+    setMail("");
+    setPassword("");
   };
 
   const OpenWelcome = (e) => {
@@ -132,15 +137,30 @@ export default function Recap() {
           <div className={styles.containerbloc}>
             <div className={styles.bloc1}>
               <h3>Je suis déjà inscrit</h3>
-              <form className={styles.inscrit}>
+              <form
+                className={styles.inscrit}
+                method="post"
+                action="/api/auth/callback/credentials"
+                data-cy="signin_form"
+              >
                 <div className={styles.formemail}>
+                  <input
+                    id="csrfToken"
+                    name="csrfToken"
+                    type="hidden"
+                    defaultValue={csrfToken}
+                  />
                   <label htmlFor="email" className={styles.email}>
                     Adresse mail
                   </label>
                   <input
                     className={styles.textarea}
+                    type="text"
                     id="email"
-                    type="email"
+                    name="username"
+                    data-cy="signin_email"
+                    value={mail}
+                    onChange={(e) => setMail(e.target.value)}
                     required
                   />
                 </div>
@@ -150,16 +170,22 @@ export default function Recap() {
                   </label>
                   <input
                     className={styles.textarea}
-                    id="password"
                     type="password"
+                    id="password"
+                    name="password"
+                    data-cy="signin_password"
                     required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
+
                 <div className={styles.formbutton}>
                   <button
                     type="submit"
+                    data-cy="signin_button"
                     className={styles.button}
-                    onClick={HandleSubmitWelcome}
+                    onSubmit={HandleSubmitWelcome}
                   >
                     SE CONNECTER
                   </button>
@@ -180,11 +206,7 @@ export default function Recap() {
                     required
                   />
                   <div className={styles.formbutton}>
-                    <button
-                      type="submit"
-                      className={styles.button}
-                      onClick={HandleSubmitWelcome}
-                    >
+                    <button type="submit" className={styles.button}>
                       SE CONNECTER
                     </button>
                   </div>
