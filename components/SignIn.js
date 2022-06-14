@@ -1,6 +1,9 @@
 import styles from "../styles/SignUp.module.css";
+import { useRouter } from "next/dist/client/router";
 
 export default function SignIn({ csrfToken }) {
+  const { query } = useRouter();
+
   return (
     <div>
       <h1 className={styles.titleSignUp}>Je suis déja inscrit</h1>
@@ -38,7 +41,16 @@ export default function SignIn({ csrfToken }) {
             required
           />
         </label>
-        <button className={styles.btnInscrSignUp} type="submit">
+        {query.error === "CredentialsSignin" && (
+          <p style={{ color: "#D28F71", textAlign: "center" }}>
+            Ces identifiants ne corresspondent à aucun utilisateur actif.
+          </p>
+        )}
+        <button
+          className={styles.btnInscrSignUp}
+          type="submit"
+          data-cy="signin_button"
+        >
           SE CONNECTER
         </button>
       </form>

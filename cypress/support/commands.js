@@ -27,8 +27,8 @@
 Cypress.Commands.add(
   "signup",
   ({
-    lastname = "visitor",
-    firstname = "visitor",
+    lastname = "doe",
+    firstname = "jeanne",
     address = "rue de la Wild",
     zip = "69002",
     city = "Lyon",
@@ -50,6 +50,7 @@ Cypress.Commands.add(
           email,
           password,
           phone,
+          role,
         }).then((user) => {
           return Promise.resolve(user);
         });

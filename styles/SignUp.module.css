@@ -1,58 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-.btnInscrSignUp {
-  color: white;
-  background-color: #d28f71;
-  border-radius: 10px;
-  width: 450px;
-  height: 64px;
-  border: none;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 27px;
-  cursor: pointer;
-  margin: 17px;
-}
-
-.inputGrandSignUp {
-  border-radius: 10px;
-  width: 90%;
-  height: 50px;
-  background-color: #f8f8f8;
-  border: 1px solid #b9b9b9bd;
-  display: block;
-  margin: 17px;
-}
-
-.inputPetitSignUp {
-  border-radius: 10px;
-  width: 200px;
-  height: 50px;
-  background-color: #f8f8f8;
-  border: 1px solid #b9b9b9bd;
-  display: block;
-  margin-top: 17px;
-}
-
-.labelForm {
-  margin: 17px;
-}
+/* container qui englobe les deux form */
 
 .containerForm {
   display: flex;
-  justify-content: center;
-  width: 80%;
+  width: 60%;
   margin: auto;
-}
-
-.inputPetitSignUp:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #f8f8f8 inset;
-  -webkit-text-fill-color: #f8f8f8 !important;
-}
-
-.inputGrandSignUp:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #f8f8f8 inset;
-  -webkit-text-fill-color: #f8f8f8 !important;
 }
 
 .titleContainerSignUp {
@@ -61,18 +14,80 @@
   text-align: center;
 }
 
-.titleSignUp {
-  font-size: 30px;
-  font-family: "Poppins", sans-serif;
+/* sign in style */
+
+.composantSignInContainer {
+  width: 50%;
+  margin-right: 100px;
+}
+
+/* sign up style */
+
+.inscRegisterForm {
+  width: 50%;
+}
+
+/* petits input */
+
+.inputPetitSignUp {
+  border-radius: 10px;
+  width: 100%;
+  height: 50px;
+  padding: 0px 10px;
+  background-color: #f8f8f8;
+  border: 1px solid #b9b9b9bd;
+  display: block;
+  margin: 5px 0px 17px 0px;
+}
+
+.inputPetitSignUp:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f8f8f8 inset;
 }
 
 .nameLastName,
 .codeVille {
   display: flex;
+  justify-content: space-between;
 }
 
-.composantSignInContainer {
-  margin-right: 50px;
+/* grand input */
+
+.inputGrandSignUp {
+  border-radius: 10px;
+  width: 100%;
+  height: 50px;
+  padding: 0px 10px;
+  background-color: #f8f8f8;
+  border: 1px solid #b9b9b9bd;
+  display: block;
+  margin: 5px 0px 17px 0px;
+}
+
+.inputGrandSignUp:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f8f8f8 inset;
+}
+
+.btnInscrSignUp {
+  color: white;
+  background-color: #d28f71;
+  border-radius: 10px;
+  width: 100%;
+  height: 64px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 27px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.labelForm {
+  width: 48%;
+}
+
+.titleSignUp {
+  font-size: 30px;
+  font-family: "Poppins", sans-serif;
 }
 
 @media screen and (max-width: 800px) {
@@ -84,7 +99,13 @@
   .composantSignInContainer,
   .inscRegisterForm,
   .btnInscrSignUp {
-    width: 95%;
+    width: 100%;
     margin: auto;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1024px) {
+  .containerForm {
+    width: 80%;
   }
 }

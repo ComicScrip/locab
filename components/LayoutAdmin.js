@@ -37,7 +37,9 @@ export default function LayoutAdmin({ children, pageTitle }) {
             back office
           </p>
 
-          <button onClick={() => signIn()}>Log in</button>
+          <button onClick={() => signIn()} data-cy="admin_logInBtn">
+            Log in
+          </button>
         </>
       )}
     </div>

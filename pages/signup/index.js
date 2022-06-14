@@ -52,6 +52,7 @@ export default function SignUpPage({ csrfToken }) {
         setEmail("");
         setPassword("");
         setPasswordConfirmation("");
+        setError("");
       })
       .catch((err) => {
         if (err.response && err.response.status === 409)
@@ -63,7 +64,7 @@ export default function SignUpPage({ csrfToken }) {
   return (
     <>
       {currentUserProfile ? (
-        `Vous êtes connectés en tant que ${currentUserProfile.name}`
+        `Vous êtes connecté en tant que ${currentUserProfile.firstname}`
       ) : (
         <div>
           <h1 className={styles.titleContainerSignUp}>
@@ -202,7 +203,7 @@ export default function SignUpPage({ csrfToken }) {
                     required
                   />
                 </label>
-                <p>{error}</p>
+                <p style={{ color: "#D28F71", textAlign: "center" }}>{error}</p>
                 <button
                   className={styles.btnInscrSignUp}
                   type="submit"
@@ -218,10 +219,10 @@ export default function SignUpPage({ csrfToken }) {
       )}
       {currentUserProfile && (
         <button
-          className={styles.btnInscrSignUp}
           type="submit"
           id="credentials-login-btn"
           onClick={() => signOut()}
+          data-cy="logout_button"
         >
           SE DECONNECTER
         </button>
