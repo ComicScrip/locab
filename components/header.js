@@ -41,7 +41,8 @@ const Navbar = () => {
         </Link>
       </div>
       <ul className={styles.items}>
-        <li>
+        <li className={styles.navbar_item}>
+          {/* <li className={`${styles.navbar_item} ${styles.slideInDown-1}`}> */}
           <Link href="/" className={styles.navbarlink}>
             <a
               className={
@@ -52,7 +53,7 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li>
+        <li className={styles.navbar_item}>
           <Link href="aboutUs" className={styles.navbarlink}>
             <a
               className={
@@ -63,8 +64,10 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li>
+        <li className={styles.navbar_item}>
+          {/* <li className={`${styles.navbar_item} ${styles.cacheblog}`}> */}
           <Link href="blog" className={styles.navbarlink}>
+            {/* <Link href="blog" className={`${styles.navbarlink} ${styles.cacheblog}`}> */}
             <a
               className={
                 currentRoute === "/blog" ? styles.active : styles.non_active
@@ -74,7 +77,7 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li>
+        <li className={styles.navbar_item}>
           <Link href="contact" className={styles.navbarlink}>
             <a
               className={
@@ -85,7 +88,7 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li>
+        <li className={styles.navbar_item}>
           <Link href="reservation" className={styles.navbarlink}>
             <a>
               <button className={styles.reservationButton}>Reservation</button>
