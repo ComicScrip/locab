@@ -1,12 +1,19 @@
 import "../styles/globals.css";
 import { SelectCartProvider } from "../contexts/selectCart";
+import { SessionProvider } from "next-auth/react";
+import { CurrentUserContextProvider } from "../contexts/currentUserContext";
 
-function MyApp({ Component, pageProps }) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
   return (
-    <SelectCartProvider>
-      <Component {...pageProps} />;
-    </SelectCartProvider>
+    <SessionProvider session={session}>
+      <CurrentUserContextProvider>
+        <SelectCartProvider>
+          <Component {...pageProps} />
+        </SelectCartProvider>
+      </CurrentUserContextProvider>
+    </SessionProvider>
   );
 }
-
-export default MyApp;
