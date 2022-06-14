@@ -18,12 +18,18 @@ export default function Recap() {
   const [activeLivraison, setActiveLivraison] = useState(false);
   const [activePayment, setActivePayment] = useState(false);
 
+  const [checkedWelcome, setCheckedWelcome] = useState(false);
+  const [checkedInformations, setCheckedInformations] = useState(false);
+  const [checkedLivraison, setCheckedLivraison] = useState(false);
+  const [checkedPayment, setCheckedPayment] = useState(false);
+
   /* PARTIE BIENVENUE */
 
   const HandleSubmitWelcome = (e) => {
     e.preventDefault();
     setShowWelcome(!showWelcome);
     setActiveInformations(!activeInformations);
+    setCheckedWelcome(!checkedWelcome);
   };
 
   const OpenWelcome = (e) => {
@@ -37,6 +43,7 @@ export default function Recap() {
     e.preventDefault();
     setActiveInformations(!activeInformations);
     setActiveLivraison(!activeLivraison);
+    setCheckedInformations(!checkedInformations);
   };
 
   const OpenInformations = (e) => {
@@ -50,6 +57,7 @@ export default function Recap() {
     e.preventDefault();
     setActiveLivraison(!activeLivraison);
     setActivePayment(!activePayment);
+    setCheckedLivraison(!checkedLivraison);
   };
 
   const OpenLivraison = (e) => {
@@ -62,6 +70,7 @@ export default function Recap() {
   const HandleSubmitPayment = (e) => {
     e.preventDefault();
     setActivePayment(!activePayment);
+    setCheckedPayment(!checkedPayment);
   };
 
   const OpenPayment = (e) => {
@@ -109,7 +118,7 @@ export default function Recap() {
             onClick={OpenWelcome}
             style={showWelcome ? styleDefault : setStyle}
           >
-            {activeInformations ? <AiOutlineCheck /> : ""}Bienvenue
+            {checkedWelcome ? <AiOutlineCheck /> : ""}Bienvenue
           </h2>
         </div>
         <div className={styles.ligne}>
@@ -193,7 +202,7 @@ export default function Recap() {
             onClick={OpenInformations}
             style={activeInformations ? styleDefault : setStyle}
           >
-            {activeLivraison ? <AiOutlineCheck /> : ""} Informations
+            {checkedInformations ? <AiOutlineCheck /> : ""} Informations
           </h2>
         </div>
         <div className={styles.ligne}>
@@ -299,7 +308,7 @@ export default function Recap() {
               onClick={OpenLivraison}
               style={activeLivraison ? styleDefault : setStyle}
             >
-              {activePayment ? <AiOutlineCheck /> : ""} Livraison
+              {checkedLivraison ? <AiOutlineCheck /> : ""} Livraison
             </h2>
           </div>
           <div className={styles.ligne}>
