@@ -157,7 +157,7 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       ...(await serverSideTranslations(locale, [
-        "order",
+        "cart",
         "header",
         "home",
         "connection",
