@@ -5,6 +5,7 @@ import { findByEmail, verifyPassword } from "../../../models/user";
 export default NextAuth({
   providers: [
     CredentialsProvider({
+      id: "credentials",
       name: "Credentials",
       async authorize(credentials) {
         const user = await findByEmail(credentials.username);

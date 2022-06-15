@@ -1,6 +1,6 @@
-describe("recap", () => {
+describe("signInPayment", () => {
   beforeEach(() => {
-    cy.visit("/recap");
+    cy.visit("/signInPayment");
   });
   it("can access to informations page when all inputs are field");
 });

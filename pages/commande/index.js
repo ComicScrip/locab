@@ -8,7 +8,7 @@ import { AiOutlineCheck } from "react-icons/ai";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 
-export default function Recap({ csrfToken }) {
+export default function Commande({ csrfToken }) {
   /* PARTIE WELCOME */
 
   const [showWelcome, setShowWelcome] = useState(true);
@@ -31,7 +31,13 @@ export default function Recap({ csrfToken }) {
     setShowWelcome(!showWelcome);
     setActiveInformations(!activeInformations);
     setCheckedWelcome(!checkedWelcome);
-    signIn("credentials", { username: mail, password: password });
+    signIn(
+      "credentials",
+      { username: mail, password: password },
+      {
+        redirect: false,
+      }
+    );
     console.log(signIn);
     setMail("");
     setPassword("");
@@ -174,9 +180,9 @@ export default function Recap({ csrfToken }) {
                     id="password"
                     name="password"
                     data-cy="signin_password"
-                    required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
                   />
                 </div>
 
