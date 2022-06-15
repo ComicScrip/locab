@@ -9,13 +9,23 @@ import LogoTransparent from "../public/logo/logo_transparent.png";
 import LogoIcon from "../public/logo/icon_logo.png";
 import styles from "../styles/headerfooter/navbar.module.css";
 import { signIn } from "next-auth/react";
+import { useTranslation } from "next-i18next";
 
 const Navbar = () => {
+  const { t } = useTranslation("header");
+
   const [showLinks, setshowLinks] = useState(false);
   const handleShowLinks = () => {
     setshowLinks(!showLinks);
   };
   const router = useRouter();
+  const onSelectChange = (e) => {
+    const locale = e.target.value;
+    router.push(router.asPath, router.asPath, {
+      locale,
+      scroll: false,
+    });
+  };
   const currentRoute = router.pathname;
   return (
     <nav
@@ -45,7 +55,7 @@ const Navbar = () => {
                 currentRoute === "/" ? styles.active : styles.non_active
               }
             >
-              Accueil
+              {t("accueil")}
             </a>
           </Link>
         </li>
@@ -56,7 +66,7 @@ const Navbar = () => {
                 currentRoute === "/aboutUs" ? styles.active : styles.non_active
               }
             >
-              Qui sommes-nous ?
+              {t("quisommesnous")}
             </a>
           </Link>
         </li>
@@ -96,10 +106,23 @@ const Navbar = () => {
           <div className={`${styles.navbar_item} ${styles.login}`}>
             <a>
               <button className={styles.log} onClick={() => signIn()}>
-                Se connecter
+                {t("seconnecter")}
               </button>
             </a>
           </div>
+          <select
+            name="languages"
+            id="language-select"
+            onChange={onSelectChange}
+            value={router.locale}
+            className={styles.languageBtn}
+          >
+            {router.locales.map((language, index) => (
+              <option value={language} key={index}>
+                {language === "en" ? "🇬🇧" : language === "fr" ? "🇫🇷" : null}
+              </option>
+            ))}
+          </select>
         </li>
       </ul>
       <div className={styles.divlogoIcon1}>

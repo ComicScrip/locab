@@ -63,13 +63,15 @@ export default function Cart() {
       <div className={styles.totalContainer}>
         <div className={styles.totalInfoContainer}>
           <h3>Total</h3>
-          <p>du XX/XX au XX/XX</p>
+          <p>
+            {t("du")} XX/XX {t("au")} XX/XX
+          </p>
         </div>
         <h2>{cartTotal}€</h2>
       </div>
       <div className={styles.cautionContainer}>
         <p>{t("montantdelacaution")}</p>
-        <Tooltip title="Une empreinte sera faite sur votre carte au moment du paiement. Vous ne serez pas débité">
+        <Tooltip title={t("textinfo")}>
           <IconButton>
             <ErrorIcon />
           </IconButton>

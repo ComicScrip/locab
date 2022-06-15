@@ -17,4 +17,8 @@
   .iconshead {
     display: flex !important;
   }
+
+  .divpara {
+    width: 10vw;
+  }
 }

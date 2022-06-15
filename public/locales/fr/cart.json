@@ -8,5 +8,12 @@
   "packlegerete": "Pack légèreté",
   "packconfort": "Pack confort",
   "packillimite": "Pack illimité",
-  "inputSeach": "Poussette, lit à barreaux, chaise haute..."
+  "inputSeach": "Poussette, lit à barreaux, chaise haute...",
+  "apartirde3objets": "A partir de 3 objects",
+  "apartirde5objets": "A partir de 5 objects",
+  "apartirde10objets": "A partir de 10 objects",
+  "jour": "jour",
+  "textinfo": "Une empreinte sera faite sur votre carte au moment du paiement. Vous ne serez pas débité.",
+  "du": "du",
+  "au": "au"
 }

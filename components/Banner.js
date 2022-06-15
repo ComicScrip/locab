@@ -1,7 +1,10 @@
 import Image from "next/image";
 import styles from "../styles/Banner.module.css";
+import { useTranslation } from "next-i18next";
 
 export default function Banner() {
+  const { t } = useTranslation("banner");
+
   return (
     <div className={styles.iconshead}>
       <div>
@@ -12,10 +15,7 @@ export default function Banner() {
           height={34}
         />
         <div className={styles.divpara}>
-          <p className={styles.paragraphe}>
-            Un paiement simple <br />
-            et sécurisé
-          </p>
+          <p className={styles.paragraphe}>{t("unpaiementsimplesecurise")}</p>
         </div>
       </div>
       <div>
@@ -26,19 +26,13 @@ export default function Banner() {
           height={34}
         />
         <div className={styles.divpara}>
-          <p className={styles.paragraphe}>
-            Protocole nettoyage <br />
-            renforcé
-          </p>
+          <p className={styles.paragraphe}>Protocole nettoyage renforcé</p>
         </div>
       </div>
       <div>
         <Image src="/icons/rating.png" alt="facebook" width={34} height={34} />
         <div className={styles.divpara}>
-          <p className={styles.paragraphe}>
-            Une équipe sympa <br />
-            et à l'écoute
-          </p>
+          <p className={styles.paragraphe}>Une équipe sympa et à l'écoute</p>
         </div>
       </div>
       <div>
@@ -50,8 +44,7 @@ export default function Banner() {
         />
         <div className={styles.divpara}>
           <p className={styles.paragraphe}>
-            Votre satisfaction <br />
-            est notre priorité
+            Votre satisfaction est notre priorité
           </p>
         </div>
       </div>

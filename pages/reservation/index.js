@@ -5,13 +5,17 @@ import styles from "../../styles/Reservation.module.css";
 import { AiFillLock } from "react-icons/ai";
 import Pack from "../../components/Cart/Pack";
 import Banner from "../../components/Banner";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 function SearchPage() {
+  const { t } = useTranslation("reservation");
+
   return (
     <Layout>
       <Banner />
       <div className={styles.main_title}>
-        <h1>De quoi avez-vous besoin ?</h1>
+        <h1>{t("dequoiavezvousbesoin")}</h1>
       </div>
       <div className={styles.paiement_container}>
         <div className={styles.trait_gauche}></div>
@@ -39,3 +43,19 @@ function SearchPage() {
 }
 
 export default SearchPage;
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        "cart",
+        "header",
+        "home",
+        "connection",
+        "profile",
+        "common",
+        "reservation",
+      ])),
+    },
+  };
+}

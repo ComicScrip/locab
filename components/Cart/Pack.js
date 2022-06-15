@@ -11,8 +11,8 @@ function Pack() {
           <h4 className={styles.setupMargin}>{t("packlegerete")}</h4>
         </div>
         <div className={styles.secondComponentPack}>
-          <h4 className={styles.setupMargin}>X€/jour</h4>
-          <p className={styles.setupPara}>A partir de 3 objets</p>
+          <h4 className={styles.setupMargin}>X€/{t("jour")}</h4>
+          <p className={styles.setupPara}>{t("apartirde3objets")}</p>
         </div>
       </div>
       <div className={styles.secondContainerPack}>
@@ -20,8 +20,8 @@ function Pack() {
           <h4 className={styles.setupMargin}>{t("packconfort")}</h4>
         </div>
         <div className={styles.secondComponentPack}>
-          <h4 className={styles.setupMargin}>X€/jour</h4>
-          <p className={styles.setupPara}>A partir de 5 objets</p>
+          <h4 className={styles.setupMargin}>X€/{t("jour")}</h4>
+          <p className={styles.setupPara}>{t("apartirde5objets")}</p>
         </div>
       </div>
       <div className={styles.thirdContainerPack}>
@@ -29,8 +29,8 @@ function Pack() {
           <h4 className={styles.setupMargin}>{t("packillimite")}</h4>
         </div>
         <div className={styles.secondComponentPack}>
-          <h4 className={styles.setupMargin}>X€/jour</h4>
-          <p className={styles.setupPara}>A partir de 10 objets</p>
+          <h4 className={styles.setupMargin}>X€/{t("jour")}</h4>
+          <p className={styles.setupPara}>{t("apartirde10objets")}</p>
         </div>
       </div>
     </div>

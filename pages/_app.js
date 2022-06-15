@@ -4,7 +4,7 @@ import { SelectCartProvider } from "../contexts/selectCartContext";
 import { SessionProvider } from "next-auth/react";
 import { CurrentUserContextProvider } from "../contexts/currentUserContext";
 
-function App({ Component, pageProps: { session, ...pageProps } }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
       <CurrentUserContextProvider>
@@ -16,4 +16,4 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
   );
 }
 
-export default appWithTranslation(App);
+export default appWithTranslation(MyApp);
