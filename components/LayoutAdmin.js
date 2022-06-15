@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Link from "next/link";
 import { useSession, signIn } from "next-auth/react";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
+import styles from "../styles/LayoutAdmin.module.css";
 
 export default function LayoutAdmin({ children, pageTitle }) {
   const { status } = useSession();
@@ -15,10 +15,24 @@ export default function LayoutAdmin({ children, pageTitle }) {
           <title>{pageTitle}</title>
         </Head>
         <header>
-          <nav>
-            <Link href="/admin">
-              <a>Réservation</a>
-            </Link>
+          <nav className={styles.navBackOffice}>
+            <img
+              src="/image/logo_blanc.png"
+              alt="logo"
+              className={styles.logoBackOffice}
+            />
+
+            <ul className={styles.listeNavBack}>
+              <li className={styles.eltNavBack}>Réservation</li>
+              <li className={styles.eltNavBack}>Produits</li>
+              <li className={styles.eltNavBack}>Prix</li>
+              <li className={styles.eltNavBack}>Promotion</li>
+              <li className={styles.eltNavBack}>Ambassadeurs</li>
+              <li className={styles.eltNavBack}>Partenaires</li>
+              <li className={styles.eltNavBack}>Utilisateurs</li>
+              <li className={styles.eltNavBack}>Clients</li>
+              <li className={styles.eltNavBack}>Messagerie</li>
+            </ul>
           </nav>
         </header>
         <main>{children}</main>
