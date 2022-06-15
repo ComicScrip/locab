@@ -41,7 +41,7 @@ export default function R_panier() {
               <input
                 className={styles.input}
                 size="1"
-                type="quantity"
+                type="number"
                 min="0"
                 value={product.quantity || ""}
                 onChange={(event) => onUpdate(product.id, event.target.value)}
