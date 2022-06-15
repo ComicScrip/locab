@@ -145,6 +145,7 @@ export async function getStaticProps({ locale }) {
         "connection",
         "profile",
         "common",
+        "signIn",
       ])),
     },
   };

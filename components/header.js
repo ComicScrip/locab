@@ -10,6 +10,11 @@ import LogoIcon from "../public/logo/icon_logo.png";
 import styles from "../styles/headerfooter/navbar.module.css";
 import { signIn } from "next-auth/react";
 import { useTranslation } from "next-i18next";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
 
 const Navbar = () => {
   const { t } = useTranslation("header");
@@ -60,7 +65,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li className={styles.navbar_item} onClick={handleShowLinks}>
-          <Link href="aboutUs" className={styles.navbarlink}>
+          <Link href="/aboutUs" className={styles.navbarlink}>
             <a
               className={
                 currentRoute === "/aboutUs" ? styles.active : styles.non_active
@@ -74,7 +79,7 @@ const Navbar = () => {
           className={`${styles.navbar_item} ${styles.none}`}
           onClick={handleShowLinks}
         >
-          <Link href="blog" className={styles.navbarlink}>
+          <Link href="/blog" className={styles.navbarlink}>
             <a
               className={
                 currentRoute === "/blog" ? styles.active : styles.non_active
@@ -85,7 +90,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li className={styles.navbar_item} onClick={handleShowLinks}>
-          <Link href="contact" className={styles.navbarlink}>
+          <Link href="/contact" className={styles.navbarlink}>
             <a
               className={
                 currentRoute === "/contact" ? styles.active : styles.non_active
@@ -96,7 +101,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li className={styles.navbar_item} onClick={handleShowLinks}>
-          <Link href="reservation" className={styles.navbarlink}>
+          <Link href="/reservation" className={styles.navbarlink}>
             <a>
               <button className={styles.reservationButton}>Reservation</button>
             </a>
@@ -110,19 +115,23 @@ const Navbar = () => {
               </button>
             </a>
           </div>
-          <select
-            name="languages"
-            id="language-select"
-            onChange={onSelectChange}
-            value={router.locale}
-            className={styles.languageBtn}
-          >
-            {router.locales.map((language, index) => (
-              <option value={language} key={index}>
-                {language === "en" ? "🇬🇧" : language === "fr" ? "🇫🇷" : null}
-              </option>
-            ))}
-          </select>
+          <Box sx={{ minWidth: 90 }}>
+            <FormControl fullWidth>
+              <InputLabel>Languages</InputLabel>
+              <Select
+                id="languages"
+                value={router.locale}
+                label="Languages"
+                onChange={onSelectChange}
+              >
+                {router.locales.map((language, index) => (
+                  <MenuItem value={language} key={index}>
+                    {language === "en" ? "🇬🇧" : language === "fr" ? "🇫🇷" : null}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Box>
         </li>
       </ul>
       <div className={styles.divlogoIcon1}>
