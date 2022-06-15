@@ -1,11 +1,6 @@
-/* eslint-disable prettier/prettier */
-// eslint-disable-next-line prettier/prettier
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable prettier/prettier */
 import Head from "next/head";
 import Layout from "../components/Layout";
 import styles from "../styles/Home.module.css";
-import { signIn } from "next-auth/react";
 
 export default function Home() {
   return (
@@ -18,7 +13,6 @@ export default function Home() {
           <link rel="preload" as="font"></link>
         </Head>
         <main className={styles.main}>
-          <button onClick={() => signIn()}>Log in</button>
           <div className={styles.firstParagraphe}>
             <div className={styles.titleandtextHome}>
               <h1 className={styles.title}>Voyagez léger</h1>

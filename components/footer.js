@@ -17,43 +17,43 @@ export default function footer() {
         <div className={styles.sectionFooter}>
           <h4 className={styles.footerTitle}>Liens utiles</h4>
           <div className={styles.links}>
-            <Link href="/reservation">
+            <div href="/reservation">
               <a>Réservation</a>
-            </Link>
-            <div>
-              <Link href="/mentionlegale">
+            </div>
+            <div className={styles.grise}>
+              <div href="../pages/pagesFooter/mentionlegale">
                 <a>Mentions légales</a>
-              </Link>
+              </div>
             </div>
-            <div>
-              <Link href="/cgps">
+            <div className={styles.grise}>
+              <div href="/cgps">
                 <a>Conditions générales de prestation de service</a>
-              </Link>
+              </div>
             </div>
-            <div>
-              <Link href="/pconfidentialite">
+            <div className={styles.grise}>
+              <div href="/pconfidentialite">
                 <a>Politique de confidentialité</a>
-              </Link>
+              </div>
             </div>
           </div>
         </div>
         <div className={styles.sectionFooter}>
           <h4 className={styles.footerTitle}>Mon compte</h4>
           <div className={styles.links}>
-            <div>
-              <Link href="/commandes">
+            <div className={styles.grise}>
+              <div href="#">
                 <a>Commandes</a>
-              </Link>
+              </div>
             </div>
-            <div>
-              <Link href="/Mes informations">
+            <div className={styles.grise}>
+              <div href="#">
                 <a>Mes informations personnelles</a>
-              </Link>
+              </div>
             </div>
-            <div>
-              <Link href="/newsletter">
+            <div className={styles.grise}>
+              <div href="#">
                 <a>Newsletter</a>
-              </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -61,7 +61,6 @@ export default function footer() {
           <h4 className={styles.footerTitle}>Nous contacter</h4>
           <div className={styles.footerContact}>&#9990; +33 6 26 85 90 46 </div>
           <div className={styles.footerContact}>&#9993; contact@loca-b.fr</div>
-
           <div className={styles.socialsicons}>
             <div className={styles.image}>
               <div className={styles.icons}>

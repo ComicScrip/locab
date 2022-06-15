@@ -1,7 +1,3 @@
-/* eslint-disable react/jsx-no-duplicate-props */
-/* eslint-disable no-undef */
-/* eslint-disable react/jsx-no-undef */
-/* eslint-disable prettier/prettier */
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -12,6 +8,7 @@ import LogoText from "../public/logo/logoText.png";
 import LogoTransparent from "../public/logo/logo_transparent.png";
 import LogoIcon from "../public/logo/icon_logo.png";
 import styles from "../styles/headerfooter/navbar.module.css";
+import { signIn } from "next-auth/react";
 
 const Navbar = () => {
   const [showLinks, setshowLinks] = useState(false);
@@ -41,8 +38,7 @@ const Navbar = () => {
         </Link>
       </div>
       <ul className={styles.items}>
-        <li className={styles.navbar_item}>
-          {/* <li className={`${styles.navbar_item} ${styles.slideInDown-1}`}> */}
+        <li className={styles.navbar_item} onClick={handleShowLinks}>
           <Link href="/" className={styles.navbarlink}>
             <a
               className={
@@ -53,7 +49,7 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li className={styles.navbar_item}>
+        <li className={styles.navbar_item} onClick={handleShowLinks}>
           <Link href="aboutUs" className={styles.navbarlink}>
             <a
               className={
@@ -64,10 +60,11 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li className={styles.navbar_item}>
-          {/* <li className={`${styles.navbar_item} ${styles.cacheblog}`}> */}
+        <li
+          className={`${styles.navbar_item} ${styles.none}`}
+          onClick={handleShowLinks}
+        >
           <Link href="blog" className={styles.navbarlink}>
-            {/* <Link href="blog" className={`${styles.navbarlink} ${styles.cacheblog}`}> */}
             <a
               className={
                 currentRoute === "/blog" ? styles.active : styles.non_active
@@ -77,7 +74,7 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li className={styles.navbar_item}>
+        <li className={styles.navbar_item} onClick={handleShowLinks}>
           <Link href="contact" className={styles.navbarlink}>
             <a
               className={
@@ -88,12 +85,21 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li className={styles.navbar_item}>
+        <li className={styles.navbar_item} onClick={handleShowLinks}>
           <Link href="reservation" className={styles.navbarlink}>
             <a>
               <button className={styles.reservationButton}>Reservation</button>
             </a>
           </Link>
+        </li>
+        <li className={styles.navbar_item} onClick={handleShowLinks}>
+          <div className={`${styles.navbar_item} ${styles.login}`}>
+            <a>
+              <button className={styles.log} onClick={() => signIn()}>
+                Se connecter
+              </button>
+            </a>
+          </div>
         </li>
       </ul>
       <div className={styles.divlogoIcon1}>
@@ -120,8 +126,8 @@ const Navbar = () => {
           </a>
         </Link>
       </div>
-      <div className={styles.btnBurger} onClick={handleShowLinks}>
-        <span className={styles.burger_Line} />
+      <div className={styles.btnBurger}>
+        <span className={styles.burger_Line} onClick={handleShowLinks} />
       </div>
     </nav>
   );

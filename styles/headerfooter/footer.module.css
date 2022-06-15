@@ -43,12 +43,13 @@
   margin: 0 0 1rem 0;
   font-size: 0.9rem;
 }
-
 .imgLogo {
   height: 110px;
   width: 120px;
 }
-
+.grise a {
+  opacity: 0.3;
+}
 @media screen and (min-width: 768px) {
   .mainContainerFooter {
     display: flex;
