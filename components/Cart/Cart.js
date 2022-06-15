@@ -1,13 +1,17 @@
-import React from "react";
+import { useContext } from "react";
 import Button from "@mui/material/Button";
-import styles from "../styles/Panier.module.css";
+import styles from "../../styles/Panier.module.css";
 import ErrorIcon from "@mui/icons-material/Error";
 import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Tooltip from "@mui/material/Tooltip";
 import Image from "next/image";
+import { SelectCartContext } from "../../contexts/selectCartContext";
 
-export default function R_panier({ productList, onUpdate, onValidate }) {
-  const cartTotal = productList.reduce(
+export default function Cart() {
+  const { selectProducts, onUpdate, onValidate, onDelete } =
+    useContext(SelectCartContext);
+  const cartTotal = selectProducts.reduce(
     (acc, cur) => acc + cur.price * cur.quantity,
     0
   );
@@ -17,10 +21,10 @@ export default function R_panier({ productList, onUpdate, onValidate }) {
       <div className={styles.mainTitle}>
         <h2>Votre panier</h2>
       </div>
-      {productList.length === 0 && (
+      {selectProducts.length === 0 && (
         <div className={styles.emptyShop}>Votre panier est vide</div>
       )}
-      {productList.map((product) => {
+      {selectProducts.map((product) => {
         return (
           <div key={product.id} className={styles.input_container}>
             <div className={styles.name_style}>
@@ -37,13 +41,19 @@ export default function R_panier({ productList, onUpdate, onValidate }) {
               <input
                 className={styles.input}
                 size="1"
-                type="quantity"
-                min="1"
+                type="number"
+                min="0"
                 value={product.quantity || ""}
                 onChange={(event) => onUpdate(product.id, event.target.value)}
                 onBlur={(e) => onValidate(product.id, e.target.value)}
               />
             </div>
+            <IconButton
+              aria-label="delete"
+              onClick={() => onDelete(product.id)}
+            >
+              <DeleteIcon />
+            </IconButton>
           </div>
         );
       })}
