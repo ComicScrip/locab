@@ -4,10 +4,12 @@ import Products from "../../components/Cart/Products";
 import styles from "../../styles/Reservation.module.css";
 import { AiFillLock } from "react-icons/ai";
 import Pack from "../../components/Cart/Pack";
+import Banner from "../../components/Banner";
 
-function Panier() {
+function SearchPage() {
   return (
     <Layout>
+      <Banner />
       <div className={styles.main_title}>
         <h1>De quoi avez-vous besoin ?</h1>
       </div>
@@ -36,4 +38,4 @@ function Panier() {
   );
 }
 
-export default Panier;
+export default SearchPage;

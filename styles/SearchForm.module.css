@@ -1,9 +1,6 @@
 @import url("//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
 
-.containerGlobal {
-  background: #e5e5e5;
-}
 .forms {
   display: flex;
   text-align: center;
@@ -64,15 +61,4 @@
   border-radius: 5px;
   text-transform: uppercase;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.iconshead {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: space-around;
-}
-.paragraphe {
-  font-family: "Poppins";
-  font-size: 14px;
-  padding-bottom: 5px;
 }

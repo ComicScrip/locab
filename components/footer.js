@@ -17,9 +17,9 @@ export default function footer() {
         <div className={styles.sectionFooter}>
           <h4 className={styles.footerTitle}>Liens utiles</h4>
           <div className={styles.links}>
-            <div href="/reservation">
+            <Link href="/reservation">
               <a>Réservation</a>
-            </div>
+            </Link>
             <div className={styles.grise}>
               <div href="../pages/pagesFooter/mentionlegale">
                 <a>Mentions légales</a>

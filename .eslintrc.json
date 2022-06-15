@@ -7,11 +7,6 @@
   "extends": ["next/core-web-vitals", "eslint:recommended"],
   "plugins": ["cypress", "prettier"],
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ]
+    "react/no-unescaped-entities": "off"
   }
 }

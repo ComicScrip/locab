@@ -78,7 +78,7 @@
 /* Media queries */
 @media screen and (max-width: 700px) {
   .mainContainer {
-    display: none;
+    padding: 20px;
   }
   .mainTitle {
     display: none;
