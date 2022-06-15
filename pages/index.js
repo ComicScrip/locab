@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
+import { signIn } from "next-auth/react";
 
 export default function Home() {
   const { t } = useTranslation("home");
@@ -36,6 +37,7 @@ export default function Home() {
         ))}
       </select>
       <main className={styles.main}>
+        <button onClick={() => signIn()}>Log in</button>
         <div className={styles.firstParagraphe}>
           <div className={styles.titleandtextHome}>
             <h1 className={styles.title}>{t("voyagezleger")}</h1>

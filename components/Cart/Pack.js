@@ -1,8 +1,8 @@
-import styles from "../styles/Pack.module.css";
+import styles from "../../styles/Pack.module.css";
 
 function Pack() {
   return (
-    <div>
+    <div className={styles.fullContainerPack}>
       <div className={styles.firstContainerPack}>
         <div className={styles.firstComponentPack}>
           <h4 className={styles.setupMargin}>Pack légèreté</h4>
