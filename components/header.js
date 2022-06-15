@@ -64,7 +64,11 @@ const Navbar = () => {
           className={`${styles.navbar_item} ${styles.none}`}
           onClick={handleShowLinks}
         >
-          <Link href="blog" className={styles.navbarlink}>
+          <Link
+            href="blog"
+            className={styles.navbarlink}
+            onClick={handleShowLinks}
+          >
             <a
               className={
                 currentRoute === "/blog" ? styles.active : styles.non_active
