@@ -60,6 +60,7 @@
   padding: 16px 0px;
   text-align: center;
   width: 70px;
+  margin-left: 3px;
 }
 
 .name_style {
@@ -69,7 +70,7 @@
   border: solid 4px #f8f8f8;
   width: 70%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
 }
