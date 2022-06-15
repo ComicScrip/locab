@@ -1,8 +1,10 @@
 import ResProduct from "./ResProduct";
-import styles from "../styles/Reservation.module.css";
-import { useState } from "react";
+import styles from "../../styles/Reservation.module.css";
+import { useState, useContext } from "react";
+import { SelectCartContext } from "../../contexts/selectCartContext";
 
-export default function Products({ products, onAdd, onRemove }) {
+export default function Products() {
+  const { products } = useContext(SelectCartContext);
   const [searchValue, setSearchValue] = useState("");
   const [showAvailable, setShowAvailable] = useState(true);
 
@@ -37,17 +39,12 @@ export default function Products({ products, onAdd, onRemove }) {
 
       {products
         .filter((product) => (product.isAvailable ? products : showAvailable))
+        .filter((product) => product.category.includes(searchValue))
         .filter((product) =>
           product.category.includes(searchValue.toLowerCase())
         )
         .map((product) => (
-          <ResProduct
-            product={product}
-            key={product.id}
-            id={product.id}
-            onAdd={onAdd}
-            onRemove={onRemove}
-          />
+          <ResProduct product={product} key={product.id} id={product.id} />
         ))}
     </div>
   );
