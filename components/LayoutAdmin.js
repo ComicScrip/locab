@@ -3,6 +3,15 @@ import { useSession, signIn } from "next-auth/react";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 import styles from "../styles/LayoutAdmin.module.css";
+import { FaCalendarAlt } from "react-icons/fa";
+import { AiFillEuroCircle } from "react-icons/ai";
+import { IoCube } from "react-icons/io5";
+import { MdLocalPostOffice } from "react-icons/md";
+import { RiUserSettingsFill } from "react-icons/ri";
+import { RiUserFill } from "react-icons/ri";
+import { RiUserVoiceFill } from "react-icons/ri";
+import { ImHome } from "react-icons/im";
+import { FaPercentage } from "react-icons/fa";
 
 export default function LayoutAdmin({ children, pageTitle }) {
   const { status } = useSession();
@@ -23,15 +32,40 @@ export default function LayoutAdmin({ children, pageTitle }) {
             />
 
             <ul className={styles.listeNavBack}>
-              <li className={styles.eltNavBack}>Réservation</li>
-              <li className={styles.eltNavBack}>Produits</li>
-              <li className={styles.eltNavBack}>Prix</li>
-              <li className={styles.eltNavBack}>Promotion</li>
-              <li className={styles.eltNavBack}>Ambassadeurs</li>
-              <li className={styles.eltNavBack}>Partenaires</li>
-              <li className={styles.eltNavBack}>Utilisateurs</li>
-              <li className={styles.eltNavBack}>Clients</li>
-              <li className={styles.eltNavBack}>Messagerie</li>
+              <li className={styles.eltNavBack}>
+                <FaCalendarAlt className={styles.icon} /> Réservation
+              </li>
+              <li className={styles.eltNavBack}>
+                <IoCube className={styles.icon} /> Produits
+              </li>
+              <li className={styles.eltNavBack}>
+                <AiFillEuroCircle className={styles.icon} />
+                Prix
+              </li>
+              <li className={styles.eltNavBack}>
+                <FaPercentage className={styles.icon} />
+                Promotion
+              </li>
+              <li className={styles.eltNavBack}>
+                <RiUserVoiceFill className={styles.icon} />
+                Ambassadeurs
+              </li>
+              <li className={styles.eltNavBack}>
+                <ImHome className={styles.icon} />
+                Partenaires
+              </li>
+              <li className={styles.eltNavBack}>
+                <RiUserFill className={styles.icon} />
+                Utilisateurs
+              </li>
+              <li className={styles.eltNavBack}>
+                <RiUserSettingsFill className={styles.icon} />
+                Clients
+              </li>
+              <li className={styles.eltNavBack}>
+                <MdLocalPostOffice className={styles.icon} />
+                Messagerie
+              </li>
             </ul>
           </nav>
         </header>

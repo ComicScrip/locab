@@ -7,10 +7,10 @@
 .navBackOffice {
   background-color: #4b4b4b;
   display: block;
-  width: 15%;
+  width: 17%;
   color: white;
   font-family: "Poppins", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   min-height: 100vh;
 }
 
@@ -25,11 +25,15 @@
   justify-content: center;
   margin: auto;
   padding: 10px;
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
 
 .listeNavBack {
   margin: auto;
-  padding-right: 20px;
+  padding-right: 15px;
   padding-left: 20px;
+}
+
+.icon {
+  margin-right: 5px;
 }
