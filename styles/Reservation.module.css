@@ -16,6 +16,8 @@
 /* COMPONENT PRODUCT */
 
 .productWrapper {
+  padding-top: 30px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,6 +43,8 @@
 .main_container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  margin-bottom: 50px;
 }
 
 .main_title {
@@ -112,5 +116,8 @@
   .main_title {
     display: flex;
     justify-content: center;
+  }
+  .main_container {
+    flex-direction: row;
   }
 }

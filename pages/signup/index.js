@@ -7,6 +7,7 @@ import { signOut } from "next-auth/react";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
 import styles from "../../styles/SignUp.module.css";
 import { passwordStrength } from "check-password-strength";
+import Layout from "../../components/Layout";
 
 export default function SignUpPage({ csrfToken }) {
   const [name, setName] = useState("");
@@ -62,7 +63,7 @@ export default function SignUpPage({ csrfToken }) {
   const { currentUserProfile } = useContext(CurrentUserContext);
 
   return (
-    <>
+    <Layout>
       {currentUserProfile ? (
         `Vous êtes connecté en tant que ${currentUserProfile.firstname}`
       ) : (
@@ -227,7 +228,7 @@ export default function SignUpPage({ csrfToken }) {
           SE DECONNECTER
         </button>
       )}
-    </>
+    </Layout>
   );
 }
 

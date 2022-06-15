@@ -1,0 +1,64 @@
+@import url("//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+
+.forms {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background: #fbfbfb;
+  border: 1px solid #fbfbfb;
+  height: 8vh;
+}
+.forms input[type="text"] {
+  font-family: "FontAwesome";
+  margin: auto 10px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
+  box-sizing: border-box;
+}
+.forms input[type="date"] {
+  font-family: "FontAwesome";
+  margin: auto 10px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  padding: 3px;
+  outline: none;
+  box-sizing: border-box;
+}
+.forms input::placeholder {
+  font-size: 10px;
+  color: #6d6d6d;
+}
+.forms input[type="text"] {
+  padding-left: 25px;
+}
+.forms input[type="date"] {
+  padding-left: 25px;
+}
+
+.forms input[type="date"]:nth-of-type(2) {
+  width: 115px;
+}
+.forms input[type="date"]:nth-of-type(3) {
+  width: 115px;
+}
+.button {
+  background: #d28f71;
+  border: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  height: 1.5rem;
+  margin: auto 10px;
+  cursor: pointer;
+  color: #e5e5e5;
+  font-weight: bold;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}

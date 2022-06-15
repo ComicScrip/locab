@@ -104,8 +104,15 @@
   }
 }
 
-@media screen and (min-width: 800px) and (max-width: 1024px) {
+@media screen and (max-width: 800px) {
   .containerForm {
-    width: 80%;
+    width: 90%;
+  }
+
+  .titleContainerSignUp {
+    padding-top: 30px;
+    font-size: 30px;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
   }
 }
