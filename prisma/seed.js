@@ -66,8 +66,24 @@ async function seed() {
       dateOfPurchase: "",
       comment: "",
       premiseId: "",
-      productId: "t",
+      productId: "",
       condition: "",
+    },
+  });
+  await db.product.create({
+    data: {
+      code: "",
+      name: "",
+      brand: "",
+      quantity: "",
+      description: "t",
+      priceCategoryId: "",
+      priceCategory: "",
+      reference: "",
+      referenceId: "",
+      orders: "",
+      pictures: "",
+      cartItems: "",
     },
   });
 }
