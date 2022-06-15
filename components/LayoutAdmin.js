@@ -3,15 +3,16 @@ import { useSession, signIn } from "next-auth/react";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 import styles from "../styles/LayoutAdmin.module.css";
-import { FaCalendarAlt } from "react-icons/fa";
+import { FaCalendarAlt, FaPercentage } from "react-icons/fa";
 import { AiFillEuroCircle } from "react-icons/ai";
 import { IoCube } from "react-icons/io5";
 import { MdLocalPostOffice } from "react-icons/md";
-import { RiUserSettingsFill } from "react-icons/ri";
-import { RiUserFill } from "react-icons/ri";
-import { RiUserVoiceFill } from "react-icons/ri";
+import {
+  RiUserSettingsFill,
+  RiUserFill,
+  RiUserVoiceFill,
+} from "react-icons/ri";
 import { ImHome } from "react-icons/im";
-import { FaPercentage } from "react-icons/fa";
 
 export default function LayoutAdmin({ children, pageTitle }) {
   const { status } = useSession();
