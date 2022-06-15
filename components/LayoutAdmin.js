@@ -26,9 +26,11 @@ export default function LayoutAdmin({ children, pageTitle }) {
         <header>
           <nav className={styles.navBackOffice}>
             <img
-              src="/image/logo_blanc.png"
+              src="/image/logo_blanc.webp"
               alt="logo"
               className={styles.logoBackOffice}
+              width={"150"}
+              height={"140"}
             />
 
             <ul className={styles.listeNavBack}>
