@@ -1,8 +1,8 @@
-import R_panier from "../../components/R_panier";
-import Products from "../../components/Products";
+import Cart from "../../components/Cart/Cart";
+import Products from "../../components/Cart/Products";
 import styles from "../../styles/Reservation.module.css";
 import { AiFillLock } from "react-icons/ai";
-import Pack from "../../components/Pack";
+import Pack from "../../components/Cart/Pack";
 
 function Panier() {
   return (
@@ -27,7 +27,7 @@ function Panier() {
       <div className={styles.main_container}>
         <Products />
         <div className={styles.panier_style}>
-          <R_panier />
+          <Cart />
           <Pack className={styles.packStyle} />
         </div>
       </div>

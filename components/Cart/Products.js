@@ -1,7 +1,7 @@
 import ResProduct from "./ResProduct";
-import styles from "../styles/Reservation.module.css";
+import styles from "../../styles/Reservation.module.css";
 import { useState, useContext } from "react";
-import { SelectCartContext } from "../contexts/selectCart";
+import { SelectCartContext } from "../../contexts/selectCartContext";
 
 export default function Products() {
   const { products } = useContext(SelectCartContext);

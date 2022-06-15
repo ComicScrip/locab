@@ -1,17 +1,17 @@
 import { useContext } from "react";
 import Button from "@mui/material/Button";
-import styles from "../styles/Panier.module.css";
+import styles from "../../styles/Panier.module.css";
 import ErrorIcon from "@mui/icons-material/Error";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Tooltip from "@mui/material/Tooltip";
 import Image from "next/image";
-import { SelectCartContext } from "../contexts/selectCart";
+import { SelectCartContext } from "../../contexts/selectCartContext";
 
-export default function R_panier() {
-  const { productList, onUpdate, onValidate, onDelete } =
+export default function Cart() {
+  const { selectProducts, onUpdate, onValidate, onDelete } =
     useContext(SelectCartContext);
-  const cartTotal = productList.reduce(
+  const cartTotal = selectProducts.reduce(
     (acc, cur) => acc + cur.price * cur.quantity,
     0
   );
@@ -21,10 +21,10 @@ export default function R_panier() {
       <div className={styles.mainTitle}>
         <h2>Votre panier</h2>
       </div>
-      {productList.length === 0 && (
+      {selectProducts.length === 0 && (
         <div className={styles.emptyShop}>Votre panier est vide</div>
       )}
-      {productList.map((product) => {
+      {selectProducts.map((product) => {
         return (
           <div key={product.id} className={styles.input_container}>
             <div className={styles.name_style}>

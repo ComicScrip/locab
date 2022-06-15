@@ -1,19 +1,19 @@
 import { createContext, useState } from "react";
-import data from "../components/data";
+import data from "../components/Cart/data";
 
 export const SelectCartContext = createContext();
 
 export const SelectCartProvider = ({ children }) => {
   const { products } = data;
 
-  const [productList, setProductList] = useState([]);
+  const [selectProducts, setSelectProducts] = useState([]);
 
   const onAdd = (product) => {
-    const exist = productList.find((x) => x.id === product.id);
+    const exist = selectProducts.find((x) => x.id === product.id);
     if (!exist) {
-      setProductList([...productList, { ...product, quantity: 1 }]);
+      setSelectProducts([...selectProducts, { ...product, quantity: 1 }]);
     } else {
-      setProductList(productList.filter((x) => x.id !== product.id));
+      setSelectProducts(selectProducts.filter((x) => x.id !== product.id));
     }
   };
 
@@ -22,7 +22,7 @@ export const SelectCartProvider = ({ children }) => {
     if (isNaN(quantity)) {
       quantity = 0;
     }
-    setProductList((prevList) =>
+    setSelectProducts((prevList) =>
       prevList.map((product) =>
         product.id === id ? { ...product, quantity } : product
       )
@@ -31,7 +31,7 @@ export const SelectCartProvider = ({ children }) => {
 
   const onValidate = (id, newQuantity) => {
     if (newQuantity === "") {
-      setProductList((prevList) =>
+      setSelectProducts((prevList) =>
         prevList.map((product) =>
           product.id === id ? { ...product, quantity: 1 } : product
         )
@@ -40,7 +40,7 @@ export const SelectCartProvider = ({ children }) => {
   };
 
   const onDelete = (id) => {
-    setProductList((prevList) =>
+    setSelectProducts((prevList) =>
       prevList.filter((product) => product.id !== id)
     );
   };
@@ -49,8 +49,8 @@ export const SelectCartProvider = ({ children }) => {
     <SelectCartContext.Provider
       value={{
         products,
-        productList,
-        setProductList,
+        selectProducts,
+        setSelectProducts,
         onAdd,
         onUpdate,
         onValidate,

@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { SelectCartProvider } from "../contexts/selectCart";
+import { SelectCartProvider } from "../contexts/selectCartContext";
 import { SessionProvider } from "next-auth/react";
 import { CurrentUserContextProvider } from "../contexts/currentUserContext";
 

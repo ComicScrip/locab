@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import styles from "../styles/Reservation.module.css";
+import styles from "../../styles/Reservation.module.css";
 import Image from "next/image";
-import { SelectCartContext } from "../contexts/selectCart";
+import { SelectCartContext } from "../../contexts/selectCartContext";
 
 export default function ResProduct({ product }) {
-  const { productList, onAdd } = useContext(SelectCartContext);
+  const { selectProducts, onAdd } = useContext(SelectCartContext);
 
-  const existInCart = productList.find((x) => x.id === product.id);
+  const existInCart = selectProducts.find((x) => x.id === product.id);
 
   const handleClickProduct = () => {
     if (product.isAvailable) {

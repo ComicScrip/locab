@@ -1,4 +1,4 @@
-import styles from "../styles/Pack.module.css";
+import styles from "../../styles/Pack.module.css";
 
 function Pack() {
   return (
