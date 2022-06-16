@@ -9,13 +9,17 @@ import LogoTransparent from "../public/logo/logo_transparent.png";
 import LogoIcon from "../public/logo/icon_logo.png";
 import styles from "../styles/headerfooter/navbar.module.css";
 import { signIn } from "next-auth/react";
+import { useTranslation } from "next-i18next";
 
 const Navbar = () => {
+  const { t } = useTranslation("header");
   const [showLinks, setshowLinks] = useState(false);
   const handleShowLinks = () => {
     setshowLinks(!showLinks);
   };
   const router = useRouter();
+  const inFr = router.locale === "fr";
+
   const currentRoute = router.pathname;
   return (
     <nav
@@ -45,18 +49,18 @@ const Navbar = () => {
                 currentRoute === "/" ? styles.active : styles.non_active
               }
             >
-              Accueil
+              {t("accueil")}
             </a>
           </Link>
         </li>
         <li className={styles.navbar_item} onClick={handleShowLinks}>
-          <Link href="aboutUs" className={styles.navbarlink}>
+          <Link href="/aboutUs" className={styles.navbarlink}>
             <a
               className={
                 currentRoute === "/aboutUs" ? styles.active : styles.non_active
               }
             >
-              Qui sommes-nous ?
+              {t("quisommesnous")}
             </a>
           </Link>
         </li>
@@ -64,7 +68,7 @@ const Navbar = () => {
           className={`${styles.navbar_item} ${styles.none}`}
           onClick={handleShowLinks}
         >
-          <Link href="blog" className={styles.navbarlink}>
+          <Link href="/blog" className={styles.navbarlink}>
             <a
               className={
                 currentRoute === "/blog" ? styles.active : styles.non_active
@@ -75,7 +79,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li className={styles.navbar_item} onClick={handleShowLinks}>
-          <Link href="contact" className={styles.navbarlink}>
+          <Link href="/contact" className={styles.navbarlink}>
             <a
               className={
                 currentRoute === "/contact" ? styles.active : styles.non_active
@@ -86,7 +90,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li className={styles.navbar_item} onClick={handleShowLinks}>
-          <Link href="reservation" className={styles.navbarlink}>
+          <Link href="/reservation" className={styles.navbarlink}>
             <a>
               <button className={styles.reservationButton}>Reservation</button>
             </a>
@@ -96,10 +100,19 @@ const Navbar = () => {
           <div className={`${styles.navbar_item} ${styles.login}`}>
             <a>
               <button className={styles.log} onClick={() => signIn()}>
-                Se connecter
+                {t("seconnecter")}
               </button>
             </a>
           </div>
+          <Link
+            className={styles.tradStyle}
+            href={router.asPath}
+            locale={inFr ? "en" : "fr"}
+          >
+            <a data-cy={`switch-to-${inFr ? "en" : "fr"}`}>
+              {inFr ? "🇫🇷" : "🇬🇧"}
+            </a>
+          </Link>
         </li>
       </ul>
       <div className={styles.divlogoIcon1}>

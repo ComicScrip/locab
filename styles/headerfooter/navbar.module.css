@@ -179,6 +179,9 @@
     font-size: 1vw;
     position: initial;
   }
+  .languageBtn {
+    cursor: pointer;
+  }
   .navbar .items a {
     display: initial;
     position: relative;

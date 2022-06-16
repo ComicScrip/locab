@@ -1,10 +1,13 @@
 import React from "react";
+import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../public/logo/logo_blanc.svg";
 import styles from "../styles/headerfooter/footer.module.css";
 
-export default function footer() {
+export default function Footer() {
+  const { t } = useTranslation("footer");
+
   return (
     <div className={styles.mainContainerFooter}>
       <div className={styles.containerFooter}>
@@ -12,42 +15,42 @@ export default function footer() {
           <div className={styles.imgLogo}>
             <Image src={Logo} alt="logo" />
           </div>
-          <p className={styles.logoText}>Bouger léger avec bébé</p>
+          <p className={styles.logoText}>{t("bougerlegerbebe")}</p>
         </div>
         <div className={styles.sectionFooter}>
-          <h4 className={styles.footerTitle}>Liens utiles</h4>
+          <h4 className={styles.footerTitle}>{t("liensutiles")}</h4>
           <div className={styles.links}>
             <Link href="/reservation">
-              <a>Réservation</a>
+              <a>{t("reservation")}</a>
             </Link>
             <div className={styles.grise}>
               <div href="../pages/pagesFooter/mentionlegale">
-                <a>Mentions légales</a>
+                <a>{t("mentionslegales")}</a>
               </div>
             </div>
             <div className={styles.grise}>
               <div href="/cgps">
-                <a>Conditions générales de prestation de service</a>
+                <a>{t("cg")}</a>
               </div>
             </div>
             <div className={styles.grise}>
               <div href="/pconfidentialite">
-                <a>Politique de confidentialité</a>
+                <a>{t("politiqueconfidentialite")}</a>
               </div>
             </div>
           </div>
         </div>
         <div className={styles.sectionFooter}>
-          <h4 className={styles.footerTitle}>Mon compte</h4>
+          <h4 className={styles.footerTitle}>{t("moncompte")}</h4>
           <div className={styles.links}>
             <div className={styles.grise}>
               <div href="#">
-                <a>Commandes</a>
+                <a>{t("commande")}</a>
               </div>
             </div>
             <div className={styles.grise}>
               <div href="#">
-                <a>Mes informations personnelles</a>
+                <a>{t("infoperso")}</a>
               </div>
             </div>
             <div className={styles.grise}>
@@ -58,7 +61,7 @@ export default function footer() {
           </div>
         </div>
         <div className={styles.sectionFooter}>
-          <h4 className={styles.footerTitle}>Nous contacter</h4>
+          <h4 className={styles.footerTitle}>{t("nouscontacter")}</h4>
           <div className={styles.footerContact}>&#9990; +33 6 26 85 90 46 </div>
           <div className={styles.footerContact}>&#9993; contact@loca-b.fr</div>
           <div className={styles.socialsicons}>

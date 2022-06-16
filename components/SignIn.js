@@ -1,12 +1,14 @@
 import styles from "../styles/SignUp.module.css";
 import { useRouter } from "next/dist/client/router";
+import { useTranslation } from "next-i18next";
 
 export default function SignIn({ csrfToken }) {
   const { query } = useRouter();
+  const { t } = useTranslation("signIn");
 
   return (
     <div>
-      <h1 className={styles.titleSignUp}>Je suis déja inscrit</h1>
+      <h1 className={styles.titleSignUp}>{t("jesuisdejainscrit")}</h1>
       <form
         className={styles.formSignUp}
         method="post"
@@ -20,7 +22,7 @@ export default function SignIn({ csrfToken }) {
           defaultValue={csrfToken}
         />
         <label htmlFor="email">
-          Adresse mail
+          {t("adressemail")}
           <input
             className={styles.inputGrandSignUp}
             type="text"
@@ -31,7 +33,7 @@ export default function SignIn({ csrfToken }) {
           />
         </label>
         <label htmlFor="password">
-          Mot de passe{" "}
+          {t("motdepasse")}{" "}
           <input
             className={styles.inputGrandSignUp}
             type="password"
@@ -43,7 +45,7 @@ export default function SignIn({ csrfToken }) {
         </label>
         {query.error === "CredentialsSignin" && (
           <p style={{ color: "#D28F71", textAlign: "center" }}>
-            Ces identifiants ne corresspondent à aucun utilisateur actif.
+            {t("idpasbon")}
           </p>
         )}
         <button
@@ -51,7 +53,7 @@ export default function SignIn({ csrfToken }) {
           type="submit"
           data-cy="signin_button"
         >
-          SE CONNECTER
+          {t("seconnecter")}
         </button>
       </form>
     </div>
