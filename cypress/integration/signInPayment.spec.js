@@ -12,3 +12,9 @@ describe("signInPayment", () => {
     cy.url().should("include", "/commande");
   });
 });
+
+it("can access to the signup page", () => {
+  cy.visit("/signInPayment");
+  cy.get('[data-cy="continue_button"]').click();
+  cy.url().should("include", "/signup");
+});

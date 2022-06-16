@@ -2,21 +2,37 @@ import styles from "../styles/Welcome.module.css";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import Layout from "../components/Layout";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 export default function SignInPayment({ csrfToken }) {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
 
+  const router = useRouter();
+
   const HandleSubmitWelcome = (e) => {
     e.preventDefault();
     signIn("credentials", {
-      username: "admin@admin.com",
+      username: "admin@locab.com",
       password: "locablocab",
       callbackUrl: `${window.location.origin}/commande`,
     });
-
     setMail("");
     setPassword("");
+  };
+
+  const HandleSubmitIncription = (e) => {
+    e.preventDefault();
+    router.push("/signup");
+  };
+
+  const HandleSubmitWithoutInscription = () => {
+    axios
+      .post("/api/users", {
+        mail,
+      })
+      .then(() => router.push("/commande"));
   };
 
   return (
@@ -83,10 +99,10 @@ export default function SignInPayment({ csrfToken }) {
 
               <div className={styles.formbutton}>
                 <button
-                  type="submit"
+                  type="button"
                   data-cy="signin_button"
                   className={styles.button}
-                  onSubmit={HandleSubmitWelcome}
+                  onClick={HandleSubmitWelcome}
                 >
                   SE CONNECTER
                 </button>
@@ -94,7 +110,7 @@ export default function SignInPayment({ csrfToken }) {
             </form>
           </div>
           <div className={styles.bloc2}>
-            <h3>Je comande sans inscription</h3>
+            <h3>Je commande sans inscription</h3>
             <form className={styles.inscrit}>
               <div className={styles.forminscription}>
                 <label htmlFor="email" className={styles.email}>
@@ -102,13 +118,17 @@ export default function SignInPayment({ csrfToken }) {
                 </label>
                 <input
                   className={styles.textarea}
+                  type="text"
                   id="email"
-                  type="email"
                   required
                 />
                 <div className={styles.formbutton}>
-                  <button type="submit" className={styles.button}>
-                    SE CONNECTER
+                  <button
+                    type="onSubmit"
+                    className={styles.button}
+                    onSubmit={HandleSubmitWithoutInscription}
+                  >
+                    CONTINUER
                   </button>
                 </div>
               </div>
@@ -120,7 +140,12 @@ export default function SignInPayment({ csrfToken }) {
           <form className={styles.isncrit}>
             <div className={styles.forminscription}>
               <div className={styles.formbutton}>
-                <button type="submit" className={styles.button}>
+                <button
+                  type="submit"
+                  className={styles.button}
+                  data-cy="continue_button"
+                  onClick={HandleSubmitIncription}
+                >
                   INSCRIPTION
                 </button>
               </div>
