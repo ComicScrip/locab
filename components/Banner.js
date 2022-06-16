@@ -1,10 +1,7 @@
 import Image from "next/image";
 import styles from "../styles/Banner.module.css";
-import { useTranslation } from "next-i18next";
 
 export default function Banner() {
-  const { t } = useTranslation("banner");
-
   return (
     <div className={styles.iconshead}>
       <div>
@@ -15,7 +12,7 @@ export default function Banner() {
           height={34}
         />
         <div className={styles.divpara}>
-          <p className={styles.paragraphe}>{t("unpaiementsimplesecurise")}</p>
+          <p className={styles.paragraphe}>Protocole nettoyage renforcé</p>
         </div>
       </div>
       <div>

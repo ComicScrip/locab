@@ -117,7 +117,7 @@ const Navbar = () => {
           </div>
           <Box sx={{ minWidth: 90 }}>
             <FormControl fullWidth>
-              <InputLabel>Languages</InputLabel>
+              <InputLabel>{t("langage")}</InputLabel>
               <Select
                 id="languages"
                 value={router.locale}
