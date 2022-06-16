@@ -167,3 +167,9 @@
 .check {
   color: #66c65e;
 }
+
+.forminscrire {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
