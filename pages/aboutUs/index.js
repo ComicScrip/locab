@@ -5,7 +5,7 @@ import Banner from "../../components/Banner";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
-export default function AboutUS() {
+export default function AboutUs() {
   const { t } = useTranslation("aboutus");
 
   return (
