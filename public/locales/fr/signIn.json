@@ -3,5 +3,17 @@
   "adressemail": "Adresse email",
   "motdepasse": "Mot de passe",
   "idpasbon": "Ces identifiants ne correspondent à aucun utilisateur actif.",
-  "seconnecter": "SE CONNECTER"
+  "seconnecter": "SE CONNECTER",
+  "voulezvousvousconnecter": "Voulez-vous vous connecter ?",
+  "jesouhaiteminscrire": "Je souhaite m'inscrire",
+  "nom": "Nom",
+  "prenom": "Prénom",
+  "adresse": "adresse",
+  "cp": "Code postale",
+  "ville": "Ville",
+  "Numérodetelephone": "Numéro de téléphone",
+  "email": "Adresse mail",
+  "confirmezvotremotdepasse": "Confirmez votre mot de passe",
+  "sinscrire": "S'INSCRIRE",
+  "deconnecter": "SE DECONNECTER"
 }
