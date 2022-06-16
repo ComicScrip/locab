@@ -58,6 +58,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding-top: 30px;
 }
 .trait_gauche {
   border-top: 2px solid #66c65e;

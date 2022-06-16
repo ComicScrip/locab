@@ -8,34 +8,33 @@ import Banner from "../../components/Banner";
 
 function SearchPage() {
   return (
-    <Layout>
+    <Layout pageTitle="Location de matériel puériculture Lyon — Loca-b">
       <Banner />
-      <main>
-        <div className={styles.main_title}>
-          <h1>De quoi avez-vous besoin ?</h1>
+
+      <div className={styles.main_title}>
+        <h1>De quoi avez-vous besoin ?</h1>
+      </div>
+      <div className={styles.paiement_container}>
+        <div className={styles.trait_gauche}></div>
+        <p className={styles.paiementSecurColor}>
+          <AiFillLock
+            style={{
+              color: "#66c65e",
+              verticalAlign: "middle",
+              marginTop: "-4px",
+            }}
+          />{" "}
+          Paiement sécurisé
+        </p>
+        <div className={styles.trait_droit}></div>
+      </div>
+      <div className={styles.main_container}>
+        <Products />
+        <div className={styles.panier_style}>
+          <Cart />
+          <Pack className={styles.packStyle} />
         </div>
-        <div className={styles.paiement_container}>
-          <div className={styles.trait_gauche}></div>
-          <p className={styles.paiementSecurColor}>
-            <AiFillLock
-              style={{
-                color: "#66c65e",
-                verticalAlign: "middle",
-                marginTop: "-4px",
-              }}
-            />{" "}
-            Paiement sécurisé
-          </p>
-          <div className={styles.trait_droit}></div>
-        </div>
-        <div className={styles.main_container}>
-          <Products />
-          <div className={styles.panier_style}>
-            <Cart />
-            <Pack className={styles.packStyle} />
-          </div>
-        </div>
-      </main>
+      </div>
     </Layout>
   );
 }
