@@ -8,6 +8,7 @@ import { CurrentUserContext } from "../../contexts/currentUserContext";
 import styles from "../../styles/SignUp.module.css";
 import { passwordStrength } from "check-password-strength";
 import Layout from "../../components/Layout";
+import Banner from "../../components/Banner";
 
 export default function SignUpPage({ csrfToken }) {
   const [name, setName] = useState("");
@@ -63,11 +64,12 @@ export default function SignUpPage({ csrfToken }) {
   const { currentUserProfile } = useContext(CurrentUserContext);
 
   return (
-    <Layout>
+    <Layout pageTitle="Souhaitez-vous vous connecter ?">
       {currentUserProfile ? (
         `Vous êtes connecté en tant que ${currentUserProfile.firstname}`
       ) : (
         <div>
+          <Banner />
           <h1 className={styles.titleContainerSignUp}>
             Souhaitez-vous vous connecter ?
           </h1>

@@ -6,6 +6,7 @@
   display: flex;
   width: 60%;
   margin: auto;
+  padding-bottom: 120px;
 }
 
 .titleContainerSignUp {
@@ -37,7 +38,7 @@
   background-color: #f8f8f8;
   border: 1px solid #b9b9b9bd;
   display: block;
-  margin: 5px 0px 17px 0px;
+  margin: 5px 0px 10px 0px;
 }
 
 .inputPetitSignUp:-webkit-autofill {
@@ -60,7 +61,7 @@
   background-color: #f8f8f8;
   border: 1px solid #b9b9b9bd;
   display: block;
-  margin: 5px 0px 17px 0px;
+  margin: 5px 0px 10px 0px;
 }
 
 .inputGrandSignUp:-webkit-autofill {
