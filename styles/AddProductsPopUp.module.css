@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
+/* Pop-Up active et fermée */
+
 .popup {
   visibility: hidden;
   position: fixed;
@@ -38,8 +40,7 @@
 }
 
 .popup__content {
-  width: 50vw;
-  margin: 15% auto;
+  width: 38vw;
   background-color: #f8f8f8;
   border-radius: 20px;
   border: 2px solid black;
@@ -64,35 +65,77 @@
 .productsName,
 .productsMark,
 .productsQuantity,
-.productsPrice,
-.productsDescription {
-  margin: 20px;
+.productsPrice {
+  margin: auto;
   align-items: center;
+  width: 50%;
 }
 
-.label {
-  margin-bottom: 2vh;
+.productsName,
+.productsQuantity {
+  margin-right: 20px;
 }
-
-/* .popup__header {
-  padding: 16px 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.popupBodyJoke {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.popup__footer {
-  padding: 16px 20px;
-  display: flex;
-  justify-content: center;
-} */
 
 .inputLign {
   display: flex;
+  justify-content: space-between;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.inputPopUp {
+  width: 100%;
+  height: 5vh;
+  border: none;
+}
+
+.productsDescription {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+}
+
+.descriptionTextArea {
+  width: 100%;
+  border: none;
+  height: 30vh;
+}
+
+.formPopup {
+  margin: auto;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.titlePopupProducts {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.btnPopupDiv {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.buttonPlus {
+  background-color: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.buttonPopUp {
+  color: white;
+  background-color: #d28f71;
+  border-radius: 20px;
+  width: 10vw;
+  height: 5vh;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 20px;
 }
