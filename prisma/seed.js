@@ -73,44 +73,11 @@ async function seed() {
       sixteenDays: 3.5,
     },
   });
-  await db.order.create({
-    data: {
-      orderNumber: "cat_b",
-      startDate: "2022-06-16",
-      startTime: "17:00:00",
-      endDate: "2022-06-26",
-      orderDate: "2022-06-15",
-      paymentType: "Paypal",
-      paidPrice: 42,
-      comment: "",
-      premiseId: 46,
-      premise: 47,
-      delegateParentId: "",
-      delegateParent: "",
-      partnerId: 50,
-      partner: 51,
-      product: 52,
-      status: 54,
-      customerId: 56,
-      customer: 56,
-    },
-  });
-  await db.productOnOrder.create({
-    data: {
-      product: "",
-      productId: "",
-      order: "",
-      orderId: "",
-      quantity: "",
-    },
-  });
   await db.reference.create({
     data: {
       referenceNumber: "",
       dateOfPurchase: "",
       comment: "",
-      premiseId: "",
-      productId: "",
       condition: "",
     },
   });
@@ -134,7 +101,6 @@ async function seed() {
     data: {
       url: "",
       productId: "",
-      product: "",
     },
   });
   await db.premise.create({
@@ -143,9 +109,37 @@ async function seed() {
       zip: "69002",
       city: "Lyon",
       premiseType: "Privé",
-      orders: "",
-      reference: "",
       referenceId: "",
+    },
+  });
+  await db.productOnOrder.create({
+    data: {
+      product: "",
+      productId: "",
+      order: "",
+      orderId: "",
+      quantity: "",
+    },
+  });
+  await db.order.create({
+    data: {
+      orderNumber: "ZRT123",
+      startDate: "2022-06-16",
+      startTime: "17:00:00",
+      endDate: "2022-06-26",
+      orderDate: "2022-06-15",
+      paymentType: "Paypal",
+      paidPrice: 42,
+      comment: "",
+      premiseId: 46,
+      delegateParentId: "",
+      delegateParent: "",
+      partnerId: 50,
+      partner: 51,
+      product: 52,
+      status: 54,
+      customerId: 56,
+      customer: 56,
     },
   });
 }
