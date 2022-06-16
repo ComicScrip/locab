@@ -22,54 +22,59 @@ function AddProductsPopUp({ show, setShow }) {
         )}
         <h1>Ajouter un produit</h1>
         <form className={styles.formPopUpAddProducts} onSubmit={handleSubmit}>
-          <div className={styles.productsName}>
-            <label htmlFor="nom" className={styles.labelPopUp}>
-              Nom
-            </label>
-            <input
-              className={styles.inputPopUp}
-              id="nom"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            ></input>
+          <div className={styles.inputLign}>
+            <div className={styles.productsName}>
+              <label htmlFor="nom" className={styles.labelPopUp}>
+                Nom
+              </label>
+              <input
+                className={styles.inputPopUp}
+                id="nom"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              ></input>
+            </div>
+            <div className={styles.productsMark}>
+              <label htmlFor="mark" className={styles.labelPopUp}>
+                Marque
+              </label>
+              <input
+                className={styles.inputPopUp}
+                id="mark"
+                type="text"
+                value={mark}
+                onChange={(e) => setMark(e.target.value)}
+              ></input>
+            </div>
           </div>
-          <div className={styles.productsMark}>
-            <label htmlFor="mark" className={styles.labelPopUp}>
-              Marque
-            </label>
-            <input
-              className={styles.inputPopUp}
-              id="mark"
-              type="text"
-              value={mark}
-              onChange={(e) => setMark(e.target.value)}
-            ></input>
+          <div className={styles.inputLign}>
+            <div className={styles.productsQuantity}>
+              <label htmlFor="quantity" className={styles.labelPopUp}>
+                Quantité
+              </label>
+              <input
+                className={styles.inputPopUp}
+                id="quantity"
+                type="text"
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
+              ></input>
+            </div>
+            <div className={styles.productsPrice}>
+              <label htmlFor="price" className={styles.labelPopUp}>
+                Catégorie de prix
+              </label>
+              <input
+                className={styles.inputPopUp}
+                id="price"
+                type="text"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+              ></input>
+            </div>
           </div>
-          <div className={styles.productsQuantity}>
-            <label htmlFor="quantity" className={styles.labelPopUp}>
-              Quantité
-            </label>
-            <input
-              className={styles.inputPopUp}
-              id="quantity"
-              type="text"
-              value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
-            ></input>
-          </div>
-          <div className={styles.productsPrice}>
-            <label htmlFor="price" className={styles.labelPopUp}>
-              Catégorie de prix
-            </label>
-            <input
-              className={styles.inputPopUp}
-              id="price"
-              type="text"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-            ></input>
-          </div>
+
           <div className={styles.productsDescription}>
             <label htmlFor="description" className={styles.labelPopUp}>
               Description
