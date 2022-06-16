@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.popup {
+  opacity: 0.25;
+  visibility: hidden;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #c4c4c4;
+  transition: 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.labelPopUp {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+}
+
+.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup__close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: black;
+}
+
+.popup__content {
+  width: 90vw;
+  margin: 15% auto;
+  background-color: #c4c4c4;
+  border-radius: 20px;
+  border: 2px solid black;
+  position: relative;
+  transition: ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0);
+}
+
+.popup__close:hover {
+  font-size: 4rem;
+  top: 4px;
+}
+
+.active .popup__content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.productsName,
+.productsMark,
+.productsQuantity,
+.productsPrice,
+.productsDescription {
+  margin: 20px;
+  align-items: center;
+}
+
+.label {
+  margin-bottom: 2vh;
+}
+
+.popup__header {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.popupBodyJoke {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.popup__footer {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: center;
+}
