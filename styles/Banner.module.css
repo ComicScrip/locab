@@ -13,7 +13,7 @@
   padding-bottom: 5px;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   .iconshead {
     display: flex !important;
   }

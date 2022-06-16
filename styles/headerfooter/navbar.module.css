@@ -165,7 +165,7 @@
   display: none !important;
 }
 
-@media screen and (min-width: 765px) {
+@media screen and (min-width: 900px) {
   .navbar {
     display: flex;
     justify-content: space-between;

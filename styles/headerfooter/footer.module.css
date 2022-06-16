@@ -50,7 +50,7 @@
 .grise a {
   opacity: 0.3;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 900px) {
   .mainContainerFooter {
     display: flex;
     width: 100%;
