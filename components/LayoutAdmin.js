@@ -84,8 +84,8 @@ export default function LayoutAdmin({ children, pageTitle }) {
       ) : (
         <>
           <p>
-            Vous devez vous identifier en tant qu&lsquo;admin pour accéder au
-            back office
+            Vous devez vous identifier en tant qu'admin pour accéder au back
+            office
           </p>
 
           <button onClick={() => signIn()} data-cy="admin_logInBtn">
