@@ -39,6 +39,7 @@ export default function Products() {
 
       {products
         .filter((product) => (product.isAvailable ? products : showAvailable))
+        .filter((product) => product.category.includes(searchValue))
         .filter((product) =>
           product.category.includes(searchValue.toLowerCase())
         )
