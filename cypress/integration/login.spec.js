@@ -20,9 +20,7 @@ describe("without session", () => {
     cy.get('[data-cy="signin_email"]').type("adm@website.com");
     cy.get('[data-cy="signin_password"]').type("verysecure1!");
     cy.get('[data-cy="signin_button"]').click();
-    cy.contains(
-      "Ces identifiants ne corresspondent à aucun utilisateur actif."
-    );
+    cy.contains("Ces identifiants ne correspondent à aucun utilisateur actif.");
   });
 
   it("cannot login with incorrect password", () => {
@@ -30,9 +28,7 @@ describe("without session", () => {
     cy.get('[data-cy="signin_email"]').type(email);
     cy.get('[data-cy="signin_password"]').type("verysecure");
     cy.get('[data-cy="signin_button"]').click();
-    cy.contains(
-      "Ces identifiants ne corresspondent à aucun utilisateur actif."
-    );
+    cy.contains("Ces identifiants ne correspondent à aucun utilisateur actif.");
   });
 });
 
@@ -60,7 +56,7 @@ describe("admin login", () => {
     cy.setupCurrentUser({ role: "visitor" });
     cy.visit("/admin");
     cy.contains(
-      "Vous devez vous identifier en tant qu‘admin pour accéder au back office"
+      "Vous devez vous identifier en tant qu'admin pour accéder au back office"
     );
   });
 });

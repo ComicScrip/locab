@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 /// <reference types="cypress" />
 
 // Welcome to Cypress!

@@ -9,8 +9,11 @@ import styles from "../../styles/SignUp.module.css";
 import { passwordStrength } from "check-password-strength";
 import Layout from "../../components/Layout";
 import Banner from "../../components/Banner";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 export default function SignUpPage({ csrfToken }) {
+  const { t } = useTranslation("signIn");
   const [name, setName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [address, setAddress] = useState("");
@@ -74,14 +77,14 @@ export default function SignUpPage({ csrfToken }) {
             onClick={() => signOut()}
             data-cy="logout_button"
           >
-            SE DECONNECTER
+            {t("deconnecter")}
           </button>
         </div>
       ) : (
         <div>
           <Banner />
           <h1 className={styles.titleContainerSignUp}>
-            Souhaitez-vous vous connecter ?
+            {t("voulezvousvousconnecter")}
           </h1>
           <div className={styles.containerForm}>
             <div>
@@ -93,9 +96,7 @@ export default function SignUpPage({ csrfToken }) {
             </div>
 
             <div className={styles.inscRegisterForm}>
-              <h1 className={styles.titleSignUp}>
-                Je souhaite m&lsquo;inscire
-              </h1>
+              <h1 className={styles.titleSignUp}>{t("jesouhaiteminscrire")}</h1>
               <form
                 className={styles.formSignUp}
                 onSubmit={handleSubmit}
@@ -103,7 +104,7 @@ export default function SignUpPage({ csrfToken }) {
               >
                 <div className={styles.nameLastName}>
                   <label className={styles.labelForm} htmlFor="firstName">
-                    Prénom
+                    {t("prenom")}
                     <input
                       className={styles.inputPetitSignUp}
                       type="text"
@@ -115,7 +116,7 @@ export default function SignUpPage({ csrfToken }) {
                     />
                   </label>
                   <label className={styles.labelForm} htmlFor="name">
-                    Nom
+                    {t("nom")}
                     <input
                       className={styles.inputPetitSignUp}
                       type="text"
@@ -128,7 +129,7 @@ export default function SignUpPage({ csrfToken }) {
                   </label>
                 </div>
                 <label className={styles.labelForm} htmlFor="adresse">
-                  Adresse
+                  {t("adresse")}
                   <input
                     className={styles.inputGrandSignUp}
                     type="text"
@@ -141,7 +142,7 @@ export default function SignUpPage({ csrfToken }) {
                 </label>
                 <div className={styles.codeVille}>
                   <label className={styles.labelForm} htmlFor="codePostal">
-                    Code Postal
+                    {t("cp")}
                     <input
                       className={styles.inputPetitSignUp}
                       type="text"
@@ -153,7 +154,7 @@ export default function SignUpPage({ csrfToken }) {
                     />
                   </label>
                   <label className={styles.labelForm} htmlFor="ville">
-                    Ville
+                    {t("ville")}
                     <input
                       className={styles.inputPetitSignUp}
                       type="text"
@@ -166,7 +167,7 @@ export default function SignUpPage({ csrfToken }) {
                   </label>
                 </div>
                 <label className={styles.labelForm} htmlFor="telephone">
-                  Numéro de téléphone
+                  {t("Numérodetelephone")}
                   <input
                     className={styles.inputGrandSignUp}
                     type="text"
@@ -178,7 +179,7 @@ export default function SignUpPage({ csrfToken }) {
                   />
                 </label>
                 <label className={styles.labelForm} htmlFor="email">
-                  Adresse mail
+                  {t("email")}
                   <input
                     className={styles.inputGrandSignUp}
                     type="email"
@@ -190,7 +191,7 @@ export default function SignUpPage({ csrfToken }) {
                   />
                 </label>
                 <label className={styles.labelForm} htmlFor="password">
-                  Mot de passe{" "}
+                  {t("motdepasse")}{" "}
                   <input
                     className={styles.inputGrandSignUp}
                     type="password"
@@ -205,7 +206,7 @@ export default function SignUpPage({ csrfToken }) {
                   className={styles.labelForm}
                   htmlFor="passwordConfirmation"
                 >
-                  Confirmez votre mot de passe
+                  {t("confirmezvotremotdepasse")}
                   <input
                     className={styles.inputGrandSignUp}
                     type="password"
@@ -223,7 +224,7 @@ export default function SignUpPage({ csrfToken }) {
                   id="credentials-login-btn"
                   data-cy="sign_up_button"
                 >
-                  S&lsquo;INSCRIRE
+                  {t("sinscrire")}
                 </button>
               </form>
             </div>
@@ -259,6 +260,18 @@ export async function getServerSideProps(context) {
   return {
     props: {
       csrfToken: await getCsrfTokenAndSetCookies(context),
+      ...(await serverSideTranslations(context.locale, [
+        "banner",
+        "footer",
+        "header",
+        "cart",
+        "signIn",
+        "home",
+        "connection",
+        "profile",
+        "common",
+        "reservation",
+      ])),
     },
   };
 }

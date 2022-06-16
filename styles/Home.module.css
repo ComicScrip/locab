@@ -27,6 +27,7 @@
 .textFirst {
   width: 70%;
   margin: auto;
+  line-height: 15pt;
 }
 
 .title3 {
@@ -56,6 +57,7 @@
   margin: 20px;
   text-align: center;
   font-size: 12px;
+  line-height: 15pt;
 }
 
 .thirdTitleHome {
@@ -63,13 +65,14 @@
   font-weight: bold;
   text-align: center;
   font-size: 28px;
-  padding-top: 20px;
+  padding-top: 40px;
 }
 
 .thirdTextTitle {
   margin: auto;
   width: 80%;
   font-size: 13px;
+  line-height: 15pt;
 }
 
 .thirdParagrapheContainer {
@@ -176,6 +179,7 @@
 
   .logoHome {
     display: flex;
+    justify-content: space-around;
     width: 90%;
     margin: auto;
   }
@@ -195,7 +199,7 @@
   }
 
   .thirdTitleHome {
-    margin-top: 0px;
+    margin-top: 20px;
     text-align: initial;
   }
 
@@ -211,7 +215,6 @@
   .imgCouple {
     justify-content: center;
     align-items: center;
-    margin-top: 0px;
     width: 50%;
   }
 
