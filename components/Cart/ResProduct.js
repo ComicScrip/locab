@@ -1,18 +1,16 @@
-import styles from "../styles/Reservation.module.css";
+import { useContext } from "react";
+import styles from "../../styles/Reservation.module.css";
 import Image from "next/image";
-import { useState } from "react";
+import { SelectCartContext } from "../../contexts/selectCartContext";
 
-export default function ResProduct({ product, onAdd, onRemove }) {
-  const [addedToCart, setAddedToCart] = useState(false);
+export default function ResProduct({ product }) {
+  const { selectProducts, onAdd } = useContext(SelectCartContext);
+
+  const existInCart = selectProducts.find((x) => x.id === product.id);
 
   const handleClickProduct = () => {
-    setAddedToCart(!addedToCart);
     if (product.isAvailable) {
-      if (addedToCart === false) {
-        onAdd(product);
-      } else {
-        onRemove(product);
-      }
+      onAdd(product);
     }
   };
 
@@ -25,7 +23,7 @@ export default function ResProduct({ product, onAdd, onRemove }) {
       }
       onClick={handleClickProduct}
       style={
-        addedToCart && product.isAvailable
+        existInCart && product.isAvailable
           ? { borderColor: "#96C0C0" }
           : { borderColor: "#ededed" }
       }
