@@ -76,7 +76,7 @@
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: min-content;
     margin: 40px 100px 0px 0px;
-    width: 50%;
+    min-width: 50%;
   }
 
   .searchContainer {
@@ -87,8 +87,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 75.5vh;
-    width: 20%;
+    min-height: 100vh;
   }
 
   .searchBar {
@@ -117,8 +116,10 @@
   .main_title {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
   }
   .main_container {
     flex-direction: row;
+    padding-bottom: 50px;
   }
 }

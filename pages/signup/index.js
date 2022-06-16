@@ -64,9 +64,19 @@ export default function SignUpPage({ csrfToken }) {
   const { currentUserProfile } = useContext(CurrentUserContext);
 
   return (
-    <Layout pageTitle="Souhaitez-vous vous connecter ?">
+    <Layout pageTitle="Connection | Location de matériel de puériculture">
       {currentUserProfile ? (
-        `Vous êtes connecté en tant que ${currentUserProfile.firstname}`
+        <div className={styles.connexionText}>
+          Vous êtes connecté en tant que {currentUserProfile.firstname}
+          <button
+            type="submit"
+            id="credentials-login-btn"
+            onClick={() => signOut()}
+            data-cy="logout_button"
+          >
+            SE DECONNECTER
+          </button>
+        </div>
       ) : (
         <div>
           <Banner />
@@ -219,16 +229,6 @@ export default function SignUpPage({ csrfToken }) {
             </div>
           </div>
         </div>
-      )}
-      {currentUserProfile && (
-        <button
-          type="submit"
-          id="credentials-login-btn"
-          onClick={() => signOut()}
-          data-cy="logout_button"
-        >
-          SE DECONNECTER
-        </button>
       )}
     </Layout>
   );

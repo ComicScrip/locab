@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
-    <Layout pageTitle="Location de poussette">
+    <Layout pageTitle="Location de poussette | Location de matériel de puériculture">
       <div className={styles.container}>
         <div className={styles.firstParagraphe}>
           <div className={styles.titleandtextHome}>

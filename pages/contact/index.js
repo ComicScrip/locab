@@ -9,7 +9,7 @@ import { IoMail } from "react-icons/io5";
 
 export default function Contact() {
   return (
-    <Layout pageTitle="Nous contacter | Location matériel de puériculture">
+    <Layout pageTitle="Nous contacter | Location de matériel de puériculture">
       <Banner />
       <section className={styles.mainContainer}>
         <h1>Nous contacter</h1>

@@ -8,7 +8,7 @@ import Banner from "../../components/Banner";
 
 function SearchPage() {
   return (
-    <Layout pageTitle="Location de matériel puériculture Lyon — Loca-b">
+    <Layout pageTitle="Location de matériel de puériculture Lyon — Loca-b">
       <Banner />
 
       <div className={styles.main_title}>

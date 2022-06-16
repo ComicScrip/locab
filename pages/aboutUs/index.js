@@ -5,7 +5,7 @@ import Banner from "../../components/Banner";
 
 export default function AboutUS() {
   return (
-    <Layout pageTitle="Qui sommes-nous ? | Location matériel de puériculture">
+    <Layout pageTitle="Qui sommes-nous ? | Location de matériel de puériculture">
       <Banner />
       <section className={styles.mainContainer}>
         <h1>Qui sommes-nous ?</h1>
