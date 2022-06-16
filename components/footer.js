@@ -1,9 +1,9 @@
 import React from "react";
+import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../public/logo/logo_blanc.svg";
 import styles from "../styles/headerfooter/footer.module.css";
-import { useTranslation } from "next-i18next";
 
 export default function Footer() {
   const { t } = useTranslation("footer");

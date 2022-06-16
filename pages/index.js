@@ -147,6 +147,7 @@ export async function getStaticProps({ locale }) {
         "common",
         "signIn",
         "footer",
+        "reservation",
       ])),
     },
   };

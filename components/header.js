@@ -10,27 +10,16 @@ import LogoIcon from "../public/logo/icon_logo.png";
 import styles from "../styles/headerfooter/navbar.module.css";
 import { signIn } from "next-auth/react";
 import { useTranslation } from "next-i18next";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
 
 const Navbar = () => {
   const { t } = useTranslation("header");
-
   const [showLinks, setshowLinks] = useState(false);
   const handleShowLinks = () => {
     setshowLinks(!showLinks);
   };
   const router = useRouter();
-  const onSelectChange = (e) => {
-    const locale = e.target.value;
-    router.push(router.asPath, router.asPath, {
-      locale,
-      scroll: false,
-    });
-  };
+  const inFr = router.locale === "fr";
+
   const currentRoute = router.pathname;
   return (
     <nav
@@ -115,23 +104,15 @@ const Navbar = () => {
               </button>
             </a>
           </div>
-          <Box sx={{ minWidth: 90 }}>
-            <FormControl fullWidth>
-              <InputLabel>{t("langage")}</InputLabel>
-              <Select
-                id="languages"
-                value={router.locale}
-                label="Languages"
-                onChange={onSelectChange}
-              >
-                {router.locales.map((language, index) => (
-                  <MenuItem value={language} key={index}>
-                    {language === "en" ? "🇬🇧" : language === "fr" ? "🇫🇷" : null}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Box>
+          <Link
+            className={styles.tradStyle}
+            href={router.asPath}
+            locale={inFr ? "en" : "fr"}
+          >
+            <a data-cy={`switch-to-${inFr ? "en" : "fr"}`}>
+              {inFr ? "🇫🇷" : "🇬🇧"}
+            </a>
+          </Link>
         </li>
       </ul>
       <div className={styles.divlogoIcon1}>
