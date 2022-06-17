@@ -7,8 +7,11 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Tooltip from "@mui/material/Tooltip";
 import Image from "next/image";
 import { SelectCartContext } from "../../contexts/selectCartContext";
+import { useTranslation } from "next-i18next";
 
 export default function Cart() {
+  const { t } = useTranslation("cart");
+
   const { selectProducts, onUpdate, onValidate, onDelete } =
     useContext(SelectCartContext);
   const cartTotal = selectProducts.reduce(
@@ -19,10 +22,10 @@ export default function Cart() {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.mainTitle}>
-        <h2>Votre panier</h2>
+        <h2>{t("votrepanier")}</h2>
       </div>
       {selectProducts.length === 0 && (
-        <div className={styles.emptyShop}>Votre panier est vide</div>
+        <div className={styles.emptyShop}>{t("votrepanierestvide")}</div>
       )}
       {selectProducts.map((product) => {
         return (
@@ -60,13 +63,15 @@ export default function Cart() {
       <div className={styles.totalContainer}>
         <div className={styles.totalInfoContainer}>
           <h3>Total</h3>
-          <p>du XX/XX au XX/XX</p>
+          <p>
+            {t("du")} XX/XX {t("au")} XX/XX
+          </p>
         </div>
         <h2>{cartTotal}€</h2>
       </div>
       <div className={styles.cautionContainer}>
-        <p>Montant de la caution</p>
-        <Tooltip title="Une empreinte sera faite sur votre carte au moment du paiement. Vous ne serez pas débité">
+        <p>{t("montantdelacaution")}</p>
+        <Tooltip title={t("textinfo")}>
           <IconButton>
             <ErrorIcon />
           </IconButton>
@@ -89,7 +94,7 @@ export default function Cart() {
             opacity: "0.4",
           }}
         >
-          Valider mon panier
+          {t("validermonpanier")}
         </Button>
       </div>
     </div>
