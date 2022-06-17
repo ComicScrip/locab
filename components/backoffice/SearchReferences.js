@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { BsPlusCircle } from "react-icons/bs";
 import styles from "../../styles/BackProduits.module.css";
-import ResBackProducts from "./ResBackProducts";
-import dataBackProducts from "./dataBackProducts";
+import ResBackReferences from "./ResBackReferences";
+import dataBackReferences from "./dataBackReferences";
 
-export default function SearchProducts() {
-  const { backProducts } = dataBackProducts;
+export default function SearchReferences() {
+  const { backReferences } = dataBackReferences;
   const [searchValue, setSearchValue] = useState("");
 
   return (
@@ -25,7 +25,6 @@ export default function SearchProducts() {
           <table className={styles.tableProducts}>
             <thead>
               <tr>
-                <th></th>
                 <th>Nom</th>
                 <th>Catégorie de prix</th>
                 <th>Stock total</th>
@@ -34,17 +33,17 @@ export default function SearchProducts() {
               </tr>
             </thead>
             <tbody>
-              {backProducts
-                .filter((backProduct) =>
-                  backProduct.name
+              {backReferences
+                .filter((backReference) =>
+                  backReference.references
                     .toUpperCase()
                     .includes(searchValue.toUpperCase())
                 )
-                .map((backProduct) => (
-                  <ResBackProducts
-                    backProduct={backProduct}
-                    key={backProduct.id}
-                    id={backProduct.id}
+                .map((backReference) => (
+                  <ResBackReferences
+                    backReference={backReference}
+                    key={backReference.id}
+                    id={backReference.id}
                   />
                 ))}
             </tbody>

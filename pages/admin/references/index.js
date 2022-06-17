@@ -1,11 +1,18 @@
 import NavProducts from "../../../components/backoffice/NavProducts";
+import SearchReferences from "../../../components/backoffice/SearchReferences";
+import styles from "../../../styles/BackProduits.module.css";
+import LayoutAdmin from "../../../components/LayoutAdmin";
 
 function References() {
   return (
-    <>
-      <NavProducts />
-      <section>Liste des références</section>
-    </>
+    <LayoutAdmin>
+      <section className={styles.productsMainContainer}>
+        <div className={styles.productsContainer}>
+          <NavProducts />
+          <SearchReferences />
+        </div>
+      </section>
+    </LayoutAdmin>
   );
 }
 

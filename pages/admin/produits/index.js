@@ -5,16 +5,14 @@ import LayoutAdmin from "../../../components/LayoutAdmin";
 
 function Products() {
   return (
-    <div className={styles.positionLayoutAdmin}>
-      <LayoutAdmin>
-        <section className={styles.productsMainContainer}>
-          <div className={styles.productsContainer}>
-            <NavProducts />
-            <SearchProducts />
-          </div>
-        </section>
-      </LayoutAdmin>
-    </div>
+    <LayoutAdmin>
+      <section className={styles.productsMainContainer}>
+        <div className={styles.productsContainer}>
+          <NavProducts />
+          <SearchProducts />
+        </div>
+      </section>
+    </LayoutAdmin>
   );
 }
 
