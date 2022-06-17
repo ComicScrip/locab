@@ -51,15 +51,15 @@ model Pack {
   discountPercentage String?       @db.VarChar(50)
   productNumber      String        @db.VarChar(50)
   priceCategoryId    Int
-  priceCategory      PriceCategory @relation(fields: [priceCategoryId], references: [id])
+  priceCategory      PriceCategory @relation(fields: [priceCategoryId], references: [id], onDelete: Cascade)
 }
 
 model CartItems {
   id              Int           @id @default(autoincrement())
   customerId      Int
-  customer        User          @relation(fields: [customerId], references: [id])
+  customer        User          @relation(fields: [customerId], references: [id], onDelete: Cascade)
   quantity        Int           @default(1)
-  ProductSample   ProductSample @relation(fields: [productSampleId], references: [id])
+  ProductSample   ProductSample @relation(fields: [productSampleId], references: [id], onDelete: Cascade)
   productSampleId Int
 }
 
@@ -74,15 +74,15 @@ model Order {
   paidPrice           Float
   comment             String?          @db.VarChar(255)
   premiseId           Int
-  premise             Premise          @relation(fields: [premiseId], references: [id])
+  premise             Premise          @relation(fields: [premiseId], references: [id], onDelete: Cascade)
   delegateParentId    Int?
-  delegateParent      DelegateParent?  @relation(fields: [delegateParentId], references: [id])
+  delegateParent      DelegateParent?  @relation(fields: [delegateParentId], references: [id], onDelete: SetNull)
   partnerId           Int?
-  partner             Partner?         @relation(fields: [partnerId], references: [id])
+  partner             Partner?         @relation(fields: [partnerId], references: [id], onDelete: SetNull)
   products            ProductOnOrder[]
   status              String           @default("pending")
   customerId          Int
-  customer            User             @relation(fields: [customerId], references: [id])
+  customer            User             @relation(fields: [customerId], references: [id], onDelete: Cascade)
   deliveryPhoneNumber String?
   deliveryFirstName   String?
   deliveryLastName    String?
@@ -93,10 +93,10 @@ model Order {
 }
 
 model ProductOnOrder {
-  order           Order         @relation(fields: [orderId], references: [id])
+  order           Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
   orderId         Int
   quantity        Int           @default(1)
-  productSample   ProductSample @relation(fields: [productSampleId], references: [id])
+  productSample   ProductSample @relation(fields: [productSampleId], references: [id], onDelete: Cascade)
   productSampleId Int
 
   @@id([productSampleId, orderId])
@@ -108,11 +108,11 @@ model ProductSample {
   dateOfPurchase   DateTime         @default(now())
   comment          String?          @db.VarChar(255)
   condition        String           @db.VarChar(255)
-  delegateParent   DelegateParent?  @relation(fields: [delegateParentId], references: [id])
+  delegateParent   DelegateParent?  @relation(fields: [delegateParentId], references: [id], onDelete: SetNull)
   delegateParentId Int?
-  product          Product          @relation(fields: [productId], references: [id])
+  product          Product          @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId        Int
-  premise          Premise          @relation(fields: [premiseId], references: [id])
+  premise          Premise          @relation(fields: [premiseId], references: [id], onDelete: Cascade)
   premiseId        Int
   orders           ProductOnOrder[]
   cartItems        CartItems[]
@@ -124,7 +124,7 @@ model Product {
   brand           String           @db.VarChar(255)
   description     String           @db.VarChar(255)
   priceCategoryId Int
-  priceCategory   PriceCategory    @relation(fields: [priceCategoryId], references: [id])
+  priceCategory   PriceCategory    @relation(fields: [priceCategoryId], references: [id], onDelete: Cascade)
   productSamples  ProductSample[]
   pictures        ProductPicture[]
 }
@@ -133,7 +133,7 @@ model ProductPicture {
   id        Int     @id @default(autoincrement())
   url       String  @db.VarChar(50)
   productId Int
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
 
 model Premise {
