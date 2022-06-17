@@ -16,12 +16,12 @@ async function seed() {
       zip: "12345",
     },
   });
-  await db.user.create({
+  const visitor = await db.user.create({
     data: {
       firstname: "toto",
       lastname: "hallaplaje",
-      email: "admin@locab.com",
-      hashedPassword: await hashPassword("localoca"),
+      email: "visitor@locab.com",
+      hashedPassword: await hashPassword("locablocab"),
       address: "rue de la plage",
       phone: "01 23 45 67 78",
       role: "visitor",
@@ -29,10 +29,9 @@ async function seed() {
       zip: "12345",
     },
   });
-  await db.priceCategory.create({
+  const cat_a = await db.priceCategory.create({
     data: {
       name: "cat_a",
-      price: "",
       oneDay: 36,
       twoDays: 18,
       threeDays: 15,
@@ -51,10 +50,9 @@ async function seed() {
       sixteenDays: 5.5,
     },
   });
-  await db.priceCategory.create({
+  const cat_b = await db.priceCategory.create({
     data: {
       name: "cat_b",
-      price: "",
       oneDay: 30,
       twoDays: 15,
       threeDays: 11.33,
@@ -73,73 +71,93 @@ async function seed() {
       sixteenDays: 3.5,
     },
   });
-  await db.reference.create({
+
+  const chanceliere = await db.product.create({
     data: {
-      referenceNumber: "",
-      dateOfPurchase: "",
-      comment: "",
-      condition: "",
+      name: "Chancelière",
+      brand: "Chicco",
+      description: "Une chancelière",
+      priceCategoryId: cat_b.id,
     },
   });
-  await db.product.create({
+  const poussette = await db.product.create({
     data: {
-      code: "",
-      name: "",
-      brand: "",
-      quantity: "",
-      description: "t",
-      priceCategoryId: "",
-      priceCategory: "",
-      reference: "",
-      referenceId: "",
-      orders: "",
-      pictures: "",
-      cartItems: "",
+      name: "Poussette",
+      brand: "Yoyo",
+      description: "Une poussette marque Yoyo",
+      priceCategoryId: cat_a.id,
     },
   });
-  await db.productPicture.create({
-    data: {
-      url: "",
-      productId: "",
-    },
-  });
-  await db.premise.create({
+  const premise_01 = await db.premise.create({
     data: {
       address: "140 rue delandine",
       zip: "69002",
       city: "Lyon",
       premiseType: "Privé",
-      referenceId: "",
     },
   });
-  await db.productOnOrder.create({
+  const premise_02 = await db.premise.create({
     data: {
-      product: "",
-      productId: "",
-      order: "",
-      orderId: "",
-      quantity: "",
+      address: "140 rue antoine",
+      zip: "69002",
+      city: "Lyon",
+      premiseType: "Public",
     },
+  });
+  const sample_01 = await db.productSample.create({
+    data: {
+      referenceNumber: "CH-001",
+      dateOfPurchase: new Date("2022-05-21T00:00:00"),
+      condition: "Neuf",
+      productId: chanceliere.id,
+      premiseId: premise_01.id,
+    },
+  });
+  const sample_02 = await db.productSample.create({
+    data: {
+      referenceNumber: "CH-002",
+      dateOfPurchase: new Date("2022-04-23 00:00:00"),
+      condition: "Comme neuf",
+      productId: poussette.id,
+      premiseId: premise_02.id,
+    },
+  });
+  await db.productPicture.createMany({
+    data: [
+      {
+        url: "/image/products/Chancelière.jpg",
+        productId: chanceliere.id,
+      },
+      {
+        url: "/image/products/Poussette-YOYO-Nacelle.jpg",
+        productId: poussette.id,
+      },
+    ],
   });
   await db.order.create({
     data: {
+      products: {
+        create: [
+          {
+            quantity: 1,
+            productSampleId: sample_01.id,
+          },
+          {
+            quantity: 1,
+            productSampleId: sample_02.id,
+          },
+        ],
+      },
       orderNumber: "ZRT123",
-      startDate: "2022-06-16",
-      startTime: "17:00:00",
-      endDate: "2022-06-26",
-      orderDate: "2022-06-15",
+      startDate: new Date("2022-06-16T00:00:00"),
+      startTime: new Date("2022-06-17T00:00:00"),
+      endDate: new Date("2022-06-26T00:00:00"),
+      orderDate: new Date("2022-06-15T00:00:00"),
       paymentType: "Paypal",
-      paidPrice: 42,
-      comment: "",
-      premiseId: 46,
-      delegateParentId: "",
-      delegateParent: "",
-      partnerId: 50,
-      partner: 51,
-      product: 52,
-      status: 54,
-      customerId: 56,
-      customer: 56,
+      paidPrice: 67,
+      premiseId: premise_01.id,
+      status: "Terminé",
+      customerId: visitor.id,
     },
   });
 }
