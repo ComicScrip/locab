@@ -64,25 +64,32 @@ model CartItems {
 }
 
 model Order {
-  id               Int              @id @default(autoincrement())
-  orderNumber      String           @unique @db.VarChar(50)
-  startDate        DateTime
-  startTime        DateTime
-  endDate          DateTime
-  orderDate        DateTime         @default(now())
-  paymentType      String           @db.VarChar(50)
-  paidPrice        Float
-  comment          String?          @db.VarChar(255)
-  premiseId        Int
-  premise          Premise          @relation(fields: [premiseId], references: [id])
-  delegateParentId Int?
-  delegateParent   DelegateParent?  @relation(fields: [delegateParentId], references: [id])
-  partnerId        Int?
-  partner          Partner?         @relation(fields: [partnerId], references: [id])
-  products         ProductOnOrder[]
-  status           String           @default("pending")
-  customerId       Int
-  customer         User             @relation(fields: [customerId], references: [id])
+  id                  Int              @id @default(autoincrement())
+  orderNumber         String           @unique @db.VarChar(50)
+  startDate           DateTime
+  startTime           DateTime
+  endDate             DateTime
+  orderDate           DateTime         @default(now())
+  paymentType         String           @db.VarChar(50)
+  paidPrice           Float
+  comment             String?          @db.VarChar(255)
+  premiseId           Int
+  premise             Premise          @relation(fields: [premiseId], references: [id])
+  delegateParentId    Int?
+  delegateParent      DelegateParent?  @relation(fields: [delegateParentId], references: [id])
+  partnerId           Int?
+  partner             Partner?         @relation(fields: [partnerId], references: [id])
+  products            ProductOnOrder[]
+  status              String           @default("pending")
+  customerId          Int
+  customer            User             @relation(fields: [customerId], references: [id])
+  deliveryPhoneNumber String?
+  deliveryFirstName   String?
+  deliveryLastName    String?
+  deliveryStreet      String?
+  deliveryZip         String?
+  deliveryCity        String?
+  deliveryArrivalTime String?
 }
 
 model ProductOnOrder {
