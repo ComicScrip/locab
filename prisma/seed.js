@@ -166,10 +166,10 @@ async function seed() {
         create: [
           {
             quantity: 3,
-            productSampleId: sample_02.id,
+            productSampleId: sample_01.id,
           },
           {
-            quantity: 1,
+            quantity: 10,
             productSampleId: sample_02.id,
           },
         ],
