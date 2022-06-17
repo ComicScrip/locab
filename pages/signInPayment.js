@@ -124,7 +124,7 @@ export default function SignInPayment({ csrfToken }) {
                 />
                 <div className={styles.formbutton}>
                   <button
-                    type="onSubmit"
+                    type="submit"
                     className={styles.button}
                     onSubmit={HandleSubmitWithoutInscription}
                   >
