@@ -12,8 +12,9 @@ body,
 
 main {
   flex-grow: 1;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  font-family: "Poppins";
+  /* padding-top: 25px;
+  padding-bottom: 25px; */
 }
 a {
   color: inherit;

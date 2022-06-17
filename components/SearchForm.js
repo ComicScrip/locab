@@ -1,61 +1,42 @@
 import styles from "../styles/SearchForm.module.css";
-import { BiMap } from "react-icons/bi";
-import { IoMdTime } from "react-icons/io";
+//import Location from "../public/icons/location.png";
+//import Watch1 from "../public/icons/watch1.png";
+//import Watch2 from "../public/icons/watch2.png";
 
 export default function SearchForm() {
-  const style0 = {
-    position: "absolute",
-    color: "#D28F71",
-    padding: "1px",
-    marginLeft: "388px",
-    marginTop: "18px",
-  };
-  const style1 = {
-    position: "absolute",
-    color: "#D28F71",
-    padding: "1px",
-    marginLeft: "10px",
-    marginTop: "5px",
-  };
-  const style2 = {
-    position: "absolute",
-    color: "#D28F71",
-    padding: "1px",
-    marginLeft: "10px",
-    marginTop: "5px",
-  };
   return (
     <div className={styles.containerGlobal}>
-      <BiMap style={style0} />
       <div className={styles.forms}>
-        <div>
+        <div className={styles.divlocation}>
           <input
             type="text"
             name="destination"
-            id="destination"
-            // &#xf043; &#xf017;
+            id="location"
             placeholder="Où allez-vous ?"
-            className={style0}
+            style={{ textIndent: 17 + "px" }}
+            className={styles.locationInput}
           />
-          <IoMdTime style={style2} />
+        </div>
+        <div className={styles.divwatch1}>
           <input
-            type="date"
+            type="text"
             name="destination"
-            id="destination"
             placeholder="Arrivée"
-            className={style1}
+            style={{ textIndent: 17 + "px" }}
+            className={styles.watch1Input}
           />
-          <IoMdTime style={style1} />
+        </div>
+        <div className={styles.divwatch2}>
           <input
-            type="date"
+            type="text"
             name="departure"
             id="departure"
             placeholder="Départ"
-            className={style2}
-            // placeholder=" &#xf017;  <i class="fa-thin fa-clock"></i> Départ   <i class="fa-thin fa-location-dot"></i>"
+            style={{ textIndent: 17 + "px" }}
+            className={styles.watch2Input}
           />
-          <button className={styles.button}>Je cherche !</button>
         </div>
+        <button className={styles.button}>Je cherche !</button>
       </div>
     </div>
   );

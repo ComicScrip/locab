@@ -5,10 +5,12 @@ import styles from "../../styles/Reservation.module.css";
 import { AiFillLock } from "react-icons/ai";
 import Pack from "../../components/Cart/Pack";
 import Banner from "../../components/Banner";
+import SearchForm from "../../components/SearchForm";
 
 function SearchPage() {
   return (
     <Layout>
+      <SearchForm />
       <Banner />
       <div className={styles.main_title}>
         <h1>De quoi avez-vous besoin ?</h1>
@@ -22,7 +24,7 @@ function SearchPage() {
               verticalAlign: "middle",
               marginTop: "-4px",
             }}
-          />{" "}
+          />
           Paiement sécurisé
         </p>
         <div className={styles.trait_droit}></div>

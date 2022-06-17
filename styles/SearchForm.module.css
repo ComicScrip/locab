@@ -1,62 +1,57 @@
-@import url("//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css");
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
-
 .forms {
   display: flex;
-  text-align: center;
   align-items: center;
   justify-content: center;
-  background: #fbfbfb;
-  border: 1px solid #fbfbfb;
+  margin: 8px;
   height: 8vh;
 }
-.forms input[type="text"] {
-  font-family: "FontAwesome";
-  margin: auto 10px;
-  background: #ffffff;
+.forms input {
+  margin: auto 8px;
   border: 1px solid rgba(0, 0, 0, 0.19);
-  border-radius: 5px;
+  border-radius: 4px;
   padding: 5px;
   outline: none;
   box-sizing: border-box;
 }
-.forms input[type="date"] {
-  font-family: "FontAwesome";
-  margin: auto 10px;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.19);
-  border-radius: 5px;
-  padding: 3px;
-  outline: none;
-  box-sizing: border-box;
-}
-.forms input::placeholder {
-  font-size: 10px;
-  color: #6d6d6d;
-}
-.forms input[type="text"] {
+.locationInput {
   padding-left: 25px;
-}
-.forms input[type="date"] {
-  padding-left: 25px;
+  background: url("../public/icons/location.png") no-repeat left;
+  background-size: 20px;
 }
 
-.forms input[type="date"]:nth-of-type(2) {
-  width: 115px;
+.watch1Input {
+  padding-left: 25px;
+  background: url("../public/icons/watch1.png") no-repeat left;
+  background-size: 18px;
 }
-.forms input[type="date"]:nth-of-type(3) {
-  width: 115px;
+
+.watch2Input {
+  padding-left: 25px;
+  background: url("../public/icons/watch1.png") no-repeat left;
+  background-size: 18px;
+  text-indent: 17px;
+}
+.forms input::placeholder {
+  font-size: 11px;
+  padding-left: 20px;
+  color: #6d6d6d;
+}
+.forms .locationInput {
+  width: 250px !important;
+}
+.forms .watch1Input,
+.watch2Input {
+  width: 215px !important;
 }
 .button {
   background: #d28f71;
   border: none;
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
   height: 1.5rem;
-  margin: auto 10px;
+  margin: auto 15px;
   cursor: pointer;
-  color: #e5e5e5;
+  color: #ffffff;
   font-weight: bold;
   border-radius: 5px;
   text-transform: uppercase;
