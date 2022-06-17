@@ -13,10 +13,14 @@
   padding-bottom: 5px;
 }
 
-@media screen and (min-width: 765px) {
+@media screen and (min-width: 900px) {
   .iconshead {
     display: flex !important;
     padding: 20px 7% 5px 7%;
     border-radius: 2px;
+  }
+
+  .divpara {
+    width: 10vw;
   }
 }
