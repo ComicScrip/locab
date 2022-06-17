@@ -3,7 +3,6 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
-import axios from "axios";
 
 export default function SignInPayment({ csrfToken }) {
   const [mail, setMail] = useState("");
@@ -27,12 +26,9 @@ export default function SignInPayment({ csrfToken }) {
     router.push("/signup");
   };
 
-  const HandleSubmitWithoutInscription = () => {
-    axios
-      .post("/api/users", {
-        mail,
-      })
-      .then(() => router.push("/commande"));
+  const HandleSubmitWithoutInscription = (e) => {
+    e.preventDefault();
+    router.push("/commande");
   };
 
   return (
@@ -96,6 +92,7 @@ export default function SignInPayment({ csrfToken }) {
                   required
                 />
               </div>
+              <p className={styles.forgotpassword}>mot de passe oublié</p>
 
               <div className={styles.formbutton}>
                 <button
@@ -111,46 +108,29 @@ export default function SignInPayment({ csrfToken }) {
           </div>
           <div className={styles.bloc2}>
             <h3>Je commande sans inscription</h3>
-            <form className={styles.inscrit}>
-              <div className={styles.forminscription}>
-                <label htmlFor="email" className={styles.email}>
-                  Adresse mail
-                </label>
-                <input
-                  className={styles.textarea}
-                  type="text"
-                  id="email"
-                  required
-                />
-                <div className={styles.formbutton}>
-                  <button
-                    type="submit"
-                    className={styles.button}
-                    onSubmit={HandleSubmitWithoutInscription}
-                  >
-                    CONTINUER
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div className={styles.forminscrire}>
-          <h3>Pas encore inscrit ?</h3>
-          <form className={styles.isncrit}>
-            <div className={styles.forminscription}>
-              <div className={styles.formbutton}>
-                <button
-                  type="submit"
-                  className={styles.button}
-                  data-cy="continue_button"
-                  onClick={HandleSubmitIncription}
-                >
-                  INSCRIPTION
-                </button>
-              </div>
+            <div className={styles.div2}>
+              <button
+                type="submit"
+                className={styles.button}
+                data-cy="continue_button"
+                onClick={HandleSubmitWithoutInscription}
+              >
+                CONTINUER
+              </button>
             </div>
-          </form>
+
+            <h3>Pas encore inscrit ?</h3>
+            <div>
+              <button
+                type="submit"
+                className={styles.button}
+                data-cy="continue_button_incription"
+                onClick={HandleSubmitIncription}
+              >
+                INSCRIPTION
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </Layout>

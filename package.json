@@ -33,6 +33,7 @@
     "@prisma/client": "3.14.0",
     "argon2": "^0.28.5",
     "axios": "^0.27.2",
+    "caniuse-lite": "^1.0.30001355",
     "check-password-strength": "^2.0.5",
     "cypress-data-session": "^2.0.0",
     "cypress-dotenv": "^2.0.0",

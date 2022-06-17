@@ -5,6 +5,7 @@ const relativeUrlsToCheck = [
   "/reservation",
   "/aboutUS",
   "/reservation",
+  "/moncompte",
 ];
 
 module.exports = {
