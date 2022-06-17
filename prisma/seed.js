@@ -160,6 +160,32 @@ async function seed() {
       customerId: visitor.id,
     },
   });
+  await db.order.create({
+    data: {
+      products: {
+        create: [
+          {
+            quantity: 3,
+            productSampleId: sample_02.id,
+          },
+          {
+            quantity: 1,
+            productSampleId: sample_02.id,
+          },
+        ],
+      },
+      orderNumber: "R54363",
+      startDate: new Date("2022-06-16T00:00:00"),
+      startTime: new Date("2022-06-17T00:00:00"),
+      endDate: new Date("2022-06-26T00:00:00"),
+      orderDate: new Date("2022-06-15T00:00:00"),
+      paymentType: "Carte bleue",
+      paidPrice: 234,
+      premiseId: premise_02.id,
+      status: "Terminé",
+      customerId: visitor.id,
+    },
+  });
 }
 
 seed();
