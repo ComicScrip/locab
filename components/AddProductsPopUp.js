@@ -1,4 +1,7 @@
 import { useState } from "react";
+// import axios from "axios";
+// import swal from "sweetalert2";
+import { Widget } from "@uploadcare/react-widget";
 import styles from "../styles/AddProductsPopUp.module.css";
 
 function AddProductsPopUp({ show, setShow }) {
@@ -7,9 +10,29 @@ function AddProductsPopUp({ show, setShow }) {
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [productUrl, setProductUrl] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // axios
+    //   .post(`/api/products`, {
+    //     name,
+    //     mark,
+    //     quantity,
+    //     price,
+    //     description,
+    //   })
+    //   .then(() => {
+    //     setName("");
+    //     setMark("");
+    //     setQuantity("");
+    //     setPrice("");
+    //     setDescription("");
+    //   })
+    //   .then(() => {
+    //     swal("Produit ajouté");
+    //     setShow(false);
+    //   });
   };
 
   return (
@@ -90,9 +113,21 @@ function AddProductsPopUp({ show, setShow }) {
             </div>
             <div className={styles.labelPopUp}>Photos</div>
             <div className={styles.btnPopupDiv}>
-              <button type="button" className={styles.buttonPlus}>
+              <label htmlFor="product">
                 +
-              </button>
+                <Widget
+                  publicKey={process.env.NEXT_PUBLIC_UPLOADCARE_KEY}
+                  className={styles.buttonPlus}
+                  id="product"
+                  name="product"
+                  tabs="file"
+                  value={productUrl}
+                  onChange={({ cdnUrl }) => {
+                    setProductUrl(cdnUrl);
+                  }}
+                />
+              </label>
+
               <button type="submit" className={styles.buttonPopUp}>
                 Ajouter
               </button>
