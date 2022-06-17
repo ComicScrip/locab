@@ -56,6 +56,7 @@ const Navbar = () => {
         <li className={styles.navbar_item} onClick={handleShowLinks}>
           <Link href="/aboutUs" className={styles.navbarlink}>
             <a
+              style={{ display: "none" }}
               className={
                 currentRoute === "/aboutUs" ? styles.active : styles.non_active
               }
@@ -70,6 +71,7 @@ const Navbar = () => {
         >
           <Link href="/blog" className={styles.navbarlink}>
             <a
+              style={{ display: "none" }}
               className={
                 currentRoute === "/blog" ? styles.active : styles.non_active
               }
@@ -81,6 +83,7 @@ const Navbar = () => {
         <li className={styles.navbar_item} onClick={handleShowLinks}>
           <Link href="/contact" className={styles.navbarlink}>
             <a
+              style={{ display: "none" }}
               className={
                 currentRoute === "/contact" ? styles.active : styles.non_active
               }
