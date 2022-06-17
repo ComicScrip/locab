@@ -1,0 +1,19 @@
+{
+  "jesuisdejainscrit": "I am already signed up",
+  "adressemail": "Email address",
+  "motdepasse": "Password",
+  "idpasbon": "These identifiers do not correspond to any active user.",
+  "seconnecter": "LOG IN",
+  "voulezvousvousconnecter": "Would you like to login?",
+  "jesouhaiteminscrire": "I want to register",
+  "nom": "Name",
+  "prenom": "Firstname",
+  "adresse": "address",
+  "cp": "ZIP code",
+  "ville": "City",
+  "Numérodetelephone": "Phone number",
+  "email": "email",
+  "confirmezvotremotdepasse": "Confirm your password",
+  "sinscrire": "REGISTER",
+  "deconnecter": "LOG OUT"
+}

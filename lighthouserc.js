@@ -1,5 +1,11 @@
 const baseUrl = process.env.HOST || "http://localhost:3000";
-const relativeUrlsToCheck = ["/", "/signup"];
+const relativeUrlsToCheck = [
+  "/",
+  "/signup",
+  "/reservation",
+  "/aboutUS",
+  "/reservation",
+];
 
 module.exports = {
   ci: {

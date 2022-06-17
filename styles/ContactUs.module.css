@@ -1,0 +1,31 @@
+.mainContainer {
+  padding: 30px;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.contactInfo {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 20px 20px 20px;
+}
+
+@media screen and (min-width: 900px) {
+  .mainContainer {
+    width: 25%;
+    margin: auto;
+    padding-bottom: 200px;
+  }
+  .icons {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0px 20px 0px;
+  }
+}
