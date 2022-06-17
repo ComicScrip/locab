@@ -38,7 +38,7 @@ const Navbar = () => {
         </Link>
       </div>
       <ul className={styles.items}>
-        <li className={styles.navbar_item} onClick={handleShowLinks}>
+        <li className={styles.navbar_item}>
           <Link href="/" className={styles.navbarlink}>
             <a
               className={
@@ -49,7 +49,7 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li className={styles.navbar_item} onClick={handleShowLinks}>
+        <li className={styles.navbar_item}>
           <Link href="aboutUs" className={styles.navbarlink}>
             <a
               className={
@@ -60,10 +60,7 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li
-          className={`${styles.navbar_item} ${styles.none}`}
-          onClick={handleShowLinks}
-        >
+        <li className={`${styles.navbar_item} ${styles.none}`}>
           <Link href="blog" className={styles.navbarlink}>
             <a
               className={
@@ -74,7 +71,7 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li className={styles.navbar_item} onClick={handleShowLinks}>
+        <li className={styles.navbar_item}>
           <Link href="contact" className={styles.navbarlink}>
             <a
               className={
@@ -85,14 +82,14 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li className={styles.navbar_item} onClick={handleShowLinks}>
+        <li className={styles.navbar_item}>
           <Link href="reservation" className={styles.navbarlink}>
             <a>
               <button className={styles.reservationButton}>Reservation</button>
             </a>
           </Link>
         </li>
-        <li className={styles.navbar_item} onClick={handleShowLinks}>
+        <li className={styles.navbar_item}>
           <div className={`${styles.navbar_item} ${styles.login}`}>
             <a>
               <button className={styles.log} onClick={() => signIn()}>

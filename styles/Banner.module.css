@@ -16,7 +16,7 @@
 @media screen and (min-width: 765px) {
   .iconshead {
     display: flex !important;
-    padding: 0 8%;
+    padding: 11px 7%;
     border-radius: 2px;
   }
 }
