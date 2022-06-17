@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+/* container qui englobe les deux form */
+
+.containerForm {
+  display: flex;
+  width: 60%;
+  margin: auto;
+}
+
+.titleContainerSignUp {
+  font-size: 40px;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+
+/* sign in style */
+
+.composantSignInContainer {
+  width: 50%;
+  margin-right: 100px;
+}
+
+/* sign up style */
+
+.inscRegisterForm {
+  width: 50%;
+}
+
+/* petits input */
+
+.inputPetitSignUp {
+  border-radius: 10px;
+  width: 100%;
+  height: 50px;
+  padding: 0px 10px;
+  background-color: #f8f8f8;
+  border: 1px solid #b9b9b9bd;
+  display: block;
+  margin: 5px 0px 17px 0px;
+}
+
+.inputPetitSignUp:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f8f8f8 inset;
+}
+
+.nameLastName,
+.codeVille {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* grand input */
+
+.inputGrandSignUp {
+  border-radius: 10px;
+  width: 100%;
+  height: 50px;
+  padding: 0px 10px;
+  background-color: #f8f8f8;
+  border: 1px solid #b9b9b9bd;
+  display: block;
+  margin: 5px 0px 17px 0px;
+}
+
+.inputGrandSignUp:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f8f8f8 inset;
+}
+
+.btnInscrSignUp {
+  color: white;
+  background-color: #d28f71;
+  border-radius: 10px;
+  width: 100%;
+  height: 64px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 27px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.labelForm {
+  width: 48%;
+}
+
+.titleSignUp {
+  font-size: 30px;
+  font-family: "Poppins", sans-serif;
+}
+
+@media screen and (max-width: 800px) {
+  .containerForm,
+  .nameLastName,
+  .codeVille {
+    flex-wrap: wrap;
+  }
+  .composantSignInContainer,
+  .inscRegisterForm,
+  .btnInscrSignUp {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .containerForm {
+    width: 90%;
+  }
+
+  .titleContainerSignUp {
+    padding-top: 30px;
+    font-size: 30px;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+  }
+}

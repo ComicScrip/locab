@@ -1,0 +1,254 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  background: #ebc575;
+  height: 65px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  font-size: 2.2vw;
+  z-index: 1;
+}
+.navbar .items {
+  display: none;
+  position: fixed;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background-color: white;
+  bottom: 0;
+  font-size: 20px;
+  align-items: center;
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
+}
+
+.divlogoIcon1 a {
+  display: flex;
+  position: fixed;
+  visibility: visible;
+  align-items: center;
+  justify-content: center;
+  margin-top: -19px;
+}
+.divlogoIcon a {
+  position: fixed;
+  display: flex;
+  visibility: visible;
+  align-items: center;
+  justify-content: center;
+  margin-top: -29px;
+}
+.divlogoIcon {
+  padding-left: 70%;
+}
+.divlogoIcon1 {
+  padding-right: 33%;
+}
+.logocontainer {
+  display: none;
+}
+.reservationButton {
+  background: #d28f71;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  border: none;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.btnBurger {
+  width: 45px;
+  display: block;
+  position: absolute;
+  left: 15px;
+  cursor: pointer;
+}
+.btnBurger:hover {
+  cursor: pointer;
+}
+.burger_Line {
+  display: block;
+  position: absolute;
+  cursor: pointer;
+}
+.burger_Line:hover {
+  cursor: pointer;
+}
+
+.log {
+  cursor: pointer;
+  background: #ebc575;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 30px;
+  border-radius: 8px;
+  border: none;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.burger_Line,
+.burger_Line::before,
+.burger_Line::after {
+  display: block;
+  width: 40px;
+  height: 4px;
+  position: relative;
+  border-radius: 5px;
+  background: white;
+}
+.burger_Line::before,
+.burger_Line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+.burger_Line::before {
+  transform: translateY(-12px);
+}
+.burger_Line::after {
+  transform: translateY(12px);
+}
+.show_nav .items {
+  top: 62px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+.navbar .items li {
+  display: block;
+}
+.show_nav .items li {
+  padding: 1rem;
+}
+.show_nav .items a {
+  color: #626262;
+  font-weight: bold;
+}
+.show_nav .items li::after {
+  content: "";
+  display: block;
+  flex: 4;
+  margin: 0 auto;
+  width: 13vw;
+  height: 1px;
+  margin-top: 20px;
+  background: #626262;
+}
+
+.show_nav .items li:last-child::after {
+  display: none;
+}
+.show_nav .burger_Line {
+  width: 0;
+  background: transparent;
+  transition: 0.7s;
+}
+.show_nav .burger_Line::before {
+  left: 0;
+  transform: rotate(45deg) !important;
+  transition: 0.7s;
+}
+.show_nav .burger_Line::after {
+  transform: rotate(-45deg) !important;
+  transition: 0.7s;
+}
+.none {
+  display: none !important;
+}
+
+@media screen and (min-width: 765px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    padding: 0.5rem;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    flex-direction: initial;
+    font-size: 1vw;
+    position: initial;
+  }
+  .languageBtn {
+    cursor: pointer;
+  }
+  .navbar .items a {
+    display: initial;
+    position: relative;
+    visibility: visible;
+    margin-left: initial;
+    padding: 0 25px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    color: #626262;
+  }
+  .navbar .items .non_active {
+    color: #626262;
+  }
+  .navbar .items .active {
+    color: #ebc575;
+  }
+  .navbar .items li {
+    display: inline-flex;
+  }
+  .btnBurger {
+    display: none;
+  }
+  .navbar .items {
+    display: initial;
+    background-color: initial;
+    position: initial;
+    height: initial;
+    width: initial;
+    flex-direction: initial;
+  }
+  .logocontainer {
+    display: flex;
+    padding: 0 20px;
+    align-items: center;
+  }
+  .logocontainer a {
+    display: flex;
+    padding: 0 12px;
+    align-items: center;
+  }
+  .reservationButton {
+    height: 32px;
+    display: initial;
+    background: #d28f71;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .btnBurger {
+    display: none;
+  }
+  .divlogoIcon1 {
+    display: none;
+  }
+  .divlogoIcon {
+    display: none;
+  }
+  .show_nav .items li::after {
+    display: none !important;
+  }
+  .logocontainer img {
+    position: initial;
+  }
+}
