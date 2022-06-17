@@ -25,7 +25,6 @@ model User {
 model PriceCategory {
   id           Int       @id @default(autoincrement())
   name         String    @db.VarChar(255)
-  price        String    @db.VarChar(50)
   oneDay       Float
   twoDays      Float
   threeDays    Float
@@ -56,12 +55,12 @@ model Pack {
 }
 
 model CartItems {
-  id         Int     @id @default(autoincrement())
-  productId  Int
-  product    Product @relation(fields: [productId], references: [id])
-  customerId Int
-  customer   User    @relation(fields: [customerId], references: [id])
-  quantity   Int     @default(1)
+  id              Int           @id @default(autoincrement())
+  customerId      Int
+  customer        User          @relation(fields: [customerId], references: [id])
+  quantity        Int           @default(1)
+  ProductSample   ProductSample @relation(fields: [productSampleId], references: [id])
+  productSampleId Int
 }
 
 model Order {
@@ -74,11 +73,11 @@ model Order {
   paymentType      String           @db.VarChar(50)
   paidPrice        Float
   comment          String?          @db.VarChar(255)
-  premiseId        Int              @unique
+  premiseId        Int
   premise          Premise          @relation(fields: [premiseId], references: [id])
   delegateParentId Int?
   delegateParent   DelegateParent?  @relation(fields: [delegateParentId], references: [id])
-  partnerId        Int?             @unique
+  partnerId        Int?
   partner          Partner?         @relation(fields: [partnerId], references: [id])
   products         ProductOnOrder[]
   status           String           @default("pending")
@@ -87,39 +86,40 @@ model Order {
 }
 
 model ProductOnOrder {
-  product   Product @relation(fields: [productId], references: [id])
-  productId Int
-  order     Order   @relation(fields: [orderId], references: [id])
-  orderId   Int
-  quantity  Int     @default(1)
+  order           Order         @relation(fields: [orderId], references: [id])
+  orderId         Int
+  quantity        Int           @default(1)
+  productSample   ProductSample @relation(fields: [productSampleId], references: [id])
+  productSampleId Int
 
-  @@id([productId, orderId])
+  @@id([productSampleId, orderId])
 }
 
-model Reference {
-  id              Int       @id @default(autoincrement())
-  referenceNumber String    @db.VarChar(50)
-  dateOfPurchase  DateTime  @default(now())
-  comment         String?   @db.VarChar(255)
-  premiseId       Premise[]
-  productId       Product[]
-  condition       String    @db.VarChar(255)
+model ProductSample {
+  id               Int              @id @default(autoincrement())
+  referenceNumber  String           @db.VarChar(50)
+  dateOfPurchase   DateTime         @default(now())
+  comment          String?          @db.VarChar(255)
+  condition        String           @db.VarChar(255)
+  delegateParent   DelegateParent?  @relation(fields: [delegateParentId], references: [id])
+  delegateParentId Int?
+  product          Product          @relation(fields: [productId], references: [id])
+  productId        Int
+  premise          Premise          @relation(fields: [premiseId], references: [id])
+  premiseId        Int
+  orders           ProductOnOrder[]
+  cartItems        CartItems[]
 }
 
 model Product {
   id              Int              @id @default(autoincrement())
-  code            String           @db.VarChar(50)
   name            String           @db.VarChar(255)
   brand           String           @db.VarChar(255)
-  quantity        String           @db.VarChar(50)
   description     String           @db.VarChar(255)
   priceCategoryId Int
   priceCategory   PriceCategory    @relation(fields: [priceCategoryId], references: [id])
-  reference       Reference        @relation(fields: [referenceId], references: [id])
-  referenceId     Int
-  orders          ProductOnOrder[]
+  productSamples  ProductSample[]
   pictures        ProductPicture[]
-  cartItems       CartItems[]
 }
 
 model ProductPicture {
@@ -130,25 +130,24 @@ model ProductPicture {
 }
 
 model Premise {
-  id          Int       @id @default(autoincrement())
-  address     String    @db.VarChar(255)
-  zip         String    @db.VarChar(10)
-  city        String    @db.VarChar(60)
-  premiseType String    @db.VarChar(10)
-  orders      Order[]
-  reference   Reference @relation(fields: [referenceId], references: [id])
-  referenceId Int
+  id             Int             @id @default(autoincrement())
+  address        String          @db.VarChar(255)
+  zip            String          @db.VarChar(10)
+  city           String          @db.VarChar(60)
+  premiseType    String          @db.VarChar(10)
+  orders         Order[]
+  productSamples ProductSample[]
 }
 
 model DelegateParent {
-  id               Int     @id @default(autoincrement())
-  lastname         String  @db.VarChar(255)
-  firstname        String  @db.VarChar(255)
-  city             String  @db.VarChar(60)
-  phone            String  @db.VarChar(20)
-  email            String  @db.VarChar(100)
-  productReference String  @db.VarChar(50)
-  orders           Order[]
+  id             Int             @id @default(autoincrement())
+  lastname       String          @db.VarChar(255)
+  firstname      String          @db.VarChar(255)
+  city           String          @db.VarChar(60)
+  phone          String          @db.VarChar(20)
+  email          String          @db.VarChar(100)
+  productSamples ProductSample[]
+  orders         Order[]
 }
 
 model Partner {
