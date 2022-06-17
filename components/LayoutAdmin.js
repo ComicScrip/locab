@@ -13,6 +13,7 @@ import {
   RiUserVoiceFill,
 } from "react-icons/ri";
 import { ImHome } from "react-icons/im";
+import Script from "next/script";
 
 export default function LayoutAdmin({ children, pageTitle }) {
   const { status } = useSession();
@@ -24,6 +25,7 @@ export default function LayoutAdmin({ children, pageTitle }) {
         <Head>
           <title>{pageTitle}</title>
         </Head>
+        <Script id="my-script">{`UPLOADCARE_PUBLIC_KEY = '${process.env.NEXT_PUBLIC_UPLOADCARE_KEY}'`}</Script>
         <header>
           <nav className={styles.navBackOffice}>
             <img
@@ -84,8 +86,8 @@ export default function LayoutAdmin({ children, pageTitle }) {
       ) : (
         <>
           <p>
-            Vous devez vous identifier en tant qu&lsquo;admin pour accéder au
-            back office
+            Vous devez vous identifier en tant qu'admin pour accéder au back
+            office
           </p>
 
           <button onClick={() => signIn()} data-cy="admin_logInBtn">

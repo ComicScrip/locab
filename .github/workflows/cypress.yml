@@ -28,7 +28,7 @@ jobs:
         env:
           CI: true
           HOST: http://localhost:3000
-          SECRET: VRdzayiObk6c7SaadzzaTxP+YZpIJ9AfhrbnZ+Q
+          NEXTAUTH_SECRET: VRdzayiObk6c7SaadzzaTxP+YZpIJ9AfhrbnZ+Q
           NEXTAUTH_URL: http://localhost:3000
           NEXT_PUBLIC_UPLOADCARE_KEY: demopublickey
           MAILER_FROM: user@app.com
