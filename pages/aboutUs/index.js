@@ -42,7 +42,7 @@ export default function AboutUs() {
           </article>
         </section>
         <section className={styles.teamContainer}>
-          <h2 className={styles.titleDesc}>L'équipe Loca-b</h2>
+          <h2 className={styles.titleDesc}>{t("equipeTitre")}</h2>
           <article className={styles.teamPolaroidWrapper}>
             <div className={styles.polaroidContainer}>
               <Image
@@ -60,15 +60,8 @@ export default function AboutUs() {
                   height={20}
                 />
               </div>
-              <h4 className={styles.poloroidSubTitle}>Co-fondratrice</h4>
-              <p>
-                “Moi, Débora, je suis brésilienne. J’ai quitté mon pays à l’âge
-                de 24 ans pour découvrir le monde, découvrir une nouvelle langue
-                et une nouvelle culture. Et c’est à Dublin que j’ai posé mes
-                valises (sans savoir que ce voyage allait changer ma vie). C’est
-                là-bas, le jour même de mon arrivée, que je rencontrais Antoine,
-                mon futur mari et le papa de mes merveilleux enfants. “
-              </p>
+              <h4 className={styles.poloroidSubTitle}>{t("cofondatrice")}</h4>
+              <p>“{t("deboraDesc")}“</p>
             </div>
             <div className={styles.polaroidContainer}>
               <Image
@@ -86,14 +79,8 @@ export default function AboutUs() {
                   height={20}
                 />
               </div>
-              <h4 className={styles.poloroidSubTitle}>Co-fondateur</h4>
-              <p>
-                “Moi, Antoine, je suis aussi parti de Paris de mon côté pour
-                découvrir de nouvelles choses et vivre de nouvelles aventures.
-                Ensemble, nous avons passé 2 années en Irlande, 4 ans au Brésil
-                et en 2011 nous sommes arrivés avec nos valises en France, plus
-                précisément à Lyon.“
-              </p>
+              <h4 className={styles.poloroidSubTitle}>{t("cofondateur")}</h4>
+              <p>“{t("antoineDesc")}“</p>
             </div>
             <div className={styles.polaroidContainer}>
               <Image
@@ -111,49 +98,22 @@ export default function AboutUs() {
                   height={20}
                 />
               </div>
-              <h4 className={styles.poloroidSubTitle}>Responsable digital</h4>
-              <p>
-                “Moi, Mathis, je suis arrivé à Loca-b en décembre 2021 au tout
-                début de l’aventure. Après quelques années à chercher dans quel
-                domaine je souhaitais m’orienter, j’ai finalement décidé d’être
-                dans le digital. A Loca-b, je m’occupe de tout ce qui est
-                numérique et plus précisement la partie web et graphisme.“
-              </p>
+              <h4 className={styles.poloroidSubTitle}>{t("responsable")}</h4>
+              <p>“{t("mathisDesc")}“</p>
             </div>
           </article>
         </section>
         <section className={styles.moreAboutLocaBContainer}>
           <article className={styles.moreAboutDescription}>
-            <h2 className={styles.titleDesc}>
-              Loca-b, location de matériel de puériculture
-            </h2>
-            <p>
-              Loca-b est un service de location de matériel de puériculture clé
-              en main. Nous nous occupons de toute la logistique (livraison,
-              installation, réparation, nettoyage et entretien) pour que les
-              parents puissent profiter de leur séjour en toute tranquillité.
-            </p>
+            <h2 className={styles.titleDesc}>{t("locabLocation")}</h2>
+            <p>{t("locab1stParagraph")}</p>
 
-            <p>
-              Voyager léger, éviter des achats non nécessaires et proposer du
-              matériel de qualité et confortable pendant les vacances pour nos
-              enfants est possible ! Des déplacements simplifiés et surtout plus
-              légers, c’est une réalité ! Une vie plus simple et plus
-              responsable pour les parents, une charge mentale moins importante
-              pour le départ en vacances, c’est ce qui nous anime pour
-              développer ce joli projet et vous le proposer. On vous l’assure,
-              c’est plus simple que vous ne le croyez !{" "}
-            </p>
+            <p>{t("locab2ndParagraph")}</p>
 
-            <p>
-              Nous travaillons avec du matériel de qualité, connu et reconnu des
-              parents, et aujourd’hui nous proposons de nombreux équipements
-              comme les poussettes YOYO, lit à barreaux, siège-auto ou encore
-              chaise haute que vous pouvez retrouver sur notre site.
-            </p>
+            <p>{t("locab3rdParagraph")}</p>
             <button type="button" className={styles.reserveBtn}>
               <Link href="/reservation">
-                <a>Je réserve</a>
+                <a>{t("jereserve")}</a>
               </Link>
             </button>
           </article>
@@ -164,27 +124,16 @@ export default function AboutUs() {
               width={450}
               height={470}
             />
-            <h3 className={styles.polaroidTitle}>Voyagez léger avec bébé !</h3>
+            <h3 className={styles.polaroidTitle}>{t("voyagezLeger")}</h3>
           </div>
         </section>
         <section className={styles.serviceContainer}>
-          <h2 className={styles.titleDesc}>
-            Un service de location de matériel de puériculture de proximité
-          </h2>
-          <p>
-            Loca-b a été pensé comme un service de proximité, à des prix
-            accessibles et un service client irréprochable. Nous sommes
-            disponibles 7 jours sur 7 et nous sommes sur place, sur votre lieu
-            de séjour. Pas de point relais ou de déplacement contraignant pour
-            aller chercher un lit pour son bébé !
-          </p>
+          <h2 className={styles.titleDesc}>{t("serviceLocation")}</h2>
+          <p>{t("service1stPararaph")}</p>
 
-          <p>
-            Pour le moment, nous sommes présents à Lyon, et en Normandie à
-            Deauville, Trouville, Cabourg et Honfleur.
-          </p>
+          <p>{t("service2ndParagraph")}</p>
 
-          <p> D’autres destinations sont à venir…</p>
+          <p>{t("service3rdParagraph")}</p>
 
           <div className={styles.destinationsContainer}>
             <article className={styles.pictureDestinationLyon}>
@@ -195,11 +144,11 @@ export default function AboutUs() {
             </article>
             <article>
               <div className={styles.pictureDestinationVendee}></div>
-              <h4 className={styles.destinationNameVenir}>A venir</h4>
+              <h4 className={styles.destinationNameVenir}>{t("avenir")}</h4>
             </article>
             <article>
               <div className={styles.pictureDestinationAvignon}></div>
-              <h4 className={styles.destinationNameVenir}>A venir</h4>
+              <h4 className={styles.destinationNameVenir}>{t("avenir")}</h4>
             </article>
           </div>
         </section>
