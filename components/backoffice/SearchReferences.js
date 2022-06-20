@@ -26,9 +26,9 @@ export default function SearchReferences() {
             <thead>
               <tr>
                 <th>Nom</th>
-                <th>Catégorie de prix</th>
-                <th>Stock total</th>
-                <th>Marque</th>
+                <th>Parent relais</th>
+                <th>Ville</th>
+                <th>Etat</th>
                 <th></th>
               </tr>
             </thead>
