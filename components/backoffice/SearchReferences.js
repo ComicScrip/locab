@@ -35,7 +35,7 @@ export default function SearchReferences() {
             <tbody>
               {backReferences
                 .filter((backReference) =>
-                  backReference.references
+                  backReference.referenceNumber
                     .toUpperCase()
                     .includes(searchValue.toUpperCase())
                 )
