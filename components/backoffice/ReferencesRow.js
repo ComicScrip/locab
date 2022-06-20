@@ -1,6 +1,6 @@
 import styles from "../../styles/BackProduits.module.css";
 
-export default function ResBackReferences({ backReference }) {
+export default function ReferencesRow({ backReference }) {
   return (
     <tr className={styles.line}>
       <td>{backReference.referenceNumber}</td>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "../../styles/BackProduits.module.css";
 
-export default function ResBackProducts({ backProduct }) {
+export default function ProductsRow({ backProduct }) {
   return (
     <tr className={styles.line}>
       <td>
