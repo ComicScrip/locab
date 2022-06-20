@@ -9,7 +9,7 @@ export default function Banner() {
     <div className={styles.iconshead}>
       <div>
         <Image
-          src="/icons/credit-card.png"
+          src="/icons/credit-card.webp"
           alt="facebook"
           width={34}
           height={34}
@@ -20,7 +20,7 @@ export default function Banner() {
       </div>
       <div>
         <Image
-          src="/icons/washing-hands.png"
+          src="/icons/washing-hands.webp"
           alt="facebook"
           width={34}
           height={34}
@@ -30,14 +30,14 @@ export default function Banner() {
         </div>
       </div>
       <div>
-        <Image src="/icons/rating.png" alt="facebook" width={34} height={34} />
+        <Image src="/icons/rating.webp" alt="facebook" width={34} height={34} />
         <div className={styles.divpara}>
           <p className={styles.paragraphe}>{t("uneequipesympaetaecoute")}</p>
         </div>
       </div>
       <div>
         <Image
-          src="/icons/thumb.png"
+          src="/icons/thumb.webp"
           alt="satisfaction"
           width={34}
           height={34}
