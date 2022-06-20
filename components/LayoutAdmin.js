@@ -24,55 +24,57 @@ export default function LayoutAdmin({ children, pageTitle }) {
         <Head>
           <title>{pageTitle}</title>
         </Head>
-        <header>
-          <nav className={styles.navBackOffice}>
-            <img
-              src="/image/logo_blanc.webp"
-              alt="logo"
-              className={styles.logoBackOffice}
-              width={"150"}
-              height={"140"}
-            />
+        <section className={styles.positionNavBackOffice}>
+          <header>
+            <nav className={styles.navBackOffice}>
+              <img
+                src="/image/logo_blanc.webp"
+                alt="logo"
+                className={styles.logoBackOffice}
+                width={"150"}
+                height={"140"}
+              />
 
-            <ul className={styles.listeNavBack}>
-              <li className={styles.eltNavBack}>
-                <FaCalendarAlt className={styles.icon} /> Réservation
-              </li>
-              <li className={styles.eltNavBack}>
-                <IoCube className={styles.icon} /> Produits
-              </li>
-              <li className={styles.eltNavBack}>
-                <AiFillEuroCircle className={styles.icon} />
-                Prix
-              </li>
-              <li className={styles.eltNavBack}>
-                <FaPercentage className={styles.icon} />
-                Promotion
-              </li>
-              <li className={styles.eltNavBack}>
-                <RiUserVoiceFill className={styles.icon} />
-                Ambassadeurs
-              </li>
-              <li className={styles.eltNavBack}>
-                <ImHome className={styles.icon} />
-                Partenaires
-              </li>
-              <li className={styles.eltNavBack}>
-                <RiUserFill className={styles.icon} />
-                Utilisateurs
-              </li>
-              <li className={styles.eltNavBack}>
-                <RiUserSettingsFill className={styles.icon} />
-                Clients
-              </li>
-              <li className={styles.eltNavBack}>
-                <MdLocalPostOffice className={styles.icon} />
-                Messagerie
-              </li>
-            </ul>
-          </nav>
-        </header>
-        <main>{children}</main>
+              <ul className={styles.listeNavBack}>
+                <li className={styles.eltNavBack}>
+                  <FaCalendarAlt className={styles.icon} /> Réservation
+                </li>
+                <li className={styles.eltNavBack}>
+                  <IoCube className={styles.icon} /> Produits
+                </li>
+                <li className={styles.eltNavBack}>
+                  <AiFillEuroCircle className={styles.icon} />
+                  Prix
+                </li>
+                <li className={styles.eltNavBack}>
+                  <FaPercentage className={styles.icon} />
+                  Promotion
+                </li>
+                <li className={styles.eltNavBack}>
+                  <RiUserVoiceFill className={styles.icon} />
+                  Ambassadeurs
+                </li>
+                <li className={styles.eltNavBack}>
+                  <ImHome className={styles.icon} />
+                  Partenaires
+                </li>
+                <li className={styles.eltNavBack}>
+                  <RiUserFill className={styles.icon} />
+                  Utilisateurs
+                </li>
+                <li className={styles.eltNavBack}>
+                  <RiUserSettingsFill className={styles.icon} />
+                  Clients
+                </li>
+                <li className={styles.eltNavBack}>
+                  <MdLocalPostOffice className={styles.icon} />
+                  Messagerie
+                </li>
+              </ul>
+            </nav>
+          </header>
+          <main>{children}</main>
+        </section>
       </>
     );
   }
