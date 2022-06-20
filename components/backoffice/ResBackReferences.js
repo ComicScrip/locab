@@ -9,7 +9,7 @@ export default function ResBackReferences({ backReference }) {
       <td>{backReference.etat}</td>
       <td>
         <ul>
-          <li>Modifier</li>
+          <li className={styles.modifyButton}>Modifier</li>
           <li className={styles.suppButton}>Supprimer</li>
         </ul>
       </td>

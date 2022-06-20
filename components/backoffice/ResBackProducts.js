@@ -18,7 +18,7 @@ export default function ResBackProducts({ backProduct }) {
       <td>{backProduct.tradeMark}</td>
       <td>
         <ul>
-          <li>Modifier</li>
+          <li className={styles.modifyButton}>Modifier</li>
           <li className={styles.suppButton}>Supprimer</li>
         </ul>
       </td>

@@ -16,6 +16,7 @@ export default function NavProducts() {
                 ? styles.searchActive
                 : styles.searchNonActive
             }
+            data-cy="backProductsNavButton"
           >
             Produits
           </a>
@@ -28,6 +29,7 @@ export default function NavProducts() {
                 ? styles.searchActive
                 : styles.searchNonActive
             }
+            data-cy="backReferencesNavButton"
           >
             Références
           </a>
