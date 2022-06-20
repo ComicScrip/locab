@@ -2,7 +2,6 @@ import { useState } from "react";
 // import axios from "axios";
 // import swal from "sweetalert2";
 import { Widget } from "@uploadcare/react-widget";
-// import upload
 import styles from "../styles/AddProductsPopUp.module.css";
 
 function AddProductsPopUp({ show, setShow }) {
@@ -12,7 +11,16 @@ function AddProductsPopUp({ show, setShow }) {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [productUrl, setProductUrl] = useState("");
-  // const widgets = uploadcare.initialize();
+
+  const buttonName = () => ({
+    buttons: {
+      choose: {
+        files: {
+          one: "+",
+        },
+      },
+    },
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,6 +47,14 @@ function AddProductsPopUp({ show, setShow }) {
 
   return (
     <div className={`${styles.popup} ${show ? styles.active : ""} `}>
+      <style jsx>{`
+        .uploadcare--widget__button_type_open,
+        .uploadcare--widget__button,
+        .uploadcare--widget__button_type_open:hover {
+          color: black;
+          background-color: white;
+        }
+      `}</style>
       <div className={`${styles.popup__content} ${show ? styles.active : ""}`}>
         {show && (
           <span onClick={() => setShow(false)} className={styles.popup__close}>
@@ -122,7 +138,7 @@ function AddProductsPopUp({ show, setShow }) {
                   id="product"
                   name="product"
                   tabs="file"
-                  data-btn-text="+"
+                  localeTranslations={buttonName()}
                   value={productUrl}
                   onChange={({ file }) => {
                     setProductUrl(file);
