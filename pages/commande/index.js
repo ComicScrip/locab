@@ -1,4 +1,5 @@
 import styles from "../../styles/Welcome.module.css";
+import axios from "axios";
 import { GiPadlock } from "react-icons/gi";
 import { BsPaypal } from "react-icons/bs";
 import { FaCcVisa } from "react-icons/fa";
@@ -17,6 +18,15 @@ export default function Commande() {
   const [checkedLivraison, setCheckedLivraison] = useState(false);
   const [checkedPayment, setCheckedPayment] = useState(false);
 
+  const [userMail, setUserMail] = useState("");
+  const [userFirstname, setUserFirstName] = useState("");
+  const [userLastName, setUserLastName] = useState("");
+  const [userAddress, setUserAddress] = useState("");
+  const [userZip, setUserZip] = useState("");
+  const [userCity, setUserCity] = useState("");
+
+  const [error, setError] = useState("");
+
   /* PARTIE INFORMATIONS */
 
   const HandleSubmitInformations = (e) => {
@@ -24,6 +34,30 @@ export default function Commande() {
     setActiveInformations(!activeInformations);
     setActiveLivraison(!activeLivraison);
     setCheckedInformations(!checkedInformations);
+
+    axios
+      .post("/api/users", {
+        firstname: userFirstname,
+        lastname: userLastName,
+        address: userAddress,
+        zip: userZip,
+        city: userCity,
+        phone: "0102030405",
+        email: userMail,
+        password: "Toto123/",
+      })
+      .then(() => {
+        setUserFirstName("");
+        setUserLastName("");
+        setUserAddress("");
+        setUserCity("");
+        setUserMail("");
+        setUserZip("");
+      })
+      .catch((err) => {
+        if (err.response && err.response.status === 409)
+          setError("Email déjà utilisé");
+      });
   };
 
   const OpenInformations = (e) => {
@@ -120,7 +154,14 @@ export default function Commande() {
                   <label htmlFor="email" className={styles.email}>
                     Adresse mail
                   </label>
-                  <input className={styles.textarea} id="email" type="email" />
+                  <input
+                    className={styles.textarea}
+                    id="email"
+                    type="email"
+                    onChange={(e) => setUserMail(e.target.value)}
+                    value={userMail}
+                    data-cy="infos_email"
+                  />
                 </div>
                 <div className={styles.name}>
                   <div className={styles.formpassword}>
@@ -131,6 +172,9 @@ export default function Commande() {
                       className={styles.textarea}
                       id="firstname"
                       type="name"
+                      onChange={(e) => setUserFirstName(e.target.value)}
+                      value={userFirstname}
+                      data-cy="infos_firstname"
                     />
                   </div>
                   <div className={styles.formpassword}>
@@ -141,6 +185,9 @@ export default function Commande() {
                       className={styles.textarea}
                       id="secondname"
                       type="name"
+                      onChange={(e) => setUserLastName(e.target.value)}
+                      value={userLastName}
+                      data-cy="infos_lastname"
                     />
                   </div>
                 </div>
@@ -152,6 +199,9 @@ export default function Commande() {
                     className={styles.textarea}
                     id="adress"
                     type="adress"
+                    onChange={(e) => setUserAddress(e.target.value)}
+                    value={userAddress}
+                    data-cy="infos_address"
                   />
                 </div>
                 <div className={styles.name}>
@@ -163,13 +213,23 @@ export default function Commande() {
                       className={styles.textarea}
                       id="codepostal"
                       type="adress"
+                      onChange={(e) => setUserZip(e.target.value)}
+                      value={userZip}
+                      data-cy="infos_zip"
                     />
                   </div>
                   <div className={styles.formpassword}>
                     <label htmlFor="city" className={styles.password}>
                       Ville
                     </label>
-                    <input className={styles.textarea} id="city" type="city" />
+                    <input
+                      className={styles.textarea}
+                      id="city"
+                      type="city"
+                      onChange={(e) => setUserCity(e.target.value)}
+                      value={userCity}
+                      data-cy="infos_city"
+                    />
                   </div>
                 </div>
                 <div className={styles.checkbox}>
@@ -183,10 +243,14 @@ export default function Commande() {
                   </label>
                 </div>
                 <div className={styles.formbutton}>
+                  <p style={{ color: "#D28F71", textAlign: "center" }}>
+                    {error}
+                  </p>
                   <button
                     className={styles.button2}
                     type="submit"
                     onClick={HandleSubmitInformations}
+                    data-cy="infos_submit_button"
                   >
                     CONTINUER VERS LA LIVRAISON
                   </button>
