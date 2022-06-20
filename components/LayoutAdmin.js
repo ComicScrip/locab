@@ -13,7 +13,7 @@ import {
   RiUserVoiceFill,
 } from "react-icons/ri";
 import { ImHome } from "react-icons/im";
-import Script from "next/script";
+// import Script from "next/script";
 
 export default function LayoutAdmin({ children, pageTitle }) {
   const { status } = useSession();
@@ -25,7 +25,7 @@ export default function LayoutAdmin({ children, pageTitle }) {
         <Head>
           <title>{pageTitle}</title>
         </Head>
-        <Script id="my-script">{`UPLOADCARE_PUBLIC_KEY = '${process.env.NEXT_PUBLIC_UPLOADCARE_KEY}'`}</Script>
+        {/* <Script id="my-script">{`UPLOADCARE_PUB_KEY = '${process.env.NEXT_PUBLIC_UPLOADCARE_KEY}'`}</Script> */}
         <header>
           <nav className={styles.navBackOffice}>
             <img

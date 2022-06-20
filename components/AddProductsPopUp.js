@@ -2,6 +2,7 @@ import { useState } from "react";
 // import axios from "axios";
 // import swal from "sweetalert2";
 import { Widget } from "@uploadcare/react-widget";
+// import upload
 import styles from "../styles/AddProductsPopUp.module.css";
 
 function AddProductsPopUp({ show, setShow }) {
@@ -11,6 +12,7 @@ function AddProductsPopUp({ show, setShow }) {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [productUrl, setProductUrl] = useState("");
+  // const widgets = uploadcare.initialize();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -114,20 +116,19 @@ function AddProductsPopUp({ show, setShow }) {
             <div className={styles.labelPopUp}>Photos</div>
             <div className={styles.btnPopupDiv}>
               <label htmlFor="product">
-                +
                 <Widget
                   publicKey={process.env.NEXT_PUBLIC_UPLOADCARE_KEY}
                   className={styles.buttonPlus}
                   id="product"
                   name="product"
                   tabs="file"
+                  data-btn-text="+"
                   value={productUrl}
-                  onChange={({ cdnUrl }) => {
-                    setProductUrl(cdnUrl);
+                  onChange={({ file }) => {
+                    setProductUrl(file);
                   }}
                 />
               </label>
-
               <button type="submit" className={styles.buttonPopUp}>
                 Ajouter
               </button>
