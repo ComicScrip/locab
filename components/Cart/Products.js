@@ -2,8 +2,11 @@ import ResProduct from "./ResProduct";
 import styles from "../../styles/Reservation.module.css";
 import { useState, useContext } from "react";
 import { SelectCartContext } from "../../contexts/selectCartContext";
+import { useTranslation } from "next-i18next";
 
 export default function Products() {
+  const { t } = useTranslation("cart");
+
   const { products } = useContext(SelectCartContext);
   const [searchValue, setSearchValue] = useState("");
   const [showAvailable, setShowAvailable] = useState(true);
@@ -19,7 +22,7 @@ export default function Products() {
           data-cy="searchBar"
           value={searchValue}
           type="text"
-          placeholder="Poussette, lit à barreaux, chaise haute..."
+          placeholder={t("inputSeach")}
           onChange={(event) => setSearchValue(event.target.value)}
           className={styles.searchBar}
         />
@@ -33,7 +36,7 @@ export default function Products() {
             id="availability"
             defaultChecked={true}
           />
-          Afficher les produits indisponibles
+          {t("afficherlesproduitsindisponibles")}
         </label>
       </section>
 

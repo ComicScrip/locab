@@ -6,11 +6,11 @@
   display: flex;
   width: 60%;
   margin: auto;
+  padding-bottom: 120px;
 }
 
 .titleContainerSignUp {
   font-size: 40px;
-  font-family: "Poppins", sans-serif;
   text-align: center;
 }
 
@@ -37,7 +37,7 @@
   background-color: #f8f8f8;
   border: 1px solid #b9b9b9bd;
   display: block;
-  margin: 5px 0px 17px 0px;
+  margin: 5px 0px 10px 0px;
 }
 
 .inputPetitSignUp:-webkit-autofill {
@@ -60,7 +60,7 @@
   background-color: #f8f8f8;
   border: 1px solid #b9b9b9bd;
   display: block;
-  margin: 5px 0px 17px 0px;
+  margin: 5px 0px 10px 0px;
 }
 
 .inputGrandSignUp:-webkit-autofill {
@@ -74,7 +74,6 @@
   width: 100%;
   height: 64px;
   border: none;
-  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 27px;
   cursor: pointer;
@@ -87,10 +86,17 @@
 
 .titleSignUp {
   font-size: 30px;
-  font-family: "Poppins", sans-serif;
 }
 
-@media screen and (max-width: 800px) {
+.connexionText {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+@media screen and (max-width: 900px) {
   .containerForm,
   .nameLastName,
   .codeVille {
@@ -101,18 +107,17 @@
   .btnInscrSignUp {
     width: 100%;
     margin: auto;
+    margin-top: 20px;
   }
-}
 
-@media screen and (max-width: 800px) {
   .containerForm {
     width: 90%;
+    padding-bottom: 40px;
   }
 
   .titleContainerSignUp {
-    padding-top: 30px;
+    padding-top: 50px;
     font-size: 30px;
-    font-family: "Poppins", sans-serif;
     text-align: center;
   }
 }
