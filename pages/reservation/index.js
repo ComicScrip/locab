@@ -12,8 +12,9 @@ function SearchPage() {
   const { t } = useTranslation("reservation");
 
   return (
-    <Layout>
+    <Layout pageTitle="Location de matériel de puériculture Lyon — Loca-b">
       <Banner />
+
       <div className={styles.main_title}>
         <h1>{t("dequoiavezvousbesoin")}</h1>
       </div>
@@ -27,7 +28,7 @@ function SearchPage() {
               marginTop: "-4px",
             }}
           />{" "}
-          Paiement sécurisé
+          {t("paiementsecurise")}
         </p>
         <div className={styles.trait_droit}></div>
       </div>

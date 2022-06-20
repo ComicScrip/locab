@@ -67,38 +67,38 @@ export default function Footer() {
           <div className={styles.socialsicons}>
             <div className={styles.image}>
               <div className={styles.icons}>
-                <Link href="/">
+                <Link href="https://www.facebook.com/locabofficiel">
                   <a>
                     <Image
                       src="/icons/facebook.webp"
                       alt="facebook"
-                      width={20}
-                      height={20}
+                      width={40}
+                      height={40}
                     />
                   </a>
                 </Link>
               </div>
             </div>
             <div className={styles.icons}>
-              <Link href="/">
+              <Link href="https://www.instagram.com/loca_b_officiel/">
                 <a>
                   <Image
                     src="/icons/instagram.webp"
                     alt="instagram"
-                    width={20}
-                    height={20}
+                    width={40}
+                    height={40}
                   />
                 </a>
               </Link>
             </div>
             <div className={styles.icons}>
-              <Link href="/">
+              <Link href="https://www.linkedin.com/company/locabofficiel/">
                 <a>
                   <Image
                     src="/icons/linkedin.webp"
                     alt="linkedin"
-                    width={20}
-                    height={20}
+                    width={40}
+                    height={40}
                   />
                 </a>
               </Link>
@@ -109,8 +109,8 @@ export default function Footer() {
                   <Image
                     src="/icons/whatsapp.webp"
                     alt="Whatsapp"
-                    width={20}
-                    height={20}
+                    width={40}
+                    height={40}
                   />
                 </a>
               </Link>
