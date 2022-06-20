@@ -23,13 +23,13 @@ export default function AboutUs() {
             <Image
               alt="Photo de Débora et Antoine"
               src="/image/aboutus/about.webp"
-              width={400}
+              width={437}
               height={470}
             />
-            <h3 className={styles.polaroidTitle}>{t("parentsheureux")}</h3>
+            <h2 className={styles.polaroidTitle}>{t("parentsheureux")}</h2>
           </article>
           <article className={styles.geneseDescriptionContainer}>
-            <h2 className={styles.titleDesc}>{t("genese")}</h2>
+            <h3 className={styles.titleDesc}>{t("genese")}</h3>
             <p>{t("genese1stParagraph")}</p>
 
             <p>{t("genese2ndParagraph")}</p>
@@ -48,16 +48,16 @@ export default function AboutUs() {
               <Image
                 alt="Photo de Débora"
                 src="/image/aboutus/debora.webp"
-                width={300}
-                height={380}
+                width="300px"
+                height="380px"
               />
               <div className={styles.nameContainer}>
                 <h3 className={styles.polaroidTitle}>Débora</h3>
                 <Image
                   alt="Image du drapeau brésilien"
                   src="/image/aboutus/brazil.webp"
-                  width={30}
-                  height={20}
+                  width={"30px"}
+                  height={"20px"}
                 />
               </div>
               <h4 className={styles.poloroidSubTitle}>{t("cofondatrice")}</h4>
@@ -67,8 +67,8 @@ export default function AboutUs() {
               <Image
                 alt="Photo d'Antoine"
                 src="/image/aboutus/antoine.webp"
-                width={300}
-                height={380}
+                width="300"
+                height="380"
               />
               <div className={styles.nameContainer}>
                 <h3 className={styles.polaroidTitle}>Antoine</h3>
@@ -137,18 +137,18 @@ export default function AboutUs() {
 
           <div className={styles.destinationsContainer}>
             <article className={styles.pictureDestinationLyon}>
-              <h4 className={styles.destinationName}>Lyon</h4>
+              <p className={styles.destinationName}>Lyon</p>
             </article>
             <article className={styles.pictureDestinationNormandie}>
-              <h4 className={styles.destinationName}>Normandie</h4>
+              <p className={styles.destinationName}>Normandie</p>
             </article>
             <article>
               <div className={styles.pictureDestinationVendee}></div>
-              <h4 className={styles.destinationNameVenir}>{t("avenir")}</h4>
+              <p className={styles.destinationNameVenir}>{t("avenir")}</p>
             </article>
             <article>
               <div className={styles.pictureDestinationAvignon}></div>
-              <h4 className={styles.destinationNameVenir}>{t("avenir")}</h4>
+              <p className={styles.destinationNameVenir}>{t("avenir")}</p>
             </article>
           </div>
         </section>
