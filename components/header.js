@@ -8,7 +8,6 @@ import LogoText from "../public/logo/logoText.webp";
 import LogoTransparent from "../public/logo/logo_transparent.webp";
 import LogoIcon from "../public/logo/icon_logo.webp";
 import styles from "../styles/headerfooter/navbar.module.css";
-import { signIn } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 
 const Navbar = () => {
@@ -107,11 +106,9 @@ const Navbar = () => {
         </li>
         <li className={styles.navbar_item}>
           <div className={`${styles.navbar_item} ${styles.login}`}>
-            <a>
-              <button className={styles.log} onClick={() => signIn()}>
-                {t("seconnecter")}
-              </button>
-            </a>
+            <Link href="/signup">
+              <a className={styles.log}>{t("seconnecter")}</a>
+            </Link>
           </div>
           <select
             name="languages"

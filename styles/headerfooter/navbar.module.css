@@ -179,6 +179,7 @@
     font-size: 1vw;
     position: initial;
   }
+
   .languageBtn {
     cursor: pointer;
   }
@@ -237,6 +238,7 @@
     text-transform: uppercase;
     cursor: pointer;
   }
+
   .btnBurger {
     display: none;
   }
