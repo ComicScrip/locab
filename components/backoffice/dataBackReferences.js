@@ -2,17 +2,17 @@ const dataBackReferences = {
   backReferences: [
     {
       id: 1,
-      references: "CH-001",
-      parent: "Monsieur X",
-      city: "Paris",
-      etat: "Neuf",
+      referenceNumber: "CH-001",
+      delegateParentId: "Monsieur X",
+      premiseId: "Paris",
+      condition: "Neuf",
     },
     {
       id: 2,
-      references: "CH-002",
-      parent: "Madame Y",
-      city: "Lyon",
-      etat: "Bon",
+      referenceNumber: "CH-002",
+      delegateParentId: "Madame Y",
+      premiseId: "Lyon",
+      condition: "Bon",
     },
   ],
 };

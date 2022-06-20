@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BsPlusCircle } from "react-icons/bs";
 import styles from "../../styles/BackProduits.module.css";
-import ResBackReferences from "./ResBackReferences";
+import ReferencesRow from "./ReferencesRow";
 import dataBackReferences from "./dataBackReferences";
 
 export default function SearchReferences() {
@@ -40,7 +40,7 @@ export default function SearchReferences() {
                     .includes(searchValue.toUpperCase())
                 )
                 .map((backReference) => (
-                  <ResBackReferences
+                  <ReferencesRow
                     backReference={backReference}
                     key={backReference.id}
                     id={backReference.id}

@@ -13,9 +13,9 @@ export default function ResBackProducts({ backProduct }) {
         />
       </td>
       <td>{backProduct.name}</td>
-      <td>{backProduct.priceCategory}</td>
+      <td>{backProduct.priceCategoryId}</td>
       <td>{backProduct.stock}</td>
-      <td>{backProduct.tradeMark}</td>
+      <td>{backProduct.brand}</td>
       <td>
         <ul>
           <li className={styles.modifyButton}>Modifier</li>

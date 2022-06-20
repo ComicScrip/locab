@@ -3,10 +3,10 @@ import styles from "../../styles/BackProduits.module.css";
 export default function ResBackReferences({ backReference }) {
   return (
     <tr className={styles.line}>
-      <td>{backReference.references}</td>
-      <td>{backReference.parent}</td>
-      <td>{backReference.city}</td>
-      <td>{backReference.etat}</td>
+      <td>{backReference.referenceNumber}</td>
+      <td>{backReference.delegateParentId}</td>
+      <td>{backReference.premiseId}</td>
+      <td>{backReference.condition}</td>
       <td>
         <ul>
           <li className={styles.modifyButton}>Modifier</li>

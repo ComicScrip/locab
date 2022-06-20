@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BsPlusCircle } from "react-icons/bs";
 import styles from "../../styles/BackProduits.module.css";
-import ResBackProducts from "./ResBackProducts";
+import ProductsRow from "./ProductsRow";
 import dataBackProducts from "./dataBackProducts";
 
 export default function SearchProducts() {
@@ -41,7 +41,7 @@ export default function SearchProducts() {
                     .includes(searchValue.toUpperCase())
                 )
                 .map((backProduct) => (
-                  <ResBackProducts
+                  <ProductsRow
                     backProduct={backProduct}
                     key={backProduct.id}
                     id={backProduct.id}
