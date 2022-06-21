@@ -234,6 +234,18 @@
     text-transform: uppercase;
     cursor: pointer;
   }
+  .log {
+    cursor: pointer;
+    background: #ebc575;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    border-radius: 8px;
+    border: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    padding: 50px 50px;
+  }
 
   .btnBurger {
     display: none;

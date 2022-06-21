@@ -84,7 +84,7 @@ export default function Footer() {
             </div>
             <div className={styles.icons}>
               <Link href="https://www.instagram.com/loca_b_officiel/">
-                <a target="_blank">
+                <a target="_blank" rel="noreferrer">
                   <img
                     src="/icons/instagram.webp"
                     alt="instagram"
@@ -96,7 +96,7 @@ export default function Footer() {
             </div>
             <div className={styles.icons}>
               <Link href="https://www.linkedin.com/company/locabofficiel/">
-                <a target="_blank">
+                <a target="_blank" rel="noreferrer">
                   <img
                     src="/icons/linkedin.webp"
                     alt="linkedin"
@@ -108,7 +108,7 @@ export default function Footer() {
             </div>
             <div className={styles.icons}>
               <Link href="/">
-                <a target="_blank">
+                <a target="_blank" rel="noreferrer">
                   <img
                     src="/icons/whatsapp.webp"
                     alt="Whatsapp"
