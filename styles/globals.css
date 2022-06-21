@@ -42,12 +42,7 @@ ul {
 
 /* Bouton Widget Uploadcare */
 
-.uploadcare--widget__button_type_open,
-.uploadcare--widget__button,
-.uploadcare--widget__button_type_open:hover,
-.uploadcare--widget__button_type_cancel,
-.uploadcare--widget__button_type_remove,
-.uploadcare--widget__button_type_open:active {
+.uploadcare--widget__button_type_open {
   color: black;
   background-color: white;
   cursor: pointer;

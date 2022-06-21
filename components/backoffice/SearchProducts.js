@@ -3,10 +3,16 @@ import { BsPlusCircle } from "react-icons/bs";
 import styles from "../../styles/BackProduits.module.css";
 import ProductsRow from "./ProductsRow";
 import dataBackProducts from "./dataBackProducts";
+import AddProductsPopUp from "../../components/AddProductsPopUp";
 
 export default function SearchProducts() {
   const { backProducts } = dataBackProducts;
   const [searchValue, setSearchValue] = useState("");
+
+  const [showPopup, setShowPopup] = useState(false);
+  const handleClick = () => {
+    setShowPopup(true);
+  };
 
   return (
     <div className={styles.searchProductsMainContainer}>
@@ -19,7 +25,11 @@ export default function SearchProducts() {
             value={searchValue}
             onChange={(event) => setSearchValue(event.target.value)}
           />
-          <BsPlusCircle className={styles.addProductsButton} />
+          <BsPlusCircle
+            onClick={handleClick}
+            className={styles.addProductsButton}
+          />
+          <AddProductsPopUp show={showPopup} setShow={setShowPopup} />
         </section>
         <section className={styles.tableProductsContainer}>
           <table className={styles.tableProducts}>

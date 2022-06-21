@@ -47,14 +47,6 @@ function AddProductsPopUp({ show, setShow }) {
 
   return (
     <div className={`${styles.popup} ${show ? styles.active : ""} `}>
-      <style jsx>{`
-        .uploadcare--widget__button_type_open,
-        .uploadcare--widget__button,
-        .uploadcare--widget__button_type_open:hover {
-          color: black;
-          background-color: white;
-        }
-      `}</style>
       <div className={`${styles.popup__content} ${show ? styles.active : ""}`}>
         {show && (
           <span onClick={() => setShow(false)} className={styles.popup__close}>
