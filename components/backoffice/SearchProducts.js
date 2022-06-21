@@ -2,11 +2,11 @@ import { useState } from "react";
 import { BsPlusCircle } from "react-icons/bs";
 import styles from "../../styles/BackProduits.module.css";
 import ProductsRow from "./ProductsRow";
-import dataBackProducts from "./dataBackProducts";
+// import dataBackProducts from "./dataBackProducts";
 import AddProductsPopUp from "../../components/AddProductsPopUp";
 
-export default function SearchProducts() {
-  const { backProducts } = dataBackProducts;
+export default function SearchProducts({ backProducts }) {
+  // const { backProducts } = dataBackProducts;
   const [searchValue, setSearchValue] = useState("");
 
   const [showPopup, setShowPopup] = useState(false);
@@ -38,7 +38,7 @@ export default function SearchProducts() {
                 <th></th>
                 <th>Nom</th>
                 <th>Catégorie de prix</th>
-                <th>Stock total</th>
+                {/* <th>Stock total</th> */}
                 <th>Marque</th>
                 <th></th>
               </tr>

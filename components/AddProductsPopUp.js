@@ -1,14 +1,13 @@
 import { useState } from "react";
-// import axios from "axios";
-// import swal from "sweetalert2";
+import axios from "axios";
 import { Widget } from "@uploadcare/react-widget";
 import styles from "../styles/AddProductsPopUp.module.css";
 
 function AddProductsPopUp({ show, setShow }) {
   const [name, setName] = useState("");
-  const [mark, setMark] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [price, setPrice] = useState("");
+  const [brand, setBrand] = useState("");
+  // const [quantity, setQuantity] = useState("");
+  const [priceCategoryId, setPriceCategoryId] = useState("");
   const [description, setDescription] = useState("");
   const [productUrl, setProductUrl] = useState("");
 
@@ -23,26 +22,27 @@ function AddProductsPopUp({ show, setShow }) {
   });
 
   const handleSubmit = (e) => {
+    const priceCatNumber = parseInt(priceCategoryId);
     e.preventDefault();
-    // axios
-    //   .post(`/api/products`, {
-    //     name,
-    //     mark,
-    //     quantity,
-    //     price,
-    //     description,
-    //   })
-    //   .then(() => {
-    //     setName("");
-    //     setMark("");
-    //     setQuantity("");
-    //     setPrice("");
-    //     setDescription("");
-    //   })
-    //   .then(() => {
-    //     swal("Produit ajouté");
-    //     setShow(false);
-    //   });
+    axios
+      .post(`/api/products`, {
+        name,
+        brand,
+        description,
+        priceCategoryId: priceCatNumber,
+      })
+      .then(() => {
+        setName("");
+        setBrand("");
+        setDescription("");
+        setPriceCategoryId("");
+      })
+      .then(() => {
+        setShow(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   return (
@@ -70,20 +70,20 @@ function AddProductsPopUp({ show, setShow }) {
                 ></input>
               </div>
               <div className={styles.productsMark}>
-                <label htmlFor="mark" className={styles.labelPopUp}>
+                <label htmlFor="brand" className={styles.labelPopUp}>
                   Marque
                 </label>
                 <input
                   className={styles.inputPopUp}
-                  id="mark"
+                  id="brand"
                   type="text"
-                  value={mark}
-                  onChange={(e) => setMark(e.target.value)}
+                  value={brand}
+                  onChange={(e) => setBrand(e.target.value)}
                 ></input>
               </div>
             </div>
             <div className={styles.inputLign}>
-              <div className={styles.productsQuantity}>
+              {/* <div className={styles.productsQuantity}>
                 <label htmlFor="quantity" className={styles.labelPopUp}>
                   Quantité
                 </label>
@@ -94,7 +94,7 @@ function AddProductsPopUp({ show, setShow }) {
                   value={quantity}
                   onChange={(e) => setQuantity(e.target.value)}
                 ></input>
-              </div>
+              </div> */}
               <div className={styles.productsPrice}>
                 <label htmlFor="price" className={styles.labelPopUp}>
                   Catégorie de prix
@@ -103,8 +103,8 @@ function AddProductsPopUp({ show, setShow }) {
                   className={styles.inputPopUp}
                   id="price"
                   type="text"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
+                  value={priceCategoryId}
+                  onChange={(e) => setPriceCategoryId(e.target.value)}
                 ></input>
               </div>
             </div>

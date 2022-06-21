@@ -1,20 +1,20 @@
-import Image from "next/image";
+// import Image from "next/image";
 import styles from "../../styles/BackProduits.module.css";
 
 export default function ProductsRow({ backProduct }) {
   return (
     <tr className={styles.line}>
       <td>
-        <Image
+        {/* <Image
           src={backProduct.picture}
           height={"70px"}
           width={"70px"}
           alt="poussette logo"
-        />
+        /> */}
       </td>
       <td>{backProduct.name}</td>
       <td>{backProduct.priceCategoryId}</td>
-      <td>{backProduct.stock}</td>
+      {/* <td>{backProduct.stock}</td> */}
       <td>{backProduct.brand}</td>
       <td>
         <ul>
