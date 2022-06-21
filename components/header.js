@@ -142,8 +142,8 @@ const Navbar = () => {
           </a>
         </Link>
       </div>
-      <div className={styles.btnBurger}>
-        <span className={styles.burger_Line} onClick={handleShowLinks} />
+      <div className={styles.btnBurger} onClick={handleShowLinks}>
+        <span className={styles.burger_Line} />
       </div>
     </nav>
   );
