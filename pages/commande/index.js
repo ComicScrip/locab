@@ -10,6 +10,10 @@ import Layout from "../../components/Layout";
 import Banner from "../../components/Banner";
 
 export default function Commande() {
+  var d = new Date();
+  var date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+  console.log(date);
+
   const [activeInformations, setActiveInformations] = useState(true);
   const [activeLivraison, setActiveLivraison] = useState(false);
   const [activePayment, setActivePayment] = useState(false);
@@ -88,24 +92,27 @@ export default function Commande() {
     setCheckedLivraison(!checkedLivraison);
     axios
       .post("/api/order", {
-        ordernumber: "123456789",
-        startDate: "",
-        startTime: "",
-        endDate: "",
-        orderDate: "",
-        paymentType: "",
-        paidPrice: "",
+        deliveryPhoneNumber: phonePartner,
+        deliveryFirstName: partnerFirstName,
+        deliveryLastName: partnerLastName,
+        deliveryStreet: partnerAddress,
+        deliveryZip: partnerZip,
+        deliveryCity: partnerCity,
+        deliveryArrivalTime: userHourArrived,
         comment: userCommentary,
-        premiseId: "",
-        premise: "",
-        delegateParentId: "",
-        delegateParent: "",
-        partnerId: "",
-        partner: "",
-        products: "",
-        status: "",
-        customerId: "",
-        customer: "",
+        ordernumber: "123456789",
+        startDate: "25-06-2022",
+        startTime: "10h00",
+        endDate: "30-06-2022",
+        orderDate: date,
+        paymentType: "carte",
+        paidPrice: "100",
+        premiseId: 1,
+        delegateParentId: 2,
+        partnerId: 5,
+        products: "biberon",
+        status: "okay",
+        customerId: 25,
       })
       .then(() => {
         setUserPartner("");
