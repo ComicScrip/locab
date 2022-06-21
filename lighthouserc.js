@@ -3,7 +3,7 @@ const relativeUrlsToCheck = [
   "/",
   "/signup",
   "/reservation",
-  "/aboutUS",
+  "/aboutUs",
   "/commande",
 ];
 
