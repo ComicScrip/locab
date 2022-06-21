@@ -21,17 +21,17 @@ export default function ProfileOrders() {
         <div className={styles.commandsMainContainer}>
           <section className={styles.titleSectionContainer}>
             <Link href="/profile" style={{ cursor: "pointer" }}>
-              <a>← Retour au compte</a>
+              <a>← {t("retourcompte")}</a>
             </Link>
 
             <div className={styles.titleMesCommandesContainer}>
-              <h1 className={styles.title}>Mes commandes</h1>
+              <h1 className={styles.title}>{t("mescommandes")}</h1>
             </div>
           </section>
           <select name="orderDate" id="orderDate" className={styles.selectDate}>
-            <option value="last6months">6 derniers mois</option>
-            <option value="last2months">3 derniers mois</option>
-            <option value="lastmonth">Dernier mois</option>
+            <option value="last6months">{t("6mois")}</option>
+            <option value="last2months">{t("3mois")}</option>
+            <option value="lastmonth">{t("1mois")}</option>
           </select>
           <OrdersCard />
           <OrdersCard />

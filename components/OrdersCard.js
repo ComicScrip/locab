@@ -1,35 +1,36 @@
 import styles from "../styles/ProfileOrders.module.css";
+import { useTranslation } from "next-i18next";
 
 export default function OrdersCard() {
+  const { t } = useTranslation("profileOrders");
   return (
     <div className={styles.cardContainer}>
       <p className={styles.orderTitleCard}>
-        Commande <b>n°ZRT123</b>{" "}
+        {t("commande")} <b>n°ZRT123</b>{" "}
         <span className={styles.orderDurationCard}>
-          du 12/02/21 au 20/02/21
+          {t("du")} 12/02/21 {t("au")} 20/02/21
         </span>
       </p>
       <section className={styles.infoContainer}>
         <div>
           <p>
-            <b>Date de commande</b> : 20/01/21
+            <b>{t("datecommande")}</b> : 20/01/21
           </p>
           <p>
-            <b>Mode de paiement</b> : Carte bancaire
-          </p>
-        </div>
-        <div>
-          <p>
-            <b>Total</b> : 50€
-          </p>
-          <p>
-            <b>Statut</b> : Terminé
+            <b>{t("modepaiement")}</b> : Carte bancaire
           </p>
         </div>
         <div>
           <p>
-            <b>Adresse de livraison</b> : 10 avenue du général de Gaulle, 69002
-            Lyon
+            <b>{t("total")}</b> : 50€
+          </p>
+          <p>
+            <b>{t("statut")}</b> : Terminé
+          </p>
+        </div>
+        <div>
+          <p>
+            <b>{t("adresse")}</b> : 10 avenue du général de Gaulle, 69002 Lyon
           </p>
         </div>
       </section>

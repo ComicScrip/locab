@@ -1,4 +1,17 @@
 {
   "connectezvous": "Please log in to access your profile",
-  "seconnecter": "LOG IN"
+  "seconnecter": "LOG IN",
+  "retourcompte": "Back to my profile",
+  "mescommandes": "My orders",
+  "6mois": "Last 6 months",
+  "3mois": "Last 3 months",
+  "1mois": "Last month",
+  "commande": "Order",
+  "du": "from",
+  "au": "to",
+  "datecommande": "Date of order",
+  "modepaiement": "Payment method",
+  "total": "Total",
+  "statut": "Status",
+  "adresse": "Delivery address"
 }
