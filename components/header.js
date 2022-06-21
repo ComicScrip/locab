@@ -2,11 +2,6 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Image from "next/image";
-import Logo from "../public/logo/logo.webp";
-import LogoText from "../public/logo/logoText.webp";
-import LogoTransparent from "../public/logo/logo_transparent.webp";
-import LogoIcon from "../public/logo/icon_logo.webp";
 import styles from "../styles/headerfooter/navbar.module.css";
 import { useTranslation } from "next-i18next";
 
@@ -33,8 +28,8 @@ const Navbar = () => {
       <div className={styles.logocontainer}>
         <Link href="/" className={styles.logo}>
           <a>
-            <Image
-              src={Logo}
+            <img
+              src="/logo/logo.webp"
               className={styles.logo_img}
               alt="logo_principal"
             />
@@ -42,7 +37,11 @@ const Navbar = () => {
         </Link>
         <Link href="/" className={styles.logo2}>
           <a>
-            <Image src={LogoText} className={styles.logo_imtextg} alt="logo" />
+            <img
+              src="/logo/logoText.webp"
+              className={styles.logo_imtextg}
+              alt="logo"
+            />
           </a>
         </Link>
       </div>
@@ -129,10 +128,10 @@ const Navbar = () => {
       <div className={styles.divlogoIcon1}>
         <Link href="/" className={styles.linklogotransparent}>
           <a>
-            <Image
-              src={LogoTransparent}
-              className={styles.logo_transparent}
-              alt="logoTransparent"
+            <img
+              className={styles.logo_icon}
+              src="/logo/logo_transparent.webp"
+              alt="logo_transparent"
             />
           </a>
         </Link>
@@ -140,12 +139,10 @@ const Navbar = () => {
       <div className={styles.divlogoIcon}>
         <Link href="/">
           <a>
-            <Image
-              src={LogoIcon}
+            <img
+              src="/logo/icon_logo.webp"
               className={styles.logo_icon}
               alt="logo_icon"
-              height={48}
-              width={48}
             />
           </a>
         </Link>

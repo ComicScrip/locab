@@ -50,6 +50,10 @@
   margin: 0 0 1rem 0;
   font-size: 0.9rem;
 }
+.logo_icon {
+  height: 100%;
+  width: 100%;
+}
 
 .grise a {
   opacity: 0.3;

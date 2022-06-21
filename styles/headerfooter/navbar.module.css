@@ -33,17 +33,13 @@
   display: flex;
   position: fixed;
   visibility: visible;
-  align-items: center;
-  justify-content: center;
   margin-top: -19px;
 }
 .divlogoIcon a {
   position: fixed;
   display: flex;
   visibility: visible;
-  align-items: center;
-  justify-content: center;
-  margin-top: -29px;
+  margin-top: -26px;
 }
 .divlogoIcon {
   padding-left: 70%;
