@@ -30,8 +30,9 @@ const Navbar = () => {
           <a>
             <img
               src="/logo/logo.webp"
-              className={styles.logo_img}
               alt="logo_principal"
+              width="49w"
+              height="54px"
             />
           </a>
         </Link>
@@ -39,8 +40,9 @@ const Navbar = () => {
           <a>
             <img
               src="/logo/logoText.webp"
-              className={styles.logo_imtextg}
               alt="logo"
+              width="126w"
+              height="34px"
             />
           </a>
         </Link>
@@ -104,12 +106,13 @@ const Navbar = () => {
           </Link>
         </li>
         <li className={styles.navbar_item}>
-          <div className={`${styles.navbar_item} ${styles.login}`}>
+          <div className={`${styles.navbar_item}  ${styles.login}`}>
             <Link href="/signup">
               <a className={styles.log}>{t("seconnecter")}</a>
             </Link>
           </div>
           <select
+            className={styles.testSign}
             name="languages"
             id="language-select"
             value={router.locale}
@@ -129,9 +132,10 @@ const Navbar = () => {
         <Link href="/" className={styles.linklogotransparent}>
           <a>
             <img
-              className={styles.logo_icon}
               src="/logo/logo_transparent.webp"
               alt="logo_transparent"
+              width="113w"
+              height="30px"
             />
           </a>
         </Link>
@@ -141,8 +145,9 @@ const Navbar = () => {
           <a>
             <img
               src="/logo/icon_logo.webp"
-              className={styles.logo_icon}
               alt="logo_icon"
+              width="45w"
+              height="45px"
             />
           </a>
         </Link>

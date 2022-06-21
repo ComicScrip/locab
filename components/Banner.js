@@ -10,8 +10,8 @@ export default function Banner() {
         <img
           src="/icons/credit-card-1.webp"
           alt="facebook"
-          width="25%"
-          height="25%"
+          width="47w"
+          height="36"
         />
         <div className={styles.divpara}>
           <p className={styles.paragraphe}>{t("unpaiementsimplesecurise")}</p>
@@ -21,8 +21,8 @@ export default function Banner() {
         <img
           src="/icons/washing-hands-1.webp"
           alt="facebook"
-          width="25%"
-          height="25%"
+          width="42w"
+          height="39"
         />
         <div className={styles.divpara}>
           <p className={styles.paragraphe}>{t("protocolenettoyagerenforce")}</p>
@@ -32,8 +32,8 @@ export default function Banner() {
         <img
           src="/icons/rating-1.webp"
           alt="facebook"
-          width="25%"
-          height="25%"
+          width="44w"
+          height="45"
         />
         <div className={styles.divpara}>
           <p className={styles.paragraphe}>{t("uneequipesympaetaecoute")}</p>
@@ -43,8 +43,8 @@ export default function Banner() {
         <img
           src="/icons/thumb.webp"
           alt="satisfaction"
-          width="25%"
-          height="25%"
+          width="47w"
+          height="44"
         />
         <div className={styles.divpara}>
           <p className={styles.paragraphe}>

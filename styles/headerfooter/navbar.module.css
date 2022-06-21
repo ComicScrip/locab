@@ -85,11 +85,11 @@
   font-style: normal;
   font-weight: 300;
   font-size: 15px;
-  line-height: 30px;
   border-radius: 8px;
   border: none;
   text-transform: uppercase;
   color: #ffffff;
+  padding: 5px 24px;
 }
 .burger_Line,
 .burger_Line::before,
@@ -249,5 +249,8 @@
   }
   .logocontainer img {
     position: initial;
+  }
+  .testSign {
+    margin-left: 20px;
   }
 }
