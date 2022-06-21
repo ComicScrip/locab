@@ -34,7 +34,7 @@ export default function SearchProducts({ backProducts }) {
         <section className={styles.tableProductsContainer}>
           <table className={styles.tableProducts}>
             <thead>
-              <tr>
+              <tr className={styles.line}>
                 <th></th>
                 <th>Nom</th>
                 <th>Catégorie de prix</th>
@@ -43,7 +43,7 @@ export default function SearchProducts({ backProducts }) {
                 <th></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className={styles.tBody}>
               {backProducts
                 .filter((backProduct) =>
                   backProduct.name

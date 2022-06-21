@@ -16,7 +16,6 @@ function Products() {
         setProduct(data);
       });
   }, []);
-  console.log(product);
 
   return (
     <LayoutAdmin>

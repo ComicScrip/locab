@@ -100,3 +100,9 @@
   color: #d28f71;
   opacity: 0.4;
 }
+
+.tableProducts {
+  overflow: scroll;
+  display: block;
+  height: 80vh;
+}
