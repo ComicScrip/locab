@@ -21,7 +21,7 @@ export default function Footer() {
           <p className={styles.logoText}>{t("bougerlegerbebe")}</p>
         </div>
         <div className={styles.sectionFooter}>
-          <h4 className={styles.footerTitle}>{t("liensutiles")}</h4>
+          <p className={styles.footerTitle}>{t("liensutiles")}</p>
           <div className={styles.links}>
             <Link href="/reservation">
               <a>{t("reservation")}</a>
@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
         </div>
         <div className={styles.sectionFooter}>
-          <h4 className={styles.footerTitle}>{t("moncompte")}</h4>
+          <p className={styles.footerTitle}>{t("moncompte")}</p>
           <div className={styles.links}>
             {/* <div className={styles.grise}>
               <div href="#">
@@ -64,7 +64,7 @@ export default function Footer() {
           </div>
         </div>
         <div className={styles.sectionFooter}>
-          <h4 className={styles.footerTitle}>{t("nouscontacter")}</h4>
+          <p className={styles.footerTitle}>{t("nouscontacter")}</p>
           <div className={styles.footerContact}>&#9990; +33 6 26 85 90 46 </div>
           <div className={styles.footerContact}>&#9993; contact@loca-b.fr</div>
           <div className={styles.socialsicons}>

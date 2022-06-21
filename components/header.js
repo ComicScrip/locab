@@ -106,26 +106,28 @@ const Navbar = () => {
           </Link>
         </li>
         <li className={styles.navbar_item}>
-          <div className={`${styles.navbar_item}  ${styles.login}`}>
+          <div>
             <Link href="/signup">
               <a className={styles.log}>{t("seconnecter")}</a>
             </Link>
           </div>
-          <select
-            className={styles.testSign}
-            name="languages"
-            id="language-select"
-            value={router.locale}
-            label="Languages"
-            onChange={onSelectChange}
-            data-cy="translate-button"
-          >
-            {router.locales.map((language, index) => (
-              <option value={language} key={index}>
-                {language === "en" ? "🇬🇧" : language === "fr" ? "🇫🇷" : null}
-              </option>
-            ))}
-          </select>
+          <div className={styles.languageSelect}>
+            <select
+              className={styles.testSign}
+              name="languages"
+              id="language-select"
+              value={router.locale}
+              label="Languages"
+              onChange={onSelectChange}
+              data-cy="translate-button"
+            >
+              {router.locales.map((language, index) => (
+                <option value={language} key={index}>
+                  {language === "en" ? "🇬🇧" : language === "fr" ? "🇫🇷" : null}
+                </option>
+              ))}
+            </select>
+          </div>
         </li>
       </ul>
       <div className={styles.divlogoIcon1}>
