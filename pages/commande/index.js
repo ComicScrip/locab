@@ -18,6 +18,8 @@ export default function Commande() {
   const [checkedLivraison, setCheckedLivraison] = useState(false);
   const [checkedPayment, setCheckedPayment] = useState(false);
 
+  // FORMULAIRE INFORMATIONS //
+
   const [userMail, setUserMail] = useState("");
   const [userFirstname, setUserFirstName] = useState("");
   const [userLastName, setUserLastName] = useState("");
@@ -26,6 +28,18 @@ export default function Commande() {
   const [userCity, setUserCity] = useState("");
 
   const [error, setError] = useState("");
+
+  // FORMULAIRE LIVRAISON //
+
+  const [userPartner, setUserPartner] = useState("");
+  const [phonePartner, setPhonePartner] = useState("");
+  const [partnerFirstName, setPartnerFirstName] = useState("");
+  const [partnerLastName, setPartnerLastName] = useState("");
+  const [partnerAddress, setPartnerAdress] = useState("");
+  const [partnerZip, setPartnerZip] = useState("");
+  const [partnerCity, setPartnerCity] = useState("");
+  const [userHourArrived, setUserHourArrived] = useState("");
+  const [userCommentary, setUserComentary] = useState("");
 
   /* PARTIE INFORMATIONS */
 
@@ -72,6 +86,42 @@ export default function Commande() {
     setActiveLivraison(!activeLivraison);
     setActivePayment(!activePayment);
     setCheckedLivraison(!checkedLivraison);
+    axios
+      .post("/api/order", {
+        ordernumber: "123456789",
+        startDate: "",
+        startTime: "",
+        endDate: "",
+        orderDate: "",
+        paymentType: "",
+        paidPrice: "",
+        comment: userCommentary,
+        premiseId: "",
+        premise: "",
+        delegateParentId: "",
+        delegateParent: "",
+        partnerId: "",
+        partner: "",
+        products: "",
+        status: "",
+        customerId: "",
+        customer: "",
+      })
+      .then(() => {
+        setUserPartner("");
+        setPhonePartner("");
+        setPartnerFirstName("");
+        setPartnerLastName("");
+        setPartnerAdress("");
+        setPartnerZip("");
+        setPartnerCity("");
+        setUserHourArrived("");
+        setUserComentary("");
+      })
+      .catch((err) => {
+        if (err.response && err.response.status === 409)
+          setError("Email déjà utilisé");
+      });
   };
 
   const OpenLivraison = (e) => {
@@ -299,6 +349,8 @@ export default function Commande() {
                       id="partenaire"
                       type="text"
                       required
+                      onChange={(e) => setUserPartner(e.target.value)}
+                      value={userPartner}
                     />
                   </div>
                   <div className={styles.formpassword}>
@@ -310,6 +362,8 @@ export default function Commande() {
                       id="partenaire"
                       type="text"
                       required
+                      onChange={(e) => setPhonePartner(e.target.value)}
+                      value={phonePartner}
                     />
                   </div>
                   <div className={styles.name}>
@@ -322,6 +376,8 @@ export default function Commande() {
                         id="firstname"
                         type="name"
                         required
+                        onChange={(e) => setPartnerFirstName(e.target.value)}
+                        value={partnerFirstName}
                       />
                     </div>
                     <div className={styles.formpassword}>
@@ -333,6 +389,8 @@ export default function Commande() {
                         id="secondname"
                         type="name"
                         required
+                        onChange={(e) => setPartnerLastName(e.target.value)}
+                        value={partnerLastName}
                       />
                     </div>
                   </div>
@@ -345,6 +403,8 @@ export default function Commande() {
                       id="adress"
                       type="adress"
                       required
+                      onChange={(e) => setPartnerAdress(e.target.value)}
+                      value={partnerAddress}
                     />
                   </div>
                   <div className={styles.name}>
@@ -357,6 +417,8 @@ export default function Commande() {
                         id="codepostal"
                         type="adress"
                         required
+                        onChange={(e) => setPartnerZip(e.target.value)}
+                        value={partnerZip}
                       />
                     </div>
                     <div className={styles.formpassword}>
@@ -368,6 +430,8 @@ export default function Commande() {
                         id="city"
                         type="city"
                         required
+                        onChange={(e) => setPartnerCity(e.target.value)}
+                        value={partnerCity}
                       />
                     </div>
                   </div>
@@ -380,6 +444,8 @@ export default function Commande() {
                       id="hour"
                       type="hour"
                       required
+                      onChange={(e) => setUserHourArrived(e.target.value)}
+                      value={userHourArrived}
                     />
                   </div>
                   <div className={styles.formpassword}>
@@ -391,6 +457,8 @@ export default function Commande() {
                       id="commentaire"
                       type="commentaire"
                       required
+                      onChange={(e) => setUserComentary(e.target.value)}
+                      value={userCommentary}
                     />
                   </div>
                   <div className={styles.formbutton}>
