@@ -13,6 +13,6 @@ describe("homepage", () => {
   });
 
   it("displays a title", () => {
-    cy.get("h1").should("not.be.empty");
+    cy.contains("Voyagez léger");
   });
 });

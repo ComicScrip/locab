@@ -1,0 +1,26 @@
+.iconshead {
+  display: none !important;
+  padding-top: 15px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  background: #ededed;
+}
+.paragraphe {
+  font-family: "Poppins";
+  font-size: 13px;
+  padding-bottom: 5px;
+}
+
+@media screen and (min-width: 900px) {
+  .iconshead {
+    display: flex !important;
+    padding: 20px 7% 5px 7%;
+    border-radius: 2px;
+  }
+
+  .divpara {
+    width: 10vw;
+  }
+}

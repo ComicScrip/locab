@@ -36,3 +36,4 @@ jobs:
           LHCI_GITHUB_APP_TOKEN: ${{secrets.LHCI_GITHUB_APP_TOKEN}}
           SECRET: eufhziufhzieuhfiezuhfizehfiuezhfuhi
           NEXTAUTH_URL: http://localhost:3000
+          NEXTAUTH_SECRET: euifgeiufgeiufgerfguerifgueriughreiugh

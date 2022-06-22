@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.titleAdmin {
+  display: none;
+}
+
+.positionNavBackOffice {
+  display: flex;
+  flex-direction: row;
+}
+
+.navBackOffice {
+  background-color: #4b4b4b;
+  display: block;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  min-height: 100vh;
+}
+
+.eltNavBack {
+  list-style: none;
+  padding: 10px;
+  opacity: 20%;
+}
+
+.logoBackOffice {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 10px;
+  margin-bottom: 100px;
+}
+
+.listeNavBack {
+  margin: auto;
+  padding-right: 15px;
+  padding-left: 20px;
+}
+
+.icon {
+  margin-right: 5px;
+}

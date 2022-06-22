@@ -1,0 +1,50 @@
+.firstContainerPack {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5%;
+  line-height: 23px;
+  background-color: #96c0c0;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.secondContainerPack {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5%;
+  line-height: 23px;
+  background-color: #d28f71;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.thirdContainerPack {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5%;
+  line-height: 23px;
+  background-color: #ebc575;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.setupMargin {
+  margin: 0;
+}
+
+.setupPara {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.secondComponentPack {
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+}
+
+@media screen and (max-width: 900px) {
+  .fullContainerPack {
+    display: none;
+  }
+}

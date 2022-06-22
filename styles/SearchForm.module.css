@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.forms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 72px;
+  width: 100%;
+}
+.forms input {
+  margin: auto 10px;
+  border: 1px solid rgba(0, 0, 0, 0.19);
+  border-radius: 4px;
+  width: 245px;
+  padding: 9px;
+  margin: 7px auto;
+  border-radius: 10px;
+  outline: none;
+  box-sizing: border-box;
+}
+.divwatch2 {
+  display: none;
+}
+.button {
+  background: #d28f71;
+  border: none;
+  font-style: normal;
+  font-weight: 600;
+  height: 2.2rem;
+  width: 245px;
+  margin: 6px auto;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: #d28f71;
+  border: 1px solid rgba(0, 0, 0, 0.13);
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 765px) {
+  .divwatch2 {
+    display: initial;
+  }
+  .forms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: initial;
+    margin: 8px;
+    height: 8vh;
+  }
+
+  .forms input {
+    margin: auto 8px;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  .locationInput {
+    padding-left: 25px;
+    background: url("../public/icons/location.png") no-repeat left;
+    background-size: 20px;
+  }
+  .watch1Input {
+    padding-left: 25px;
+    background: url("../public/icons/watch1.png") no-repeat left;
+    background-size: 18px;
+  }
+  .watch2Input {
+    padding-left: 25px;
+    background: url("../public/icons/watch1.png") no-repeat left;
+    background-size: 18px;
+    text-indent: 17px;
+  }
+  .forms input::placeholder {
+    font-size: 11px;
+    padding-left: 20px;
+    color: #6d6d6d;
+  }
+  .forms .locationInput {
+    width: 250px !important;
+  }
+  .forms .watch1Input,
+  .watch2Input {
+    width: 215px !important;
+  }
+  .button {
+    background: #d28f71;
+    border: none;
+    font-family: "Poppins";
+    font-weight: 600;
+    width: 140px;
+    height: 1.6rem;
+    margin: auto 15px;
+    cursor: pointer;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}

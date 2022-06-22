@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+/* container qui englobe les deux form */
+
+.containerForm {
+  display: flex;
+  width: 60%;
+  margin: auto;
+  padding-bottom: 120px;
+}
+
+.titleContainerSignUp {
+  font-size: 40px;
+  text-align: center;
+}
+
+/* sign in style */
+
+.composantSignInContainer {
+  width: 50%;
+  margin-right: 100px;
+}
+
+/* sign up style */
+
+.inscRegisterForm {
+  width: 50%;
+}
+
+/* petits input */
+
+.inputPetitSignUp {
+  border-radius: 10px;
+  width: 100%;
+  height: 50px;
+  padding: 0px 10px;
+  background-color: #f8f8f8;
+  border: 1px solid #b9b9b9bd;
+  display: block;
+  margin: 5px 0px 10px 0px;
+}
+
+.inputPetitSignUp:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f8f8f8 inset;
+}
+
+.nameLastName,
+.codeVille {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* grand input */
+
+.inputGrandSignUp {
+  border-radius: 10px;
+  width: 100%;
+  height: 50px;
+  padding: 0px 10px;
+  background-color: #f8f8f8;
+  border: 1px solid #b9b9b9bd;
+  display: block;
+  margin: 5px 0px 10px 0px;
+}
+
+.inputGrandSignUp:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f8f8f8 inset;
+}
+
+.btnInscrSignUp {
+  color: white;
+  background-color: #d28f71;
+  border-radius: 10px;
+  width: 100%;
+  height: 64px;
+  border: none;
+  font-weight: 600;
+  font-size: 27px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.labelForm {
+  width: 48%;
+}
+
+.titleSignUp {
+  font-size: 30px;
+}
+
+.connexionText {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+@media screen and (max-width: 900px) {
+  .containerForm,
+  .nameLastName,
+  .codeVille {
+    flex-wrap: wrap;
+  }
+  .composantSignInContainer,
+  .inscRegisterForm,
+  .btnInscrSignUp {
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  .containerForm {
+    width: 90%;
+    padding-bottom: 40px;
+  }
+
+  .titleContainerSignUp {
+    padding-top: 50px;
+    font-size: 30px;
+    text-align: center;
+  }
+}

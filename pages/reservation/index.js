@@ -1,93 +1,65 @@
-import ResProduct from "../../components/ResProduct";
+import Cart from "../../components/Cart/Cart";
+import Layout from "../../components/Layout";
+import Products from "../../components/Cart/Products";
 import styles from "../../styles/Reservation.module.css";
-import { useState } from "react";
+import { AiFillLock } from "react-icons/ai";
+import Pack from "../../components/Cart/Pack";
+import Banner from "../../components/Banner";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
-const productsList = [
-  {
-    id: 1,
-    name: "Poussette",
-    category: "poussette",
-    price: 20,
-    isAvailable: true,
-  },
-  {
-    id: 2,
-    name: "Poussette",
-    category: "poussette",
-    price: 30,
-    isAvailable: true,
-  },
-  {
-    id: 3,
-    name: "Poussette",
-    category: "poussette",
-    price: 10,
-    isAvailable: true,
-  },
-  {
-    id: 4,
-    name: "Poussette",
-    category: "poussette",
-    price: 25,
-    isAvailable: true,
-  },
-  {
-    id: 5,
-    name: "Lit à barreaux",
-    category: "lit_barreaux",
-    price: 12,
-    isAvailable: false,
-  },
-  {
-    id: 6,
-    name: "Lit à barreaux",
-    category: "lit_barreaux",
-    price: 12,
-    isAvailable: true,
-  },
-];
-
-export default function ReservationPage() {
-  const [searchValue, setSearchValue] = useState("");
-  const [showAvailable, setShowAvailable] = useState(true);
-
-  const handleCheckAvailability = () => {
-    setShowAvailable(!showAvailable);
-  };
+function SearchPage() {
+  const { t } = useTranslation("reservation");
 
   return (
-    <div className={styles.mainWrapper}>
-      <section className={styles.searchContainer}>
-        <input
-          data-cy="searchBar"
-          value={searchValue}
-          type="text"
-          placeholder="Poussette, lit à barreaux, chaise haute..."
-          onChange={(event) => setSearchValue(event.target.value)}
-          className={styles.searchBar}
-        />
-      </section>
-      <section className={styles.productNotAvailable}>
-        <label htmlFor="availability" style={{ cursor: "pointer" }}>
-          <input
-            data-cy="availabilityBtn"
-            type="checkbox"
-            onClick={() => handleCheckAvailability()}
-            id="availability"
-            defaultChecked={true}
-          />
-          Afficher les produits indisponibles
-        </label>
-      </section>
+    <Layout pageTitle="Location de matériel de puériculture Lyon — Loca-b">
+      <Banner />
 
-      {productsList
-        .filter((product) =>
-          product.isAvailable ? productsList : showAvailable
-        )
-        .filter((product) => product.category.includes(searchValue))
-        .map((product) => (
-          <ResProduct product={product} key={product.id} id={product.id} />
-        ))}
-    </div>
+      <div className={styles.main_title}>
+        <h1>{t("dequoiavezvousbesoin")}</h1>
+      </div>
+      <div className={styles.paiement_container}>
+        <div className={styles.trait_gauche}></div>
+        <p className={styles.paiementSecurColor}>
+          <AiFillLock
+            style={{
+              color: "#66c65e",
+              verticalAlign: "middle",
+              marginTop: "-4px",
+            }}
+          />{" "}
+          {t("paiementsecurise")}
+        </p>
+        <div className={styles.trait_droit}></div>
+      </div>
+      <div className={styles.main_container}>
+        <Products />
+        <div className={styles.panier_style}>
+          <Cart />
+          <Pack className={styles.packStyle} />
+        </div>
+      </div>
+    </Layout>
   );
+}
+
+export default SearchPage;
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        "banner",
+        "cart",
+        "header",
+        "home",
+        "connection",
+        "profile",
+        "common",
+        "signIn",
+        "footer",
+        "reservation",
+      ])),
+    },
+  };
 }

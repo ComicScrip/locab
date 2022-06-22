@@ -1,6 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-@import url("https://use.typekit.net/qql6zfk.css");
-
 .firstParagraphe {
   text-align: center;
   background-color: #fbfbfb;
@@ -9,7 +6,6 @@
 
 .title {
   color: #96c0c0;
-  font-family: "Poppins", sans-serif;
   font-weight: bold;
   font-size: 40px;
   padding-top: 61px;
@@ -19,7 +15,6 @@
 
 .title2 {
   color: #96c0c0;
-  font-family: "relation-one", sans-serif;
   font-size: 40px;
   margin: 0px;
   margin-bottom: 18px;
@@ -32,47 +27,20 @@
 .textFirst {
   width: 70%;
   margin: auto;
-  font-family: "Poppins", sans-serif;
+  line-height: 15pt;
 }
 
 .title3 {
   color: #96c0c0;
-  font-family: "Poppins", sans-serif;
+
   font-weight: bold;
   text-align: center;
   font-size: 28px;
 }
 
 .title4 {
-  font-family: "Poppins", sans-serif;
   font-size: 18px;
   text-align: center;
-}
-
-.homeImage {
-  border-radius: 50%;
-  width: 57px;
-  height: 57px;
-}
-
-.searchImage {
-  background-color: #ebc575;
-  padding: 10px;
-}
-
-.strollerImage {
-  background-color: #96c0c0;
-  padding: 10px;
-}
-
-.orderImage {
-  background-color: #d28f71;
-  padding: 10px;
-}
-
-.shipImage {
-  background-color: #d9c2aa;
-  padding: 10px;
 }
 
 .logoHome {
@@ -89,33 +57,32 @@
   margin: 20px;
   text-align: center;
   font-size: 12px;
+  line-height: 15pt;
 }
 
 .thirdTitleHome {
   color: #96c0c0;
-  font-family: "Poppins", sans-serif;
   font-weight: bold;
   text-align: center;
   font-size: 28px;
-  padding-top: 20px;
+  padding-top: 40px;
 }
 
-.thirdParagrapheText {
+.thirdTextTitle {
   margin: auto;
-  width: 70%;
+  width: 80%;
   font-size: 13px;
-  text-align: justify;
+  line-height: 15pt;
 }
 
-.thirdParagraphe {
+.thirdParagrapheContainer {
   background-color: #fbfbfb;
-  text-align: center;
 }
 
 .imgCouple {
-  margin: 20px;
-  width: 215px;
-  height: 216px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 .choixHome {
@@ -129,7 +96,6 @@
   margin: 10px auto;
   padding-left: 10px;
   width: 70%;
-  font-family: "Poppins", sans-serif;
   font-size: 13px;
   background-color: #ededed;
   opacity: 20%;
@@ -141,7 +107,6 @@
   margin: 10px auto;
   padding-left: 10px;
   width: 70%;
-  font-family: "Poppins", sans-serif;
   font-size: 13px;
   background-color: #ededed;
   opacity: 20%;
@@ -152,14 +117,13 @@
   height: 31px;
   margin: 10px auto 50px auto;
   width: 70%;
-  font-family: "Poppins", sans-serif;
   font-size: 13px;
   color: white;
   background-color: #d28f71;
   opacity: 20%;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   .designHome {
     display: initial;
     width: 50%;
@@ -179,18 +143,14 @@
     font-size: 64px;
   }
 
-  .imgCouple {
-    width: 50%;
-    height: auto;
+  .imgcpl {
+    width: 35vh;
+    height: 35vh;
   }
 
   .firstParagraphe {
     display: flex;
     flex-direction: row-reverse;
-  }
-
-  .thirdTextTitle {
-    width: 50%;
   }
 
   .titleandtextHome {
@@ -219,6 +179,7 @@
 
   .logoHome {
     display: flex;
+    justify-content: space-around;
     width: 90%;
     margin: auto;
   }
@@ -228,18 +189,33 @@
     margin-bottom: 60px;
   }
 
+  /* ABOUT US SECTION */
+
   .thirdParagraphe {
     display: flex;
+    margin: auto;
+    width: 85%;
+    padding-bottom: 30px;
+  }
+
+  .thirdTitleHome {
+    margin-top: 20px;
+    text-align: initial;
+  }
+
+  .thirdTextTitle {
+    margin: auto;
+    width: 50%;
   }
 
   .paragraphHome {
     margin-bottom: 50px;
   }
 
-  .thirdParagrapheText {
-    width: 60%;
-    margin-left: 100px;
-    text-align: justify;
+  .imgCouple {
+    justify-content: center;
+    align-items: center;
+    width: 50%;
   }
 
   .homeImage {
