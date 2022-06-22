@@ -15,7 +15,16 @@ describe("with an active session", () => {
     cy.contains("Mes commandes");
   });
 
-  it.only("shows my previous orders", () => {
+  it("shows my previous orders", () => {
     cy.contains("Commande n°ZRT123");
+  });
+
+  it.only("shows my orders depending on the date it was made", () => {
+    cy.get('[data-cy="dateSelect"]').select("6 derniers mois");
+    cy.contains("Commande n°R54363");
+    cy.get('[data-cy="dateSelect"]').select("3 derniers mois");
+    cy.contains("Commande n°4366UL").should("not.be.visible");
+    cy.get('[data-cy="dateSelect"]').select("Dernier mois");
+    cy.contains("Commande n°R54363").should("not.be.visible");
   });
 });

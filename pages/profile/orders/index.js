@@ -35,7 +35,12 @@ export default function ProfileOrders() {
               <h1 className={styles.title}>{t("mescommandes")}</h1>
             </div>
           </section>
-          <select name="orderDate" id="orderDate" className={styles.selectDate}>
+          <select
+            name="orderDate"
+            id="orderDate"
+            className={styles.selectDate}
+            data-cy="dateSelect"
+          >
             <option value="last6months">{t("6mois")}</option>
             <option value="last2months">{t("3mois")}</option>
             <option value="lastmonth">{t("1mois")}</option>
