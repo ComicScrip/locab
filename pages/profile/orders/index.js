@@ -6,13 +6,20 @@ import styles from "../../../styles/ProfileOrders.module.css";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { signIn } from "next-auth/react";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../../../contexts/currentUserContext";
 import OrdersCard from "../../../components/OrdersCard";
+import axios from "axios";
 
 export default function ProfileOrders() {
   const { t } = useTranslation("profileOrders");
   const { currentUserProfile } = useContext(CurrentUserContext);
+
+  const [orderDescription, setOrderDescription] = useState([]);
+
+  useEffect(() => {
+    axios.get("/api/orders").then((res) => setOrderDescription(res.data));
+  }, []);
 
   if (currentUserProfile) {
     return (
@@ -33,8 +40,9 @@ export default function ProfileOrders() {
             <option value="last2months">{t("3mois")}</option>
             <option value="lastmonth">{t("1mois")}</option>
           </select>
-          <OrdersCard />
-          <OrdersCard />
+          {orderDescription.map((order) => (
+            <OrdersCard order={order} key={order.id} />
+          ))}
         </div>
       </Layout>
     );
