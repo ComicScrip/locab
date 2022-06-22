@@ -1,29 +1,35 @@
-/* ----- PAGE COMMANDE ----- */
-
-.title {
-  margin: 0 auto;
+.containerbloc {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title1 {
   width: 100%;
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 70px;
+}
+.title {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+}
+.payment {
+  margin-top: auto;
+  color: #66c65e;
+  width: 100%;
+  display: flex;
+  text-align: center;
 }
 
 .h3 {
   margin-top: 0;
   display: flex;
   justify-content: center;
-}
-
-.h2 {
   text-align: center;
 }
-
-.containerbloc {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin-top: 5rem;
-}
-
 .ligne {
   display: flex;
   align-items: center;
@@ -34,21 +40,8 @@
 .hr {
   border-bottom: black;
   height: 5;
-  width: 100%;
+  width: 50%;
 }
-
-.bloc1 {
-  display: flex;
-  flex-direction: column;
-}
-
-.bloc2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-/* ----- PARTIE GAUCHE FORMULAIRE ----- */
 
 .formemail {
   display: flex;
@@ -61,12 +54,14 @@
 }
 
 .password {
-  margin-top: 2rem;
+  margin-top: 2px;
 }
 
 .formbutton {
-  margin-top: 2rem;
+  margin-top: 8px;
   cursor: pointer;
+  align-self: center;
+  margin-bottom: 8px;
 }
 
 .forgotpassword {
@@ -74,67 +69,36 @@
   cursor: pointer;
 }
 
-.div2 {
-  margin-bottom: 2rem;
-}
-
-.forminscription {
-  display: flex;
-  flex-direction: column;
-}
-
-.textarea {
-  height: 50px;
-  width: 100%;
-  left: 298px;
-  top: 560px;
-  border-radius: 10px;
-  margin-top: 0.4rem;
-  background-color: #f8f8f8;
-  border: 1px solid rgba(185, 185, 185, 0.74);
-}
-
-.button {
-  height: 64px;
-  width: 450px;
-  left: 298px;
-  top: 757px;
-  background: #d28f71;
-  border-radius: 10px;
-  font-size: 25px;
-  font-weight: 600;
-  line-height: 41px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: #ffffff;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-}
-
-/* ----- PARTIE INFORMATIONS ----- */
-
 .name {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 1rem;
   width: 100%;
 }
 
-.checkbox {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
+.textarea {
+  height: 30px;
+  width: 100%;
+  left: 298px;
+  top: 560px;
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  border: 1px solid rgba(185, 185, 185, 0.74);
+}
+
+.bloc1 {
+  width: 80%;
 }
 
 .button2 {
   height: 64px;
-  width: 450px;
+  width: 100%;
   left: 298px;
   top: 757px;
   background: #d28f71;
   border-radius: 10px;
-  font-size: 25px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 41px;
   letter-spacing: 0em;
@@ -144,24 +108,15 @@
   border: none;
 }
 
-/* ----- FIN PARTIE INFORMATIONS ---- */
-
 .textarea2 {
-  height: 75px;
+  height: 60px;
   width: 100%;
   left: 298px;
   top: 560px;
   border-radius: 10px;
-  margin-top: 0.4rem;
+  margin-top: 1px;
   background-color: #f8f8f8;
   border: 1px solid rgba(185, 185, 185, 0.74);
-}
-
-.payment {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  color: #66c65e;
 }
 
 .paymentparent {
@@ -174,15 +129,208 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 50%;
+  width: 90%;
 }
 
-.check {
-  color: #66c65e;
-}
-
-.forminscrire {
+.checkbox {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 900px) {
+  /* ----- PAGE COMMANDE ----- */
+
+  .title {
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+  }
+
+  .h3 {
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .h2 {
+    text-align: center;
+  }
+
+  .containerbloc {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 5rem;
+    width: 50%;
+    margin: auto;
+  }
+
+  .ligne {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+  }
+
+  .hr {
+    border-bottom: black;
+    height: 5;
+    width: 100%;
+  }
+
+  .bloc1 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bloc2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  /* ----- PARTIE GAUCHE FORMULAIRE ----- */
+
+  .formemail {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .formpassword {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .password {
+    margin-top: 2rem;
+  }
+
+  .formbutton {
+    margin-top: 2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+  }
+
+  .forgotpassword {
+    text-align: end;
+    cursor: pointer;
+  }
+
+  .div2 {
+    margin-bottom: 2rem;
+  }
+
+  .forminscription {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .textarea {
+    height: 50px;
+    width: 100%;
+    left: 298px;
+    top: 560px;
+    border-radius: 10px;
+    margin-top: 0.4rem;
+    background-color: #f8f8f8;
+    border: 1px solid rgba(185, 185, 185, 0.74);
+  }
+
+  .button {
+    height: 64px;
+    width: 450px;
+    left: 298px;
+    top: 757px;
+    background: #d28f71;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 41px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #ffffff;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* ----- PARTIE INFORMATIONS ----- */
+
+  .name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .checkbox {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .button2 {
+    height: 64px;
+    width: 450px;
+    background: #d28f71;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 41px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #ffffff;
+    text-align: center;
+    border: none;
+    align-items: center;
+  }
+
+  /* ----- FIN PARTIE INFORMATIONS ---- */
+
+  .textarea2 {
+    height: 75px;
+    width: 100%;
+    left: 298px;
+    top: 560px;
+    border-radius: 10px;
+    margin-top: 0.4rem;
+    background-color: #f8f8f8;
+    border: 1px solid rgba(185, 185, 185, 0.74);
+  }
+
+  .payment {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: #66c65e;
+  }
+
+  .paymentparent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .paymentcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+  }
+
+  .check {
+    color: #66c65e;
+  }
+
+  .forminscrire {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

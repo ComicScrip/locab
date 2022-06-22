@@ -100,7 +100,7 @@ export default function Commande() {
         deliveryCity: partnerCity,
         deliveryArrivalTime: userHourArrived,
         comment: userCommentary,
-        ordernumber: "123456789",
+        orderNumber: "123456789",
         startDate: "25-06-2022",
         startTime: "10h00",
         endDate: "30-06-2022",
@@ -162,7 +162,7 @@ export default function Commande() {
   return (
     <Layout>
       <Banner />
-      <div className={styles.title}>
+      <div className={styles.title1}>
         <div className={styles.ligne}>
           <hr className={styles.hr} />
         </div>
@@ -289,16 +289,7 @@ export default function Commande() {
                     />
                   </div>
                 </div>
-                <div className={styles.checkbox}>
-                  <input
-                    name="subscribe"
-                    type="checkbox"
-                    className={styles.password}
-                  />
-                  <label htmlFor="city" className={styles.password}>
-                    Je souhaite m&apos;inscrire
-                  </label>
-                </div>
+
                 <div className={styles.formbutton}>
                   <p style={{ color: "#D28F71", textAlign: "center" }}>
                     {error}

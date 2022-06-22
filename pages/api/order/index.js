@@ -14,7 +14,7 @@ async function handlePost(req, res) {
     deliveryCity,
     deliveryArrivalTime,
     comment,
-    ordernumber,
+    orderNumber,
     startDate,
     startTime,
     endDate,
@@ -27,29 +27,7 @@ async function handlePost(req, res) {
     products,
     status,
     customerId,
-  } = await createOrder({
-    deliveryPhoneNumber: req.body.deliveryPhoneNumber,
-    deliveryFirstName: req.body.deliveryFirstName,
-    deliveryLastName: req.body.deliveryLastName,
-    deliveryStreet: req.body.deliveryCity,
-    deliveryZip: req.body.deliveryZip,
-    deliveryCity: req.body.deliveryCity,
-    deliveryArrivalTime: req.body.arrivalTime,
-    comment: req.body.comment,
-    ordernumber: req.body.ordernumber,
-    startDate: req.body.startDate,
-    startTime: req.body.startTime,
-    endDate: req.body.endDate,
-    orderDate: req.body.orderDate,
-    paymentType: req.body.paymentType,
-    paidPrice: req.body.paidPrice,
-    premiseId: req.body.premiseId,
-    delegateParentId: req.body.delegateParentId,
-    partnerId: req.body.partnerId,
-    products: req.body.products,
-    status: req.body.status,
-    customerId: req.body.customerId,
-  });
+  } = await createOrder(req.body);
   res.status(201).send({
     id,
     deliveryPhoneNumber,
@@ -60,7 +38,7 @@ async function handlePost(req, res) {
     deliveryCity,
     deliveryArrivalTime,
     comment,
-    ordernumber,
+    orderNumber,
     startDate,
     startTime,
     endDate,
@@ -79,4 +57,4 @@ async function handlePost(req, res) {
 async function handleGet(req, res) {
   res.send(await findOrders());
 }
-export default base().post(handlePost).get(requireCurrentUser, handleGet);
+export default base().use(requireCurrentUser).post(handlePost).get(handleGet);
