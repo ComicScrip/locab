@@ -25,11 +25,9 @@ export default function SearchProducts() {
           <table className={styles.tableCustomers}>
             <thead>
               <tr>
-                <th></th>
-                <th>Nom Prénom</th>
-                <th>Adresse mail </th>
-                <th>Adresse</th>
-                <th></th>
+                <th>NOM / PRENOM</th>
+                <th>ADRESSE MAIL</th>
+                <th>ADRESSE POSTALE</th>
               </tr>
             </thead>
             <tbody>
