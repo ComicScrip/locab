@@ -1,5 +1,4 @@
 const db = require("../db");
-// const Joi = require("joi");
 
 module.exports.createProduct = ({
   name,
@@ -18,3 +17,12 @@ module.exports.createProduct = ({
 };
 
 module.exports.findAllProducts = () => db.product.findMany();
+
+module.exports.deleteOneProduct = (id) => {
+  console.log("tatatatatat", id);
+  return db.product.delete({
+    where: {
+      id: parseInt(id, 10),
+    },
+  });
+};

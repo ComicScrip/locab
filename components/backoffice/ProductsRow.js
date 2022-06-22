@@ -1,7 +1,29 @@
 // import Image from "next/image";
+//import { useEffect, useState } from "react";
+import axios from "axios";
 import styles from "../../styles/BackProduits.module.css";
 
 export default function ProductsRow({ backProduct }) {
+  // const [products, setProducts] = useState([]);
+
+  // const fetchProductList = () => {
+  //   axios
+  //     .get(`/api/products`)
+  //     .then((res) => setProducts(res.data))
+  //     .catch((err) => console.error(err));
+  // };
+
+  // useEffect(() => {
+  //   fetchProductList();
+  // }, []);
+
+  const handleDelete = async (id) => {
+    console.log("totototototo", id);
+    return await axios
+      .delete(`/api/products/${id}`)
+      .then(() => alert("OKKKKKKKKKK"));
+  };
+
   return (
     <tr className={styles.line}>
       <td>
@@ -17,10 +39,14 @@ export default function ProductsRow({ backProduct }) {
       {/* <td>{backProduct.stock}</td> */}
       <td>{backProduct.brand}</td>
       <td>
-        <ul>
-          <li className={styles.modifyButton}>Modifier</li>
-          <li className={styles.suppButton}>Supprimer</li>
-        </ul>
+        <div>
+          <div className={styles.modifyButton}>Modifier</div>
+          <div className={styles.suppButton}>
+            <button onClick={() => handleDelete(backProduct.id)}>
+              Supprimer
+            </button>
+          </div>
+        </div>
       </td>
     </tr>
   );

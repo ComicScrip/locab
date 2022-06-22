@@ -101,6 +101,8 @@
   opacity: 0.4;
 }
 
+/* Tableau */
+
 .tableProducts {
   overflow: scroll;
   display: block;
