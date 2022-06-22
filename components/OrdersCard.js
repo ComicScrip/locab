@@ -40,7 +40,7 @@ export default function OrdersCard({ order }) {
       </section>
       <section className={styles.productsImages}>
         <img
-          src="/image/products/Chancelière.jpg"
+          src={order.products.productSample.product.pictures.url}
           width="200"
           height="150"
           alt="poussette"

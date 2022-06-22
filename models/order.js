@@ -19,7 +19,23 @@ module.exports.findAllOrders = () =>
           company: true,
         },
       },
-      products: {},
+      products: {
+        include: {
+          productSample: {
+            include: {
+              product: {
+                include: {
+                  pictures: {
+                    select: {
+                      url: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
       customer: {
         select: {
           lastname: true,
