@@ -44,12 +44,14 @@ export default function AboutUs() {
           <h2 className={styles.titleDesc}>{t("equipeTitre")}</h2>
           <article className={styles.teamPolaroidWrapper}>
             <div className={styles.polaroidContainer}>
-              <img
-                alt="Photo de Débora"
-                src="/image/aboutus/debora.webp"
-                width="100%"
-                height="50%"
-              />
+              <center>
+                <img
+                  alt="Photo de Débora"
+                  src="/image/aboutus/debora.webp"
+                  width="300px"
+                  height="400px"
+                />
+              </center>
               <div className={styles.nameContainer}>
                 <h3 className={styles.polaroidTitle}>Débora</h3>
                 <img
@@ -63,12 +65,14 @@ export default function AboutUs() {
               <p>“{t("deboraDesc")}“</p>
             </div>
             <div className={styles.polaroidContainer}>
-              <img
-                alt="Photo d'Antoine"
-                src="/image/aboutus/antoine.webp"
-                width="100%"
-                height="50%"
-              />
+              <center>
+                <img
+                  alt="Photo d'Antoine"
+                  src="/image/aboutus/antoine.webp"
+                  width="300px"
+                  height="400px"
+                />
+              </center>
               <div className={styles.nameContainer}>
                 <h3 className={styles.polaroidTitle}>Antoine</h3>
                 <img
@@ -82,12 +86,15 @@ export default function AboutUs() {
               <p>“{t("antoineDesc")}“</p>
             </div>
             <div className={styles.polaroidContainer}>
-              <img
-                alt="Photo de Mathis"
-                src="/image/aboutus/mathis.webp"
-                width="100%"
-                height="50%"
-              />
+              <center>
+                {" "}
+                <img
+                  alt="Photo de Mathis"
+                  src="/image/aboutus/mathis.webp"
+                  width="300px"
+                  height="400px"
+                />
+              </center>
               <div className={styles.nameContainer}>
                 <h3 className={styles.polaroidTitle}>Mathis</h3>
                 <img
