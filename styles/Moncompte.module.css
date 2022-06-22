@@ -1,0 +1,31 @@
+.mainContainerInformationTitle {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.monCptContainerPara {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 20%;
+}
+.mainInputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.labelStyle {
+  display: flex;
+  flex-direction: column;
+}
+.inputContainer {
+  display: flex;
+  justify-content: center;
+}
+.testC {
+  display: flex;
+  justify-content: center;
+}
+.inputCptThird {
+  width: 100%;
+}
