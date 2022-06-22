@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "../styles/Banner.module.css";
 import { useTranslation } from "next-i18next";
 
@@ -8,39 +7,44 @@ export default function Banner() {
   return (
     <div className={styles.iconshead}>
       <div>
-        <Image
-          src="/icons/credit-card.png"
+        <img
+          src="/icons/credit-card-1.webp"
           alt="facebook"
-          width={34}
-          height={34}
+          width="47w"
+          height="36"
         />
         <div className={styles.divpara}>
           <p className={styles.paragraphe}>{t("unpaiementsimplesecurise")}</p>
         </div>
       </div>
       <div>
-        <Image
-          src="/icons/washing-hands.png"
+        <img
+          src="/icons/washing-hands-1.webp"
           alt="facebook"
-          width={34}
-          height={34}
+          width="42w"
+          height="39"
         />
         <div className={styles.divpara}>
           <p className={styles.paragraphe}>{t("protocolenettoyagerenforce")}</p>
         </div>
       </div>
       <div>
-        <Image src="/icons/rating.png" alt="facebook" width={34} height={34} />
+        <img
+          src="/icons/rating-1.webp"
+          alt="facebook"
+          width="44w"
+          height="45"
+        />
         <div className={styles.divpara}>
           <p className={styles.paragraphe}>{t("uneequipesympaetaecoute")}</p>
         </div>
       </div>
       <div>
-        <Image
-          src="/icons/thumb.png"
+        <img
+          src="/icons/thumb.webp"
           alt="satisfaction"
-          width={34}
-          height={34}
+          width="47w"
+          height="44"
         />
         <div className={styles.divpara}>
           <p className={styles.paragraphe}>
