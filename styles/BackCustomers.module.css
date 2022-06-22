@@ -1,0 +1,102 @@
+.customersMainContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.customersContainer {
+  width: 90%;
+}
+
+.searchCustomersNav {
+  margin: 2rem 0 2rem 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.searchActive {
+  color: #d28f71;
+}
+
+.searchNonActive {
+  color: #000000;
+}
+
+.searchCustomersMainContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.searchCustomersContainer {
+  width: 100%;
+}
+
+.searchAddCustomersContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.searchCustomersBar {
+  margin-right: 1rem;
+  height: 2rem;
+}
+
+.addCustomersButton {
+  border-radius: 50%;
+  background: #d28f71;
+  height: 2rem;
+  width: 2rem;
+  box-shadow: 0px 1px 1px #000000;
+  opacity: 0.4;
+}
+
+.addCustomersButton:hover {
+  cursor: pointer;
+}
+
+/* .addustomersButton:active {
+  box-shadow: inset 0px 2px 3px #000000;
+} */
+
+.tableCustomersContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tableCustomers {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableCustomers tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.tableCustomers th {
+  text-align: center;
+  padding: 2rem 0 2rem 0;
+  width: 25%;
+}
+
+.tableCustomers td {
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+  width: 17%;
+}
+
+.tableCustomers td ul li {
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.modifyBtn {
+  opacity: 0.4;
+}
+
+.suppBtn {
+  color: #d28f71;
+  opacity: 0.4;
+}
