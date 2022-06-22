@@ -5,7 +5,7 @@ import styles from "../../styles/mdp.module.css";
 import Banner from "../../components/Banner";
 import SearchForm from "../../components/SearchForm";
 
-export default function Contact() {
+export default function MotDePasse() {
   return (
     <Layout>
       <Head>
@@ -31,18 +31,18 @@ export default function Contact() {
               <label className={styles.label}>Mot de passe actuel</label>
               <input
                 type="text"
-                name="destination"
-                id="location"
-                className={styles.Input1}
+                name="motdepasseactuel"
+                id="motdepasseactuel"
+                // className={styles.Input1}
               />
             </div>
             <div className={styles.divwatch1}>
               <label className={styles.label}>Nouveau mot de passe</label>
               <input
                 type="text"
-                name="destination"
+                name="nouveaumotdepasse"
                 style={{ textIndent: 17 + "px" }}
-                className={styles.Input2}
+                // className={styles.Input2}
               />
             </div>
             <div className={styles.divwatch2}>
@@ -51,7 +51,7 @@ export default function Contact() {
                 type="text"
                 name="departure"
                 id="departure"
-                className={styles.Input3}
+                // className={styles.Input3}
               />
             </div>
             <button className={styles.button}>Valider</button>

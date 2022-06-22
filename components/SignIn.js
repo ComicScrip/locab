@@ -1,5 +1,6 @@
 import styles from "../styles/SignUp.module.css";
 import { useRouter } from "next/dist/client/router";
+import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
 export default function SignIn({ csrfToken }) {
@@ -48,6 +49,12 @@ export default function SignIn({ csrfToken }) {
             {t("idpasbon")}
           </p>
         )}
+        <Link href="/ResetFirstStep" className={styles.logo}>
+          <a>
+            <p className={styles.forgetPassWord}>Mot de passe oublié ?</p>
+          </a>
+        </Link>
+
         <button
           className={styles.btnInscrSignUp}
           type="submit"
