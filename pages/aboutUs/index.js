@@ -3,7 +3,6 @@ import Link from "next/link";
 import Layout from "../../components/Layout";
 import styles from "../../styles/Aboutus.module.css";
 import Banner from "../../components/Banner";
-import Image from "next/image";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
@@ -20,11 +19,11 @@ export default function AboutUs() {
         </section>
         <section className={styles.geneseContainer}>
           <article className={styles.polaroidContainer}>
-            <Image
+            <img
               alt="Photo de Débora et Antoine"
               src="/image/aboutus/about.webp"
-              width={437}
-              height={470}
+              width="100%"
+              height="100%"
             />
             <h2 className={styles.polaroidTitle}>{t("parentsheureux")}</h2>
           </article>
@@ -45,34 +44,34 @@ export default function AboutUs() {
           <h2 className={styles.titleDesc}>{t("equipeTitre")}</h2>
           <article className={styles.teamPolaroidWrapper}>
             <div className={styles.polaroidContainer}>
-              <Image
+              <img
                 alt="Photo de Débora"
                 src="/image/aboutus/debora.webp"
-                width="300px"
-                height="380px"
+                width="100%"
+                height="50%"
               />
               <div className={styles.nameContainer}>
                 <h3 className={styles.polaroidTitle}>Débora</h3>
-                <Image
+                <img
                   alt="Image du drapeau brésilien"
                   src="/image/aboutus/brazil.webp"
-                  width={"30px"}
-                  height={"20px"}
+                  width={30}
+                  height={20}
                 />
               </div>
               <h4 className={styles.poloroidSubTitle}>{t("cofondatrice")}</h4>
               <p>“{t("deboraDesc")}“</p>
             </div>
             <div className={styles.polaroidContainer}>
-              <Image
+              <img
                 alt="Photo d'Antoine"
                 src="/image/aboutus/antoine.webp"
-                width="300"
-                height="380"
+                width="100%"
+                height="50%"
               />
               <div className={styles.nameContainer}>
                 <h3 className={styles.polaroidTitle}>Antoine</h3>
-                <Image
+                <img
                   alt="Image du drapeau français"
                   src="/image/aboutus/france.webp"
                   width={30}
@@ -83,15 +82,15 @@ export default function AboutUs() {
               <p>“{t("antoineDesc")}“</p>
             </div>
             <div className={styles.polaroidContainer}>
-              <Image
+              <img
                 alt="Photo de Mathis"
                 src="/image/aboutus/mathis.webp"
-                width={300}
-                height={380}
+                width="100%"
+                height="50%"
               />
               <div className={styles.nameContainer}>
                 <h3 className={styles.polaroidTitle}>Mathis</h3>
-                <Image
+                <img
                   alt="Image du drapeau français"
                   src="/image/aboutus/france.webp"
                   width={30}
@@ -118,11 +117,11 @@ export default function AboutUs() {
             </button>
           </article>
           <div className={styles.polaroidContainer}>
-            <Image
+            <img
               alt="Photo d'une maman avec son enfant dans une poussette"
               src="/image/aboutus/voyager.webp"
-              width={450}
-              height={470}
+              width="100%"
+              height="100%"
             />
             <h3 className={styles.polaroidTitle}>{t("voyagezLeger")}</h3>
           </div>
