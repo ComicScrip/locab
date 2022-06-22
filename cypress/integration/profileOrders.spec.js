@@ -7,7 +7,6 @@ describe("without session", () => {
 
 describe("with an active session", () => {
   beforeEach(() => {
-    cy.task("resetDB");
     cy.setupCurrentUser({ firstname: "jeanne" });
     cy.visit("/profile/orders");
   });
