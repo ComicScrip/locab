@@ -27,8 +27,6 @@ export default function ProductsRow({ backProduct }) {
       .catch((err) => console.error(err.response.status));
   };
 
-  // onClick={() => handleDelete(backProduct.id)}
-
   return (
     <>
       {deleteContainer ? (
