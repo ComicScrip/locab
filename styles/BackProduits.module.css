@@ -98,7 +98,11 @@
 
 .suppButton {
   color: #d28f71;
-  opacity: 0.4;
+  border: none;
+  background-color: white;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
 }
 
 /* Tableau */

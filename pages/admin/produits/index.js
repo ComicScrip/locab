@@ -15,7 +15,7 @@ function Products() {
       .then((data) => {
         setProduct(data);
       });
-  }, []);
+  }, [product]);
 
   return (
     <LayoutAdmin>
