@@ -1,21 +1,32 @@
 import styles from "../styles/ProfileOrders.module.css";
 import { useTranslation } from "next-i18next";
+import dayjs from "dayjs";
 
 export default function OrdersCard({ order }) {
   const { t } = useTranslation("profileOrders");
+  const orderStartDateOld = order.startDate;
+  const orderStartDateNewFormat = dayjs(orderStartDateOld).format("DD/MM/YY");
+  const orderEndDateOld = order.endDate;
+  const orderEndDateNewFormat = dayjs(orderEndDateOld).format("DD/MM/YY");
+  const orderDateOld = order.orderDate;
+  const orderDateNewFormat = dayjs(orderDateOld).format("DD/MM/YY");
+
+  const imagesProducts = order.products.map(
+    (image) => image.productSample.product.pictures
+  );
 
   return (
     <div className={styles.cardContainer}>
       <p className={styles.orderTitleCard}>
         {t("commande")} n°<b>{order.orderNumber}</b>{" "}
         <span className={styles.orderDurationCard}>
-          {t("du")} {order.startDate} {t("au")} {order.endDate}
+          {t("du")} {orderStartDateNewFormat} {t("au")} {orderEndDateNewFormat}
         </span>
       </p>
       <section className={styles.infoContainer}>
         <div>
           <p>
-            <b>{t("datecommande")}</b> : {order.orderDate}
+            <b>{t("datecommande")}</b> : {orderDateNewFormat}
           </p>
           <p>
             <b>{t("modepaiement")}</b> : {order.paymentType}
@@ -39,18 +50,15 @@ export default function OrdersCard({ order }) {
         </div>
       </section>
       <section className={styles.productsImages}>
-        <img
-          src={order.products.productSample.product.pictures.url}
-          width="200"
-          height="150"
-          alt="poussette"
-        />
-        <img
-          src="/image/products/Poussette-YOYO-Nacelle.jpg"
-          width="200"
-          height="150"
-          alt="poussette"
-        />
+        {imagesProducts.map((image) => (
+          <img
+            src={image[0].url}
+            width="200"
+            height="150"
+            alt="poussette"
+            key={image[0].url}
+          />
+        ))}
       </section>
       <p className={styles.facture}>Télécharger la facture</p>
     </div>
