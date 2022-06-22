@@ -38,8 +38,8 @@ export default function Home() {
             <img
               src="/image/design1.webp"
               alt="design"
-              height="500vh"
-              width="500vh"
+              height="70%"
+              width="70%"
             />
           </div>
         </div>
