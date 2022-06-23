@@ -1,31 +1,97 @@
-.mainContainerInformationTitle {
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.updRegisterForm {
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
 }
-.monCptContainerPara {
+.titleParaContainerUpdPers {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  width: 80%;
+}
+.linkParaStyle {
   width: 20%;
+  margin-left: 10%;
 }
-.mainInputContainer {
-  display: flex;
-  flex-direction: column;
+.inputUpdatePersInfo {
+  border-radius: 10px;
   width: 100%;
+  height: 50px;
+  padding: 0px 10px;
+  background-color: #f8f8f8;
+  border: 1px solid #b9b9b9bd;
+  display: block;
+  margin: 5px 0px 10px 0px;
 }
+
+.inputUpdatePersInfo:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f8f8f8 inset;
+}
+
+.inpNameLastName,
+.codeVille {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bigInputUpdPersInfo {
+  border-radius: 10px;
+  width: 100%;
+  height: 50px;
+  padding: 0px 100px;
+  background-color: #f8f8f8;
+  border: 1px solid #b9b9b9bd;
+  display: block;
+  margin: 5px 0px 10px 0px;
+}
+
+.bigInputUpdPersInfo:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f8f8f8 inset;
+}
+
 .labelStyle {
+  width: 48%;
+}
+
+.titleUpd {
+  width: 100%;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.btnValidateUpd {
+  color: white;
+  background-color: #d28f71;
+  border-radius: 10px;
+  height: 45px;
+  padding: 0 15px;
+  border: none;
+  font-weight: 600;
+  font-size: 17pt;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* 
+.connexionText {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
-}
-.inputContainer {
-  display: flex;
-  justify-content: center;
-}
-.testC {
-  display: flex;
-  justify-content: center;
-}
-.inputCptThird {
-  width: 100%;
+  gap: 10px;
+  align-items: center;
+} */
+
+@media screen and (max-width: 900px) {
+  .inpNameLastName,
+  .codeVille {
+    flex-wrap: wrap;
+  }
+  .updRegisterForm,
+  .btnValidateUpd {
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+  }
 }
