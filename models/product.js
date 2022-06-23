@@ -5,6 +5,7 @@ module.exports.createProduct = ({
   brand,
   description,
   priceCategoryId,
+  url,
 }) => {
   return db.product.create({
     data: {
@@ -12,6 +13,13 @@ module.exports.createProduct = ({
       brand,
       description,
       priceCategoryId,
+      pictures: {
+        create: [
+          {
+            url,
+          },
+        ],
+      },
     },
   });
 };

@@ -1,4 +1,4 @@
-// import Image from "next/image";
+import Image from "next/image";
 import axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -34,19 +34,19 @@ export default function ProductsRow({ backProduct }) {
           deleteContainer={deleteContainer}
           setDeleteContainer={setDeleteContainer}
           type={"ce produit"}
-          message={"cette action est irréversible et supprimera le produit"}
+          message={"Cette action est irréversible et supprimera le produit"}
           handleDelete={handleDelete}
         />
       ) : null}
 
       <tr className={styles.line}>
         <td>
-          {/* <Image
-          src={backProduct.picture}
-          height={"70px"}
-          width={"70px"}
-          alt="poussette logo"
-        /> */}
+          <Image
+            src={backProduct.picture}
+            height={"70px"}
+            width={"70px"}
+            alt="poussette logo"
+          />
         </td>
         <td>{backProduct.name}</td>
         <td>{backProduct.priceCategoryId}</td>
