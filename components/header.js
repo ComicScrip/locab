@@ -59,10 +59,9 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li className={styles.navbar_item} style={{ display: "none" }}>
+        <li className={styles.navbar_item}>
           <Link href="/aboutUs" className={styles.navbarlink}>
             <a
-              style={{ display: "none" }}
               className={
                 currentRoute === "/aboutUs" ? styles.active : styles.non_active
               }
