@@ -1,4 +1,5 @@
 import styles from "../../styles/Welcome.module.css";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import axios from "axios";
 import { GiPadlock } from "react-icons/gi";
 import { BsPaypal } from "react-icons/bs";
@@ -6,13 +7,12 @@ import { FaCcVisa } from "react-icons/fa";
 import { FaCcMastercard } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Layout from "../../components/Layout";
 import Banner from "../../components/Banner";
 
 export default function Commande() {
-  var d = new Date();
-  var date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
-  console.log(date);
+  const { t } = useTranslation("signIn");
 
   const [activeInformations, setActiveInformations] = useState(true);
   const [activeLivraison, setActiveLivraison] = useState(false);
@@ -104,7 +104,7 @@ export default function Commande() {
         startDate: "25-06-2022",
         startTime: "10h00",
         endDate: "30-06-2022",
-        orderDate: date,
+        orderDate: "",
         paymentType: "carte",
         paidPrice: "100",
         premiseId: 1,
@@ -170,7 +170,7 @@ export default function Commande() {
           <h3>
             {" "}
             <GiPadlock className={styles.icon} />
-            Paiement sécurisé
+            {t("Paiementsécurisé")}
           </h3>
         </div>
         <div className={styles.ligne}>
@@ -191,7 +191,7 @@ export default function Commande() {
             ) : (
               ""
             )}{" "}
-            Informations
+            {t("Informations")}
           </h2>
         </div>
         <div className={styles.ligne}>
@@ -201,15 +201,13 @@ export default function Commande() {
 
       {activeInformations && (
         <>
-          <h3 className={styles.h3}>
-            Indispensable pour que nous puissions traiter votre commande
-          </h3>
+          <h3 className={styles.h3}>{t("traitementcommande")}</h3>
           <div className={styles.containerbloc}>
             <div className={styles.bloc1}>
               <form className={styles.inscrit}>
                 <div className={styles.formemail}>
                   <label htmlFor="email" className={styles.email}>
-                    Adresse mail
+                    {t("email")}
                   </label>
                   <input
                     className={styles.textarea}
@@ -223,7 +221,7 @@ export default function Commande() {
                 <div className={styles.name}>
                   <div className={styles.formpassword}>
                     <label htmlFor="name" className={styles.password}>
-                      Prénom
+                      {t("prenom")}
                     </label>
                     <input
                       className={styles.textarea}
@@ -236,7 +234,7 @@ export default function Commande() {
                   </div>
                   <div className={styles.formpassword}>
                     <label htmlFor="name" className={styles.password}>
-                      Nom
+                      {t("nom")}
                     </label>
                     <input
                       className={styles.textarea}
@@ -250,7 +248,7 @@ export default function Commande() {
                 </div>
                 <div className={styles.formpassword}>
                   <label htmlFor="adress" className={styles.password}>
-                    Adresse
+                    {t("adresse")}
                   </label>
                   <input
                     className={styles.textarea}
@@ -264,7 +262,7 @@ export default function Commande() {
                 <div className={styles.name}>
                   <div className={styles.formpassword}>
                     <label htmlFor="codepostale" className={styles.password}>
-                      Code postal
+                      {t("cp")}
                     </label>
                     <input
                       className={styles.textarea}
@@ -277,7 +275,7 @@ export default function Commande() {
                   </div>
                   <div className={styles.formpassword}>
                     <label htmlFor="city" className={styles.password}>
-                      Ville
+                      {t("ville")}
                     </label>
                     <input
                       className={styles.textarea}
@@ -300,7 +298,7 @@ export default function Commande() {
                     onClick={HandleSubmitInformations}
                     data-cy="infos_submit_button"
                   >
-                    CONTINUER VERS LA LIVRAISON
+                    {t("tolivraison")}
                   </button>
                 </div>
               </form>
@@ -323,7 +321,7 @@ export default function Commande() {
               ) : (
                 ""
               )}{" "}
-              Livraison
+              {t("Livraison")}
             </h2>
           </div>
           <div className={styles.ligne}>
@@ -332,15 +330,13 @@ export default function Commande() {
         </div>
         {activeLivraison && (
           <>
-            <h3 className={styles.h3}>
-              Renseignez-nous sur votre lieu de séjour
-            </h3>
+            <h3 className={styles.h3}>{t("lieudesejour")}</h3>
             <div className={styles.containerbloc}>
               <div className={styles.bloc1}>
                 <form className={styles.inscrit}>
                   <div className={styles.formemail}>
                     <label htmlFor="partenaire" className={styles.email}>
-                      Partenaire
+                      {t("Partenaire")}
                     </label>
                     <input
                       className={styles.textarea}
@@ -353,7 +349,7 @@ export default function Commande() {
                   </div>
                   <div className={styles.formpassword}>
                     <label htmlFor="partenaire" className={styles.password}>
-                      Numéro de téléphone de l&apos;hébergeur
+                      {t("hebergeurphone")}
                     </label>
                     <input
                       className={styles.textarea}
@@ -367,7 +363,7 @@ export default function Commande() {
                   <div className={styles.name}>
                     <div className={styles.formpassword}>
                       <label htmlFor="name" className={styles.password}>
-                        Prénom de l&apos;hébergeur
+                        {t("hebergeurname")}
                       </label>
                       <input
                         className={styles.textarea}
@@ -380,7 +376,7 @@ export default function Commande() {
                     </div>
                     <div className={styles.formpassword}>
                       <label htmlFor="name" className={styles.password}>
-                        Nom de l&apos;hébergeur
+                        {t("hebergeurlastname")}
                       </label>
                       <input
                         className={styles.textarea}
@@ -394,7 +390,7 @@ export default function Commande() {
                   </div>
                   <div className={styles.formpassword}>
                     <label htmlFor="adress" className={styles.password}>
-                      Adresse
+                      {t("adresse")}
                     </label>
                     <input
                       className={styles.textarea}
@@ -408,7 +404,7 @@ export default function Commande() {
                   <div className={styles.name}>
                     <div className={styles.formpassword}>
                       <label htmlFor="codepostale" className={styles.password}>
-                        Code postal
+                        {t("cp")}
                       </label>
                       <input
                         className={styles.textarea}
@@ -421,7 +417,7 @@ export default function Commande() {
                     </div>
                     <div className={styles.formpassword}>
                       <label htmlFor="city" className={styles.password}>
-                        Ville
+                        {t("ville")}
                       </label>
                       <input
                         className={styles.textarea}
@@ -435,7 +431,7 @@ export default function Commande() {
                   </div>
                   <div className={styles.formpassword}>
                     <label htmlFor="hour" className={styles.password}>
-                      Heure d&apos;arrivée
+                      {t("heurearrive")}
                     </label>
                     <input
                       className={styles.textarea}
@@ -448,7 +444,7 @@ export default function Commande() {
                   </div>
                   <div className={styles.formpassword}>
                     <label htmlFor="hour" className={styles.password}>
-                      Commentaires
+                      {t("commentaire")}
                     </label>
                     <input
                       className={styles.textarea2}
@@ -465,7 +461,7 @@ export default function Commande() {
                       className={styles.button2}
                       onClick={HandleSubmitLivraison}
                     >
-                      CONTINUER VERS LE PAIEMENT
+                      {t("topayment")}
                     </button>
                   </div>
                 </form>
@@ -482,7 +478,7 @@ export default function Commande() {
               onClick={OpenPayment}
               style={activePayment ? styleDefault : setStyle}
             >
-              Paiement
+              {t("Paiement")}
             </h2>
           </div>
           <div className={styles.ligne}>
@@ -494,7 +490,7 @@ export default function Commande() {
             <h3 className={styles.h3}>
               {" "}
               <GiPadlock />
-              Choisissez votre moyen de paiement
+              {t("moyendepaiement")}
             </h3>
             <div className={styles.paymentparent}>
               <div className={styles.paymentcontainer}>
@@ -515,7 +511,7 @@ export default function Commande() {
                     className={styles.password}
                   />
                   <label htmlFor="city" className={styles.password}>
-                    Carte bancaire <FaCcVisa /> <FaCcMastercard />
+                    {t("cb")} <FaCcVisa /> <FaCcMastercard />
                   </label>
                 </div>
                 <div className={styles.checkbox}>
@@ -525,8 +521,7 @@ export default function Commande() {
                     className={styles.password}
                   />
                   <label htmlFor="city" className={styles.password}>
-                    J&apos;accepte les conditions générales de prestations de
-                    services
+                    {t("cgv")}
                   </label>
                 </div>
 
@@ -557,4 +552,16 @@ export default function Commande() {
       </div>
     </Layout>
   );
+}
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        "banner",
+        "header",
+        "footer",
+        "signIn",
+      ])),
+    },
+  };
 }

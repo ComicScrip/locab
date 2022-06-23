@@ -3026,7 +3026,7 @@ next-connect@^0.12.2:
 
 next-i18next@^11.0.0:
   version "11.0.0"
-  resolved "https://registry.npmjs.org/next-i18next/-/next-i18next-11.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/next-i18next/-/next-i18next-11.0.0.tgz#2857d13c58a5ed976fe57c44286f1520b07f7c96"
   integrity sha512-phxbQiZGSJTTBE2FI4+BnqFZl88AI2V+6MrEQnT9aPFAXq/fATQ/F0pOUM3J7kU4nEeCfn3hjISq+ygGHlEz0g==
   dependencies:
     "@babel/runtime" "^7.13.17"
