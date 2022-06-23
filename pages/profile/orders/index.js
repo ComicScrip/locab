@@ -3,13 +3,17 @@ import Banner from "../../../components/Banner";
 import Layout from "../../../components/Layout";
 import styles from "../../../styles/ProfileOrders.module.css";
 
+import axios from "axios";
+import { useRouter } from "next/router";
+import qs from "query-string";
+
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { signIn } from "next-auth/react";
 import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../../../contexts/currentUserContext";
+
 import OrdersCard from "../../../components/OrdersCard";
-import axios from "axios";
 
 export default function ProfileOrders() {
   const { t } = useTranslation("profileOrders");
@@ -17,9 +21,17 @@ export default function ProfileOrders() {
 
   const [orderDescription, setOrderDescription] = useState([]);
 
+  const router = useRouter();
+  const { date = "" } = router.query;
+
+  const setSearchParams = (newSearch) => {
+    const queryString = qs.stringify(newSearch);
+    router.push(`/profile/orders${queryString ? "?" : ""}${queryString}`);
+  };
+
   useEffect(() => {
     axios.get("/api/orders").then((res) => setOrderDescription(res.data));
-  }, []);
+  }, [router.query]);
 
   if (currentUserProfile) {
     return (
@@ -40,9 +52,11 @@ export default function ProfileOrders() {
             id="orderDate"
             className={styles.selectDate}
             data-cy="dateSelect"
+            value={date}
+            onChange={(e) => setSearchParams({ date: e.target.value })}
           >
             <option value="last6months">{t("6mois")}</option>
-            <option value="last2months">{t("3mois")}</option>
+            <option value="last3months">{t("3mois")}</option>
             <option value="lastmonth">{t("1mois")}</option>
           </select>
           {orderDescription.map((order) => (
