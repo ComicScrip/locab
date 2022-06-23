@@ -6,23 +6,23 @@ import styles from "../../../styles/BackProduits.module.css";
 import LayoutAdmin from "../../../components/LayoutAdmin";
 
 function Products() {
-  const [product, setProduct] = useState("");
+  const [productList, setProductList] = useState("");
 
   useEffect(() => {
     axios
       .get(`/api/products`)
       .then((response) => response.data)
       .then((data) => {
-        setProduct(data);
+        setProductList(data);
       });
-  }, [product]);
+  }, []);
 
   return (
     <LayoutAdmin>
       <section className={styles.productsMainContainer}>
         <div className={styles.productsContainer}>
           <NavProducts />
-          <SearchProducts backProducts={product} />
+          <SearchProducts backProducts={productList} />
         </div>
       </section>
     </LayoutAdmin>
