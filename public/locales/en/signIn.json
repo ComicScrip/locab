@@ -32,5 +32,7 @@
   "Paiement": "Payment",
   "moyendepaiement": "Choose your payment method",
   "cb": "Bank card",
-  "cgv": "I accept the general conditions of service"
+  "cgv": "I accept the general conditions of service",
+  "cgv2": "I agree that the execution of the service begins upon confirmation of the order.",
+  "confirmcommand": "CONFIRM ORDER"
 }

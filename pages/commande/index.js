@@ -532,8 +532,7 @@ export default function Commande() {
                     className={styles.password}
                   />
                   <label htmlFor="city" className={styles.password}>
-                    J&apos;accepte que l’exécution du service débute dès la
-                    confirmation de la commande.
+                    {t("cgv2")}
                   </label>
                 </div>
                 <div className={styles.formbutton}>
@@ -542,7 +541,7 @@ export default function Commande() {
                     className={styles.button2}
                     onClick={HandleSubmitPayment}
                   >
-                    CONFIRMER LA COMMANDE
+                    {t("confirmcommand")}
                   </button>
                 </div>
               </div>
