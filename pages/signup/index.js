@@ -8,6 +8,7 @@ import { CurrentUserContext } from "../../contexts/currentUserContext";
 import styles from "../../styles/SignUp.module.css";
 import { passwordStrength } from "check-password-strength";
 import Layout from "../../components/Layout";
+import Banner from "../../components/Banner";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
@@ -66,11 +67,22 @@ export default function SignUpPage({ csrfToken }) {
   const { currentUserProfile } = useContext(CurrentUserContext);
 
   return (
-    <Layout>
+    <Layout pageTitle="Connection | Location de matériel de puériculture">
       {currentUserProfile ? (
-        `Vous êtes connecté en tant que ${currentUserProfile.firstname}`
+        <div className={styles.connexionText}>
+          Vous êtes connecté en tant que {currentUserProfile.firstname}
+          <button
+            type="submit"
+            id="credentials-login-btn"
+            onClick={() => signOut()}
+            data-cy="logout_button"
+          >
+            {t("deconnecter")}
+          </button>
+        </div>
       ) : (
         <div>
+          <Banner />
           <h1 className={styles.titleContainerSignUp}>
             {t("voulezvousvousconnecter")}
           </h1>
@@ -218,16 +230,6 @@ export default function SignUpPage({ csrfToken }) {
             </div>
           </div>
         </div>
-      )}
-      {currentUserProfile && (
-        <button
-          type="submit"
-          id="credentials-login-btn"
-          onClick={() => signOut()}
-          data-cy="logout_button"
-        >
-          {t("deconnecter")}
-        </button>
       )}
     </Layout>
   );

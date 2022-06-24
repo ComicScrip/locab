@@ -1,0 +1,216 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+
+.mainContainer {
+  padding: 30px;
+}
+
+.reserveBtn {
+  background-color: #d38f71;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  font-size: 1.3rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.geneseContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.aProposContainer {
+  text-align: center;
+  margin-top: 70px;
+}
+
+.mainTitle {
+  font-size: 2rem;
+}
+.titleDesc {
+  color: #96c0c0;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+/* POLAROID */
+
+.polaroidContainer {
+  padding: 20px;
+  box-shadow: 0px 0px 25px -8px #798e89;
+  margin-top: 20px;
+  height: 100%;
+}
+
+.polaroidTitle {
+  padding-bottom: 0px;
+  margin: 0px;
+  text-align: center;
+  font-family: "Kalam", cursive;
+  font-size: 1.5rem;
+}
+
+.poloroidSubTitle {
+  color: #d38f71;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+.nameContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* DESTINATIONS */
+
+.serviceContainer {
+  text-align: center;
+}
+
+.destinationsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pictureDestinationLyon {
+  background-image: linear-gradient(
+      180deg,
+      rgba(10, 0, 0, 0.09) 53%,
+      rgba(10, 1, 1, 0.82) 100%
+    ),
+    url("/image/aboutus/lyon.webp");
+  background-size: cover;
+  width: 100%;
+  height: 180px;
+  border-radius: 8px 8px 8px 8px;
+}
+
+.pictureDestinationNormandie {
+  background-image: linear-gradient(
+      180deg,
+      rgba(10, 0, 0, 0.09) 53%,
+      rgba(10, 1, 1, 0.82) 100%
+    ),
+    url("/image/aboutus/normandie.webp");
+  background-size: cover;
+  width: 100%;
+  height: 180px;
+  border-radius: 8px 8px 8px 8px;
+}
+
+.pictureDestinationVendee {
+  background-image: linear-gradient(
+      180deg,
+      rgba(10, 0, 0, 0.09) 53%,
+      rgba(10, 1, 1, 0.82) 100%
+    ),
+    url("/image/aboutus/vendee.webp");
+  background-size: cover;
+  width: 100%;
+  height: 180px;
+  border-radius: 8px 8px 8px 8px;
+  filter: blur(10px);
+}
+
+.pictureDestinationAvignon {
+  background-image: linear-gradient(
+      180deg,
+      rgba(10, 0, 0, 0.09) 53%,
+      rgba(10, 1, 1, 0.82) 100%
+    ),
+    url("/image/aboutus/avignon.webp");
+  background-size: cover;
+  width: 100%;
+  height: 180px;
+  border-radius: 8px 8px 8px 8px;
+  filter: blur(10px);
+}
+
+.destinationName {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 78%;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.destinationNameVenir {
+  color: gray;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  font-style: italic;
+}
+
+@media screen and (min-width: 900px) {
+  .mainContainer {
+    padding: 30px;
+    width: 80%;
+    margin: auto;
+  }
+
+  .aProposContainer {
+    margin: 50px 0px 100px 0px;
+  }
+
+  /* GENESE */
+  .geneseContainer {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .geneseDescriptionContainer {
+    width: 50%;
+    font-size: 0.95rem;
+  }
+
+  /* TEAM */
+
+  .teamContainer {
+    margin: 100px 0px;
+  }
+
+  .teamPolaroidWrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  /* ABOUT LOCA B MORE */
+
+  .moreAboutLocaBContainer {
+    display: flex;
+    align-items: center;
+    margin: 100px 0px;
+    gap: 40px;
+  }
+
+  .moreAboutDescription {
+    width: 50%;
+  }
+
+  /* DESTINATION */
+
+  .destinationsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0px 40px;
+    margin: 50px 0px;
+  }
+
+  .destinationsContainer > article:nth-of-type(4) {
+    grid-column: 2 / 3;
+  }
+  .destinationNameVenir {
+    margin-top: 30px;
+  }
+}

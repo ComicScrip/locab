@@ -2,23 +2,23 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Image from "next/image";
-import Logo from "../public/logo/logo.png";
-import LogoText from "../public/logo/logoText.png";
-import LogoTransparent from "../public/logo/logo_transparent.png";
-import LogoIcon from "../public/logo/icon_logo.png";
 import styles from "../styles/headerfooter/navbar.module.css";
-import { signIn } from "next-auth/react";
 import { useTranslation } from "next-i18next";
 
 const Navbar = () => {
+  const onSelectChange = (e) => {
+    const locale = e.target.value;
+    router.push(router.asPath, router.asPath, {
+      locale,
+      scroll: false,
+    });
+  };
   const { t } = useTranslation("header");
   const [showLinks, setshowLinks] = useState(false);
   const handleShowLinks = () => {
     setshowLinks(!showLinks);
   };
   const router = useRouter();
-  const inFr = router.locale === "fr";
 
   const currentRoute = router.pathname;
   return (
@@ -28,21 +28,27 @@ const Navbar = () => {
       <div className={styles.logocontainer}>
         <Link href="/" className={styles.logo}>
           <a>
-            <Image
-              src={Logo}
-              className={styles.logo_img}
+            <img
+              src="/logo/logo.webp"
               alt="logo_principal"
+              width="49w"
+              height="54px"
             />
           </a>
         </Link>
         <Link href="/" className={styles.logo2}>
           <a>
-            <Image src={LogoText} className={styles.logo_imtextg} alt="logo" />
+            <img
+              src="/logo/logoText.webp"
+              alt="logo"
+              width="126w"
+              height="34px"
+            />
           </a>
         </Link>
       </div>
       <ul className={styles.items}>
-        <li className={styles.navbar_item} onClick={handleShowLinks}>
+        <li className={styles.navbar_item}>
           <Link href="/" className={styles.navbarlink}>
             <a
               className={
@@ -53,7 +59,7 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li className={styles.navbar_item} onClick={handleShowLinks}>
+        <li className={styles.navbar_item}>
           <Link href="/aboutUs" className={styles.navbarlink}>
             <a
               className={
@@ -66,10 +72,11 @@ const Navbar = () => {
         </li>
         <li
           className={`${styles.navbar_item} ${styles.none}`}
-          onClick={handleShowLinks}
+          style={{ display: "none" }}
         >
           <Link href="/blog" className={styles.navbarlink}>
             <a
+              style={{ display: "none" }}
               className={
                 currentRoute === "/blog" ? styles.active : styles.non_active
               }
@@ -78,9 +85,10 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li className={styles.navbar_item} onClick={handleShowLinks}>
+        <li className={styles.navbar_item} style={{ display: "none" }}>
           <Link href="/contact" className={styles.navbarlink}>
             <a
+              style={{ display: "none" }}
               className={
                 currentRoute === "/contact" ? styles.active : styles.non_active
               }
@@ -89,39 +97,46 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li className={styles.navbar_item} onClick={handleShowLinks}>
+        <li className={styles.navbar_item}>
           <Link href="/reservation" className={styles.navbarlink}>
             <a>
               <button className={styles.reservationButton}>Reservation</button>
             </a>
           </Link>
         </li>
-        <li className={styles.navbar_item} onClick={handleShowLinks}>
-          <div className={`${styles.navbar_item} ${styles.login}`}>
-            <a>
-              <button className={styles.log} onClick={() => signIn()}>
-                {t("seconnecter")}
-              </button>
-            </a>
+        <li className={styles.navbar_item}>
+          <div>
+            <Link href="/signup">
+              <a className={styles.log}>{t("seconnecter")}</a>
+            </Link>
           </div>
-          <Link
-            className={styles.tradStyle}
-            href={router.asPath}
-            locale={inFr ? "en" : "fr"}
-          >
-            <a data-cy={`switch-to-${inFr ? "en" : "fr"}`}>
-              {inFr ? "🇫🇷" : "🇬🇧"}
-            </a>
-          </Link>
+          <div className={styles.languageSelect}>
+            <select
+              className={styles.testSign}
+              name="languages"
+              id="language-select"
+              value={router.locale}
+              label="Languages"
+              onChange={onSelectChange}
+              data-cy="translate-button"
+            >
+              {router.locales.map((language, index) => (
+                <option value={language} key={index}>
+                  {language === "en" ? "🇬🇧" : language === "fr" ? "🇫🇷" : null}
+                </option>
+              ))}
+            </select>
+          </div>
         </li>
       </ul>
       <div className={styles.divlogoIcon1}>
         <Link href="/" className={styles.linklogotransparent}>
           <a>
-            <Image
-              src={LogoTransparent}
-              className={styles.logo_transparent}
-              alt="logoTransparent"
+            <img
+              src="/logo/logo_transparent.webp"
+              alt="logo_transparent"
+              width="113w"
+              height="30px"
             />
           </a>
         </Link>
@@ -129,18 +144,17 @@ const Navbar = () => {
       <div className={styles.divlogoIcon}>
         <Link href="/">
           <a>
-            <Image
-              src={LogoIcon}
-              className={styles.logo_icon}
+            <img
+              src="/logo/icon_logo.webp"
               alt="logo_icon"
-              height={48}
-              width={48}
+              width="45w"
+              height="45px"
             />
           </a>
         </Link>
       </div>
-      <div className={styles.btnBurger}>
-        <span className={styles.burger_Line} onClick={handleShowLinks} />
+      <div className={styles.btnBurger} onClick={handleShowLinks}>
+        <span className={styles.burger_Line} />
       </div>
     </nav>
   );
