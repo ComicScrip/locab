@@ -34,7 +34,8 @@ export default function ProfileOrders() {
 
     axios
       .get(`/api/orders${queryString ? "?" : ""}${queryString}`)
-      .then((res) => setOrderDescription(res.data));
+      .then((res) => setOrderDescription(res.data))
+      .catch(console.error);
   }, [router.query]);
 
   if (currentUserProfile) {

@@ -7,10 +7,6 @@ describe("orders - without session", () => {
 });
 
 describe("orders - with an active session", () => {
-  Cypress.on("uncaught:exception", () => {
-    return false;
-  });
-
   it("can access the profile page if the user is signed in", () => {
     cy.task("resetDB");
     cy.setupCurrentUser({ email: "toto@alaplage.com" });
