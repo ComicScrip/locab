@@ -37,6 +37,7 @@
     "cypress-data-session": "^2.0.0",
     "cypress-dotenv": "^2.0.0",
     "font-awesome": "^4.7.0",
+    "form-data": "^4.0.0",
     "i18next": "^21.8.9",
     "joi": "^17.6.0",
     "morgan": "^1.10.0",

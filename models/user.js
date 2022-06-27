@@ -86,12 +86,6 @@ module.exports.createUser = async ({
   });
 };
 
-module.exports.updateUser = async (id, data) =>
-  db.user.update({
-    where: { id: parseInt(id, 10) },
-    data,
-  });
-
 module.exports.deleteUserByEmail = async (email) => {
   return await db.user.delete({ where: { email } }).catch(() => false);
 };
@@ -101,3 +95,25 @@ module.exports.deleteDB = async () => {
 };
 
 module.exports.findAllUsers = () => db.user.findMany();
+
+module.exports.getOneUser = (id) => {
+  return db.user.findUnique({
+    where: { id: parseInt(id, 10) },
+  });
+};
+module.exports.patchOneUser = async (data) => {
+  return await db.user
+    .update({
+      where: { id: data.id },
+      data: {
+        firstname: data.firstname,
+        lastname: data.lastname,
+        address: data.address,
+        zip: data.zip,
+        city: data.city,
+        phone: data.phone,
+        email: data.email,
+      },
+    })
+    .catch(() => false);
+};

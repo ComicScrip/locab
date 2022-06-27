@@ -6,7 +6,7 @@ import {
   findAllUsers,
   validateUser,
 } from "../../../models/user";
-import requireAdmin from "../../../middlewares/requireAdmin";
+// import requireAdmin from "../../../middlewares/requireAdmin";
 
 async function handlePost(req, res) {
   const validationErrors = validateUser(req.body);
@@ -52,4 +52,4 @@ async function handleGet(req, res) {
   res.send(await findAllUsers());
 }
 
-export default base().post(handlePost).get(requireAdmin, handleGet);
+export default base().post(handlePost).get(handleGet);

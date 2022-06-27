@@ -1,7 +1,7 @@
 import axios from "axios";
 import { signOut, useSession } from "next-auth/react";
 import { createContext, useState, useEffect } from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 export const CurrentUserContext = createContext();
 
@@ -10,12 +10,12 @@ export const CurrentUserContextProvider = ({ children }) => {
   const [currentUserProfile, setCurrentUserProfile] = useState(null);
   const currentUserIsAdmin = currentUserProfile?.role === "admin";
 
-  const updateProfileOnAPI = (data) => {
-    axios.patch("/api/currentUserProfile", data).then(({ data }) => {
-      setCurrentUserProfile(data);
-      toast.success("Votre profil a bien été enregistré");
-    });
-  };
+  // const updateProfileOnAPI = (data) => {
+  //   axios.patch("/api/currentUserProfile", data).then(({ data }) => {
+  //     setCurrentUserProfile(data);
+  //     toast.success("Votre profil a bien été enregistré");
+  //   });
+  // };
 
   useEffect(() => {
     if (status === "authenticated") {
@@ -35,9 +35,9 @@ export const CurrentUserContextProvider = ({ children }) => {
     <CurrentUserContext.Provider
       value={{
         currentUserProfile,
-        setCurrentUserProfile,
+        // setCurrentUserProfile,
         currentUserIsAdmin,
-        updateProfileOnAPI,
+        // updateProfileOnAPI,
       }}
     >
       {children}
