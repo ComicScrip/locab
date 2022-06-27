@@ -52,7 +52,9 @@
     "react-i18next": "^11.17.1",
     "react-icons": "^4.4.0",
     "react-responsive": "^9.0.0-beta.10",
+    "react-toastify": "^9.0.5",
     "react-tooltip": "^4.2.21",
+    "use-context-selector": "^1.4.1",
     "yarn": "^1.22.19"
   },
   "devDependencies": {

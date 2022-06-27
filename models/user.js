@@ -86,6 +86,12 @@ module.exports.createUser = async ({
   });
 };
 
+module.exports.updateUser = async (id, data) =>
+  db.user.update({
+    where: { id: parseInt(id, 10) },
+    data,
+  });
+
 module.exports.deleteUserByEmail = async (email) => {
   return await db.user.delete({ where: { email } }).catch(() => false);
 };

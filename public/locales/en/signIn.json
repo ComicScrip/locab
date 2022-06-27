@@ -1,7 +1,6 @@
 {
   "jesuisdejainscrit": "I am already signed up",
   "mesinfoperso": "My personal information",
-
   "adressemail": "Email address",
   "motdepasse": "Password",
   "idpasbon": "These identifiers do not correspond to any active user.",
@@ -18,5 +17,6 @@
   "confirmezvotremotdepasse": "Confirm your password",
   "sinscrire": "REGISTER",
   "deconnecter": "LOG OUT",
-  "retourcompte": "back to account"
+  "retourcompte": "back to account",
+  "valider": "Save"
 }
