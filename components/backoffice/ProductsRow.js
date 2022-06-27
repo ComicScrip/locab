@@ -42,7 +42,7 @@ export default function ProductsRow({ backProduct }) {
       <tr className={styles.line}>
         <td>
           <Image
-            src={backProduct.picture}
+            src={backProduct.pictures[0].url}
             height={"70px"}
             width={"70px"}
             alt="poussette logo"

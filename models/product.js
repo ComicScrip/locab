@@ -3,20 +3,23 @@ const db = require("../db");
 module.exports.createProduct = ({
   name,
   brand,
+  caution,
   description,
   priceCategoryId,
-  url,
+  pictures,
 }) => {
+  // console.log(name, brand, description, priceCategoryId, pictures);
   return db.product.create({
     data: {
       name,
       brand,
+      caution,
       description,
       priceCategoryId,
       pictures: {
         create: [
           {
-            url,
+            url: pictures,
           },
         ],
       },
@@ -34,3 +37,19 @@ module.exports.deleteOneProduct = (id) => {
     },
   });
 };
+
+module.exports.findAllProductsDescriptions = () =>
+  db.product.findMany({
+    include: {
+      priceCategory: {
+        select: {
+          name: true,
+        },
+      },
+      pictures: {
+        select: {
+          url: true,
+        },
+      },
+    },
+  });

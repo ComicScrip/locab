@@ -28,8 +28,10 @@ function AddProductsPopUp({ show, setShow }) {
       .post(`/api/products`, {
         name,
         brand,
+        caution: 200,
         description,
         priceCategoryId: priceCatNumber,
+        pictures: productUrl,
       })
       .then(() => {
         setName("");
@@ -45,6 +47,7 @@ function AddProductsPopUp({ show, setShow }) {
       });
   };
 
+  console.log("toto", productUrl);
   return (
     <div className={`${styles.popup} ${show ? styles.active : ""} `}>
       <div className={`${styles.popup__content} ${show ? styles.active : ""}`}>
@@ -126,14 +129,13 @@ function AddProductsPopUp({ show, setShow }) {
               <label htmlFor="product">
                 <Widget
                   publicKey={process.env.NEXT_PUBLIC_UPLOADCARE_KEY}
-                  className={styles.buttonPlus}
-                  id="product"
-                  name="product"
-                  tabs="file"
+                  //  id="product"
+                  // name="product"
+                  // tabs="file"
                   localeTranslations={buttonName()}
-                  value={productUrl}
-                  onChange={({ file }) => {
-                    setProductUrl(file);
+                  // value={productUrl}
+                  onChange={(file) => {
+                    setProductUrl(file.cdnUrl);
                   }}
                 />
               </label>
