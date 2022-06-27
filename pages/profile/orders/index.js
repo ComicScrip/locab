@@ -30,7 +30,11 @@ export default function ProfileOrders() {
   };
 
   useEffect(() => {
-    axios.get("/api/orders").then((res) => setOrderDescription(res.data));
+    const queryString = qs.stringify(router.query);
+
+    axios
+      .get(`/api/orders${queryString ? "?" : ""}${queryString}`)
+      .then((res) => setOrderDescription(res.data));
   }, [router.query]);
 
   if (currentUserProfile) {
