@@ -1,17 +1,20 @@
-describe("without session", () => {
+describe("orders - without session", () => {
   it("asks to log in if the user isn't signed in", () => {
+    cy.task("resetDB");
     cy.visit("/profile/orders");
     cy.contains("Veuillez vous connecter pour accéder à votre compte");
   });
 });
 
-describe("with an active session", () => {
-  beforeEach(() => {
-    cy.setupCurrentUser({ role: "visitor" });
-    cy.visit("/profile/orders");
+describe("orders - with an active session", () => {
+  Cypress.on("uncaught:exception", () => {
+    return false;
   });
 
   it("can access the profile page if the user is signed in", () => {
+    cy.task("resetDB");
+    cy.setupCurrentUser({ email: "toto@alaplage.com" });
+    cy.visit("/profile/orders");
     cy.contains("Mes commandes");
   });
 });

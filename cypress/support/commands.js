@@ -111,6 +111,7 @@ Cypress.Commands.add(
       recreate: (saved) => {
         cy.setCookie("next-auth.session-token", saved.cookie.value);
       },
+      dependsOn: ["userInDb"],
     });
   }
 );
