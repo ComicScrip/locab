@@ -64,6 +64,9 @@ export default function Commande() {
         email: userMail,
         password: "Toto123/",
       })
+      .then((response) => {
+        console.log(response);
+      })
       .then(() => {
         setUserFirstName("");
         setUserLastName("");
@@ -101,16 +104,16 @@ export default function Commande() {
         deliveryArrivalTime: userHourArrived,
         comment: userCommentary,
         orderNumber: "123456789",
-        startDate: "25-06-2022",
-        startTime: "10h00",
-        endDate: "30-06-2022",
-        orderDate: "",
-        paymentType: "carte",
-        paidPrice: "100",
+        startDate: "2022-06-15T22:00:00.000Z",
+        startTime: "2022-06-16T22:00:00.000Z",
+        endDate: "2022-06-25T22:00:00.000Z",
+        orderDate: new Date(),
+        paymentType: "Carte bleue",
+        paidPrice: 100,
         premiseId: 1,
         delegateParentId: 2,
         partnerId: 5,
-        products: "biberon",
+        products: "",
         status: "okay",
         customerId: 25,
       })
@@ -343,6 +346,7 @@ export default function Commande() {
                       id="partenaire"
                       type="text"
                       required
+                      data-cy="partner_name"
                       onChange={(e) => setUserPartner(e.target.value)}
                       value={userPartner}
                     />
@@ -356,6 +360,7 @@ export default function Commande() {
                       id="partenaire"
                       type="text"
                       required
+                      data-cy="partner_phone"
                       onChange={(e) => setPhonePartner(e.target.value)}
                       value={phonePartner}
                     />
@@ -370,6 +375,7 @@ export default function Commande() {
                         id="firstname"
                         type="name"
                         required
+                        data-cy="partner_firstname"
                         onChange={(e) => setPartnerFirstName(e.target.value)}
                         value={partnerFirstName}
                       />
@@ -383,6 +389,7 @@ export default function Commande() {
                         id="secondname"
                         type="name"
                         required
+                        data-cy="partner_lastname"
                         onChange={(e) => setPartnerLastName(e.target.value)}
                         value={partnerLastName}
                       />
@@ -397,6 +404,7 @@ export default function Commande() {
                       id="adress"
                       type="adress"
                       required
+                      data-cy="partner_adress"
                       onChange={(e) => setPartnerAdress(e.target.value)}
                       value={partnerAddress}
                     />
@@ -408,9 +416,10 @@ export default function Commande() {
                       </label>
                       <input
                         className={styles.textarea}
-                        id="codepostal"
+                        id="zip"
                         type="adress"
                         required
+                        data-cy="partner_zip"
                         onChange={(e) => setPartnerZip(e.target.value)}
                         value={partnerZip}
                       />
@@ -424,6 +433,7 @@ export default function Commande() {
                         id="city"
                         type="city"
                         required
+                        data-cy="partner_city"
                         onChange={(e) => setPartnerCity(e.target.value)}
                         value={partnerCity}
                       />
@@ -438,6 +448,7 @@ export default function Commande() {
                       id="hour"
                       type="hour"
                       required
+                      data-cy="partner_hour"
                       onChange={(e) => setUserHourArrived(e.target.value)}
                       value={userHourArrived}
                     />
@@ -450,6 +461,7 @@ export default function Commande() {
                       className={styles.textarea2}
                       id="commentaire"
                       type="commentaire"
+                      data-cy="partner_comments"
                       required
                       onChange={(e) => setUserComentary(e.target.value)}
                       value={userCommentary}
@@ -458,6 +470,7 @@ export default function Commande() {
                   <div className={styles.formbutton}>
                     <button
                       type="submit"
+                      data-cy="partner_submit_button"
                       className={styles.button2}
                       onClick={HandleSubmitLivraison}
                     >
