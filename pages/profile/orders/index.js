@@ -79,6 +79,7 @@ export default function ProfileOrders() {
         type="button"
         className={styles.connexionBtn}
         onClick={() => signIn()}
+        data-cy="connexionBtn"
       >
         {t("seconnecter")}
       </button>

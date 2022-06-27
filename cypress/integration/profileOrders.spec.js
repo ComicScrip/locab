@@ -7,7 +7,7 @@ describe("without session", () => {
 
 describe("with an active session", () => {
   beforeEach(() => {
-    cy.setupCurrentUser({ firstname: "jeanne" });
+    cy.login({ email: "visitor@locab.com", password: "locablocab" });
     cy.visit("/profile/orders");
   });
 
@@ -19,12 +19,12 @@ describe("with an active session", () => {
     cy.contains("Commande n°ZRT123");
   });
 
-  it.only("shows my orders depending on the date it was made", () => {
+  it("shows my orders depending on the date it was made", () => {
     cy.get('[data-cy="dateSelect"]').select("6 derniers mois");
     cy.contains("Commande n°R54363");
     cy.get('[data-cy="dateSelect"]').select("3 derniers mois");
-    cy.contains("Commande n°4366UL").should("not.be.visible");
+    cy.contains("Commande n°4366UL").should("not.exist");
     cy.get('[data-cy="dateSelect"]').select("Dernier mois");
-    cy.contains("Commande n°R54363").should("not.be.visible");
+    cy.contains("Commande n°R54363").should("not.exist");
   });
 });
