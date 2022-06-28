@@ -52,6 +52,12 @@ module.exports.findAllProductsDescriptions = () =>
     },
   });
 
+module.exports.getOneProduct = (id) => {
+  return db.product.findUnique({
+    where: { id: parseInt(id, 10) },
+  });
+};
+
 module.exports.patchOneProduct = async (data) => {
   return await db.product
     .update({

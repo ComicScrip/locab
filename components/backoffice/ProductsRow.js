@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -54,7 +55,12 @@ export default function ProductsRow({ backProduct }) {
         <td>{backProduct.brand}</td>
         <td>
           <div>
-            <div className={styles.modifyButton}>Modifier</div>
+            <Link
+              className={styles.modifyButton}
+              href={`/admin/produits/edit/${id}`}
+            >
+              <a>Modifier</a>
+            </Link>
             <div>
               <button
                 className={styles.suppButton}
