@@ -27,6 +27,8 @@ export default function ProductsRow({ backProduct }) {
       .catch((err) => console.error(err.response.status));
   };
 
+  console.log(backProduct);
+
   return (
     <>
       {deleteContainer ? (

@@ -8,7 +8,6 @@ module.exports.createProduct = ({
   priceCategoryId,
   pictures,
 }) => {
-  // console.log(name, brand, description, priceCategoryId, pictures);
   return db.product.create({
     data: {
       name,
@@ -30,7 +29,6 @@ module.exports.createProduct = ({
 module.exports.findAllProducts = () => db.product.findMany();
 
 module.exports.deleteOneProduct = (id) => {
-  console.log("tatatatatat", id);
   return db.product.delete({
     where: {
       id: parseInt(id, 10),

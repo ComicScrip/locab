@@ -6,7 +6,7 @@ import styles from "../styles/AddProductsPopUp.module.css";
 function AddProductsPopUp({ show, setShow }) {
   const [name, setName] = useState("");
   const [brand, setBrand] = useState("");
-  // const [quantity, setQuantity] = useState("");
+  const [caution, setCaution] = useState("");
   const [priceCategoryId, setPriceCategoryId] = useState("");
   const [description, setDescription] = useState("");
   const [productUrl, setProductUrl] = useState("");
@@ -23,12 +23,13 @@ function AddProductsPopUp({ show, setShow }) {
 
   const handleSubmit = (e) => {
     const priceCatNumber = parseInt(priceCategoryId);
+    const priceCaution = parseInt(caution);
     e.preventDefault();
     axios
       .post(`/api/products`, {
         name,
         brand,
-        caution: 200,
+        caution: priceCaution,
         description,
         priceCategoryId: priceCatNumber,
         pictures: productUrl,
@@ -36,6 +37,7 @@ function AddProductsPopUp({ show, setShow }) {
       .then(() => {
         setName("");
         setBrand("");
+        setCaution("");
         setDescription("");
         setPriceCategoryId("");
       })
@@ -48,6 +50,7 @@ function AddProductsPopUp({ show, setShow }) {
   };
 
   console.log("toto", productUrl);
+
   return (
     <div className={`${styles.popup} ${show ? styles.active : ""} `}>
       <div className={`${styles.popup__content} ${show ? styles.active : ""}`}>
@@ -86,18 +89,18 @@ function AddProductsPopUp({ show, setShow }) {
               </div>
             </div>
             <div className={styles.inputLign}>
-              {/* <div className={styles.productsQuantity}>
-                <label htmlFor="quantity" className={styles.labelPopUp}>
-                  Quantité
+              <div className={styles.productsQuantity}>
+                <label htmlFor="caution" className={styles.labelPopUp}>
+                  Caution
                 </label>
                 <input
                   className={styles.inputPopUp}
-                  id="quantity"
+                  id="caution"
                   type="text"
-                  value={quantity}
-                  onChange={(e) => setQuantity(e.target.value)}
+                  value={caution}
+                  onChange={(e) => setCaution(e.target.value)}
                 ></input>
-              </div> */}
+              </div>
               <div className={styles.productsPrice}>
                 <label htmlFor="price" className={styles.labelPopUp}>
                   Catégorie de prix
@@ -129,11 +132,7 @@ function AddProductsPopUp({ show, setShow }) {
               <label htmlFor="product">
                 <Widget
                   publicKey={process.env.NEXT_PUBLIC_UPLOADCARE_KEY}
-                  //  id="product"
-                  // name="product"
-                  // tabs="file"
                   localeTranslations={buttonName()}
-                  // value={productUrl}
                   onChange={(file) => {
                     setProductUrl(file.cdnUrl);
                   }}
