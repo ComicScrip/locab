@@ -56,10 +56,6 @@
   cursor: pointer;
 }
 
-/* .addProductsButton:active {
-  box-shadow: inset 0px 2px 3px #000000;
-} */
-
 .tableProductsContainer {
   width: 100%;
   display: flex;
@@ -90,10 +86,6 @@
 .tableProducts td ul li {
   cursor: pointer;
   padding: 0.5rem;
-}
-
-.modifyButton {
-  opacity: 0.4;
 }
 
 .suppButton {

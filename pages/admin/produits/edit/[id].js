@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import styles from "../../../../styles/AddProductsPopUp.module.css";
+import styles from "../../../../styles/EditProduct.module.css";
 import LayoutAdmin from "../../../../components/LayoutAdmin";
 
 const EditProduct = () => {
@@ -35,7 +35,7 @@ const EditProduct = () => {
 
   return (
     <LayoutAdmin>
-      <div>
+      <div className={styles.pageEdit}>
         <div className={styles.formPopup}>
           <h1 className={styles.titlePopupProducts}>Ajouter un produit</h1>
           <form
