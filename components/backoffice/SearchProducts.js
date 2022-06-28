@@ -8,7 +8,6 @@ import AddProductsPopUp from "../../components/AddProductsPopUp";
 export default function SearchProducts({ backProducts }) {
   // const { backProducts } = dataBackProducts;
   const [searchValue, setSearchValue] = useState("");
-
   const [showPopup, setShowPopup] = useState(false);
   const handleClick = () => {
     setShowPopup(true);

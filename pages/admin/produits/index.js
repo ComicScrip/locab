@@ -6,7 +6,7 @@ import styles from "../../../styles/BackProduits.module.css";
 import LayoutAdmin from "../../../components/LayoutAdmin";
 
 function Products() {
-  const [productList, setProductList] = useState("");
+  const [productList, setProductList] = useState([]);
 
   useEffect(() => {
     axios

@@ -21,10 +21,9 @@ function AddProductsPopUp({ show, setShow }) {
     },
   });
 
-  const handleSubmit = (e) => {
+  const fetchProduct = () => {
     const priceCatNumber = parseInt(priceCategoryId);
     const priceCaution = parseInt(caution);
-    e.preventDefault();
     axios
       .post(`/api/products`, {
         name,
@@ -46,10 +45,13 @@ function AddProductsPopUp({ show, setShow }) {
       })
       .catch((err) => {
         console.error(err);
-      });
+      }, []);
   };
 
-  console.log("toto", productUrl);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetchProduct();
+  };
 
   return (
     <div className={`${styles.popup} ${show ? styles.active : ""} `}>
