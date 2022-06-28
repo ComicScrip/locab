@@ -69,7 +69,10 @@ export default function MonCompte() {
             {t("retourcompte")}
           </a>
         </Link>
-        <h1 className={styles.titleUpd}>{t("mesinfoperso")}</h1>
+        <div className={styles.titleMediaQ}>
+          {" "}
+          <h1 className={styles.titleUpd}>{t("mesinfoperso")}</h1>
+        </div>
       </div>
 
       <div className={styles.updRegisterForm}>
@@ -109,6 +112,7 @@ export default function MonCompte() {
               name="address"
               type="text"
               id="adresse"
+              data-cy="address"
               value={updateUser.address || ""}
               onChange={(e) =>
                 setUpdateUser({ ...updateUser, address: e.target.value })
@@ -151,6 +155,7 @@ export default function MonCompte() {
                 name="phone"
                 type="tel"
                 id="telephone"
+                data-cy="phone"
                 value={updateUser.phone || ""}
                 onChange={(e) =>
                   setUpdateUser({ ...updateUser, phone: e.target.value })
@@ -164,6 +169,7 @@ export default function MonCompte() {
                 name="email"
                 type="email"
                 id="email"
+                data-cy="email"
                 value={updateUser.email || ""}
                 onChange={(e) =>
                   setUpdateUser({ ...updateUser, email: e.target.value })
@@ -175,6 +181,7 @@ export default function MonCompte() {
             className={styles.btnValidateUpd}
             type="submit"
             id="validate-btn"
+            data-cy="validate-btn"
           >
             {t("valider")}
           </button>
