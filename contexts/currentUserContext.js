@@ -8,6 +8,8 @@ export const CurrentUserContext = createContext();
 export const CurrentUserContextProvider = ({ children }) => {
   const { status } = useSession();
   const [currentUserProfile, setCurrentUserProfile] = useState(null);
+  const [updateUser, setUpdateUser] = useState({});
+
   const currentUserIsAdmin = currentUserProfile?.role === "admin";
 
   // const updateProfileOnAPI = (data) => {
@@ -37,6 +39,8 @@ export const CurrentUserContextProvider = ({ children }) => {
         currentUserProfile,
         // setCurrentUserProfile,
         currentUserIsAdmin,
+        updateUser,
+        setUpdateUser,
         // updateProfileOnAPI,
       }}
     >

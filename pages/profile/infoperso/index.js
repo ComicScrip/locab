@@ -7,7 +7,7 @@ import { useTranslation } from "next-i18next";
 import { BsArrowLeft } from "react-icons/bs";
 import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
@@ -16,19 +16,19 @@ export default function MonCompte() {
   const { t } = useTranslation("signIn");
   const { status } = useSession();
 
-  const { currentUserProfile } = useContext(CurrentUserContext);
+  const { currentUserProfile, updateUser, setUpdateUser } =
+    useContext(CurrentUserContext);
   const id = currentUserProfile?.id;
 
-  const [updateUser, setUpdateUser] = useState("");
-
   useEffect(() => {
-    axios
-      .get(`/api/users/${id}`)
-      .then((res) => setUpdateUser(res.data))
-      .catch((err) => {
-        console.error(err.response.data);
-      });
-  }, [id]);
+    id &&
+      axios
+        .get(`/api/users/${id}`)
+        .then((res) => setUpdateUser(res.data))
+        .catch((err) => {
+          console.error(err.response.data);
+        });
+  }, [id, setUpdateUser]);
 
   const handlePatch = (e) => {
     e.preventDefault();
@@ -82,7 +82,7 @@ export default function MonCompte() {
                 name="firstname"
                 type="text"
                 id="firstName"
-                value={updateUser.firstname}
+                value={updateUser.firstname || ""}
                 onChange={(e) =>
                   setUpdateUser({ ...updateUser, firstname: e.target.value })
                 }
@@ -95,7 +95,7 @@ export default function MonCompte() {
                 name="lastname"
                 type="text"
                 id="name"
-                value={updateUser.lastname}
+                value={updateUser.lastname || ""}
                 onChange={(e) =>
                   setUpdateUser({ ...updateUser, lastname: e.target.value })
                 }
@@ -109,7 +109,7 @@ export default function MonCompte() {
               name="address"
               type="text"
               id="adresse"
-              value={updateUser.address}
+              value={updateUser.address || ""}
               onChange={(e) =>
                 setUpdateUser({ ...updateUser, address: e.target.value })
               }
@@ -123,7 +123,7 @@ export default function MonCompte() {
                 name="zip"
                 type="text"
                 id="codePostal"
-                value={updateUser.zip}
+                value={updateUser.zip || ""}
                 onChange={(e) =>
                   setUpdateUser({ ...updateUser, zip: e.target.value })
                 }
@@ -136,7 +136,7 @@ export default function MonCompte() {
                 name="city"
                 type="text"
                 id="ville"
-                value={updateUser.city}
+                value={updateUser.city || ""}
                 onChange={(e) =>
                   setUpdateUser({ ...updateUser, city: e.target.value })
                 }
@@ -151,7 +151,7 @@ export default function MonCompte() {
                 name="phone"
                 type="tel"
                 id="telephone"
-                value={updateUser.phone}
+                value={updateUser.phone || ""}
                 onChange={(e) =>
                   setUpdateUser({ ...updateUser, phone: e.target.value })
                 }
@@ -164,7 +164,7 @@ export default function MonCompte() {
                 name="email"
                 type="email"
                 id="email"
-                value={updateUser.email}
+                value={updateUser.email || ""}
                 onChange={(e) =>
                   setUpdateUser({ ...updateUser, email: e.target.value })
                 }

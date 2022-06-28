@@ -1,8 +1,7 @@
-describe("/profile/infoperso", () => {
-  before(() => {
-    cy.task("deleteAllUsers");
+describe("infoperso", () => {
+  beforeEach(() => {
+    cy.visit("/profile/infoperso");
   });
-
   describe("with an active session", () => {
     beforeEach(() => {
       cy.setupCurrentUser({ name: "Dave Loper" });
