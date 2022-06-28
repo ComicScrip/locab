@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "../../styles/Moncompte.module.css";
 import Layout from "../../components/Layout";
 import Banner from "../../components/Banner";
@@ -8,7 +9,7 @@ import { useContext } from "react";
 import { signIn } from "next-auth/react";
 
 export default function MonCompte() {
-  const { t } = useTranslation("moncompte");
+  const { t } = useTranslation("profile");
 
   const { currentUserProfile } = useContext(CurrentUserContext);
 
@@ -23,13 +24,16 @@ export default function MonCompte() {
           <div className={styles.compte}>
             <div className={styles.partie1}>
               <div className={styles.icon1}>
-                <img
-                  src="/image/clipboard.png"
-                  alt="design"
-                  height="129vh"
-                  width="129vh"
-                  className={styles.clipboard}
-                />
+                <Link href="/profile/orders">
+                  <img
+                    style={{ cursor: "pointer" }}
+                    src="/image/clipboard.png"
+                    alt="design"
+                    height="129vh"
+                    width="129vh"
+                    className={styles.clipboard}
+                  />
+                </Link>
               </div>
               <p className={styles.text1}>{t("mescommandes")}</p>
             </div>
@@ -80,7 +84,7 @@ export async function getStaticProps({ locale }) {
         "signIn",
         "footer",
         "reservation",
-        "moncompte",
+        "profile",
       ])),
     },
   };
