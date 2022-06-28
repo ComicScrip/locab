@@ -21,7 +21,8 @@ function AddProductsPopUp({ show, setShow }) {
     },
   });
 
-  const fetchProduct = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const priceCatNumber = parseInt(priceCategoryId);
     const priceCaution = parseInt(caution);
     axios
@@ -46,11 +47,6 @@ function AddProductsPopUp({ show, setShow }) {
       .catch((err) => {
         console.error(err);
       }, []);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetchProduct();
   };
 
   return (

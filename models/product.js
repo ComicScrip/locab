@@ -51,3 +51,18 @@ module.exports.findAllProductsDescriptions = () =>
       },
     },
   });
+
+module.exports.patchOneProduct = async (data) => {
+  return await db.product
+    .update({
+      where: { id: data.id },
+      data: {
+        name: data.name,
+        brand: data.brand,
+        caution: data.caution,
+        description: data.description,
+        priceCategoryId: data.priceCategoryId,
+      },
+    })
+    .catch(() => false);
+};
