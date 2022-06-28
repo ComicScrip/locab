@@ -23,8 +23,8 @@ describe("orders - with an active session", () => {
 
   it.only("order - shows only the orders made according to the selected filter", () => {
     cy.get('[data-cy="dateSelect"]').select("last3months");
-    cy.contains("A54363");
+    cy.contains("A366UL").should("not.exist");
     cy.get('[data-cy="dateSelect"]').select("lastmonth");
-    cy.contains("A366UL");
+    cy.contains("A54363").should("not.exist");
   });
 });
