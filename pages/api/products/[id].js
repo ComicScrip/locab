@@ -11,8 +11,8 @@ async function handleDelete(req, res) {
 }
 
 const handleGetOneProduct = async (req, res) => {
-  const user = await getOneProduct(req.query.id);
-  return res.status(201).send(user);
+  const product = await getOneProduct(req.query);
+  return res.status(201).send(product);
 };
 
 const handlePatch = async (req, res) => {

@@ -17,9 +17,10 @@ const EditProduct = () => {
       })
       .catch(console.error);
   }, [id]);
+  console.log(id);
 
   const handlePatchProduct = (e) => {
-    e.prevent.default,
+    e.preventDefault(),
       axios
         .patch(`api/products/${id}`, {
           id: product.id,
@@ -29,7 +30,7 @@ const EditProduct = () => {
           description: product.description,
           priceCategoryId: product.priceCategoryId,
         })
-        .then(() => router.push(`/admin/produits/${id}`))
+        .then(() => router.push("/admin/produits"))
         .catch(console.error);
   };
 
