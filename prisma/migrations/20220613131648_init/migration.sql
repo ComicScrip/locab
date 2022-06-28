@@ -79,8 +79,6 @@ CREATE TABLE `Order` (
     `customerId` INTEGER NOT NULL,
 
     UNIQUE INDEX `Order_orderNumber_key`(`orderNumber`),
-    UNIQUE INDEX `Order_premiseId_key`(`premiseId`),
-    UNIQUE INDEX `Order_partnerId_key`(`partnerId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
