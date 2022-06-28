@@ -1,16 +1,8 @@
 import base from "../../../middlewares/common";
-import requireCurrentUser from "../../../middlewares/requireCurrentUser";
-import { findProductOnOrderById } from "../../../models/productOnOrder";
+import { getProductOnOrder } from "../../../models/productOnOrder";
 
 async function handleGet(req, res) {
-  const { id, order, orderId, quantity, productSample, productSampleId } =
-    await findProductOnOrderById(req.body);
-  res
-    .status(201)
-    .send({ id, order, orderId, quantity, productSample, productSampleId });
+  res.send(getProductOnOrder(req.body));
 }
 
-export default base()
-  .use(requireCurrentUser)
-  .get(handleGet)
-  .find(findProductOnOrderById);
+export default base().get(handleGet);
