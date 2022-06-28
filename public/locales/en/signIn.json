@@ -18,5 +18,6 @@
   "sinscrire": "REGISTER",
   "deconnecter": "LOG OUT",
   "retourcompte": "back to account",
-  "valider": "Save"
+  "valider": "Save",
+  "toastmodif": "Your changes have been saved"
 }

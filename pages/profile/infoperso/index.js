@@ -8,8 +8,8 @@ import { BsArrowLeft } from "react-icons/bs";
 import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
 import { useState, useEffect, useContext } from "react";
-// import "react-toastify/dist/ReactToastify.css";
-// import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
 export default function MonCompte() {
@@ -22,59 +22,31 @@ export default function MonCompte() {
   const [updateUser, setUpdateUser] = useState("");
 
   useEffect(() => {
-    axios.get(`/api/users/${id}`).then((res) => setUpdateUser(res.data));
+    axios
+      .get(`/api/users/${id}`)
+      .then((res) => setUpdateUser(res.data))
+      .catch((err) => {
+        console.error(err.response.data);
+      });
   }, [id]);
 
   const handlePatch = (e) => {
     e.preventDefault();
-    axios
-      .patch(`/api/users/${id}`, {
-        id: updateUser.id,
-        firstname: updateUser.firstname,
-        lastname: updateUser.lastname,
-        email: updateUser.email,
-        address: updateUser.address,
-        city: updateUser.city,
-        phone: updateUser.phone,
-        zip: updateUser.zip,
-      })
-      .catch(console.error);
+    axios.patch(`/api/users/${id}`, {
+      id: updateUser.id,
+      firstname: updateUser.firstname,
+      lastname: updateUser.lastname,
+      email: updateUser.email,
+      address: updateUser.address,
+      city: updateUser.city,
+      phone: updateUser.phone,
+      zip: updateUser.zip,
+    });
+    toast("Vos modifications ont bien été prises en comptes", {
+      theme: "light",
+      type: "success",
+    });
   };
-
-  // useEffect(() => {
-  //   if (currentUserProfile) {
-  //     setFirstName(currentUserProfile.firstname || "");
-  //     setLastName(currentUserProfile.lastname || "");
-  //     setEmail(currentUserProfi  console.log(id);
-
-  // }, [currentUserProfile]);
-
-  // const handleSubmit = useCallback(
-  //   (e) => {
-  //     e.preventDefault();
-  //     const data = new FormData();
-  //     data.append("firstname", firstName);
-  //     data.append("lastname", lastName);
-  //     data.append("address", address);
-  //     data.append("city", city);
-  //     data.append("phone", phoneNumber);
-  //     data.append("zip", cp);
-  //     data.append("email", email);
-  //     updateProfileOnAPI(data, () => {
-  //       toast.success("profileSaved");
-  //     });
-  //   },
-  //   [
-  //     firstName,
-  //     lastName,
-  //     address,
-  //     city,
-  //     phoneNumber,
-  //     cp,
-  //     email,
-  //     updateProfileOnAPI,
-  //   ]
-  // );
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -101,12 +73,13 @@ export default function MonCompte() {
       </div>
 
       <div className={styles.updRegisterForm}>
-        <form onSubmit={handlePatch}>
+        <form onSubmit={handlePatch} className={styles.formStyle}>
           <div className={styles.inpNameLastName}>
             <label className={styles.labelStyle} htmlFor="firstName">
               {t("prenom")}
               <input
                 className={styles.inputUpdatePersInfo}
+                name="firstname"
                 type="text"
                 id="firstName"
                 value={updateUser.firstname}
@@ -119,6 +92,7 @@ export default function MonCompte() {
               {t("nom")}
               <input
                 className={styles.inputUpdatePersInfo}
+                name="lastname"
                 type="text"
                 id="name"
                 value={updateUser.lastname}
@@ -132,6 +106,7 @@ export default function MonCompte() {
             {t("adresse")}
             <input
               className={styles.bigInputUpdPersInfo}
+              name="address"
               type="text"
               id="adresse"
               value={updateUser.address}
@@ -145,6 +120,7 @@ export default function MonCompte() {
               {t("cp")}
               <input
                 className={styles.inputUpdatePersInfo}
+                name="zip"
                 type="text"
                 id="codePostal"
                 value={updateUser.zip}
@@ -157,6 +133,7 @@ export default function MonCompte() {
               {t("ville")}
               <input
                 className={styles.inputUpdatePersInfo}
+                name="city"
                 type="text"
                 id="ville"
                 value={updateUser.city}
@@ -171,7 +148,8 @@ export default function MonCompte() {
               {t("Numérodetelephone")}
               <input
                 className={styles.bigInputUpdPersInfo}
-                type="text"
+                name="phone"
+                type="tel"
                 id="telephone"
                 value={updateUser.phone}
                 onChange={(e) =>
@@ -183,6 +161,7 @@ export default function MonCompte() {
               {t("adressemail")}
               <input
                 className={styles.bigInputUpdPersInfo}
+                name="email"
                 type="email"
                 id="email"
                 value={updateUser.email}
@@ -200,6 +179,7 @@ export default function MonCompte() {
             {t("valider")}
           </button>
         </form>
+        <ToastContainer />
       </div>
     </Layout>
   );

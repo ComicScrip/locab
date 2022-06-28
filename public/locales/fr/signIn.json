@@ -18,5 +18,6 @@
   "sinscrire": "S'INSCRIRE",
   "deconnecter": "SE DECONNECTER",
   "retourcompte": "retour au compte",
-  "valider": "Enregistrer"
+  "valider": "Enregistrer",
+  "toastmodif": "Vos modifications ont bien été prises en comptes"
 }

@@ -40,11 +40,14 @@
   border-radius: 10px;
   width: 100%;
   height: 50px;
-  padding: 0px 100px;
+
   background-color: #f8f8f8;
   border: 1px solid #b9b9b9bd;
   display: block;
   margin: 5px 0px 10px 0px;
+}
+.formStyle {
+  width: 50%;
 }
 
 .bigInputUpdPersInfo:-webkit-autofill {
@@ -74,15 +77,6 @@
   cursor: pointer;
   margin: 20px 0 20% 0;
 }
-
-/* 
-.connexionText {
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-} */
 
 @media screen and (max-width: 900px) {
   .inpNameLastName,
