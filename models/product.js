@@ -44,6 +44,11 @@ module.exports.findAllProductsDescriptions = () =>
           name: true,
         },
       },
+      productSamples: {
+        select: {
+          referenceNumber: true,
+        },
+      },
       pictures: {
         select: {
           url: true,

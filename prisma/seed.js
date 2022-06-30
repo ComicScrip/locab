@@ -202,9 +202,35 @@ async function seed() {
       startDate: new Date("2022-06-16T00:00:00"),
       startTime: new Date("2022-06-17T00:00:00"),
       endDate: new Date("2022-06-26T00:00:00"),
-      orderDate: new Date("2022-06-15T00:00:00"),
+      orderDate: new Date("2022-04-15T00:00:00"),
       paymentType: "Carte bleue",
       paidPrice: 234,
+      premiseId: premise_02.id,
+      status: "Terminé",
+      customerId: visitor.id,
+    },
+  });
+  await db.order.create({
+    data: {
+      products: {
+        create: [
+          {
+            quantity: 3,
+            productSampleId: sample_01.id,
+          },
+          {
+            quantity: 10,
+            productSampleId: sample_02.id,
+          },
+        ],
+      },
+      orderNumber: "4366UL",
+      startDate: new Date("2022-06-16T00:00:00"),
+      startTime: new Date("2022-06-17T00:00:00"),
+      endDate: new Date("2022-06-26T00:00:00"),
+      orderDate: new Date("2022-02-15T00:00:00"),
+      paymentType: "Carte bleue",
+      paidPrice: 314,
       premiseId: premise_02.id,
       status: "Terminé",
       customerId: visitor.id,
