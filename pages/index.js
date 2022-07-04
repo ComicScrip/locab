@@ -2,13 +2,13 @@ import Layout from "../components/Layout";
 import styles from "../styles/Home.module.css";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import { CurrentUserContext } from "../contexts/currentUserContext";
-import { useContext } from "react";
+
+import { useLocaleStorage } from "react";
 
 export default function Home() {
   const { t } = useTranslation("home");
 
-  const { setTime, setLocalisation } = useContext(CurrentUserContext);
+  const [localisation, setLocalisation] = useLocaleStorage("localisation", "");
 
   return (
     <Layout pageTitle="Location de poussette | Location de matériel de puériculture">
@@ -30,7 +30,8 @@ export default function Home() {
                   className={styles.whenHome}
                   type="text"
                   placeholder={t("quand")}
-                  onChange={(e) => setTime(e.target.value)}
+                  value={localisation}
+                  onChange={(e) => setLocalisation(e.target.value)}
                 ></input>
                 <button className={styles.buttonHome} type="submit">
                   {t("jecherche")} !
