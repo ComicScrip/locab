@@ -20,25 +20,24 @@ const EditProduct = () => {
   console.log(id);
 
   const handlePatchProduct = (e) => {
-    e.preventDefault(),
-      axios
-        .patch(`api/products/${id}`, {
-          id: product.id,
-          name: product.name,
-          brand: product.brand,
-          caution: product.caution,
-          description: product.description,
-          priceCategoryId: product.priceCategoryId,
-        })
-        .then(() => router.push("/admin/produits"))
-        .catch(console.error);
+    e.preventDefault();
+    axios
+      .patch(`/api/products/${id}`, {
+        name: product.name,
+        brand: product.brand,
+        caution: product.caution,
+        description: product.description,
+        priceCategoryId: product.priceCategoryId,
+      })
+      .then(() => router.push("/admin/produits"))
+      .catch(console.error);
   };
 
   return (
     <LayoutAdmin>
       <div className={styles.pageEdit}>
         <div className={styles.formPopup}>
-          <h1 className={styles.titlePopupProducts}>Ajouter un produit</h1>
+          <h1 className={styles.titlePopupProducts}>Modifier un produit</h1>
           <form
             className={styles.formPopUpAddProducts}
             onSubmit={handlePatchProduct}
@@ -121,7 +120,7 @@ const EditProduct = () => {
             <div className={styles.labelPopUp}>Photos</div>
             <div className={styles.btnPopupDiv}>
               <button type="submit" className={styles.buttonPopUp}>
-                Ajouter
+                Modifier
               </button>
             </div>
           </form>

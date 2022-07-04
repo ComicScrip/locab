@@ -11,13 +11,13 @@ async function handleDelete(req, res) {
 }
 
 const handleGetOneProduct = async (req, res) => {
-  const product = await getOneProduct(req.query);
+  const product = await getOneProduct(req.query.id);
   return res.status(201).send(product);
 };
 
 const handlePatch = async (req, res) => {
-  const productToPatch = await patchOneProduct(req.body);
-  return res.status(201).send(productToPatch);
+  const productToPatch = await patchOneProduct(req.query.id, req.body);
+  return res.status(200).send(productToPatch);
 };
 
 export default base()

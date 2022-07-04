@@ -63,17 +63,15 @@ module.exports.getOneProduct = (id) => {
   });
 };
 
-module.exports.patchOneProduct = async (data) => {
-  return await db.product
-    .update({
-      where: { id: data.id },
-      data: {
-        name: data.name,
-        brand: data.brand,
-        caution: data.caution,
-        description: data.description,
-        priceCategoryId: data.priceCategoryId,
-      },
-    })
-    .catch(() => false);
+module.exports.patchOneProduct = async (id, data) => {
+  return await db.product.update({
+    where: { id: parseInt(id, 10) },
+    data: {
+      name: data.name,
+      brand: data.brand,
+      caution: data.caution,
+      description: data.description,
+      priceCategoryId: data.priceCategoryId,
+    },
+  });
 };
