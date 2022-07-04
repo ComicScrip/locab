@@ -33,6 +33,7 @@ export default function ValidateDelete({
               width={90}
               height={90}
               alt="logo-validation"
+              data-cy="add_product_button_delete_confirmation"
             />
           </button>
         </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Widget } from "@uploadcare/react-widget";
 import styles from "../styles/AddProductsPopUp.module.css";
+import { useQueryClient } from "react-query";
 
 function AddProductsPopUp({ show, setShow }) {
   const [name, setName] = useState("");
@@ -10,6 +11,7 @@ function AddProductsPopUp({ show, setShow }) {
   const [priceCategoryId, setPriceCategoryId] = useState("");
   const [description, setDescription] = useState("");
   const [productUrl, setProductUrl] = useState("");
+  const queryClient = useQueryClient();
 
   const buttonName = () => ({
     buttons: {
@@ -43,6 +45,7 @@ function AddProductsPopUp({ show, setShow }) {
       })
       .then(() => {
         setShow(false);
+        queryClient.invalidateQueries("products");
       })
       .catch((err) => {
         console.error(err);
@@ -59,7 +62,11 @@ function AddProductsPopUp({ show, setShow }) {
         )}
         <div className={styles.formPopup}>
           <h1 className={styles.titlePopupProducts}>Ajouter un produit</h1>
-          <form className={styles.formPopUpAddProducts} onSubmit={handleSubmit}>
+          <form
+            className={styles.formPopUpAddProducts}
+            onSubmit={handleSubmit}
+            data-cy="add_product_form"
+          >
             <div className={styles.inputLign}>
               <div className={styles.productsName}>
                 <label htmlFor="nom" className={styles.labelPopUp}>
@@ -71,6 +78,7 @@ function AddProductsPopUp({ show, setShow }) {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  data-cy="add_product_name"
                 ></input>
               </div>
               <div className={styles.productsMark}>
@@ -83,6 +91,7 @@ function AddProductsPopUp({ show, setShow }) {
                   type="text"
                   value={brand}
                   onChange={(e) => setBrand(e.target.value)}
+                  data-cy="add_product_brand"
                 ></input>
               </div>
             </div>
@@ -97,6 +106,7 @@ function AddProductsPopUp({ show, setShow }) {
                   type="text"
                   value={caution}
                   onChange={(e) => setCaution(e.target.value)}
+                  data-cy="add_product_caution"
                 ></input>
               </div>
               <div className={styles.productsPrice}>
@@ -109,6 +119,7 @@ function AddProductsPopUp({ show, setShow }) {
                   type="text"
                   value={priceCategoryId}
                   onChange={(e) => setPriceCategoryId(e.target.value)}
+                  data-cy="add_product_price_category"
                 ></input>
               </div>
             </div>
@@ -123,6 +134,7 @@ function AddProductsPopUp({ show, setShow }) {
                 type="textarea"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+                data-cy="add_product_description"
               ></textarea>
             </div>
             <div className={styles.labelPopUp}>Photos</div>
@@ -134,9 +146,14 @@ function AddProductsPopUp({ show, setShow }) {
                   onChange={(file) => {
                     setProductUrl(file.cdnUrl);
                   }}
+                  data-cy="add_product_picture"
                 />
               </label>
-              <button type="submit" className={styles.buttonPopUp}>
+              <button
+                type="submit"
+                className={styles.buttonPopUp}
+                data-cy="add_product_button"
+              >
                 Ajouter
               </button>
             </div>

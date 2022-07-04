@@ -27,6 +27,7 @@ export default function SearchProducts({ backProducts }) {
             />
             <BsPlusCircle
               onClick={handleClick}
+              data-cy="add_product_button_add"
               className={styles.addProductsButton}
             />
             <AddProductsPopUp show={showPopup} setShow={setShowPopup} />
