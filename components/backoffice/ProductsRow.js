@@ -6,11 +6,13 @@ import { useRouter } from "next/router";
 import { useToasts } from "react-toast-notifications";
 import ValidateDelete from "../ValidateDelete";
 import styles from "../../styles/BackProduits.module.css";
+import { useQueryClient } from "react-query";
 
 export default function ProductsRow({ backProduct }) {
   const { addToast } = useToasts();
   const [deleteContainer, setDeleteContainer] = useState(false);
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const notifySuccess = () => {
     addToast("Le produit a bien été supprimé", {
@@ -25,6 +27,7 @@ export default function ProductsRow({ backProduct }) {
       .then(() => router.push("/admin/produits"))
       .then(() => notifySuccess())
       .then(() => setDeleteContainer(!deleteContainer))
+      .then(() => queryClient.invalidateQueries("products"))
       .catch((err) => console.error(err.response.status));
   };
 
