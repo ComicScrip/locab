@@ -2,6 +2,7 @@
 const User = require("../../models/user");
 const db = require("../../db");
 const { hashPassword } = require("../../models/user");
+const Product = require("../../models/product");
 
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -194,8 +195,50 @@ module.exports = (on, config) => {
   // `config` is the resolved Cypress config
   on("task", {
     deleteUserByEmail: User.deleteUserByEmail,
-    resetDB: User.deleteDB,
+    // resetDB: User.deleteDB, products.deleteDb;
+    resetDB: () => {
+      return Promise.all([User.deleteDB(), Product.deleteDB()]);
+    },
     createUser: User.createUser,
+    createTestProduct: async () => {
+      const cat_a = await db.priceCategory.create({
+        data: {
+          name: "cat_a",
+          oneDay: 36,
+          twoDays: 18,
+          threeDays: 15,
+          fourDays: 12.5,
+          fiveDays: 11,
+          sixDays: 10,
+          sevenDays: 9.14,
+          eightDays: 8.5,
+          nineDays: 7.78,
+          tenDays: 7.2,
+          elevenDays: 6.73,
+          twelveDays: 6.33,
+          thirteenDays: 6,
+          fourteenDays: 5.71,
+          fifteenDays: 5.6,
+          sixteenDays: 5.5,
+        },
+      });
+      return db.product.create({
+        data: {
+          name: "Chancelière",
+          brand: "Chicco",
+          caution: 200,
+          pictures: {
+            create: [
+              {
+                url: "/image/products/lit.jpeg",
+              },
+            ],
+          },
+          description: "Une chancelière",
+          priceCategoryId: cat_a.id,
+        },
+      });
+    },
     findUserByEmail: User.findByEmail,
     createOrderSample: createOrderSample,
   });

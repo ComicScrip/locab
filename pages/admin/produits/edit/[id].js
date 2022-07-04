@@ -55,6 +55,7 @@ const EditProduct = () => {
                   onChange={(e) =>
                     setProduct({ ...product, name: e.target.value })
                   }
+                  data-cy="modify-product-name"
                 ></input>
               </div>
               <div className={styles.productsMark}>
@@ -119,7 +120,11 @@ const EditProduct = () => {
             </div>
             <div className={styles.labelPopUp}>Photos</div>
             <div className={styles.btnPopupDiv}>
-              <button type="submit" className={styles.buttonPopUp}>
+              <button
+                type="submit"
+                className={styles.buttonPopUp}
+                data-cy="modify-product-button"
+              >
                 Modifier
               </button>
             </div>

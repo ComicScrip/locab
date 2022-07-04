@@ -75,3 +75,7 @@ module.exports.patchOneProduct = async (id, data) => {
     },
   });
 };
+
+module.exports.deleteDB = async () => {
+  return await db.product.deleteMany();
+};
