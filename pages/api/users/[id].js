@@ -1,4 +1,5 @@
 import base from "../../../middlewares/common";
+import requireCurrentUser from "../../../middlewares/requireCurrentUser";
 import { patchOneUser, getOneUser } from "../../../models/user";
 
 const handleGet = async (req, res) => {
@@ -11,4 +12,4 @@ const handlePatch = async (req, res) => {
   return res.status(201).send(userToPatch);
 };
 
-export default base().get(handleGet).patch(handlePatch);
+export default base().use(requireCurrentUser).get(handleGet).patch(handlePatch);

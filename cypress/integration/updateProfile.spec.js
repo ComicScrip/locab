@@ -1,15 +1,19 @@
-describe("profile", function () {
-  describe("withSession", function () {
-    beforeEach(() => {
-      cy.setupCurrentUser();
-      cy.visit("/profile/infoperso");
-    });
+describe("/profile/infoperso", () => {
+  beforeEach(() => {
+    cy.task("resetDB");
+    cy.setupCurrentUser({ firstname: "John" });
+  });
 
-    it("can save my profile", function () {
-      cy.get('[data-cy="email"]').type("{selectall}{backspace}");
-      cy.get('[data-cy="phone"]').clear().type("06 14 15 16 14 17");
-      cy.get('[data-cy="address"]').clear().type("12 rue de la flotte");
+  it("can update the name", function () {
+    cy.get("@currentUser").then((currentUser) => {
+      cy.visit("/profile/infoperso");
+      cy.get('[data-cy ="firstName"]').should(
+        "have.value",
+        currentUser.firstname
+      );
+      cy.get('[data-cy ="firstName"]').type("{selectAll}test123");
       cy.get('[data-cy="validate-btn"]').click();
+      cy.contains("Vos modifications ont bien été prises en compte");
     });
   });
 });

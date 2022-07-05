@@ -193,10 +193,16 @@ module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
   on("task", {
+    createSampleUser: async ({ firstname = "test", active = true } = {}) =>
+      User.createUser({
+        firstname,
+        active,
+      }),
     deleteUserByEmail: User.deleteUserByEmail,
     resetDB: User.deleteDB,
     createUser: User.createUser,
     findUserByEmail: User.findByEmail,
     createOrderSample: createOrderSample,
   });
+  return config;
 };

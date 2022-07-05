@@ -13,7 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
 export default function MonCompte() {
-  const { t } = useTranslation("signIn");
+  const { t } = useTranslation("profile");
   const { status } = useSession();
 
   const { currentUserProfile, updateUser, setUpdateUser } =
@@ -42,7 +42,7 @@ export default function MonCompte() {
       phone: updateUser.phone,
       zip: updateUser.zip,
     });
-    toast("Vos modifications ont bien été prises en comptes", {
+    toast("Vos modifications ont bien été prises en compte", {
       theme: "light",
       type: "success",
     });
@@ -85,10 +85,12 @@ export default function MonCompte() {
                 name="firstname"
                 type="text"
                 id="firstName"
+                data-cy="firstName"
                 value={updateUser.firstname || ""}
                 onChange={(e) =>
                   setUpdateUser({ ...updateUser, firstname: e.target.value })
                 }
+                required
               />
             </label>
             <label className={styles.labelStyle} htmlFor="name">
@@ -102,6 +104,7 @@ export default function MonCompte() {
                 onChange={(e) =>
                   setUpdateUser({ ...updateUser, lastname: e.target.value })
                 }
+                required
               />
             </label>
           </div>
@@ -117,6 +120,7 @@ export default function MonCompte() {
               onChange={(e) =>
                 setUpdateUser({ ...updateUser, address: e.target.value })
               }
+              required
             />
           </label>
           <div className={styles.codeVille}>
@@ -131,6 +135,7 @@ export default function MonCompte() {
                 onChange={(e) =>
                   setUpdateUser({ ...updateUser, zip: e.target.value })
                 }
+                required
               />
             </label>
             <label className={styles.labelStyle} htmlFor="ville">
@@ -144,6 +149,7 @@ export default function MonCompte() {
                 onChange={(e) =>
                   setUpdateUser({ ...updateUser, city: e.target.value })
                 }
+                required
               />
             </label>
           </div>
@@ -157,9 +163,12 @@ export default function MonCompte() {
                 id="telephone"
                 data-cy="phone"
                 value={updateUser.phone || ""}
+                placeholder="06 00 00 00 00"
+                pattern="[+]?[0-9]*$"
                 onChange={(e) =>
                   setUpdateUser({ ...updateUser, phone: e.target.value })
                 }
+                required
               />
             </label>
             <label className={styles.labelStyle} htmlFor="email">
@@ -174,6 +183,7 @@ export default function MonCompte() {
                 onChange={(e) =>
                   setUpdateUser({ ...updateUser, email: e.target.value })
                 }
+                required
               />
             </label>
           </div>
@@ -199,7 +209,7 @@ export async function getStaticProps({ locale }) {
         "banner",
         "header",
         "common",
-        "signIn",
+        "profile",
         "footer",
       ])),
     },

@@ -8,6 +8,9 @@ module.exports.emailAlreadyExists = (email) =>
 module.exports.findByEmail = (email = "") =>
   db.user.findUnique({ where: { email } }).catch(() => null);
 
+module.exports.findById = (id) =>
+  db.user.findUnique({ where: { id } }).catch(() => null);
+
 module.exports.validateUser = (data, forUpdate = false) =>
   Joi.object({
     firstname: Joi.string()

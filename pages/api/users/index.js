@@ -6,7 +6,6 @@ import {
   findAllUsers,
   validateUser,
 } from "../../../models/user";
-// import requireAdmin from "../../../middlewares/requireAdmin";
 
 async function handlePost(req, res) {
   const validationErrors = validateUser(req.body);
