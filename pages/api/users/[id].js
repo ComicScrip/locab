@@ -5,12 +5,12 @@ import { patchOneUser, getOneUser } from "../../../models/user";
 
 const handleGet = async (req, res) => {
   const user = await getOneUser(req.query.id);
-  return res.status(201).send(user);
+  return res.status(200).send(user);
 };
 
 const handlePatch = async (req, res) => {
   const userToPatch = await patchOneUser(req.body);
-  return res.status(201).send(userToPatch);
+  return res.status(200).send(userToPatch);
 };
 
 export default base()
