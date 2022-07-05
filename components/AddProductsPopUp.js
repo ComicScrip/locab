@@ -12,7 +12,7 @@ function AddProductsPopUp({ show, setShow }) {
   const [description, setDescription] = useState("");
   const [productUrl, setProductUrl] = useState("");
   const queryClient = useQueryClient();
-  const [priceCategory, setPriceCategory] = useState([]);
+  const [priceCategories, setPriceCategories] = useState([]);
 
   const buttonName = () => ({
     buttons: {
@@ -58,11 +58,10 @@ function AddProductsPopUp({ show, setShow }) {
       .get(`/api/priceCategory`)
       .then((response) => response.data)
       .then((data) => {
-        setPriceCategory(data);
+        setPriceCategories(data);
+        setPriceCategoryId(data[0]?.id);
       });
   }, []);
-
-  console.log("toto", priceCategory);
 
   return (
     <div className={`${styles.popup} ${show ? styles.active : ""} `}>
@@ -133,7 +132,7 @@ function AddProductsPopUp({ show, setShow }) {
                   onChange={(e) => setPriceCategoryId(e.target.value)}
                   data-cy="add_product_price_category"
                 >
-                  {priceCategory.map((price) => (
+                  {priceCategories.map((price) => (
                     <option key={price.id} value={price.id}>
                       {price.name}
                     </option>

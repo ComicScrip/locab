@@ -28,33 +28,35 @@ describe("addProductsPopUp", () => {
   });
 
   it("can create a new product", () => {
-    cy.visit("/admin/produits");
-    cy.get('[data-cy="add_product_button_add"]').click();
-    cy.get('[data-cy="add_product_name"]').type("Lit bébé");
-    cy.get('[data-cy="add_product_brand"]').type("bébédorbien");
-    cy.get('[data-cy="add_product_caution"]').type("200");
-    cy.get('[data-cy="add_product_price_category"]').type("1");
-    cy.get('[data-cy="add_product_description"]').type(
-      "meilleur lit pour que bébé dorme au mieux"
-    );
+    cy.task("createTestPriceCategory").then(({ id }) => {
+      cy.visit("/admin/produits");
+      cy.get('[data-cy="add_product_button_add"]').click();
+      cy.get('[data-cy="add_product_name"]').type("Lit bébé");
+      cy.get('[data-cy="add_product_brand"]').type("bébédorbien");
+      cy.get('[data-cy="add_product_caution"]').type("200");
+      cy.get('[data-cy="add_product_price_category"]').select(id.toString());
+      cy.get('[data-cy="add_product_description"]').type(
+        "meilleur lit pour que bébé dorme au mieux"
+      );
 
-    const fileName = "lit.jpeg";
-    cy.get(".uploadcare--widget__button_type_open").click();
-    cy.get(
-      ".uploadcare--tab_name_file .uploadcare--tab__action-button"
-    ).click();
-    cy.get('input[type="file"]');
+      const fileName = "lit.jpeg";
+      cy.get(".uploadcare--widget__button_type_open").click();
+      cy.get(
+        ".uploadcare--tab_name_file .uploadcare--tab__action-button"
+      ).click();
+      cy.get('input[type="file"]');
 
-    cy.get('input[type="file"]').attachFile(fileName);
+      cy.get('input[type="file"]').attachFile(fileName);
 
-    cy.get(".uploadcare--progress").should("exist");
-    cy.get(".uploadcare--link")
-      .should("exist")
-      .should("contain.text", fileName);
+      cy.get(".uploadcare--progress").should("exist");
+      cy.get(".uploadcare--link")
+        .should("exist")
+        .should("contain.text", fileName);
 
-    cy.get('[data-cy="add_product_button"]').click();
+      cy.get('[data-cy="add_product_button"]').click();
 
-    cy.contains("Lit bébé").should("be.visible");
+      cy.contains("Lit bébé").should("be.visible");
+    });
   });
 
   it("delete a product", () => {

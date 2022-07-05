@@ -197,7 +197,11 @@ module.exports = (on, config) => {
     deleteUserByEmail: User.deleteUserByEmail,
     // resetDB: User.deleteDB, products.deleteDb;
     resetDB: () => {
-      return Promise.all([User.deleteDB(), Product.deleteDB()]);
+      return Promise.all([
+        User.deleteDB(),
+        Product.deleteDB(),
+        db.priceCategory.deleteMany(),
+      ]);
     },
     createUser: User.createUser,
     createTestProduct: async () => {
@@ -241,5 +245,29 @@ module.exports = (on, config) => {
     },
     findUserByEmail: User.findByEmail,
     createOrderSample: createOrderSample,
+    createTestPriceCategory: async () => {
+      const cat_a = await db.priceCategory.create({
+        data: {
+          name: "cat_a",
+          oneDay: 36,
+          twoDays: 18,
+          threeDays: 15,
+          fourDays: 12.5,
+          fiveDays: 11,
+          sixDays: 10,
+          sevenDays: 9.14,
+          eightDays: 8.5,
+          nineDays: 7.78,
+          tenDays: 7.2,
+          elevenDays: 6.73,
+          twelveDays: 6.33,
+          thirteenDays: 6,
+          fourteenDays: 5.71,
+          fifteenDays: 5.6,
+          sixteenDays: 5.5,
+        },
+      });
+      return cat_a;
+    },
   });
 };
