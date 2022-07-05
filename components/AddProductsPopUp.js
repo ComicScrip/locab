@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Widget } from "@uploadcare/react-widget";
 import styles from "../styles/AddProductsPopUp.module.css";
@@ -12,6 +12,7 @@ function AddProductsPopUp({ show, setShow }) {
   const [description, setDescription] = useState("");
   const [productUrl, setProductUrl] = useState("");
   const queryClient = useQueryClient();
+  const [priceCategory, setPriceCategory] = useState([]);
 
   const buttonName = () => ({
     buttons: {
@@ -51,6 +52,17 @@ function AddProductsPopUp({ show, setShow }) {
         console.error(err);
       }, []);
   };
+
+  useEffect(() => {
+    axios
+      .get(`/api/priceCategory`)
+      .then((response) => response.data)
+      .then((data) => {
+        setPriceCategory(data);
+      });
+  }, []);
+
+  console.log("toto", priceCategory);
 
   return (
     <div className={`${styles.popup} ${show ? styles.active : ""} `}>
@@ -113,14 +125,20 @@ function AddProductsPopUp({ show, setShow }) {
                 <label htmlFor="price" className={styles.labelPopUp}>
                   Catégorie de prix
                 </label>
-                <input
+                <select
                   className={styles.inputPopUp}
                   id="price"
                   type="text"
                   value={priceCategoryId}
                   onChange={(e) => setPriceCategoryId(e.target.value)}
                   data-cy="add_product_price_category"
-                ></input>
+                >
+                  {priceCategory.map((price) => (
+                    <option key={price.id} value={price.id}>
+                      {price.name}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
 
