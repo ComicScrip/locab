@@ -1,4 +1,4 @@
-describe("backProducts", () => {
+describe("products", () => {
   beforeEach(() => {
     cy.task("resetDB");
     cy.setupCurrentUser({ role: "admin" });
@@ -15,16 +15,8 @@ describe("backProducts", () => {
     cy.task("createTestProduct").then(() => {
       cy.visit("/admin/produits");
       cy.get('[data-cy="input-search-back-product"]').type("C");
-
       cy.contains("Chancelière").should("be.visible");
     });
-  });
-});
-
-describe("addProductsPopUp", () => {
-  beforeEach(() => {
-    cy.task("resetDB");
-    cy.setupCurrentUser({ role: "admin" });
   });
 
   it("can create a new product", () => {

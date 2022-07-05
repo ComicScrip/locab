@@ -36,7 +36,7 @@ module.exports.deleteOneProduct = (id) => {
   });
 };
 
-module.exports.findAllProductsDescriptions = () =>
+module.exports.searchProducts = ({ search }) =>
   db.product.findMany({
     include: {
       priceCategory: {
@@ -55,6 +55,7 @@ module.exports.findAllProductsDescriptions = () =>
         },
       },
     },
+    where: { name: { contains: search } },
   });
 
 module.exports.getOneProduct = (id) => {

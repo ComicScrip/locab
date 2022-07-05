@@ -18,7 +18,6 @@ const EditProduct = () => {
       })
       .catch(console.error);
   }, [id]);
-  console.log(id);
 
   useEffect(() => {
     axios

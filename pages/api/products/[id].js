@@ -4,15 +4,17 @@ const {
   getOneProduct,
 } = require("../../../models/product");
 import base from "../../../middlewares/common";
+import requireCurrentUser from "../../../middlewares/requireCurrentUser";
+import requireAdmin from "../../../middlewares/requireAdmin";
 
 async function handleDelete(req, res) {
-  const productToDelete = await deleteOneProduct(req.query.id);
-  return res.status(201).send(productToDelete);
+  await deleteOneProduct(req.query.id);
+  return res.status(204).send();
 }
 
 const handleGetOneProduct = async (req, res) => {
   const product = await getOneProduct(req.query.id);
-  return res.status(201).send(product);
+  return res.status(200).send(product);
 };
 
 const handlePatch = async (req, res) => {
@@ -21,6 +23,8 @@ const handlePatch = async (req, res) => {
 };
 
 export default base()
+  .use(requireCurrentUser)
+  .use(requireAdmin)
   .get(handleGetOneProduct)
   .delete(handleDelete)
   .patch(handlePatch);

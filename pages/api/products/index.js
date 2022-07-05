@@ -1,9 +1,6 @@
 import base from "../../../middlewares/common";
 
-import {
-  createProduct,
-  findAllProductsDescriptions,
-} from "../../../models/product";
+import { createProduct, searchProducts } from "../../../models/product";
 
 async function handlePostProduct(req, res) {
   const { name, brand, caution, description, priceCategoryId, pictures } =
@@ -21,7 +18,7 @@ async function handlePostProduct(req, res) {
 }
 
 async function handleGetProduct(req, res) {
-  res.send(await findAllProductsDescriptions());
+  res.send(await searchProducts({ search: req.query.search }));
 }
 
 export default base().post(handlePostProduct).get(handleGetProduct);
