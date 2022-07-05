@@ -32,10 +32,10 @@ export default function Cart() {
           <div key={product.id} className={styles.input_container}>
             <div className={styles.name_style}>
               <Image
-                src={product.picture}
+                src={product.pictures[0].url}
                 height="35px"
                 width="35px"
-                alt="poussette logo"
+                alt={product.name}
               />
 
               {product.name}

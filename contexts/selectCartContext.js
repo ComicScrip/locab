@@ -1,12 +1,37 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import data from "../components/Cart/data";
+import axios from "axios";
 
 export const SelectCartContext = createContext();
 
 export const SelectCartProvider = ({ children }) => {
   const { products } = data;
 
+  const [productSampleList, setProductSampleList] = useState([]);
   const [selectProducts, setSelectProducts] = useState([]);
+  const [productList, setProductList] = useState([]);
+
+  const [customerId, setCustomerId] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [productSampleId, setProductSampleId] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`/api/products`)
+      .then((response) => response.data)
+      .then((data) => {
+        setProductList(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(`/api/productSamples`)
+      .then((response) => response.data)
+      .then((data) => {
+        setProductSampleList(data);
+      });
+  }, []);
 
   const onAdd = (product) => {
     const exist = selectProducts.find((x) => x.id === product.id);
@@ -15,6 +40,29 @@ export const SelectCartProvider = ({ children }) => {
     } else {
       setSelectProducts(selectProducts.filter((x) => x.id !== product.id));
     }
+
+    const existProductSample = productSampleList.find(
+      (x) => x.productId === product.id
+    );
+    const customerIdNumber = parseInt(customerId);
+    const quantityNumber = parseInt(quantity);
+    const productSampleIdNumber = parseInt(productSampleId);
+
+    if (existProductSample)
+      axios
+        .post(`/api/cartItems`, {
+          customerId: customerIdNumber,
+          quantity: quantityNumber,
+          productSampleId: productSampleIdNumber,
+        })
+        .then(() => {
+          setCustomerId("");
+          setQuantity("");
+          setProductSampleId("");
+        })
+        .catch((err) => {
+          console.error(err);
+        }, []);
   };
 
   const onUpdate = (id, newQuantity) => {
@@ -55,6 +103,8 @@ export const SelectCartProvider = ({ children }) => {
         onUpdate,
         onValidate,
         onDelete,
+        productList,
+        setProductList,
       }}
     >
       {children}

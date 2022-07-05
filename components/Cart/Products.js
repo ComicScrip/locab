@@ -1,13 +1,14 @@
 import ResProduct from "./ResProduct";
 import styles from "../../styles/Reservation.module.css";
 import { useState, useContext } from "react";
-import { SelectCartContext } from "../../contexts/selectCartContext";
 import { useTranslation } from "next-i18next";
+import { SelectCartContext } from "../../contexts/selectCartContext";
 
 export default function Products() {
   const { t } = useTranslation("cart");
 
-  const { products } = useContext(SelectCartContext);
+  const { productList } = useContext(SelectCartContext);
+
   const [searchValue, setSearchValue] = useState("");
   const [showAvailable, setShowAvailable] = useState(true);
 
@@ -40,13 +41,12 @@ export default function Products() {
         </label>
       </section>
 
-      {products
-        .filter((product) => (product.isAvailable ? products : showAvailable))
+      {productList
         .filter((product) =>
-          product.name.toUpperCase().includes(searchValue.toUpperCase())
+          product.productSamples.length > 0 ? productList : showAvailable
         )
         .filter((product) =>
-          product.category.includes(searchValue.toLowerCase())
+          product.name.toUpperCase().includes(searchValue.toUpperCase())
         )
         .map((product) => (
           <ResProduct product={product} key={product.id} id={product.id} />

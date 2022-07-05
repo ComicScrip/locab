@@ -12,7 +12,7 @@ export default function ResProduct({ product }) {
   const existInCart = selectProducts.find((x) => x.id === product.id);
 
   const handleClickProduct = () => {
-    if (product.isAvailable) {
+    if (product.productSamples.length > 0) {
       onAdd(product);
     }
   };
@@ -20,27 +20,27 @@ export default function ResProduct({ product }) {
   return (
     <div
       className={
-        product.isAvailable
+        product.productSamples.length > 0
           ? styles.productWrapper
           : styles.productWrapperNotAvailable
       }
       onClick={handleClickProduct}
       style={
-        existInCart && product.isAvailable
+        existInCart && product.productSamples.length > 0
           ? { borderColor: "#96C0C0" }
           : { borderColor: "#ededed" }
       }
     >
       <Image
-        src={product.picture}
+        src={product.pictures[0].url}
         height={"70px"}
         width={"70px"}
-        alt="poussette logo"
+        alt={product.name}
       />
       <p style={{ textAlign: "center", margin: "20px 0px 0px 0px" }}>
         <span style={{ fontWeight: "bold" }}>{product.name}</span>
         <br />
-        {product.price}€/{t("jour")}
+        {product.priceCategoryId}€/{t("jour")}
       </p>
     </div>
   );
