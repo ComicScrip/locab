@@ -24,6 +24,7 @@ export default function SearchProducts({ backProducts }) {
               placeholder="Poussette, lit à barreaux..."
               value={searchValue}
               onChange={(event) => setSearchValue(event.target.value)}
+              data-cy="input-search-back-product"
             />
             <BsPlusCircle
               onClick={handleClick}
