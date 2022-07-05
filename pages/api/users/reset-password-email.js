@@ -6,7 +6,6 @@ import crypto from "crypto";
 async function handlePost(req, res) {
   const { email } = req.body;
   const resetPasswordToken = crypto.randomBytes(50).toString("hex");
-  console.log(email, resetPasswordToken);
 
   const user = await findByEmail(email);
   if (!user) return res.status(404).send();
@@ -14,6 +13,8 @@ async function handlePost(req, res) {
   await updateUser(user.id, {
     resetPasswordToken: await hashPassword(resetPasswordToken),
   });
+
+  console.log("hello");
 
   const mailBody = `Rendez-vous sur ce lien pour réinitialiser votre mot de passe : 
   ${process.env.HOST}/reset-password?email=${email}

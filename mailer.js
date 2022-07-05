@@ -17,5 +17,5 @@ const transporter = nodemailer.createTransport(
         },
       }
 );
+
 module.exports = transporter;
-// CONTACT_FORM_RECIPIENT=admin@website.com
