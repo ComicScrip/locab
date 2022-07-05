@@ -8,6 +8,7 @@ const EditProduct = () => {
   const router = useRouter();
   const { id } = router.query;
   const [product, setProduct] = useState("");
+  const [priceCategories, setPriceCategories] = useState([]);
 
   useEffect(() => {
     axios
@@ -18,6 +19,15 @@ const EditProduct = () => {
       .catch(console.error);
   }, [id]);
   console.log(id);
+
+  useEffect(() => {
+    axios
+      .get(`/api/priceCategory`)
+      .then((response) => response.data)
+      .then((data) => {
+        setPriceCategories(data);
+      });
+  }, []);
 
   const handlePatchProduct = (e) => {
     e.preventDefault();
@@ -92,7 +102,7 @@ const EditProduct = () => {
                 <label htmlFor="price" className={styles.labelPopUp}>
                   Catégorie de prix
                 </label>
-                <input
+                <select
                   className={styles.inputPopUp}
                   id="price"
                   type="text"
@@ -100,7 +110,13 @@ const EditProduct = () => {
                   onChange={(e) =>
                     setProduct({ ...product, priceCategoryId: e.target.value })
                   }
-                ></input>
+                >
+                  {priceCategories.map((price) => (
+                    <option key={price.id} value={price.id}>
+                      {price.name}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
 
