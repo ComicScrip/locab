@@ -49,7 +49,7 @@ export default function SignIn({ csrfToken }) {
             {t("idpasbon")}
           </p>
         )}
-        <Link href="/ResetFirstStep" className={styles.logo}>
+        <Link href="/SendEmailMdp" className={styles.logo}>
           <a>
             <p className={styles.forgetPassWord}>Mot de passe oublié ?</p>
           </a>

@@ -52,4 +52,3 @@ yarn run test
 ```sh
 yarn run test:gui
 ```
- 

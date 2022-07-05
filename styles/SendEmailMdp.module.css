@@ -1,34 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-.SearchForm {
-  display: none !important;
-}
 .containerGlobal {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: -70px;
-}
-.forms label {
-  display: flex;
-  justify-content: flex-start;
-}
-.paragraphe1 {
-  font-size: 12px;
-  padding: 10px;
 }
 .title {
-  font-family: "Poppins";
-  font-style: normal;
   font-weight: 600;
   font-size: 30px;
   text-align: center;
   color: #000000;
-  padding: 35px;
+  padding: 40px;
 }
 .forms input {
   margin: auto 10px;
+  display: block;
   border: 1px solid rgba(0, 0, 0, 0.19);
   border-radius: 4px;
   width: 300px;
@@ -37,9 +24,6 @@
   border-radius: 10px;
   outline: none;
   box-sizing: border-box;
-}
-.compte {
-  display: none;
 }
 .button {
   background: #d28f71;
@@ -80,10 +64,6 @@
   width: 300px;
   font-style: italic;
 }
-.label {
-  font-size: 14px;
-  margin-top: 10px;
-}
 .divMessage {
   display: flex;
   align-items: center;
@@ -91,46 +71,44 @@
   flex-direction: column;
   margin-top: 80px;
 }
+.divMessage > p {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 15px;
+}
+
 @media screen and (min-width: 765px) {
-  .SearchForm {
-    display: initial !important;
-  }
-  .containerGlobal {
-    padding: 20px;
-    margin-bottom: 35px;
-  }
-  .forms {
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin: 10px 0px 30px 0px;
-  }
-  .forms input::placeholder {
-    font-size: 12px;
-    padding-left: 1px;
-    color: #6d6d6d;
-  }
   .button {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 95px;
-    height: 1.6rem;
+    height: 1.1rem;
     padding: 15px;
     border-radius: 5px;
     margin: 0 70%;
   }
-  .title1 {
-    font-size: 40px;
-  }
-  .compte {
-    display: flex;
-    font-size: 12px;
-    position: absolute;
-    padding-top: 90px !important;
-    padding-left: 150px;
-  }
+
   .divMessage {
     margin-top: initial;
+  }
+
+  .title {
+    margin: 50px 0px;
+    padding: initial;
+  }
+
+  .containerGlobal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 25px 35% !important;
+    transform: translate(0%, -5%);
+    border-radius: 10px;
+    height: 30vh;
+    width: 30%;
+    background-color: #ebc575;
   }
 }
