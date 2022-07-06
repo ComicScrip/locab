@@ -64,6 +64,7 @@ async function createOrderSample() {
     data: {
       name: "Poussette",
       brand: "Yoyo",
+      caution: 20,
       description: "Une poussette marque Yoyo",
       priceCategoryId: cat_a.id,
     },
