@@ -56,10 +56,6 @@
   cursor: pointer;
 }
 
-/* .addProductsButton:active {
-  box-shadow: inset 0px 2px 3px #000000;
-} */
-
 .tableProductsContainer {
   width: 100%;
   display: flex;
@@ -92,11 +88,19 @@
   padding: 0.5rem;
 }
 
-.modifyButton {
-  opacity: 0.4;
-}
-
 .suppButton {
   color: #d28f71;
-  opacity: 0.4;
+  border: none;
+  background-color: white;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Tableau */
+
+.tableProducts {
+  overflow: scroll;
+  display: block;
+  height: 80vh;
 }
