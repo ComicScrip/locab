@@ -7,46 +7,85 @@ import { useTranslation } from "next-i18next";
 import { BsArrowLeft } from "react-icons/bs";
 import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState, useCallback } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
 
 export default function MonCompte() {
   const { t } = useTranslation("profile");
   const { status } = useSession();
 
-  const { updateUser, setUpdateUser } = useContext(CurrentUserContext);
-  const { currentUserProfile } = useContext(CurrentUserContext);
-  const id = currentUserProfile?.id;
+  // const { updateUser, setUpdateUser } = useContext(CurrentUserContext);
+  const { currentUserProfile, updateProfileOnAPI } =
+    useContext(CurrentUserContext);
+  // const id = currentUserProfile?.id;
+
+  // useEffect(() => {
+  //   id &&
+  //     axios
+  //       .get(`/api/users/${id}`)
+  //       .then((res) => setUpdateUser(res.data))
+  //       .catch((err) => {
+  //         console.error(err.response.data);
+  //       });
+  // }, [id, setUpdateUser]);
+
+  // const handlePatch = (e) => {
+  //   e.preventDefault();
+  //   axios.patch(`/api/profile/`, {
+  //     id: updateUser.id,
+  //     firstname: updateUser.firstname,
+  //     lastname: updateUser.lastname,
+  //     email: updateUser.email,
+  //     address: updateUser.address,
+  //     city: updateUser.city,
+  //     phone: updateUser.phone,
+  //     zip: updateUser.zip,
+  //   });
+  //   toast("Vos modifications ont bien été prises en compte", {
+  //     theme: "light",
+  //     type: "success",
+  //   });
+  // };
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAdress] = useState("");
+  const [city, setCity] = useState("");
+  const [phone, setPhone] = useState("");
+  const [zip, setZip] = useState("");
+
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      const data = new FormData();
+      data.append("firstname", firstName);
+      data.append("lastname", lastName);
+      data.append("address", address);
+      data.append("city", city);
+      data.append("phonenumber", phone);
+      data.append("zip", zip);
+      data.append("email", email);
+      updateProfileOnAPI(data, () => {
+        toast.success("Vos modifications ont bien été prises en compte");
+      });
+    },
+    [firstName, lastName, address, city, phone, zip, email, updateProfileOnAPI]
+  );
 
   useEffect(() => {
-    id &&
-      axios
-        .get(`/api/users/${id}`)
-        .then((res) => setUpdateUser(res.data))
-        .catch((err) => {
-          console.error(err.response.data);
-        });
-  }, [id, setUpdateUser]);
-
-  const handlePatch = (e) => {
-    e.preventDefault();
-    axios.patch(`/api/profile/`, {
-      id: updateUser.id,
-      firstname: updateUser.firstname,
-      lastname: updateUser.lastname,
-      email: updateUser.email,
-      address: updateUser.address,
-      city: updateUser.city,
-      phone: updateUser.phone,
-      zip: updateUser.zip,
-    });
-    toast("Vos modifications ont bien été prises en compte", {
-      theme: "light",
-      type: "success",
-    });
-  };
+    console.log(currentUserProfile);
+    if (currentUserProfile) {
+      setFirstName(currentUserProfile.firstname || "");
+      setLastName(currentUserProfile.lastname || "");
+      setEmail(currentUserProfile.email || "");
+      setAdress(currentUserProfile.address || "");
+      setCity(currentUserProfile.city || "");
+      setPhone(currentUserProfile.phone || "");
+      setZip(currentUserProfile.zip || "");
+    }
+  }, [currentUserProfile]);
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -76,7 +115,7 @@ export default function MonCompte() {
       </div>
 
       <div className={styles.updRegisterForm}>
-        <form onSubmit={handlePatch} className={styles.formStyle}>
+        <form onSubmit={handleSubmit} className={styles.formStyle}>
           <div className={styles.inpNameLastName}>
             <label className={styles.labelStyle} htmlFor="firstName">
               {t("prenom")}
@@ -86,10 +125,8 @@ export default function MonCompte() {
                 type="text"
                 id="firstName"
                 data-cy="firstname"
-                value={updateUser.firstname || ""}
-                onChange={(e) =>
-                  setUpdateUser({ ...updateUser, firstname: e.target.value })
-                }
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
                 required
               />
             </label>
@@ -100,10 +137,8 @@ export default function MonCompte() {
                 name="lastname"
                 type="text"
                 id="name"
-                value={updateUser.lastname || ""}
-                onChange={(e) =>
-                  setUpdateUser({ ...updateUser, lastname: e.target.value })
-                }
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
                 required
               />
             </label>
@@ -116,10 +151,8 @@ export default function MonCompte() {
               type="text"
               id="adresse"
               data-cy="address"
-              value={updateUser.address || ""}
-              onChange={(e) =>
-                setUpdateUser({ ...updateUser, address: e.target.value })
-              }
+              value={address}
+              onChange={(e) => setAdress(e.target.value)}
               required
             />
           </label>
@@ -131,10 +164,8 @@ export default function MonCompte() {
                 name="zip"
                 type="text"
                 id="codePostal"
-                value={updateUser.zip || ""}
-                onChange={(e) =>
-                  setUpdateUser({ ...updateUser, zip: e.target.value })
-                }
+                value={zip}
+                onChange={(e) => setZip(e.target.value)}
                 required
               />
             </label>
@@ -145,10 +176,8 @@ export default function MonCompte() {
                 name="city"
                 type="text"
                 id="ville"
-                value={updateUser.city || ""}
-                onChange={(e) =>
-                  setUpdateUser({ ...updateUser, city: e.target.value })
-                }
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
                 required
               />
             </label>
@@ -161,13 +190,11 @@ export default function MonCompte() {
                 name="phone"
                 type="tel"
                 id="telephone"
+                value={phone}
                 data-cy="phone"
-                value={updateUser.phone || ""}
                 placeholder="06 00 00 00 00"
                 pattern="[+]?[0-9]*$"
-                onChange={(e) =>
-                  setUpdateUser({ ...updateUser, phone: e.target.value })
-                }
+                onChange={(e) => setPhone(e.target.value)}
                 required
               />
             </label>
@@ -177,12 +204,10 @@ export default function MonCompte() {
                 className={styles.bigInputUpdPersInfo}
                 name="email"
                 type="email"
+                value={email}
                 id="email"
                 data-cy="email"
-                value={updateUser.email || ""}
-                onChange={(e) =>
-                  setUpdateUser({ ...updateUser, email: e.target.value })
-                }
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </label>
@@ -195,8 +220,8 @@ export default function MonCompte() {
           >
             {t("valider")}
           </button>
+          <ToastContainer />
         </form>
-        <ToastContainer />
       </div>
     </Layout>
   );

@@ -13,7 +13,7 @@ describe("/profile/infoperso", () => {
       );
       cy.get('[data-cy ="firstname"]').type("{selectAll}test123");
       cy.get('[data-cy="validate-btn"]').click();
-      cy.contains("Vos modifications ont bien été prises en compte");
+      cy.contains("pVos modifications ont bien été prises en compte");
     });
   });
 });
