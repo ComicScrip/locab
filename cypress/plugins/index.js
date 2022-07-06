@@ -55,6 +55,7 @@ async function createOrderSample() {
     data: {
       name: "Chancelière",
       brand: "Chicco",
+      caution: 20,
       description: "Une chancelière",
       priceCategoryId: cat_a.id,
     },
