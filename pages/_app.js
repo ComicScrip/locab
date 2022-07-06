@@ -3,17 +3,17 @@ import { appWithTranslation } from "next-i18next";
 import { SelectCartProvider } from "../contexts/selectCartContext";
 import { SessionProvider } from "next-auth/react";
 import { CurrentUserContextProvider } from "../contexts/currentUserContext";
-import { CurrentInfosProvider } from "../contexts/CurrentInfosContext";
+import { InfosUserContextProvider } from "../contexts/InfosUserContext";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
       <CurrentUserContextProvider>
-        <CurrentInfosProvider>
-          <SelectCartProvider>
+        <SelectCartProvider>
+          <InfosUserContextProvider>
             <Component {...pageProps} />
-          </SelectCartProvider>
-        </CurrentInfosProvider>
+          </InfosUserContextProvider>
+        </SelectCartProvider>
       </CurrentUserContextProvider>
     </SessionProvider>
   );

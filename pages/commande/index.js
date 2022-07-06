@@ -6,19 +6,15 @@ import { BsPaypal } from "react-icons/bs";
 import { FaCcVisa } from "react-icons/fa";
 import { FaCcMastercard } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Layout from "../../components/Layout";
 import Banner from "../../components/Banner";
-import { CurrentUserContext } from "../../contexts/currentUserContext";
 
 export default function Commande() {
   const { t } = useTranslation("signIn");
 
   // IMPORT DU CONTEXT //
-
-  const { time, setTime, localisation, setLocalisation } =
-    useContext(CurrentUserContext);
 
   // FIN CONTEXT //
 
@@ -112,13 +108,13 @@ export default function Commande() {
         deliveryArrivalTime: userHourArrived,
         comment: userCommentary,
         orderNumber: "123456789",
-        startDate: time,
-        startTime: time,
+        startDate: "",
+        startTime: "",
         endDate: "2022-06-25T22:00:00.000Z",
         orderDate: new Date(),
         paymentType: "Carte bleue",
         paidPrice: 100,
-        premiseId: localisation,
+        premiseId: "Lyon",
         delegateParentId: 2,
         partnerId: 5,
         products: "",
@@ -135,8 +131,6 @@ export default function Commande() {
         setPartnerCity("");
         setUserHourArrived("");
         setUserComentary("");
-        setTime("");
-        setLocalisation("");
       })
       .catch((err) => {
         if (err.response && err.response.status === 409)
