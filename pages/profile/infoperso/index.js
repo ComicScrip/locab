@@ -16,8 +16,8 @@ export default function MonCompte() {
   const { t } = useTranslation("profile");
   const { status } = useSession();
 
-  const { currentUserProfile, updateUser, setUpdateUser } =
-    useContext(CurrentUserContext);
+  const { updateUser, setUpdateUser } = useContext(CurrentUserContext);
+  const { currentUserProfile } = useContext(CurrentUserContext);
   const id = currentUserProfile?.id;
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function MonCompte() {
 
   const handlePatch = (e) => {
     e.preventDefault();
-    axios.patch(`/api/users/${id}`, {
+    axios.patch(`/api/profile/`, {
       id: updateUser.id,
       firstname: updateUser.firstname,
       lastname: updateUser.lastname,
@@ -85,7 +85,7 @@ export default function MonCompte() {
                 name="firstname"
                 type="text"
                 id="firstName"
-                data-cy="firstName"
+                data-cy="firstname"
                 value={updateUser.firstname || ""}
                 onChange={(e) =>
                   setUpdateUser({ ...updateUser, firstname: e.target.value })

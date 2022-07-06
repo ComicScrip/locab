@@ -38,7 +38,6 @@
     "cypress-dotenv": "^2.0.0",
     "dayjs": "^1.11.3",
     "font-awesome": "^4.7.0",
-    "form-data": "^4.0.0",
     "i18next": "^21.8.9",
     "joi": "^17.6.0",
     "morgan": "^1.10.0",
@@ -57,7 +56,6 @@
     "react-responsive": "^9.0.0-beta.10",
     "react-toastify": "^9.0.5",
     "react-tooltip": "^4.2.21",
-    "use-context-selector": "^1.4.1",
     "yarn": "^1.22.19"
   },
   "devDependencies": {
