@@ -4,9 +4,29 @@
   display: none;
 }
 
+.logoBackOffice {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 10px;
+  margin-bottom: 100px;
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+/* Navigation */
+
 .positionNavBackOffice {
   display: flex;
   flex-direction: row;
+}
+
+.listeNavBack {
+  margin: auto;
+  padding-right: 15px;
+  padding-left: 20px;
 }
 
 .navBackOffice {
@@ -24,20 +44,6 @@
   opacity: 20%;
 }
 
-.logoBackOffice {
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  padding: 10px;
-  margin-bottom: 100px;
-}
-
-.listeNavBack {
-  margin: auto;
-  padding-right: 15px;
-  padding-left: 20px;
-}
-
-.icon {
-  margin-right: 5px;
+.eltNavBackActif {
+  opacity: initial;
 }

@@ -17,11 +17,11 @@ describe("orders - with an active session", () => {
     cy.contains("Mes commandes");
   });
 
-  it.only("order - shows all my orders", () => {
+  it("order - shows all my orders", () => {
     cy.contains("ART123");
   });
 
-  it.only("order - shows only the orders made according to the selected filter", () => {
+  it("order - shows only the orders made according to the selected filter", () => {
     cy.get('[data-cy="dateSelect"]').select("last3months");
     cy.contains("A366UL").should("not.exist");
     cy.get('[data-cy="dateSelect"]').select("lastmonth");
