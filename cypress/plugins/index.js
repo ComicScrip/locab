@@ -205,7 +205,7 @@ module.exports = (on, config) => {
       return Promise.all([
         User.deleteDB(),
         Product.deleteDB(),
-        db.priceCategory.deleteMany(),
+        // db.priceCategory.deleteMany(),
       ]);
     },
     createUser: User.createUser,
