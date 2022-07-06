@@ -3,7 +3,8 @@ import requireCurrentUser from "../../../middlewares/requireCurrentUser";
 import { findAllOrders } from "../../../models/order";
 
 async function handleGet(req, res) {
-  const customerId = req.currentUser.id;
+  let customerId;
+  if (req.currentUser.role !== "admin") customerId = req.currentUser.id;
   let { date = "" } = req.query;
   let limitDatefilter;
 
