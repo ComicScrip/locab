@@ -71,6 +71,7 @@ async function createOrderSample() {
   });
   const premise_01 = await db.premise.create({
     data: {
+      name: "Ursule",
       address: "140 rue delandine",
       zip: "69002",
       city: "Lyon",
