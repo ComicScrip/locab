@@ -1,7 +1,6 @@
 import axios from "axios";
 import { signOut, useSession } from "next-auth/react";
 import { createContext, useCallback, useState, useEffect } from "react";
-// import { toast } from "react-toastify";
 
 export const CurrentUserContext = createContext();
 

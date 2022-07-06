@@ -15,38 +15,8 @@ export default function MonCompte() {
   const { t } = useTranslation("profile");
   const { status } = useSession();
 
-  // const { updateUser, setUpdateUser } = useContext(CurrentUserContext);
   const { currentUserProfile, updateProfileOnAPI } =
     useContext(CurrentUserContext);
-  // const id = currentUserProfile?.id;
-
-  // useEffect(() => {
-  //   id &&
-  //     axios
-  //       .get(`/api/users/${id}`)
-  //       .then((res) => setUpdateUser(res.data))
-  //       .catch((err) => {
-  //         console.error(err.response.data);
-  //       });
-  // }, [id, setUpdateUser]);
-
-  // const handlePatch = (e) => {
-  //   e.preventDefault();
-  //   axios.patch(`/api/profile/`, {
-  //     id: updateUser.id,
-  //     firstname: updateUser.firstname,
-  //     lastname: updateUser.lastname,
-  //     email: updateUser.email,
-  //     address: updateUser.address,
-  //     city: updateUser.city,
-  //     phone: updateUser.phone,
-  //     zip: updateUser.zip,
-  //   });
-  //   toast("Vos modifications ont bien été prises en compte", {
-  //     theme: "light",
-  //     type: "success",
-  //   });
-  // };
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
