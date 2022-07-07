@@ -36,15 +36,19 @@ export default function LayoutAdmin({ children, pageTitle }) {
             />
 
             <ul className={styles.listeNavBack}>
-              <li className={styles.eltNavBack} style={{ opacity: "100%" }}>
+              <li className={`${styles.eltNavBack} ${styles.eltNavBackActif}`}>
                 <Link href="/admin/reservations">
                   <a>
                     <FaCalendarAlt className={styles.icon} /> Réservation
                   </a>
                 </Link>
               </li>
-              <li className={styles.eltNavBack}>
-                <IoCube className={styles.icon} /> Produits
+              <li className={`${styles.eltNavBack} ${styles.eltNavBackActif}`}>
+                <Link href="/admin/produits">
+                  <a>
+                    <IoCube className={styles.icon} /> Produits
+                  </a>
+                </Link>
               </li>
               <li className={styles.eltNavBack}>
                 <AiFillEuroCircle className={styles.icon} />
