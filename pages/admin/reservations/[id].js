@@ -8,7 +8,7 @@ import styles from "../../../styles/BackReservations.module.css";
 import dayjs from "dayjs";
 
 export default function ReservationDetail() {
-  const [orderDetails, setOrderDetails] = useState([]);
+  const [orderDetails, setOrderDetails] = useState();
   const router = useRouter();
   const { id } = router.query;
 
@@ -20,7 +20,7 @@ export default function ReservationDetail() {
         .catch(console.error);
   }, [id]);
 
-  console.log(orderDetails.customer);
+  if (!orderDetails) return null;
 
   const orderStartDateOld = orderDetails.startDate;
   const orderStartDateNewFormat = dayjs(orderStartDateOld).format("DD/MM/YY");
