@@ -35,7 +35,7 @@ Cypress.Commands.add(
     email = "visitor@website.com",
     password = "verysecure",
     role = "visitor",
-    phone = "06 12 34 56 78",
+    phone = "0612345678",
   } = {}) => {
     cy.dataSession({
       name: "userInDb",
@@ -176,7 +176,7 @@ Cypress.Commands.add(
     email = "visitor@website.com",
     password = "verysecure",
     role = "admin",
-    phone = "06 12 34 56 78",
+    phone = "0612345678",
   } = {}) => {
     cy.dataSession({
       name: "currentUser",

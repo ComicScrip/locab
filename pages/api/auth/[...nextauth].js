@@ -20,6 +20,12 @@ export default NextAuth({
     }),
   ],
 
+  callbacks: {
+    session: async (session, user) => {
+      if (user) session.id = user.id;
+      return Promise.resolve(session);
+    },
+  },
   pages: {
     signIn: "/signup",
   },

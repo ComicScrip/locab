@@ -271,4 +271,5 @@ module.exports = (on, config) => {
       return cat_a;
     },
   });
+  return config;
 };

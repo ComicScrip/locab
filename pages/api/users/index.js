@@ -6,13 +6,13 @@ import {
   findAllUsers,
   validateUser,
 } from "../../../models/user";
-import requireAdmin from "../../../middlewares/requireAdmin";
 
 async function handlePost(req, res) {
   const validationErrors = validateUser(req.body);
   if (validationErrors) return res.status(422).send(validationErrors);
   const alreadyExists = await emailAlreadyExists(req.body.email);
   if (alreadyExists) return res.status(409).send("email déja utilisé");
+
   const {
     id,
     firstname,
@@ -51,4 +51,4 @@ async function handleGet(req, res) {
   res.send(await findAllUsers());
 }
 
-export default base().post(handlePost).get(requireAdmin, handleGet);
+export default base().post(handlePost).get(handleGet);
