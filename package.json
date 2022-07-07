@@ -58,6 +58,7 @@
     "react-responsive": "^9.0.0-beta.10",
     "react-tooltip": "^4.2.21",
     "use-local-storage": "^2.3.6",
+    "use-persisted-state": "^0.3.3",
     "uselocalstorage-react-hook": "^1.0.5",
     "yarn": "^1.22.19"
   },

@@ -10,11 +10,14 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Layout from "../../components/Layout";
 import Banner from "../../components/Banner";
+import useUserLocation from "../../hooks/useUserLocation";
 
 export default function Commande() {
   const { t } = useTranslation("signIn");
 
   // IMPORT DU CONTEXT //
+
+  const [userLocation, setUserLocation] = useUserLocation("");
 
   // FIN CONTEXT //
 
@@ -114,7 +117,7 @@ export default function Commande() {
         orderDate: new Date(),
         paymentType: "Carte bleue",
         paidPrice: 100,
-        premiseId: "Lyon",
+        premiseId: userLocation,
         delegateParentId: 2,
         partnerId: 5,
         products: "",
@@ -131,6 +134,7 @@ export default function Commande() {
         setPartnerCity("");
         setUserHourArrived("");
         setUserComentary("");
+        setUserLocation("");
       })
       .catch((err) => {
         if (err.response && err.response.status === 409)

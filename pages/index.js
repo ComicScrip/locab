@@ -2,12 +2,12 @@ import Layout from "../components/Layout";
 import styles from "../styles/Home.module.css";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import { useState } from "react";
+import useUserLocation from "../hooks/useUserLocation";
 
 export default function Home() {
   const { t } = useTranslation("home");
 
-  const [selectLocalisation, setSelectLocalisation] = useLocalStorage("");
+  const [userLocation, setUserLocation] = useUserLocation("");
 
   return (
     <Layout pageTitle="Location de poussette | Location de matériel de puériculture">
@@ -23,8 +23,8 @@ export default function Home() {
                   className={styles.whereHome}
                   type="text"
                   placeholder={t("ouallezvous")}
-                  value={selectLocalisation}
-                  onChange={(e) => setSelectLocalisation(e.target.value)}
+                  value={userLocation}
+                  onChange={(e) => setUserLocation(e.target.value)}
                 ></input>
                 <input
                   className={styles.whenHome}
@@ -129,45 +129,6 @@ export default function Home() {
       </div>
     </Layout>
   );
-}
-
-function useLocalStorage(localisation, initialValue) {
-  // State to store our value
-  // Pass initial state function to useState so logic is only executed once
-  const [storedValue, setStoredValue] = useState(() => {
-    if (typeof window === "undefined") {
-      return initialValue;
-    }
-    try {
-      // Get from local storage by key
-      const item = window.localStorage.getItem(localisation);
-      // Parse stored json or if none return initialValue
-      return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      // If error also return initialValue
-      console.log(error);
-      return initialValue;
-    }
-  });
-  // Return a wrapped version of useState's setter function that ...
-  // ... persists the new value to localStorage.
-  const setValue = (value) => {
-    try {
-      // Allow value to be a function so we have same API as useState
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value;
-      // Save state
-      setStoredValue(valueToStore);
-      // Save to local storage
-      if (typeof window !== "undefined") {
-        window.localStorage.setItem(localisation, JSON.stringify(valueToStore));
-      }
-    } catch (error) {
-      // A more advanced implementation would handle the error case
-      console.log(error);
-    }
-  };
-  return [storedValue, setValue];
 }
 
 export async function getStaticProps({ locale }) {
