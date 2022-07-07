@@ -2,17 +2,18 @@ import axios from "axios";
 import { useState } from "react";
 import { BsPlusCircle } from "react-icons/bs";
 import styles from "../../styles/BackProduits.module.css";
-import ProductsRow from "./ProductsRow";
+import PriceRow from "./PriceRow";
 import { useQuery } from "react-query";
+import AddPricePopUp from "./AddPricePopUp";
 
-import AddPricePopUp from "../../components/AddProductsPopUp";
-
-export default function SearchProducts() {
+export default function SearchPrice() {
   const [searchValue, setSearchValue] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const handleClick = () => {
     setShowPopup(true);
+    console.log(priceList);
   };
+
   const { data: priceList = [] } = useQuery(
     ["price", { search: searchValue }],
     () => {
@@ -21,7 +22,6 @@ export default function SearchProducts() {
         .then((response) => response.data);
     }
   );
-  console.log(priceList);
 
   return (
     <div className={styles.searchProductsMainContainer}>
@@ -56,7 +56,7 @@ export default function SearchProducts() {
             </thead>
             <tbody className={styles.tBody}>
               {priceList.map((backProduct) => (
-                <ProductsRow
+                <PriceRow
                   backProduct={backProduct}
                   key={backProduct.id}
                   id={backProduct.id}

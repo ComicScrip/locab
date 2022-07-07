@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "../styles/AddProductsPopUp.module.css";
+import styles from "../../styles/AddProductsPopUp.module.css";
 import { useQueryClient } from "react-query";
 
 function AddPricePopUp({ show, setShow }) {

@@ -1,4 +1,4 @@
-import SearchPrice from "../../../components/backoffice/SearchProducts";
+import SearchPrice from "../../../components/backoffice/SearchPrice";
 import styles from "../../../styles/BackProduits.module.css";
 import LayoutAdmin from "../../../components/LayoutAdmin";
 

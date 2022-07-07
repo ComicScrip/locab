@@ -8,7 +8,7 @@ import ValidateDelete from "../ValidateDelete";
 import styles from "../../styles/BackProduits.module.css";
 import { useQueryClient } from "react-query";
 
-export default function ProductsRow({ backProduct }) {
+export default function PriceRow({ backProduct }) {
   const { addToast } = useToasts();
   const [deleteContainer, setDeleteContainer] = useState(false);
   const router = useRouter();
