@@ -41,7 +41,7 @@ export default function SearchProducts() {
           />
           <AddProductsPopUp show={showPopup} setShow={setShowPopup} />
         </section>
-        <section className={styles.tableProductsContainer}>
+        <section className={styles.tableOrdersContainer}>
           <table className={styles.tableProducts}>
             <thead>
               <tr className={styles.line}>

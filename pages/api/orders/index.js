@@ -5,6 +5,8 @@ import { findAllOrders } from "../../../models/order";
 async function handleGet(req, res) {
   let customerId;
   if (req.currentUser.role !== "admin") customerId = req.currentUser.id;
+
+  let search = req.query.search;
   let { date = "" } = req.query;
   let limitDatefilter;
 
@@ -21,7 +23,7 @@ async function handleGet(req, res) {
   if (date === "last3months") limitDatefilter = last3MonthshNewFormat;
   if (date === "last6months") limitDatefilter = last6MonthsNewFormat;
 
-  res.send(await findAllOrders({ customerId, limitDatefilter }));
+  res.send(await findAllOrders({ customerId, limitDatefilter, search }));
 }
 export default base()
   .use(requireCurrentUser)

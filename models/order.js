@@ -1,6 +1,6 @@
 const db = require("../db");
 
-module.exports.findAllOrders = ({ customerId, limitDatefilter }) => {
+module.exports.findAllOrders = ({ customerId, limitDatefilter, search }) => {
   return db.order.findMany({
     include: {
       premise: {
@@ -49,6 +49,7 @@ module.exports.findAllOrders = ({ customerId, limitDatefilter }) => {
     orderBy: { orderDate: "desc" },
     where: {
       customerId,
+      orderNumber: { contains: search },
       orderDate: {
         gte: limitDatefilter,
       },
@@ -104,6 +105,14 @@ module.exports.findOneOrder = ({ customerId, id }) => {
     },
     where: {
       customerId,
+      id: parseInt(id, 10),
+    },
+  });
+};
+
+module.exports.deleteOneOrder = (id) => {
+  return db.order.delete({
+    where: {
       id: parseInt(id, 10),
     },
   });

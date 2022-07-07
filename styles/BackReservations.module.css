@@ -1,3 +1,85 @@
+/* GLOBAL RESERVATIONS PAGE*/
+.globalContainer {
+  width: 90%;
+  margin: auto;
+}
+.reservationTitle {
+  margin: 2rem 0 2rem 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* search bar and add button */
+
+.searchAddOrdersContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.searchOrdersBar {
+  margin-right: 1rem;
+  height: 2rem;
+}
+
+.addOrdersButton {
+  border-radius: 50%;
+  background: #d28f71;
+  height: 2rem;
+  width: 2rem;
+  box-shadow: 0px 1px 1px #000000;
+  opacity: 0.4;
+}
+
+/* TABLE : RESERVATIONS */
+
+.tableOrdersContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tableOrders {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: scroll;
+  display: block;
+  height: 80vh;
+  padding-right: 10px;
+}
+
+.tableOrders tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.tableOrders th {
+  text-align: center;
+  padding: 2rem 0 2rem 0;
+  width: 17%;
+}
+
+.tableOrders td {
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+  width: 17%;
+}
+
+.tableOrders td ul li {
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.suppButton {
+  color: #d28f71;
+  border: none;
+  background-color: white;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+/*DETAIL PAGE*/
+
 .reservationMainContainer {
   width: 80%;
   margin: 50px auto;
