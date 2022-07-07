@@ -1,5 +1,17 @@
 {
   "moncompte": "My account",
   "mescommandes": "My orders",
-  "infosperso": "Personal informations"
+  "infosperso": "Personal informations",
+  "mesinfoperso": "My personal information",
+  "adressemail": "Email address",
+  "nom": "Name",
+  "prenom": "Firstname",
+  "adresse": "Address",
+  "cp": "ZIP code",
+  "ville": "City",
+  "Numérodetelephone": "Phone number",
+  "email": "Email",
+  "retourcompte": "back to account",
+  "valider": "Save",
+  "toastmodif": "Your changes have been saved"
 }

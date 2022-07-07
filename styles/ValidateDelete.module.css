@@ -1,0 +1,63 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.deleteContainer {
+  height: 70vh;
+  width: 90%;
+  margin: 15% 5%;
+  background-color: rgb(248, 248, 248);
+  padding: 32px;
+  text-align: center;
+  border-radius: 8px;
+  border: 5px solid rgba(39, 36, 33, 0.6);
+  position: absolute;
+  color: var(--darkColor);
+  font-family: "poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.4em;
+  letter-spacing: 3px;
+}
+
+.validationBtns {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 60px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.messageContainer {
+  border-top: solid 2px rgba(39, 36, 33, 1);
+  width: 80%;
+  margin: 35px auto;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.6em;
+  letter-spacing: 1px;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.messageInfo {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8em;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 20px auto;
+}
+
+@media only screen and (min-width: 800px) {
+  .deleteContainer {
+    max-width: 800px;
+    margin: 5% auto;
+    position: relative;
+  }
+}

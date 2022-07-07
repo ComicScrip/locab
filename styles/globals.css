@@ -39,3 +39,11 @@ ul {
     padding-bottom: 0px;
   }
 }
+
+/* Bouton Widget Uploadcare */
+
+.uploadcare--widget__button_type_open {
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}
