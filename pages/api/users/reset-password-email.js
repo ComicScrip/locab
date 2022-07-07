@@ -14,7 +14,7 @@ async function handlePost(req, res) {
     resetPasswordToken: await hashPassword(resetPasswordToken),
   });
 
-  console.log("hello");
+  // console.log("hello");
 
   const mailBody = `Rendez-vous sur ce lien pour réinitialiser votre mot de passe : 
   ${process.env.HOST}/reset-password?email=${email}

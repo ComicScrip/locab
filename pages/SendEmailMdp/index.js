@@ -10,14 +10,11 @@ export default function ResetMdp() {
   // const router = useRouter();
   const [email, setEmail] = useState("");
   const [showform, setShowForm] = useState(true);
-  //const [resetEmailSent, setResetEmailSent] = useState(false);
   const [showResultMessage, setShowResultMessage] = useState(false);
-
   const notify = () => toast.success("Email envoyé avec succès !");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     axios
       .post("/api/users/reset-password-email", { email })
       .then(() => {
@@ -29,7 +26,6 @@ export default function ResetMdp() {
       });
     notify();
   };
-
   return (
     <Layout>
       <Head>

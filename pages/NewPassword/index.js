@@ -58,15 +58,6 @@ export default function ResetPasswordPage() {
           <div className={styles.forms}>
             <form>
               <div>
-                <label className={styles.label}>Mot de passe actuel</label>
-                <input
-                  type="password"
-                  name="motdepasseactuel"
-                  id="motdepasseactuel"
-                  required
-                />
-              </div>
-              <div>
                 <label className={styles.label}>Nouveau mot de passe</label>
                 <input
                   type="password"
