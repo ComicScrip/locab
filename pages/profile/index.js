@@ -39,13 +39,16 @@ export default function MonCompte() {
             </div>
             <div className={styles.partie2}>
               <div className={styles.icon2}>
-                <img
-                  src="/image/user.png"
-                  alt="design"
-                  height="129vh"
-                  width="129vh"
-                  className={styles.user}
-                />
+                <Link href="/profile/infoperso">
+                  <img
+                    style={{ cursor: "pointer" }}
+                    src="/image/user.png"
+                    alt="design"
+                    height="129vh"
+                    width="129vh"
+                    className={styles.user}
+                  />
+                </Link>
               </div>
               <p className={styles.text2}>{t("infosperso")}</p>
             </div>
@@ -54,14 +57,14 @@ export default function MonCompte() {
       ) : (
         <>
           <div className={styles.container}>
-            <h1 className={styles.titleMainContent}>Connectez-vous</h1>
+            <h1 className={styles.titleMainContent}>{t("connexion")}</h1>
             <button
               type="button"
               className={styles.connexionBtn}
               onClick={() => signIn()}
               data-cy="connexionBtn"
             >
-              Connexion
+              {t("connexion")}
             </button>
           </div>
         </>

@@ -13,5 +13,6 @@
   "email": "Email",
   "retourcompte": "back to account",
   "valider": "Save",
-  "toastmodif": "Your changes have been saved"
+  "toastmodif": "Your changes have been saved",
+  "connexion": "Log In"
 }

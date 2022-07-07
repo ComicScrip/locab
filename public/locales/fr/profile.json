@@ -13,5 +13,6 @@
   "email": "Adresse mail",
   "retourcompte": "retour au compte",
   "valider": "Enregistrer",
-  "toastmodif": "Vos modifications ont bien été prises en comptes"
+  "toastmodif": "Vos modifications ont bien été prises en comptes",
+  "connexion": "Connectez-vous"
 }
