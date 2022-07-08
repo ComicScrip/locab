@@ -107,7 +107,7 @@ export default function OrderDetails({ orderDetails }) {
           <div>
             <b>Partenaire</b>
             <br />
-            {orderDetails.partner}
+            {orderDetails.partner || "---"}
           </div>
           <div>
             <b>Heure d'arrivée</b>
