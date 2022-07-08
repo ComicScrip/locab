@@ -1,5 +1,5 @@
 describe("/reset-password", () => {
-  const email = "john.doe@gmail.com";
+  const email = "terno.davelopper@gmail.com";
 
   it("can send the reset password email", () => {
     cy.signup({ email });

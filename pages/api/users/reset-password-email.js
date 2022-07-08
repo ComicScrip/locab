@@ -13,21 +13,17 @@ async function handlePost(req, res) {
   await updateUser(user.id, {
     resetPasswordToken: await hashPassword(resetPasswordToken),
   });
-
-  // console.log("hello");
-
   const mailBody = `Rendez-vous sur ce lien pour réinitialiser votre mot de passe : 
   ${process.env.HOST}/reset-password?email=${email}
   &resetPasswordToken=${resetPasswordToken}`;
 
-  const mail = await mailer.sendMail({
+  await mailer.sendMail({
     from: process.env.MAILER_FROM,
     to: email,
     subject: "Réinitialisez votre mot de passe",
     text: mailBody,
     html: mailBody,
   });
-  console.log("hello", mail);
   res.send("reset password email sent");
 }
 export default base().post(handlePost);
