@@ -61,7 +61,7 @@ export default function OrderRow({ order }) {
               className={styles.modifyButton}
               href={`/admin/reservations/${id}`}
             >
-              <a>Voir</a>
+              <a data-cy="detailLink">Voir</a>
             </Link>
             <div>
               <button

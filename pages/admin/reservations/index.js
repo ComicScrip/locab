@@ -30,6 +30,7 @@ export default function Reservations() {
             placeholder="Recherche"
             value={searchValue}
             onChange={(event) => setSearchValue(event.target.value)}
+            data-cy="searchBar"
           />
           <BsPlusCircle className={styles.addOrdersButton} />
         </section>
