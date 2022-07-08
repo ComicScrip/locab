@@ -100,6 +100,8 @@ module.exports.findOneOrder = ({ customerId, id }) => {
           address: true,
           zip: true,
           city: true,
+          phone: true,
+          email: true,
         },
       },
     },

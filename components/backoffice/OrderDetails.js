@@ -112,7 +112,7 @@ export default function OrderDetails({ orderDetails }) {
           <div>
             <b>Heure d'arrivée</b>
             <br />
-            {orderDetails.deliveryArrivalTime}
+            {orderDetails.deliveryArrivalTime || "---"}
           </div>
         </div>
       </section>
