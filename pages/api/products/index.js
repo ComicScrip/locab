@@ -5,15 +5,20 @@ import {
   findAllProductsUnavailable,
 } from "../../../models/product";
 
-async function handleGetProductAvailable(req, res) {
-  res.send(await findAllProductsAvailable({ city: req.query.city }));
+async function handleGetProducts(req, res) {
+  const availableProducts = await findAllProductsAvailable({
+    city: req.query.city,
+  });
+  if (req.query.showUnavailable === "true") {
+    const unavailableProducts = (
+      await findAllProductsUnavailable({
+        city: req.query.city,
+      })
+    ).map((product) => ({ ...product, unavailable: true }));
+
+    return res.send(availableProducts.concat(unavailableProducts));
+  }
+  res.send(availableProducts);
 }
 
-async function handleGetProductUnavailable(req, res) {
-  res.send(await findAllProductsUnavailable({ city: req.query.city }));
-}
-
-export default base().get(
-  handleGetProductAvailable,
-  handleGetProductUnavailable
-);
+export default base().get(handleGetProducts);

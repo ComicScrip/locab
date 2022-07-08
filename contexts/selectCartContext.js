@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
+import qs from "query-string";
 
 export const SelectCartContext = createContext();
 
@@ -12,16 +14,30 @@ export const SelectCartProvider = ({ children }) => {
   const [quantity, setQuantity] = useState("");
   const [productSampleId, setProductSampleId] = useState("");
 
+  const router = useRouter();
+  const { city = "Lyon", showUnavailable = true } = router.query;
+
   useEffect(() => {
+    const controller = new AbortController();
     axios
-      .get(`/api/products?city=Lyon`)
+      .get(`/api/products?${qs.stringify(router.query)}`, {
+        signal: controller.signal,
+      })
       .then((response) => response.data)
       .then((data) => {
         setProductList(data);
       });
-  }, []);
+  }, [router.query]);
 
-  console.log(productList);
+  console.log(qs.stringify(router.query));
+
+  const setSearchParams = (newSearch) => {
+    const queryString = qs.stringify(
+      { ...router.query, ...newSearch },
+      { skipEmptyString: true }
+    );
+    router.push(`/reservation${queryString ? "?" : ""}${queryString}`);
+  };
 
   useEffect(() => {
     axios
@@ -103,6 +119,9 @@ export const SelectCartProvider = ({ children }) => {
         onDelete,
         productList,
         setProductList,
+        city,
+        showUnavailable,
+        setSearchParams,
       }}
     >
       {children}

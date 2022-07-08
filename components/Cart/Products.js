@@ -7,13 +7,18 @@ import { SelectCartContext } from "../../contexts/selectCartContext";
 export default function Products() {
   const { t } = useTranslation("cart");
 
-  const { productList } = useContext(SelectCartContext);
+  const { productList, showUnavailable, setSearchParams } =
+    useContext(SelectCartContext);
 
   const [searchValue, setSearchValue] = useState("");
-  const [showAvailable, setShowAvailable] = useState(true);
 
   const handleCheckAvailability = () => {
-    setShowAvailable(!showAvailable);
+    if (showUnavailable === "true") {
+      setSearchParams({ showUnavailable: false });
+    }
+    if (showUnavailable === "false") {
+      setSearchParams({ showUnavailable: true });
+    }
   };
 
   return (
@@ -43,7 +48,7 @@ export default function Products() {
 
       {productList
         .filter((product) =>
-          product.productSamples.length > 0 ? productList : showAvailable
+          !product.unavailable ? productList : showUnavailable
         )
         .filter((product) =>
           product.name.toUpperCase().includes(searchValue.toUpperCase())

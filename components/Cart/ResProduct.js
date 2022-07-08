@@ -12,7 +12,7 @@ export default function ResProduct({ product }) {
   const existInCart = selectProducts.find((x) => x.id === product.id);
 
   const handleClickProduct = () => {
-    if (product.productSamples.length > 0) {
+    if (!product.unavailable) {
       onAdd(product);
     }
   };
@@ -20,13 +20,13 @@ export default function ResProduct({ product }) {
   return (
     <div
       className={
-        product.productSamples.length > 0
+        !product.unavailable
           ? styles.productWrapper
           : styles.productWrapperNotAvailable
       }
       onClick={handleClickProduct}
       style={
-        existInCart && product.productSamples.length > 0
+        existInCart && !product.unavailable
           ? { borderColor: "#96C0C0" }
           : { borderColor: "#ededed" }
       }
