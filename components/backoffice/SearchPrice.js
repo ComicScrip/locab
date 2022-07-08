@@ -47,10 +47,9 @@ export default function SearchPrice() {
             <thead>
               <tr className={styles.line}>
                 <th></th>
-                <th>Nom</th>
-                <th>Catégorie de prix</th>
-                {/* <th>Stock total</th> */}
-                <th>Marque</th>
+                <th>Prix</th>
+                <th>Prix pour 1 jour</th>
+                <th>Prix pour 16 jours</th>
                 <th></th>
               </tr>
             </thead>
