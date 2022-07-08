@@ -15,7 +15,8 @@ export default function Reservations() {
     () => {
       return axios
         .get(`/api/orders?search=${searchValue}`)
-        .then((response) => response.data);
+        .then((response) => response.data)
+        .catch(console.error);
     }
   );
 
