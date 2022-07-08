@@ -7,10 +7,13 @@ import styles from "../../styles/mdp.module.css";
 import Banner from "../../components/Banner";
 import SearchForm from "../../components/SearchForm";
 import { useState } from "react";
+// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+// import { useTranslation } from "next-i18next";
 import axios from "axios";
 import { useRouter } from "next/dist/client/router";
 
 export default function ResetPasswordPage() {
+  // const { t } = useTranslation("NewPassword");
   const router = useRouter();
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirmation, setNewPasswordConfirmation] = useState("");
@@ -67,7 +70,7 @@ export default function ResetPasswordPage() {
             <form onSubmit={resetPassword}>
               <div>
                 <label className={styles.label}>Nouveau mot de passe</label>
-                {/* {('password')} */}
+                
                 <input
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
