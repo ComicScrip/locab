@@ -123,7 +123,7 @@ async function seed() {
       name: "titi",
       address: "140 rue antoine",
       zip: "69002",
-      city: "Lyon",
+      city: "Bordeaux",
       premiseType: "Public",
     },
   });

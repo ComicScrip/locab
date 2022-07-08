@@ -1,12 +1,9 @@
 import { createContext, useState, useEffect } from "react";
-import data from "../components/Cart/data";
 import axios from "axios";
 
 export const SelectCartContext = createContext();
 
 export const SelectCartProvider = ({ children }) => {
-  const { products } = data;
-
   const [productSampleList, setProductSampleList] = useState([]);
   const [selectProducts, setSelectProducts] = useState([]);
   const [productList, setProductList] = useState([]);
@@ -17,12 +14,14 @@ export const SelectCartProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get(`/api/products`)
+      .get(`/api/products?city=Lyon`)
       .then((response) => response.data)
       .then((data) => {
         setProductList(data);
       });
   }, []);
+
+  console.log(productList);
 
   useEffect(() => {
     axios
@@ -96,7 +95,6 @@ export const SelectCartProvider = ({ children }) => {
   return (
     <SelectCartContext.Provider
       value={{
-        products,
         selectProducts,
         setSelectProducts,
         onAdd,

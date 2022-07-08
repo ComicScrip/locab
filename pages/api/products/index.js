@@ -1,27 +1,19 @@
 import base from "../../../middlewares/common";
 
 import {
-  createProduct,
-  findAllProductsDescriptions,
+  findAllProductsAvailable,
+  findAllProductsUnavailable,
 } from "../../../models/product";
 
-async function handlePostProduct(req, res) {
-  const { name, brand, caution, description, priceCategoryId, pictures } =
-    req.body;
-  return res.status(201).send(
-    await createProduct({
-      name,
-      brand,
-      caution,
-      description,
-      priceCategoryId,
-      pictures,
-    })
-  );
+async function handleGetProductAvailable(req, res) {
+  res.send(await findAllProductsAvailable({ city: req.query.city }));
 }
 
-async function handleGetProduct(req, res) {
-  res.send(await findAllProductsDescriptions());
+async function handleGetProductUnavailable(req, res) {
+  res.send(await findAllProductsUnavailable({ city: req.query.city }));
 }
 
-export default base().post(handlePostProduct).get(handleGetProduct);
+export default base().get(
+  handleGetProductAvailable,
+  handleGetProductUnavailable
+);
