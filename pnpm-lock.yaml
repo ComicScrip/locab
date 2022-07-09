@@ -11,7 +11,7 @@ specifiers:
   '@mui/icons-material': ^5.8.0
   '@mui/material': ^5.8.1
   '@prisma/client': 3.14.0
-  '@uploadcare/react-widget': ^2.1.1
+  '@uploadcare/react-widget': 2.1.1
   argon2: ^0.28.5
   axios: ^0.27.2
   check-password-strength: ^2.0.5
@@ -63,7 +63,7 @@ dependencies:
   '@mui/icons-material': 5.8.4_mwik7pzdydpejm255ir32jgsim
   '@mui/material': 5.8.7_hs3lpvwq7wvqwq4ajnfzlgmfzy
   '@prisma/client': 3.14.0_prisma@3.15.2
-  '@uploadcare/react-widget': 2.1.3_ef5jwxihqo6n7gxfmzogljlgcm
+  '@uploadcare/react-widget': 2.1.1_ef5jwxihqo6n7gxfmzogljlgcm
   argon2: 0.28.7
   axios: 0.27.2
   check-password-strength: 2.0.5
@@ -1135,8 +1135,8 @@ packages:
       react: 18.1.0
     dev: false
 
-  /@uploadcare/react-widget/2.1.3_ef5jwxihqo6n7gxfmzogljlgcm:
-    resolution: {integrity: sha512-GJzZMhTQHqbyTcW5bHiGazlPjuKW0BOD9RCYEg3Wn7U/xzbJFBKxj3xK90vnVwLd7Rdy74+ZRqPAbfZuYQNBsQ==}
+  /@uploadcare/react-widget/2.1.1_ef5jwxihqo6n7gxfmzogljlgcm:
+    resolution: {integrity: sha512-qkUlfDXiNl81YjM9IojSVKU2cLMT2O86h/lGu/Hku8siGkYBHniZ/WEZZhXjtlIqDdqVvLDVDUbEg1HcTN/lcQ==}
     peerDependencies:
       react: ^16.10.2 || ^17.0.0 || ^18.0.0
       react-dom: ^16.10.2 || ^17.0.0 || ^18.0.0
