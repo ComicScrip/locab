@@ -31,7 +31,7 @@
     "@mui/icons-material": "^5.8.0",
     "@mui/material": "^5.8.1",
     "@prisma/client": "3.14.0",
-    "@uploadcare/react-widget": "^2.1.1",
+    "@uploadcare/react-widget": "2.1.1",
     "argon2": "^0.28.5",
     "axios": "^0.27.2",
     "check-password-strength": "^2.0.5",
