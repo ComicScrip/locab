@@ -11,6 +11,7 @@ export default function ResetMdp() {
   const [email, setEmail] = useState("");
   const [showform, setShowForm] = useState(true);
   const [showResultMessage, setShowResultMessage] = useState(false);
+  
   const notify = () => toast.success("Email envoyé avec succès !");
 
   const handleSubmit = (e) => {
@@ -22,7 +23,7 @@ export default function ResetMdp() {
         setShowResultMessage(!showResultMessage);
       })
       .catch(() => {
-        toast.error("email Not Found");
+        toast.error("cet email n'appartient à aucun utilisateur actif");
       });
     notify();
   };
