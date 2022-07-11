@@ -49,7 +49,10 @@ module.exports.findAllOrders = ({ customerId, limitDatefilter, search }) => {
     orderBy: { orderDate: "desc" },
     where: {
       customerId,
-      orderNumber: { contains: search },
+      OR: [
+        { orderNumber: { contains: search } },
+        { customer: { lastname: { contains: search } } },
+      ],
       orderDate: {
         gte: limitDatefilter,
       },

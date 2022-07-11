@@ -11,13 +11,23 @@ describe("admin orders - back office", () => {
     cy.contains("ART123").should("be.visible");
   });
 
-  it("admin orders - can search an order by its number", () => {
+  it("admin orders - can search an order by its number or customer name", () => {
     cy.get("[data-cy='searchBar']").type("ART123");
     cy.contains("A366UL").should("not.exist");
+    cy.get("[data-cy='searchBar']").type("{selectall}toto");
+    cy.contains("A366UL").should("not.exist");
+    cy.get("[data-cy='searchBar']").type("{selectall}hallaplaje");
+    cy.contains("A366UL").should("be.visible");
   });
 
-  it.only("admin orders - can access the order details page", () => {
-    cy.get('[data-cy="detailLink"]').click({ multiple: true });
+  it("admin orders - can access the order details page", () => {
+    cy.get('[data-cy="detailLink"]').first().click();
     cy.contains("Information de facturation");
+  });
+
+  it("admin orders - can delete a resevation", () => {
+    cy.get('[data-cy="add_product_button_delete"]').first().click();
+    cy.get('[data-cy="add_product_button_delete_confirmation"]').click();
+    cy.contains("ART123").should("not.exist");
   });
 });

@@ -2,7 +2,7 @@ import styles from "../../styles/BackReservations.module.css";
 
 export default function OrderDetails({ orderDetails }) {
   const imagesProducts = orderDetails.products.map(
-    (image) => image.productSample.product.pictures
+    (product) => product.productSample.product.pictures
   );
 
   return (
