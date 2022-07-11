@@ -30,8 +30,10 @@ describe("admin references - back office", () => {
   });
 
   it.only("admin references - can update a produce", () => {
-    cy.get('[data-cy="add_product_button_delete"]').first().click();
-    cy.get('[data-cy="add_product_button_delete_confirmation"]').click();
+    cy.get('[data-cy="modify-reference-number"]').type(
+      "{selectall}NEW-REF-001"
+    );
+    cy.get('[data-cy="validation-btn"]').click();
     cy.contains("CH-001").should("not.exist");
   });
 });

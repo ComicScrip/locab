@@ -116,3 +116,18 @@ module.exports.findOneProductSample = (id) => {
     where: { id: parseInt(id, 10) },
   });
 };
+
+module.exports.patchOneProductSample = async (id, data) => {
+  return await db.productSample.update({
+    where: { id: parseInt(id, 10) },
+    data: {
+      referenceNumber: data.referenceNumber,
+      productId: data.productId,
+      condition: data.condition,
+      dateOfPurchase: data.dateOfPurchase,
+      comment: data.comment,
+      premiseId: data.premiseId,
+      lastDateOrder: data.lastDateOrder,
+    },
+  });
+};

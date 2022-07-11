@@ -2,6 +2,7 @@ import base from "../../../middlewares/common";
 import {
   deleteOneProductSample,
   findOneProductSample,
+  patchOneProductSample,
 } from "../../../models/productSample";
 
 async function handleDelete(req, res) {
@@ -10,8 +11,19 @@ async function handleDelete(req, res) {
 }
 
 const handleGetOneSample = async (req, res) => {
-  const product = await findOneProductSample(req.query.id);
-  return res.status(200).send(product);
+  const productSample = await findOneProductSample(req.query.id);
+  return res.status(200).send(productSample);
 };
 
-export default base().delete(handleDelete).get(handleGetOneSample);
+const handlePatch = async (req, res) => {
+  const producSampletToPatch = await patchOneProductSample(
+    req.query.id,
+    req.body
+  );
+  return res.status(200).send(producSampletToPatch);
+};
+
+export default base()
+  .delete(handleDelete)
+  .get(handleGetOneSample)
+  .patch(handlePatch);
