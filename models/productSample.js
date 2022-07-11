@@ -72,3 +72,47 @@ module.exports.deleteOneProductSample = (id) => {
     },
   });
 };
+
+module.exports.findOneProductSample = (id) => {
+  return db.productSample.findUnique({
+    include: {
+      product: {
+        select: {
+          name: true,
+          brand: true,
+          caution: true,
+          description: true,
+          priceCategory: {
+            select: {
+              name: true,
+            },
+          },
+          pictures: {
+            select: {
+              url: true,
+            },
+          },
+        },
+      },
+      premise: {
+        select: {
+          name: true,
+          address: true,
+          zip: true,
+          city: true,
+          premiseType: true,
+        },
+      },
+      orders: {
+        select: {
+          order: {
+            select: {
+              orderNumber: true,
+            },
+          },
+        },
+      },
+    },
+    where: { id: parseInt(id, 10) },
+  });
+};
