@@ -106,9 +106,214 @@ function AddPricePopUp({ show, setShow }) {
                   data-cy="add_price_one_day"
                 ></input>
               </div>
-            </div>
 
-            <div className={styles.labelPopUp}>Photos</div>
+              <div className={styles.productsMark}>
+                <label htmlFor="twodays" className={styles.labelPopUp}>
+                  2j
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id="brand"
+                  type="text"
+                  value={formInfos.twoDays}
+                  onChange={(e) => setFormInfos.twoDays(e.target.value)}
+                  data-cy="add_price_two_days"
+                ></input>
+              </div>
+
+              <div className={styles.productsMark}>
+                <label htmlFor="threedays" className={styles.labelPopUp}>
+                  3j
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id="brand"
+                  type="text"
+                  value={formInfos.threeDays}
+                  onChange={(e) => setFormInfos.threeDays(e.target.value)}
+                  data-cy="add_price_three_days"
+                ></input>
+              </div>
+              <div className={styles.productsMark}>
+                <label htmlFor="fourdays" className={styles.labelPopUp}>
+                  4j
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id="brand"
+                  type="text"
+                  value={formInfos.fourDays}
+                  onChange={(e) => setFormInfos.fourDays(e.target.value)}
+                  data-cy="add_price_four_days"
+                ></input>
+              </div>
+              <div className={styles.productsMark}>
+                <label htmlFor="fivedays" className={styles.labelPopUp}>
+                  5j
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id="brand"
+                  type="text"
+                  value={formInfos.fiveDays}
+                  onChange={(e) => setFormInfos.fiveDays(e.target.value)}
+                  data-cy="add_price_five_days"
+                ></input>
+              </div>
+
+              <div className={styles.productsMark}>
+                <label htmlFor="sixdays" className={styles.labelPopUp}>
+                  6j
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id="brand"
+                  type="text"
+                  value={formInfos.sixDays}
+                  onChange={(e) => setFormInfos.sixDays(e.target.value)}
+                  data-cy="add_price_six_days"
+                ></input>
+              </div>
+
+              <div className={styles.productsMark}>
+                <label htmlFor="sevendays" className={styles.labelPopUp}>
+                  7j
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id="brand"
+                  type="text"
+                  value={formInfos.sevenDays}
+                  onChange={(e) => setFormInfos.sevenDays(e.target.value)}
+                  data-cy="add_price_seven_days"
+                ></input>
+              </div>
+
+              <div className={styles.productsMark}>
+                <label htmlFor="eightdays" className={styles.labelPopUp}>
+                  8j
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id="brand"
+                  type="text"
+                  value={formInfos.eightDays}
+                  onChange={(e) => setFormInfos.eigthDays(e.target.value)}
+                  data-cy="add_price_eight_days"
+                ></input>
+              </div>
+
+              <div className={styles.productsMark}>
+                <label htmlFor="neindays" className={styles.labelPopUp}>
+                  9j
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id="brand"
+                  type="text"
+                  value={formInfos.neinDays}
+                  onChange={(e) => setFormInfos.neinDays(e.target.value)}
+                  data-cy="add_price_nein_days"
+                ></input>
+              </div>
+
+              <div className={styles.productsMark}>
+                <label htmlFor="tendays" className={styles.labelPopUp}>
+                  10j
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id="brand"
+                  type="text"
+                  value={formInfos.tenDays}
+                  onChange={(e) => setFormInfos.tenDays(e.target.value)}
+                  data-cy="add_price_ten_days"
+                ></input>
+              </div>
+
+              <div className={styles.productsMark}>
+                <label htmlFor="elevendays" className={styles.labelPopUp}>
+                  11j
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id="brand"
+                  type="text"
+                  value={formInfos.elevenDays}
+                  onChange={(e) => setFormInfos.elevenDays(e.target.value)}
+                  data-cy="add_price_eleven_days"
+                ></input>
+              </div>
+
+              <div className={styles.productsMark}>
+                <label htmlFor="twelvedays" className={styles.labelPopUp}>
+                  12j
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id="brand"
+                  type="text"
+                  value={formInfos.twelveDays}
+                  onChange={(e) => setFormInfos.twelveDays(e.target.value)}
+                  data-cy="add_price_twelve_days"
+                ></input>
+              </div>
+
+              <div className={styles.productsMark}>
+                <label htmlFor="thirteendays" className={styles.labelPopUp}>
+                  13j
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id="brand"
+                  type="text"
+                  value={formInfos.thirteenDays}
+                  onChange={(e) => setFormInfos.thirteenDays(e.target.value)}
+                  data-cy="add_price_thirteen_days"
+                ></input>
+              </div>
+
+              <div className={styles.productsMark}>
+                <label htmlFor="fourteendays" className={styles.labelPopUp}>
+                  14j
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id="brand"
+                  type="text"
+                  value={formInfos.fourteenDays}
+                  onChange={(e) => setFormInfos.fourteenDays(e.target.value)}
+                  data-cy="add_price_fourteen_days"
+                ></input>
+              </div>
+              <div className={styles.productsMark}>
+                <label htmlFor="fifteendays" className={styles.labelPopUp}>
+                  15j
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id="brand"
+                  type="text"
+                  value={formInfos.fifteenDays}
+                  onChange={(e) => setFormInfos.fifteenDays(e.target.value)}
+                  data-cy="add_price_fifteen_days"
+                ></input>
+              </div>
+
+              <div className={styles.productsMark}>
+                <label htmlFor="sixteendays" className={styles.labelPopUp}>
+                  16j
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id="brand"
+                  type="text"
+                  value={formInfos.sixteenDays}
+                  onChange={(e) => setFormInfos.sixteenDays(e.target.value)}
+                  data-cy="add_price_sixteen_day"
+                ></input>
+              </div>
+            </div>
             <div className={styles.btnPopupDiv}>
               <button
                 type="submit"
