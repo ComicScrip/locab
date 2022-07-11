@@ -76,6 +76,7 @@ async function seed() {
     data: {
       name: "Chancelière",
       brand: "Chicco",
+      caution: 200,
       description: "Une chancelière",
       priceCategoryId: cat_b.id,
     },
@@ -84,12 +85,32 @@ async function seed() {
     data: {
       name: "Poussette",
       brand: "Yoyo",
+      caution: 200,
       description: "Une poussette marque Yoyo",
       priceCategoryId: cat_a.id,
     },
   });
+
+  await db.product.create({
+    data: {
+      name: "Nid d'ange",
+      brand: "Ange",
+      caution: 200,
+      description: "Un nid d'ange marque ange",
+      priceCategoryId: cat_a.id,
+      pictures: {
+        create: [
+          {
+            url: "/image/products/Poussette-YOYO-Nacelle.jpg",
+          },
+        ],
+      },
+    },
+  });
+
   const premise_01 = await db.premise.create({
     data: {
+      name: "tata",
       address: "140 rue delandine",
       zip: "69002",
       city: "Lyon",
@@ -98,6 +119,7 @@ async function seed() {
   });
   const premise_02 = await db.premise.create({
     data: {
+      name: "titi",
       address: "140 rue antoine",
       zip: "69002",
       city: "Lyon",
@@ -109,6 +131,7 @@ async function seed() {
       referenceNumber: "CH-001",
       dateOfPurchase: new Date("2022-05-21T00:00:00"),
       condition: "Neuf",
+      lastDateOrder: new Date("2022-05-21T00:00:00"),
       productId: chanceliere.id,
       premiseId: premise_01.id,
     },
@@ -118,6 +141,7 @@ async function seed() {
       referenceNumber: "CH-002",
       dateOfPurchase: new Date("2022-04-23 00:00:00"),
       condition: "Comme neuf",
+      lastDateOrder: new Date("2022-05-21T00:00:00"),
       productId: poussette.id,
       premiseId: premise_02.id,
     },
@@ -178,9 +202,35 @@ async function seed() {
       startDate: new Date("2022-06-16T00:00:00"),
       startTime: new Date("2022-06-17T00:00:00"),
       endDate: new Date("2022-06-26T00:00:00"),
-      orderDate: new Date("2022-06-15T00:00:00"),
+      orderDate: new Date("2022-04-15T00:00:00"),
       paymentType: "Carte bleue",
       paidPrice: 234,
+      premiseId: premise_02.id,
+      status: "Terminé",
+      customerId: visitor.id,
+    },
+  });
+  await db.order.create({
+    data: {
+      products: {
+        create: [
+          {
+            quantity: 3,
+            productSampleId: sample_01.id,
+          },
+          {
+            quantity: 10,
+            productSampleId: sample_02.id,
+          },
+        ],
+      },
+      orderNumber: "4366UL",
+      startDate: new Date("2022-06-16T00:00:00"),
+      startTime: new Date("2022-06-17T00:00:00"),
+      endDate: new Date("2022-06-26T00:00:00"),
+      orderDate: new Date("2022-02-15T00:00:00"),
+      paymentType: "Carte bleue",
+      paidPrice: 314,
       premiseId: premise_02.id,
       status: "Terminé",
       customerId: visitor.id,

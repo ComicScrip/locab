@@ -1,9 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styles from "../styles/headerfooter/navbar.module.css";
 import { useTranslation } from "next-i18next";
+import { CurrentUserContext } from "../contexts/currentUserContext";
+import { signOut } from "next-auth/react";
 
 const Navbar = () => {
   const onSelectChange = (e) => {
@@ -21,6 +23,9 @@ const Navbar = () => {
   const router = useRouter();
 
   const currentRoute = router.pathname;
+
+  const { currentUserProfile } = useContext(CurrentUserContext);
+
   return (
     <nav
       className={`${styles.navbar} ${showLinks ? styles.show_nav : "hidden"}`}
@@ -59,10 +64,9 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
-        <li className={styles.navbar_item} style={{ display: "none" }}>
+        <li className={styles.navbar_item}>
           <Link href="/aboutUs" className={styles.navbarlink}>
             <a
-              style={{ display: "none" }}
               className={
                 currentRoute === "/aboutUs" ? styles.active : styles.non_active
               }
@@ -107,9 +111,19 @@ const Navbar = () => {
         </li>
         <li className={styles.navbar_item}>
           <div>
-            <Link href="/signup">
-              <a className={styles.log}>{t("seconnecter")}</a>
-            </Link>
+            {currentUserProfile ? (
+              <button
+                className={styles.log}
+                onClick={() => signOut()}
+                type="button"
+              >
+                {t("sedeconnecter")}
+              </button>
+            ) : (
+              <Link href="/signup">
+                <a className={styles.log}>{t("seconnecter")}</a>
+              </Link>
+            )}
           </div>
           <div className={styles.languageSelect}>
             <select
