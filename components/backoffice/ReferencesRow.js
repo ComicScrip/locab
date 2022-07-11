@@ -4,8 +4,8 @@ export default function ReferencesRow({ backReference }) {
   return (
     <tr className={styles.line}>
       <td>{backReference.referenceNumber}</td>
-      <td>{backReference.delegateParentId}</td>
-      <td>{backReference.premiseId}</td>
+      <td>{backReference.premise.name}</td>
+      <td>{backReference.premise.city}</td>
       <td>{backReference.condition}</td>
       <td>
         <ul>
