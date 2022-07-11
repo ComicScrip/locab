@@ -83,6 +83,10 @@
   margin: 10px;
 }
 
+.priceName {
+  margin: 10px;
+}
+
 .inputLign {
   display: flex;
   justify-content: space-between;

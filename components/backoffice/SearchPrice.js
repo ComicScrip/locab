@@ -23,6 +23,7 @@ export default function SearchPrice() {
     }
   );
 
+  console.log(searchValue);
   return (
     <div className={styles.searchProductsMainContainer}>
       <div className={styles.searchProductsContainer}>

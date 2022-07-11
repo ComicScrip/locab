@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import styles from "../../styles/AddPricePopUp.module.css";
 import { useQueryClient } from "react-query";
@@ -27,9 +27,6 @@ function AddPricePopUp({ show, setShow }) {
   };
 
   const [formInfos, setFormInfos] = useState(defaultState);
-  const [priceCategories, setPriceCategories] = useState([]);
-
-  console.log(formInfos.oneDay);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,16 +46,6 @@ function AddPricePopUp({ show, setShow }) {
       }, []);
   };
 
-  useEffect(() => {
-    axios
-      .get(`/api/priceCategory`)
-      .then((response) => response.data)
-      .then((data) => {
-        setPriceCategories(data);
-        //   setPriceCategoryId(data[0]?.id);
-      });
-  }, []);
-
   return (
     <div className={`${styles.popup} ${show ? styles.active : ""} `}>
       <div className={`${styles.popup__content} ${show ? styles.active : ""}`}>
@@ -75,23 +62,24 @@ function AddPricePopUp({ show, setShow }) {
             data-cy="add_product_form"
           >
             <div className={styles.productsPrice}>
-              <label htmlFor="price" className={styles.labelPopUp}>
-                Nom
-              </label>
-              <select
-                className={styles.inputPopUp}
-                id="price"
-                type="text"
-                value={formInfos.name}
-                onChange={(e) => setFormInfos.name(e.target.value)}
-                data-cy="add_price_name"
-              >
-                {priceCategories.map((price) => (
-                  <option key={price.id} value={price.id}>
-                    {price.name}
-                  </option>
-                ))}
-              </select>
+              <div className={styles.priceName}>
+                <label htmlFor="price" className={styles.labelPopUp}>
+                  Prix
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id=""
+                  type="text"
+                  value={formInfos.name}
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      name: e.target.value,
+                    }))
+                  }
+                  data-cy="add_price_price"
+                ></input>
+              </div>
             </div>
             <div className={styles.inputLign}>
               <div className={styles.productsMark}>
@@ -103,7 +91,12 @@ function AddPricePopUp({ show, setShow }) {
                   id="brand"
                   type="text"
                   value={formInfos.oneDay}
-                  onChange={(e) => setFormInfos.oneDay(e.target.value)}
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      oneDay: e.target.value,
+                    }))
+                  }
                   data-cy="add_price_one_day"
                 ></input>
               </div>
@@ -117,7 +110,12 @@ function AddPricePopUp({ show, setShow }) {
                   id="brand"
                   type="text"
                   value={formInfos.twoDays}
-                  onChange={(e) => setFormInfos.twoDays(e.target.value)}
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      twoDays: e.target.value,
+                    }))
+                  }
                   data-cy="add_price_two_days"
                 ></input>
               </div>
@@ -131,7 +129,12 @@ function AddPricePopUp({ show, setShow }) {
                   id="brand"
                   type="text"
                   value={formInfos.threeDays}
-                  onChange={(e) => setFormInfos.threeDays(e.target.value)}
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      threeDays: e.target.value,
+                    }))
+                  }
                   data-cy="add_price_three_days"
                 ></input>
               </div>
@@ -144,7 +147,12 @@ function AddPricePopUp({ show, setShow }) {
                   id="brand"
                   type="text"
                   value={formInfos.fourDays}
-                  onChange={(e) => setFormInfos.fourDays(e.target.value)}
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      fourDays: e.target.value,
+                    }))
+                  }
                   data-cy="add_price_four_days"
                 ></input>
               </div>
@@ -157,7 +165,12 @@ function AddPricePopUp({ show, setShow }) {
                   id="brand"
                   type="text"
                   value={formInfos.fiveDays}
-                  onChange={(e) => setFormInfos.fiveDays(e.target.value)}
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      fiveDays: e.target.value,
+                    }))
+                  }
                   data-cy="add_price_five_days"
                 ></input>
               </div>
@@ -171,7 +184,12 @@ function AddPricePopUp({ show, setShow }) {
                   id="brand"
                   type="text"
                   value={formInfos.sixDays}
-                  onChange={(e) => setFormInfos.sixDays(e.target.value)}
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      sixDays: e.target.value,
+                    }))
+                  }
                   data-cy="add_price_six_days"
                 ></input>
               </div>
@@ -185,7 +203,12 @@ function AddPricePopUp({ show, setShow }) {
                   id="brand"
                   type="text"
                   value={formInfos.sevenDays}
-                  onChange={(e) => setFormInfos.sevenDays(e.target.value)}
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      sevenDays: e.target.value,
+                    }))
+                  }
                   data-cy="add_price_seven_days"
                 ></input>
               </div>
@@ -199,7 +222,12 @@ function AddPricePopUp({ show, setShow }) {
                   id="brand"
                   type="text"
                   value={formInfos.eightDays}
-                  onChange={(e) => setFormInfos.eigthDays(e.target.value)}
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      eightDays: e.target.value,
+                    }))
+                  }
                   data-cy="add_price_eight_days"
                 ></input>
               </div>
@@ -207,7 +235,7 @@ function AddPricePopUp({ show, setShow }) {
 
             <div className={styles.inputLign}>
               <div className={styles.productsMark}>
-                <label htmlFor="neindays" className={styles.labelPopUp}>
+                <label htmlFor="ninedays" className={styles.labelPopUp}>
                   9j
                 </label>
                 <input
@@ -215,8 +243,13 @@ function AddPricePopUp({ show, setShow }) {
                   id="brand"
                   type="text"
                   value={formInfos.neinDays}
-                  onChange={(e) => setFormInfos.neinDays(e.target.value)}
-                  data-cy="add_price_nein_days"
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      nineDays: e.target.value,
+                    }))
+                  }
+                  data-cy="add_price_nine_days"
                 ></input>
               </div>
 
@@ -229,7 +262,12 @@ function AddPricePopUp({ show, setShow }) {
                   id="brand"
                   type="text"
                   value={formInfos.tenDays}
-                  onChange={(e) => setFormInfos.tenDays(e.target.value)}
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      tenDays: e.target.value,
+                    }))
+                  }
                   data-cy="add_price_ten_days"
                 ></input>
               </div>
@@ -243,7 +281,12 @@ function AddPricePopUp({ show, setShow }) {
                   id="brand"
                   type="text"
                   value={formInfos.elevenDays}
-                  onChange={(e) => setFormInfos.elevenDays(e.target.value)}
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      elevenDays: e.target.value,
+                    }))
+                  }
                   data-cy="add_price_eleven_days"
                 ></input>
               </div>
@@ -257,7 +300,12 @@ function AddPricePopUp({ show, setShow }) {
                   id="brand"
                   type="text"
                   value={formInfos.twelveDays}
-                  onChange={(e) => setFormInfos.twelveDays(e.target.value)}
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      twelveDays: e.target.value,
+                    }))
+                  }
                   data-cy="add_price_twelve_days"
                 ></input>
               </div>
@@ -271,7 +319,12 @@ function AddPricePopUp({ show, setShow }) {
                   id="brand"
                   type="text"
                   value={formInfos.thirteenDays}
-                  onChange={(e) => setFormInfos.thirteenDays(e.target.value)}
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      thirteenDays: e.target.value,
+                    }))
+                  }
                   data-cy="add_price_thirteen_days"
                 ></input>
               </div>
@@ -285,7 +338,12 @@ function AddPricePopUp({ show, setShow }) {
                   id="brand"
                   type="text"
                   value={formInfos.fourteenDays}
-                  onChange={(e) => setFormInfos.fourteenDays(e.target.value)}
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      fourteenDays: e.target.value,
+                    }))
+                  }
                   data-cy="add_price_fourteen_days"
                 ></input>
               </div>
@@ -298,7 +356,12 @@ function AddPricePopUp({ show, setShow }) {
                   id="brand"
                   type="text"
                   value={formInfos.fifteenDays}
-                  onChange={(e) => setFormInfos.fifteenDays(e.target.value)}
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      fifteenDays: e.target.value,
+                    }))
+                  }
                   data-cy="add_price_fifteen_days"
                 ></input>
               </div>
@@ -312,7 +375,12 @@ function AddPricePopUp({ show, setShow }) {
                   id="brand"
                   type="text"
                   value={formInfos.sixteenDays}
-                  onChange={(e) => setFormInfos.sixteenDays(e.target.value)}
+                  onChange={(e) =>
+                    setFormInfos((oldInfo) => ({
+                      ...oldInfo,
+                      sixteenDays: e.target.value,
+                    }))
+                  }
                   data-cy="add_price_sixteen_day"
                 ></input>
               </div>
