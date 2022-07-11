@@ -2,20 +2,20 @@ import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import qs from "query-string";
+import { useSession } from "next-auth/react";
 
 export const SelectCartContext = createContext();
 
 export const SelectCartProvider = ({ children }) => {
-  const [productSampleList, setProductSampleList] = useState([]);
   const [selectProducts, setSelectProducts] = useState([]);
   const [productList, setProductList] = useState([]);
-
-  const [customerId, setCustomerId] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [productSampleId, setProductSampleId] = useState("");
+  const [customerId, setCustomerId] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   const router = useRouter();
-  const { city = "Lyon", showUnavailable = true } = router.query;
+  const { city = "", showUnavailable = true } = router.query;
+
+  const { status } = useSession();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -29,7 +29,27 @@ export const SelectCartProvider = ({ children }) => {
       });
   }, [router.query]);
 
-  console.log(qs.stringify(router.query));
+  useEffect(() => {
+    if (status === "authenticated") {
+      axios
+        .get(`/api/currentUserProfile`)
+        .then((response) => response.data)
+        .then((data) => {
+          setCustomerId(data);
+        });
+    }
+  }, [status]);
+
+  useEffect(() => {
+    if (selectProducts.length > 0) {
+      axios
+        .get(`/api/cartItems`)
+        .then((response) => response.data)
+        .then((data) => {
+          setCartItems(data);
+        });
+    }
+  }, [selectProducts.length]);
 
   const setSearchParams = (newSearch) => {
     const queryString = qs.stringify(
@@ -39,45 +59,33 @@ export const SelectCartProvider = ({ children }) => {
     router.push(`/reservation${queryString ? "?" : ""}${queryString}`);
   };
 
-  useEffect(() => {
-    axios
-      .get(`/api/productSamples`)
-      .then((response) => response.data)
-      .then((data) => {
-        setProductSampleList(data);
-      });
-  }, []);
-
   const onAdd = (product) => {
     const exist = selectProducts.find((x) => x.id === product.id);
-    if (!exist) {
-      setSelectProducts([...selectProducts, { ...product, quantity: 1 }]);
-    } else {
-      setSelectProducts(selectProducts.filter((x) => x.id !== product.id));
-    }
-
-    const existProductSample = productSampleList.find(
-      (x) => x.productId === product.id
+    const cartItemToDelete = cartItems.find(
+      (x) => x.productSampleId === product.productSamples[0].id
     );
-    const customerIdNumber = parseInt(customerId);
-    const quantityNumber = parseInt(quantity);
-    const productSampleIdNumber = parseInt(productSampleId);
 
-    if (existProductSample)
+    if (!exist) {
       axios
         .post(`/api/cartItems`, {
-          customerId: customerIdNumber,
-          quantity: quantityNumber,
-          productSampleId: productSampleIdNumber,
-        })
-        .then(() => {
-          setCustomerId("");
-          setQuantity("");
-          setProductSampleId("");
+          customerId: customerId.id,
+          quantity: 1,
+          productSampleId: product.productSamples[0].id,
         })
         .catch((err) => {
           console.error(err);
         }, []);
+
+      setSelectProducts([...selectProducts, { ...product, quantity: 1 }]);
+    } else {
+      const id = Object.values(cartItemToDelete).at(0);
+
+      axios
+        .delete(`/api/cartItems/${id}`)
+        .catch((err) => console.error(err.response.status));
+
+      setSelectProducts(selectProducts.filter((x) => x.id !== product.id));
+    }
   };
 
   const onUpdate = (id, newQuantity) => {

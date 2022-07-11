@@ -1,6 +1,6 @@
 import base from "../../../middlewares/common";
 
-import { createCartItem } from "../../../models/cartItem";
+import { createCartItem, findAllCartItems } from "../../../models/cartItem";
 
 async function handlePostCartItem(req, res) {
   const { customerId, quantity, productSampleId } = req.body;
@@ -13,4 +13,8 @@ async function handlePostCartItem(req, res) {
   );
 }
 
-export default base().post(handlePostCartItem);
+async function handleGetCartItems(req, res) {
+  res.send(await findAllCartItems());
+}
+
+export default base().post(handlePostCartItem).get(handleGetCartItems);

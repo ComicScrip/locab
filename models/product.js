@@ -18,8 +18,11 @@ module.exports.findAllProductsAvailable = ({ city }) =>
         },
       },
       productSamples: {
+        orderBy: {
+          lastDateOrder: "asc",
+        },
         select: {
-          referenceNumber: true,
+          id: true,
         },
       },
       pictures: {

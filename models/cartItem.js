@@ -19,7 +19,7 @@ module.exports.deleteCartItem = (id) => {
 };
 
 module.exports.patchCartItem = async (data) => {
-  return await db.cartItem
+  return await db.cartItems
     .update({
       where: { id: data.id },
       data: {
@@ -29,8 +29,4 @@ module.exports.patchCartItem = async (data) => {
     .catch(() => false);
 };
 
-module.exports.getCartItem = (id) => {
-  return db.cartItem.findUnique({
-    where: { id: parseInt(id, 10) },
-  });
-};
+module.exports.findAllCartItems = () => db.cartItems.findMany();

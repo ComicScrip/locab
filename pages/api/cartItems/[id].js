@@ -1,9 +1,5 @@
 import base from "../../../middlewares/common";
-const {
-  deleteCartItem,
-  patchCartItem,
-  getCartItem,
-} = require("../../../models/cartItem");
+const { deleteCartItem, patchCartItem } = require("../../../models/cartItem");
 
 async function handleDeleteCartItem(req, res) {
   const cartItemToDelete = await deleteCartItem(req.query.id);
@@ -15,12 +11,4 @@ const handlePatchCartItem = async (req, res) => {
   return res.status(201).send(cartItemToPatch);
 };
 
-const handleGetCartItem = async (req, res) => {
-  const cartItemToGet = await getCartItem(req.query);
-  return res.status(201).send(cartItemToGet);
-};
-
-export default base()
-  .delete(handleDeleteCartItem)
-  .patch(handlePatchCartItem)
-  .get(handleGetCartItem);
+export default base().delete(handleDeleteCartItem).patch(handlePatchCartItem);

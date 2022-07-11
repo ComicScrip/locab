@@ -143,11 +143,22 @@ async function seed() {
   const sample_02 = await db.productSample.create({
     data: {
       referenceNumber: "CH-002",
-      dateOfPurchase: new Date("2022-04-23 00:00:00"),
+      dateOfPurchase: new Date("2022-04-23T00:00:00"),
       condition: "Comme neuf",
-      lastDateOrder: new Date("2022-05-21T00:00:00"),
+      lastDateOrder: new Date("2022-05-18T00:00:00"),
       productId: poussette.id,
       premiseId: premise_02.id,
+    },
+  });
+
+  await db.productSample.create({
+    data: {
+      referenceNumber: "CH-003",
+      dateOfPurchase: new Date("2022-05-21T00:00:00"),
+      condition: "Neuf",
+      lastDateOrder: new Date("2022-05-10T00:00:00"),
+      productId: chanceliere.id,
+      premiseId: premise_01.id,
     },
   });
 
@@ -223,6 +234,8 @@ async function seed() {
       customerId: visitor.id,
     },
   });
+
+  await db.cartItems.deleteMany();
 }
 
 seed();
