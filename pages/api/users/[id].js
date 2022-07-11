@@ -15,8 +15,8 @@ async function handleDelete(req, res) {
   return res.status(204).send();
 }
 const handlePatch = async (req, res) => {
-  const productToPatch = await patchOneUser(req.query.id, req.body);
-  return res.status(200).send(productToPatch);
+  const userToPatch = await patchOneUser(req.query.id, req.body);
+  return res.status(200).send(userToPatch);
 };
 
 export default base()
