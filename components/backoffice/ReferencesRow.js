@@ -2,6 +2,7 @@ import styles from "../../styles/BackProduits.module.css";
 import ValidateDelete from "../ValidateDelete";
 
 import axios from "axios";
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { useToasts } from "react-toast-notifications";
@@ -47,8 +48,15 @@ export default function ReferencesRow({ backReference }) {
       <td>{backReference.premise.city}</td>
       <td>{backReference.condition}</td>
       <td>
-        <ul>
-          <li className={styles.modifyButton}>Modifier</li>
+        <div>
+          <Link
+            className={styles.modifyButton}
+            href={`/admin/references/edit/${id}`}
+          >
+            <a>Modifier</a>
+          </Link>
+        </div>
+        <div>
           <button
             className={styles.suppButton}
             onClick={() => setDeleteContainer(!deleteContainer)}
@@ -56,7 +64,7 @@ export default function ReferencesRow({ backReference }) {
           >
             Supprimer
           </button>
-        </ul>
+        </div>
       </td>
     </tr>
   );

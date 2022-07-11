@@ -24,7 +24,13 @@ describe("admin references - back office", () => {
   });
 
   it("admin references - can delete a produce", () => {
-    cy.get('[data-cy="add_product_button_delete"]').click();
+    cy.get('[data-cy="add_product_button_delete"]').first().click();
+    cy.get('[data-cy="add_product_button_delete_confirmation"]').click();
+    cy.contains("CH-001").should("not.exist");
+  });
+
+  it.only("admin references - can update a produce", () => {
+    cy.get('[data-cy="add_product_button_delete"]').first().click();
     cy.get('[data-cy="add_product_button_delete_confirmation"]').click();
     cy.contains("CH-001").should("not.exist");
   });
