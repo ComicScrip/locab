@@ -3,7 +3,7 @@ import axios from "axios";
 import styles from "../styles/AddProductsPopUp.module.css";
 import { useQueryClient } from "react-query";
 
-function AddReferencePopUp({ show, setShow }) {
+function AddProductSamplePopUp({ show, setShow }) {
   const queryClient = useQueryClient();
 
   const [reference, setReference] = useState("");
@@ -20,12 +20,13 @@ function AddReferencePopUp({ show, setShow }) {
     e.preventDefault();
     const productIdNumber = parseInt(productId);
     const premiseIdNumber = parseInt(premiseId);
+    const purchaseDateNewFormat = new Date(purchaseDate);
     axios
-      .post(`/api/references`, {
+      .post(`/api/productSample`, {
         referenceNumber: reference,
         productId: productIdNumber,
         condition,
-        dateOfPurchase: purchaseDate,
+        dateOfPurchase: purchaseDateNewFormat,
         comment,
         premiseId: premiseIdNumber,
       })
@@ -39,7 +40,7 @@ function AddReferencePopUp({ show, setShow }) {
       })
       .then(() => {
         setShow(false);
-        queryClient.invalidateQueries("references");
+        queryClient.invalidateQueries("productSample");
       })
       .catch((err) => {
         console.error(err);
@@ -140,7 +141,7 @@ function AddReferencePopUp({ show, setShow }) {
                   type="date"
                   value={purchaseDate}
                   onChange={(e) => setPurchaseDate(e.target.value)}
-                  data-cy="add_reference_purchatedate   "
+                  data-cy="add_reference_purchatedate"
                 ></input>
               </div>
             </div>
@@ -156,7 +157,7 @@ function AddReferencePopUp({ show, setShow }) {
                   type="text"
                   value={premiseId}
                   onChange={(e) => setPremiseId(e.target.value)}
-                  data-cy="add_reference_product"
+                  data-cy="add_reference_premise"
                 >
                   <option value="" selected disabled>
                     Lieu
@@ -200,4 +201,4 @@ function AddReferencePopUp({ show, setShow }) {
   );
 }
 
-export default AddReferencePopUp;
+export default AddProductSamplePopUp;

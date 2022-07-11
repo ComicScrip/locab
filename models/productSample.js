@@ -1,6 +1,6 @@
 const db = require("../db");
 
-module.exports.findAllReferences = ({ search }) => {
+module.exports.findAllProductSample = ({ search }) => {
   return db.productSample.findMany({
     include: {
       product: {
@@ -61,6 +61,14 @@ module.exports.createProductSample = ({
       dateOfPurchase,
       comment,
       premiseId,
+    },
+  });
+};
+
+module.exports.deleteOneProductSample = (id) => {
+  return db.productSample.delete({
+    where: {
+      id: parseInt(id, 10),
     },
   });
 };

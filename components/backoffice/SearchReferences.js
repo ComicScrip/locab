@@ -5,7 +5,7 @@ import { BsPlusCircle } from "react-icons/bs";
 import styles from "../../styles/BackProduits.module.css";
 import ReferencesRow from "./ReferencesRow";
 
-import AddReferencePopUp from "../../components/AddReferencePopUp";
+import AddProductSamplePopUp from "../../components/AddProductSamplePopUp";
 
 export default function SearchReferences() {
   const [searchValue, setSearchValue] = useState("");
@@ -16,10 +16,10 @@ export default function SearchReferences() {
   };
 
   const { data: referencesList = [] } = useQuery(
-    ["references", { search: searchValue }],
+    ["productSample", { search: searchValue }],
     () => {
       return axios
-        .get(`/api/references?search=${searchValue}`)
+        .get(`/api/productSample?search=${searchValue}`)
         .then((response) => response.data)
         .catch(console.error);
     }
@@ -43,7 +43,7 @@ export default function SearchReferences() {
             data-cy="add_product_button_add"
           />
 
-          <AddReferencePopUp show={showPopup} setShow={setShowPopup} />
+          <AddProductSamplePopUp show={showPopup} setShow={setShowPopup} />
         </section>
         <section className={styles.tableProductsContainer}>
           <table className={styles.tableProducts}>

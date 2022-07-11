@@ -1,11 +1,11 @@
 import base from "../../../middlewares/common";
 import {
   createProductSample,
-  findAllReferences,
-} from "../../../models/reference";
+  findAllProductSample,
+} from "../../../models/productSample";
 
 async function handleGet(req, res) {
-  res.send(await findAllReferences({ search: req.query.search }));
+  res.send(await findAllProductSample({ search: req.query.search }));
 }
 
 async function handlePost(req, res) {
