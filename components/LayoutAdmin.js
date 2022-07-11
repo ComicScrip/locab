@@ -50,9 +50,13 @@ export default function LayoutAdmin({ children, pageTitle }) {
                   </a>
                 </Link>
               </li>
-              <li className={styles.eltNavBack}>
-                <AiFillEuroCircle className={styles.icon} />
-                Prix
+              <li className={`${styles.eltNavBack} ${styles.eltNavBackActif}`}>
+                <Link href="/admin/prix">
+                  <a>
+                    <AiFillEuroCircle className={styles.icon} />
+                    Prix
+                  </a>
+                </Link>
               </li>
               <li className={styles.eltNavBack}>
                 <FaPercentage className={styles.icon} />
