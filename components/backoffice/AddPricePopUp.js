@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "../../styles/AddProductsPopUp.module.css";
+import styles from "../../styles/AddPricePopUp.module.css";
 import { useQueryClient } from "react-query";
 
 function AddPricePopUp({ show, setShow }) {
@@ -28,6 +28,8 @@ function AddPricePopUp({ show, setShow }) {
 
   const [formInfos, setFormInfos] = useState(defaultState);
   const [priceCategories, setPriceCategories] = useState([]);
+
+  console.log(formInfos.oneDay);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -66,33 +68,32 @@ function AddPricePopUp({ show, setShow }) {
           </span>
         )}
         <div className={styles.formPopup}>
-          <h1 className={styles.titlePopupProducts}>Ajouter un produit</h1>
+          <h1 className={styles.titlePopupProducts}>Ajouter un prix</h1>
           <form
             className={styles.formPopUpAddProducts}
             onSubmit={handleSubmit}
             data-cy="add_product_form"
           >
+            <div className={styles.productsPrice}>
+              <label htmlFor="price" className={styles.labelPopUp}>
+                Nom
+              </label>
+              <select
+                className={styles.inputPopUp}
+                id="price"
+                type="text"
+                value={formInfos.name}
+                onChange={(e) => setFormInfos.name(e.target.value)}
+                data-cy="add_price_name"
+              >
+                {priceCategories.map((price) => (
+                  <option key={price.id} value={price.id}>
+                    {price.name}
+                  </option>
+                ))}
+              </select>
+            </div>
             <div className={styles.inputLign}>
-              <div className={styles.productsPrice}>
-                <label htmlFor="price" className={styles.labelPopUp}>
-                  Nom
-                </label>
-                <select
-                  className={styles.inputPopUp}
-                  id="price"
-                  type="text"
-                  value={formInfos.name}
-                  onChange={(e) => setFormInfos.name(e.target.value)}
-                  data-cy="add_price_name"
-                >
-                  {priceCategories.map((price) => (
-                    <option key={price.id} value={price.id}>
-                      {price.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
               <div className={styles.productsMark}>
                 <label htmlFor="oneday" className={styles.labelPopUp}>
                   1j
@@ -202,7 +203,9 @@ function AddPricePopUp({ show, setShow }) {
                   data-cy="add_price_eight_days"
                 ></input>
               </div>
+            </div>
 
+            <div className={styles.inputLign}>
               <div className={styles.productsMark}>
                 <label htmlFor="neindays" className={styles.labelPopUp}>
                   9j
@@ -314,6 +317,7 @@ function AddPricePopUp({ show, setShow }) {
                 ></input>
               </div>
             </div>
+
             <div className={styles.btnPopupDiv}>
               <button
                 type="submit"
