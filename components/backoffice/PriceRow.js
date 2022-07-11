@@ -46,11 +46,9 @@ export default function PriceRow({ backProduct }) {
       ) : null}
 
       <tr className={styles.line}>
-        <td></td>
         <td>{backProduct.name}</td>
-        <td>{backProduct.priceC}</td>
-        {/* <td>{backProduct.stock}</td> */}
-        <td>{backProduct.brand}</td>
+        <td>{backProduct.oneDay}</td>
+        <td>{backProduct.sixteenDays}</td>
         <td>
           <div>
             <Link

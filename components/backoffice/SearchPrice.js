@@ -47,7 +47,6 @@ export default function SearchPrice() {
           <table className={styles.tableProducts}>
             <thead>
               <tr className={styles.line}>
-                <th></th>
                 <th>Prix</th>
                 <th>Prix pour 1 jour</th>
                 <th>Prix pour 16 jours</th>
