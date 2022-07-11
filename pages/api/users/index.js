@@ -15,8 +15,8 @@ async function handlePost(req, res) {
 
   const {
     id,
-    firstname,
-    lastname,
+    firstName,
+    lastName,
     address,
     zip,
     city,
@@ -24,8 +24,8 @@ async function handlePost(req, res) {
     hashedPassword,
     email,
   } = await createUser({
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     address: req.body.address,
     zip: req.body.zip,
     city: req.body.city,
@@ -36,8 +36,8 @@ async function handlePost(req, res) {
 
   res.status(201).send({
     id,
-    lastname,
-    firstname,
+    lastName,
+    firstName,
     address,
     zip,
     city,

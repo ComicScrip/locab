@@ -104,6 +104,15 @@ module.exports.getOneUser = (id) => {
     where: { id: parseInt(id, 10) },
   });
 };
+
+module.exports.deleteOneUser = (id) => {
+  return db.user.delete({
+    where: {
+      id: parseInt(id, 10),
+    },
+  });
+};
+
 module.exports.patchOneUser = async (data) => {
   return await db.user
     .update({
