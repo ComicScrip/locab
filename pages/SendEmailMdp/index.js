@@ -8,7 +8,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
 export default function ResetMdp() {
-  const { t } = useTranslation("SendEmailMdp");
+  const { t } = useTranslation("sendEmailMdp");
   const [email, setEmail] = useState("");
   const [showform, setShowForm] = useState(true);
   const [showResultMessage, setShowResultMessage] = useState(false);
@@ -37,11 +37,11 @@ export default function ResetMdp() {
       <main>
         {showform && (
           <>
-            <h4 className={styles.title}>{t("Réinitialisez votre mot de passe")}</h4>
+            <h4 className={styles.title}>{t("Réinitialisezvotremotdepasse")}</h4>
             <div className={styles.containerGlobal}>
               <div className={styles.forms}>
                 <form onSubmit={handleSubmit}>
-                  <label className={styles.label}> {t("Entrez votre email :")}</label>
+                  <label className={styles.label}> {t("Entrez votre email:")}</label>
                   <input
                     type="email"
                     name="emailreset"
@@ -60,15 +60,15 @@ export default function ResetMdp() {
         )}
         {showResultMessage && (
           <div className={styles.divMessage}>
-            <h2 className={styles.title1}>{t("Vérifier votre boite email")}</h2>
+            <h2 className={styles.title1}>{t("Vérifiervotreboiteemail")}</h2>
             <span>
               <Toaster position="top-center" reverseOrder={true} />
             </span>
-            <p className={styles.paragraphe1}> {t("    Si votre email existe dans notre base de données, vous allez recevoir un email vous expliquant les étapes à suivre pour réinitialiser votre mot de passe.")}
+            <p className={styles.paragraphe1}> {t("Sivotreemailexistedansnotrebasededonnées,vousallezrecevoirunemailvousexpliquantlesétapesàsuivrepourréinitialiservotremotdepasse.")}
             </p>
             <div className={styles.email}>{email}</div>
             <p className={styles.paragraphe1}>
-            {t("  Si vous ne voyez pas l'e-mail, vérifiez dans vos spams")}
+            {t("Sivousnevoyezpasl'e-mail,vérifiezdansvosspams")}
             </p>
             <button
               className={styles.button1}
@@ -76,7 +76,7 @@ export default function ResetMdp() {
                 setShowForm(!showform);
                 setShowResultMessage(!showResultMessage);
               }}
-            >{t("Je veux un nouveau lien ")}
+            >{t("Jeveuxunnouveaulien ")}
             </button>
           </div>
         )}
@@ -84,22 +84,21 @@ export default function ResetMdp() {
     </Layout>
   );
 }
-export async function getServerSideProps(context) {
+export async function getStaticProps({ locale }) {
   return {
     props: {
-      csrfToken: await getCsrfTokenAndSetCookies(context),
-      ...(await serverSideTranslations(context.locale, [
+      ...(await serverSideTranslations(locale, [
         "banner",
-        "footer",
-        "header",
         "cart",
-        "signIn",
+        "header",
         "home",
         "connection",
         "profile",
         "common",
-        "NewPassword",
-        "SendEmailResetPassword",
+        "signIn",
+        "newPassword",
+        "sendEmailResetPassword",
+        "footer",
         "reservation",
       ])),
     },
