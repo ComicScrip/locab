@@ -4,6 +4,8 @@ import {
   createPrice,
   searchPrice,
 } from "../../../models/priceCategory";
+import requireCurrentUser from "../../../middlewares/requireCurrentUser";
+import requireAdmin from "../../../middlewares/requireAdmin";
 
 async function handleGetPriceCatgory(req, res) {
   res.send(await getPriceCategory());
@@ -57,6 +59,8 @@ async function handlePostPrice(req, res) {
 }
 
 export default base()
+  .use(requireCurrentUser)
+  .use(requireAdmin)
   .get(handleGetPriceCatgory)
   .post(handlePostPrice)
   .get(handleGetPrice);
