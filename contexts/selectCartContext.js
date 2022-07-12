@@ -2,20 +2,16 @@ import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import qs from "query-string";
-import { useSession } from "next-auth/react";
 
 export const SelectCartContext = createContext();
 
 export const SelectCartProvider = ({ children }) => {
   const [selectProducts, setSelectProducts] = useState([]);
   const [productList, setProductList] = useState([]);
-  const [customerId, setCustomerId] = useState([]);
   const [cartItems, setCartItems] = useState([]);
 
   const router = useRouter();
-  const { city = "", showUnavailable = true } = router.query;
-
-  const { status } = useSession();
+  const { city, showUnavailable } = router.query;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -28,17 +24,6 @@ export const SelectCartProvider = ({ children }) => {
         setProductList(data);
       });
   }, [router.query]);
-
-  useEffect(() => {
-    if (status === "authenticated") {
-      axios
-        .get(`/api/currentUserProfile`)
-        .then((response) => response.data)
-        .then((data) => {
-          setCustomerId(data);
-        });
-    }
-  }, [status]);
 
   useEffect(() => {
     if (selectProducts.length > 0) {
@@ -66,15 +51,9 @@ export const SelectCartProvider = ({ children }) => {
     );
 
     if (!exist) {
-      axios
-        .post(`/api/cartItems`, {
-          customerId: customerId.id,
-          quantity: 1,
-          productSampleId: product.productSamples[0].id,
-        })
-        .catch((err) => {
-          console.error(err);
-        }, []);
+      axios.post(`/api/cartItems?productId=${product.id}`).catch((err) => {
+        console.error(err);
+      }, []);
 
       setSelectProducts([...selectProducts, { ...product, quantity: 1 }]);
     } else {

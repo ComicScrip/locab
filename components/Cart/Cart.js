@@ -19,15 +19,14 @@ export default function Cart() {
     0
   );
 
-  let cautionArray = [];
+  let depositArray = [];
+  let deposit = 0;
   for (let i = 0; i < selectProducts.length; i++) {
-    cautionArray.push(selectProducts[i].caution);
+    depositArray.push(selectProducts[i].caution);
   }
-  cautionArray.sort((a, b) => {
-    return b - a;
-  });
-
-  console.log(cautionArray);
+  if (depositArray.length > 0) {
+    deposit = Math.max(...depositArray);
+  }
 
   return (
     <div className={styles.mainContainer}>
@@ -98,7 +97,7 @@ export default function Cart() {
             <ErrorIcon />
           </IconButton>
         </Tooltip>
-        <p>{cautionArray[0]}</p>
+        <p>{deposit}</p>
       </div>
 
       <div className={styles.validerContainer}>

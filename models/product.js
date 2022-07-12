@@ -75,3 +75,16 @@ module.exports.findAllProductsUnavailable = ({ city }) =>
       },
     },
   });
+
+module.exports.findAllProductSamples = ({ productId }) =>
+  db.productSample.findMany({
+    where: {
+      productId: parseInt(productId, 10),
+    },
+    orderBy: {
+      lastDateOrder: "asc",
+    },
+    select: {
+      id: true,
+    },
+  });

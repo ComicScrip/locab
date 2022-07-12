@@ -15,8 +15,7 @@ export default function Products() {
   const handleCheckAvailability = () => {
     if (showUnavailable === "true") {
       setSearchParams({ showUnavailable: false });
-    }
-    if (showUnavailable === "false") {
+    } else {
       setSearchParams({ showUnavailable: true });
     }
   };
