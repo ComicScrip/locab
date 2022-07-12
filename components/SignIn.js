@@ -51,7 +51,7 @@ export default function SignIn({ csrfToken }) {
         )}
         <Link href="/SendEmailMdp" className={styles.logo}>
           <a>
-            <p className={styles.forgetPassWord}>Mot de passe oublié ?</p>
+            <p className={styles.forgetPassWord}>{t("motdepasseoublié")}</p>
           </a>
         </Link>
 
