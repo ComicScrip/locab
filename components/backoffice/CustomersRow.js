@@ -55,7 +55,7 @@ export default function CustomersRow({ backCustomer }) {
             <button
               className={styles.suppBtn}
               onClick={() => setDeleteContainer(!deleteContainer)}
-              data-cy="add_product_button_delete"
+              data-cy="add_customer_button_delete"
             >
               Supprimer
             </button>

@@ -32,6 +32,7 @@ export default function SearchCustomers() {
             placeholder="Nom Prénom"
             value={searchValue}
             onChange={(event) => setSearchValue(event.target.value)}
+            data-cy="input-search-back-customer"
           />
           <BsPlusCircle
             onClick={handleClick}

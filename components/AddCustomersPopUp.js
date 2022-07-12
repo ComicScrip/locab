@@ -68,6 +68,7 @@ function AddCustomersPopUp({ show, setShow }) {
                   type="text"
                   value={lastname}
                   onChange={(e) => setLastName(e.target.value)}
+                  data-cy="add_customer_lastname"
                 ></input>
                 <label htmlFor="prénom" className={styles.labelPopUp}>
                   Prénom
@@ -78,6 +79,7 @@ function AddCustomersPopUp({ show, setShow }) {
                   type="text"
                   value={firstname}
                   onChange={(e) => setFirstName(e.target.value)}
+                  data-cy="add_customer_firstname"
                 ></input>
               </div>
               <div className={styles.productsMark}>
@@ -90,6 +92,7 @@ function AddCustomersPopUp({ show, setShow }) {
                   type="text"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  data-cy="add_customer_email"
                 ></input>
                 <label htmlFor="telephone" className={styles.labelPopUp}>
                   Téléphone
@@ -100,6 +103,7 @@ function AddCustomersPopUp({ show, setShow }) {
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  data-cy="add_customer_phone"
                 ></input>
               </div>
             </div>
@@ -114,6 +118,7 @@ function AddCustomersPopUp({ show, setShow }) {
                   type="text"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
+                  data-cy="add_customer_city"
                 ></input>
                 <label htmlFor="adresse" className={styles.labelPopUp}>
                   Adresse
@@ -124,6 +129,7 @@ function AddCustomersPopUp({ show, setShow }) {
                   type="text"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
+                  data-cy="add_customer_address"
                 ></input>
                 <label htmlFor="zip" className={styles.labelPopUp}>
                   Code postal
@@ -134,6 +140,7 @@ function AddCustomersPopUp({ show, setShow }) {
                   type="text"
                   value={zip}
                   onChange={(e) => setZip(e.target.value)}
+                  data-cy="add_customer_zip"
                 ></input>
               </div>
               <div>
@@ -146,6 +153,7 @@ function AddCustomersPopUp({ show, setShow }) {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  data-cy="add_customer_password"
                 ></input>
               </div>
             </div>

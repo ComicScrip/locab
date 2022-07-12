@@ -47,13 +47,13 @@ const EditCustomer = () => {
                 </label>
                 <input
                   className={styles.inputPopUp}
-                  id="nom"
+                  id="firstname"
                   type="text"
                   value={user.firstname || ""}
                   onChange={(e) =>
                     setUser({ ...user, firstname: e.target.value })
                   }
-                  data-cy="modify-product-name"
+                  data-cy="modify-customer-firstname"
                 ></input>
               </div>
             </div>
@@ -84,7 +84,11 @@ const EditCustomer = () => {
               ></input>
             </div>
             <div className={styles.btnPopupDiv}>
-              <button type="submit" className={styles.buttonPopUp}>
+              <button
+                type="submit"
+                className={styles.buttonPopUp}
+                data-cy="modify-customer-button"
+              >
                 Modifier
               </button>
             </div>
