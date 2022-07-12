@@ -41,7 +41,7 @@ export default function ResetMdp() {
             <div className={styles.containerGlobal}>
               <div className={styles.forms}>
                 <form onSubmit={handleSubmit}>
-                  <label htlmFor="emailreset" className={styles.label}>{t("Entrezunemail")}</label>
+                  <label htmlFor="emailreset" className={styles.label}>{t("Entrezunemail")}</label>
                   <input
                     type="email"
                     name="emailreset"
