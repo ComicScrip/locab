@@ -11,7 +11,7 @@ const EditPrice = () => {
 
   useEffect(() => {
     axios
-      .get(`/api/price/${id}`)
+      .get(`/api/priceCategory/${id}`)
       .then((res) => {
         setPrice(res.data);
       })
@@ -21,7 +21,7 @@ const EditPrice = () => {
   const handlePatchPrice = (e) => {
     e.preventDefault();
     axios
-      .patch(`/api/price/${id}`, {
+      .patch(`/api/priceCategory/${id}`, {
         name: price.name,
         oneDay: price.oneDay,
         twoDays: price.twoDays,

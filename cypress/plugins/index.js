@@ -3,7 +3,7 @@ const User = require("../../models/user");
 const db = require("../../db");
 const { hashPassword } = require("../../models/user");
 const Product = require("../../models/product");
-const PriceCategory = require("../../models/price");
+const PriceCategory = require("../../models/priceCategory");
 const Premise = require("../../models/premise");
 
 // ***********************************************************

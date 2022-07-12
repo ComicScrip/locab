@@ -31,7 +31,7 @@ function AddPricePopUp({ show, setShow }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`/api/price`, {
+      .post(`/api/priceCategory`, {
         ...formInfos,
       })
       .then(() => {

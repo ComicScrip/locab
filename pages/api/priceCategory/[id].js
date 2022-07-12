@@ -2,7 +2,7 @@ const {
   deleteOnePrice,
   patchOnePrice,
   getOnePrice,
-} = require("../../../models/price");
+} = require("../../../models/priceCategory");
 import base from "../../../middlewares/common";
 import requireCurrentUser from "../../../middlewares/requireCurrentUser";
 import requireAdmin from "../../../middlewares/requireAdmin";
