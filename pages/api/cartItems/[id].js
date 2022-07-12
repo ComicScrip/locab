@@ -7,7 +7,7 @@ async function handleDeleteCartItem(req, res) {
 }
 
 const handlePatchCartItem = async (req, res) => {
-  const cartItemToPatch = await patchCartItem(req.body);
+  const cartItemToPatch = await patchCartItem(req.query.id, req.body);
   return res.status(201).send(cartItemToPatch);
 };
 

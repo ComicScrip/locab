@@ -88,31 +88,63 @@ export const SelectCartProvider = ({ children }) => {
     }
   };
 
-  const onUpdate = (id, newQuantity) => {
+  const onUpdate = (productId, productSampleId, newQuantity) => {
+    const cartItemToDelete = cartItems.find(
+      (x) => x.productSampleId === productSampleId
+    );
+    const id = Object.values(cartItemToDelete).at(0);
+
     let quantity = parseInt(newQuantity, 10);
     if (isNaN(quantity)) {
       quantity = 0;
     }
+
+    axios
+      .patch(`/api/cartItems/${id}`, {
+        quantity: quantity,
+      })
+      .catch(console.error);
+
     setSelectProducts((prevList) =>
       prevList.map((product) =>
-        product.id === id ? { ...product, quantity } : product
+        product.id === productId ? { ...product, quantity } : product
       )
     );
   };
 
-  const onValidate = (id, newQuantity) => {
+  const onValidate = (productId, productSampleId, newQuantity) => {
+    const cartItemToDelete = cartItems.find(
+      (x) => x.productSampleId === productSampleId
+    );
+    const id = Object.values(cartItemToDelete).at(0);
+
     if (newQuantity === "") {
+      axios
+        .patch(`/api/cartItems/${id}`, {
+          quantity: 1,
+        })
+        .catch(console.error);
+
       setSelectProducts((prevList) =>
         prevList.map((product) =>
-          product.id === id ? { ...product, quantity: 1 } : product
+          product.id === productId ? { ...product, quantity: 1 } : product
         )
       );
     }
   };
 
-  const onDelete = (id) => {
+  const onDelete = (productId, productSampleId) => {
+    const cartItemToDelete = cartItems.find(
+      (x) => x.productSampleId === productSampleId
+    );
+    const id = Object.values(cartItemToDelete).at(0);
+
+    axios
+      .delete(`/api/cartItems/${id}`)
+      .catch((err) => console.error(err.response.status));
+
     setSelectProducts((prevList) =>
-      prevList.filter((product) => product.id !== id)
+      prevList.filter((product) => product.id !== productId)
     );
   };
 

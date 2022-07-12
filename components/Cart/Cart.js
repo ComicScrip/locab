@@ -47,13 +47,25 @@ export default function Cart() {
                 type="number"
                 min="0"
                 value={product.quantity || ""}
-                onChange={(event) => onUpdate(product.id, event.target.value)}
-                onBlur={(e) => onValidate(product.id, e.target.value)}
+                onChange={(event) =>
+                  onUpdate(
+                    product.id,
+                    product.productSamples[0].id,
+                    event.target.value
+                  )
+                }
+                onBlur={(e) =>
+                  onValidate(
+                    product.id,
+                    product.productSamples[0].id,
+                    e.target.value
+                  )
+                }
               />
             </div>
             <IconButton
               aria-label="delete"
-              onClick={() => onDelete(product.id)}
+              onClick={() => onDelete(product.id, product.productSamples[0].id)}
             >
               <DeleteIcon />
             </IconButton>

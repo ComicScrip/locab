@@ -18,10 +18,10 @@ module.exports.deleteCartItem = (id) => {
   });
 };
 
-module.exports.patchCartItem = async (data) => {
+module.exports.patchCartItem = async (id, data) => {
   return await db.cartItems
     .update({
-      where: { id: data.id },
+      where: { id: parseInt(id, 10) },
       data: {
         quantity: data.quantity,
       },
