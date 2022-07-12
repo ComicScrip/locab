@@ -16,10 +16,10 @@ export default function SearchReferences() {
   };
 
   const { data: referencesList = [] } = useQuery(
-    ["productSample", { search: searchValue }],
+    ["productSamples", { search: searchValue }],
     () => {
       return axios
-        .get(`/api/productSample?search=${searchValue}`)
+        .get(`/api/productSamples?search=${searchValue}`)
         .then((response) => response.data)
         .catch(console.error);
     }

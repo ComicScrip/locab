@@ -4,6 +4,9 @@ import {
   findAllProductSample,
 } from "../../../models/productSample";
 
+import requireCurrentUser from "../../../middlewares/requireCurrentUser";
+import requireAdmin from "../../../middlewares/requireAdmin";
+
 async function handleGet(req, res) {
   res.send(await findAllProductSample({ search: req.query.search }));
 }
@@ -29,4 +32,7 @@ async function handlePost(req, res) {
   );
 }
 
-export default base().get(handleGet).post(handlePost);
+export default base()
+  .use(requireCurrentUser, requireAdmin)
+  .get(handleGet)
+  .post(handlePost);

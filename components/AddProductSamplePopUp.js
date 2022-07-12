@@ -18,11 +18,11 @@ function AddProductSamplePopUp({ show, setShow }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const productIdNumber = parseInt(productId);
-    const premiseIdNumber = parseInt(premiseId);
+    const productIdNumber = parseInt(productId, 10);
+    const premiseIdNumber = parseInt(premiseId, 10);
     const purchaseDateNewFormat = new Date(purchaseDate);
     axios
-      .post(`/api/productSample`, {
+      .post(`/api/productSamples`, {
         referenceNumber: reference,
         productId: productIdNumber,
         condition,
@@ -40,7 +40,7 @@ function AddProductSamplePopUp({ show, setShow }) {
       })
       .then(() => {
         setShow(false);
-        queryClient.invalidateQueries("productSample");
+        queryClient.invalidateQueries("productSamples");
       })
       .catch((err) => {
         console.error(err);

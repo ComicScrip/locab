@@ -23,7 +23,7 @@ describe("admin references - back office", () => {
     cy.get('[data-cy="add_reference_product"]').select("Chancelière");
     cy.get('[data-cy="add_reference_condition"]').type("Neuf");
     cy.get('[data-cy="add_reference_purchatedate"]').type("2022-02-02");
-    cy.get('[data-cy="add_reference_premise"]').select("tata - Lyon");
+    cy.get('[data-cy="add_reference_premise"]').select("Ursule - Lyon");
     cy.get('[data-cy="add_product_button"]').click();
     cy.contains("CH111");
   });

@@ -5,6 +5,9 @@ import {
   patchOneProductSample,
 } from "../../../models/productSample";
 
+import requireCurrentUser from "../../../middlewares/requireCurrentUser";
+import requireAdmin from "../../../middlewares/requireAdmin";
+
 async function handleDelete(req, res) {
   await deleteOneProductSample(req.query.id);
   return res.status(204).send();
@@ -24,6 +27,7 @@ const handlePatch = async (req, res) => {
 };
 
 export default base()
+  .use(requireCurrentUser, requireAdmin)
   .delete(handleDelete)
   .get(handleGetOneSample)
   .patch(handlePatch);

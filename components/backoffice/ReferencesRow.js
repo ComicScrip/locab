@@ -15,7 +15,7 @@ export default function ReferencesRow({ backReference }) {
   const queryClient = useQueryClient();
 
   const notifySuccess = () => {
-    addToast("Le produit a bien été supprimé", {
+    addToast("La référence a bien été supprimé", {
       appearance: "success",
     });
   };
@@ -23,11 +23,11 @@ export default function ReferencesRow({ backReference }) {
 
   const handleDelete = async () => {
     return await axios
-      .delete(`/api/productSample/${id}`)
+      .delete(`/api/productSamples/${id}`)
       .then(() => router.push("/admin/references"))
       .then(() => notifySuccess())
       .then(() => setDeleteContainer(!deleteContainer))
-      .then(() => queryClient.invalidateQueries("productSample"))
+      .then(() => queryClient.invalidateQueries("productSamples"))
       .catch((err) => console.error(err.response.status));
   };
 

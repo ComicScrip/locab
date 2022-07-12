@@ -22,7 +22,7 @@ const EditProductSample = () => {
   useEffect(() => {
     id &&
       axios
-        .get(`/api/productSample/${id}`)
+        .get(`/api/productSamples/${id}`)
         .then((res) => {
           setProductSample(res.data);
         })
@@ -55,7 +55,7 @@ const EditProductSample = () => {
     const lastDateOrder = new Date(productSample.lastDateOrder);
 
     axios
-      .patch(`/api/productSample/${id}`, {
+      .patch(`/api/productSamples/${id}`, {
         referenceNumber: productSample.referenceNumber,
         dateOfPurchase: dateOfPurchase,
         comment: productSample.comment,
