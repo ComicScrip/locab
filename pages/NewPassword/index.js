@@ -69,7 +69,6 @@ export default function ResetPasswordPage() {
             <form onSubmit={resetPassword}>
               <div>
                 <label htmlFor="newPassword" className={styles.label}>{t("Nouveaumotdepasse")}</label>
-                
                 <input
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
