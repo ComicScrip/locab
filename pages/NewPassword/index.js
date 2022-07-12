@@ -68,7 +68,7 @@ export default function ResetPasswordPage() {
           <div className={styles.forms}>
             <form onSubmit={resetPassword}>
               <div>
-                <label className={styles.label}>{t("Nouveaumotdepasse")}</label>
+                <label htmlFor="newPassword" className={styles.label}>{t("Nouveaumotdepasse")}</label>
                 
                 <input
                   value={newPassword}
@@ -82,9 +82,10 @@ export default function ResetPasswordPage() {
                 />
               </div>
               <div>
-                <label className={styles.label}>{t("Confirmezvotremotdepasse")}
+                <label htmlFor="newPasswordConfirmation" className={styles.label}>{t("Confirmezvotremotdepasse")}
                 </label>
                 <input
+               
                   value={newPasswordConfirmation}
                   onChange={(e) =>
                     setNewPasswordConfirmation(e.target.value)
