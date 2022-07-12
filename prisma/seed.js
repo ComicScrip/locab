@@ -91,7 +91,7 @@ async function seed() {
     data: {
       name: "Poussette",
       brand: "Yoyo",
-      caution: 200,
+      caution: 400,
       description: "Une poussette marque Yoyo",
       priceCategoryId: cat_a.id,
     },

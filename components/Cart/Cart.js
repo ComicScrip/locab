@@ -15,9 +15,19 @@ export default function Cart() {
   const { selectProducts, onUpdate, onValidate, onDelete } =
     useContext(SelectCartContext);
   const cartTotal = selectProducts.reduce(
-    (acc, cur) => acc + cur.price * cur.quantity,
+    (acc, cur) => acc + cur.priceCategoryId * cur.quantity,
     0
   );
+
+  let cautionArray = [];
+  for (let i = 0; i < selectProducts.length; i++) {
+    cautionArray.push(selectProducts[i].caution);
+  }
+  cautionArray.sort((a, b) => {
+    return b - a;
+  });
+
+  console.log(cautionArray);
 
   return (
     <div className={styles.mainContainer}>
@@ -88,7 +98,7 @@ export default function Cart() {
             <ErrorIcon />
           </IconButton>
         </Tooltip>
-        <p>XX€</p>
+        <p>{cautionArray[0]}</p>
       </div>
 
       <div className={styles.validerContainer}>
