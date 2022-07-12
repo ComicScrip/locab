@@ -46,11 +46,12 @@ export default function ResetMdp() {
                     type="email"
                     name="emailreset"
                     id="emailreset"
+                    data-cy='email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
-                  <button type="submit" className={styles.button}>{t("Envoyez")}</button>
+                  <button type="submit" data-cy='sendResetLinkBtn' className={styles.button}>{t("Envoyez")}</button>
                 </form>
               </div>
             </div>

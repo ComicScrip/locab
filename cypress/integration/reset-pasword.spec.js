@@ -3,11 +3,11 @@ describe("/reset-password", () => {
 
   it("can send the reset password email", () => {
     cy.signup({ email });
-    cy.visit("/reset-password");
+    cy.visit("/SendEmailMdp");
     cy.get("[data-cy='email']").type(email);
     cy.get("[data-cy='sendResetLinkBtn']").click();
     cy.contains(
-      "Un message avec un lien de réinitialisation vous a été envoyé, merci de vérfier votre boite mail"
+      "Si votre email existe dans notre base de données,vous allez recevoir un email vous expliquant les étapes à suivre pour réinitialiser votre mot de passe"
     );
   });
 });
