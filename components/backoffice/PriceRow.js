@@ -31,8 +31,6 @@ export default function PriceRow({ backProduct }) {
       .catch((err) => console.error(err.response.status));
   };
 
-  console.log(backProduct);
-
   return (
     <>
       {deleteContainer ? (
@@ -61,7 +59,7 @@ export default function PriceRow({ backProduct }) {
               <button
                 className={styles.suppButton}
                 onClick={() => setDeleteContainer(!deleteContainer)}
-                data-cy="add_product_button_delete"
+                data-cy="add_price_button_delete"
               >
                 Supprimer
               </button>

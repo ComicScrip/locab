@@ -11,7 +11,6 @@ export default function SearchPrice() {
   const [showPopup, setShowPopup] = useState(false);
   const handleClick = () => {
     setShowPopup(true);
-    console.log(priceList);
   };
 
   const { data: priceList = [] } = useQuery(
@@ -23,7 +22,6 @@ export default function SearchPrice() {
     }
   );
 
-  console.log(searchValue);
   return (
     <div className={styles.searchProductsMainContainer}>
       <div className={styles.searchProductsContainer}>
@@ -34,11 +32,11 @@ export default function SearchPrice() {
             placeholder="Recherche"
             value={searchValue}
             onChange={(event) => setSearchValue(event.target.value)}
-            // data-cy="input-search-back-product"
+            data-cy="input-search-back-price"
           />
           <BsPlusCircle
             onClick={handleClick}
-            data-cy="add_product_button_add"
+            data-cy="add_price_button_add"
             className={styles.addProductsButton}
           />
           <AddPricePopUp show={showPopup} setShow={setShowPopup} />

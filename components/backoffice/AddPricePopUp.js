@@ -381,7 +381,7 @@ function AddPricePopUp({ show, setShow }) {
                       sixteenDays: e.target.value,
                     }))
                   }
-                  data-cy="add_price_sixteen_day"
+                  data-cy="add_price_sixteen_days"
                 ></input>
               </div>
             </div>

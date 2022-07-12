@@ -3,7 +3,7 @@ const User = require("../../models/user");
 const db = require("../../db");
 const { hashPassword } = require("../../models/user");
 const Product = require("../../models/product");
-const Price = require("../../models/price");
+const PriceCategory = require("../../models/price");
 const Premise = require("../../models/premise");
 
 // ***********************************************************
@@ -202,13 +202,12 @@ module.exports = (on, config) => {
   // `config` is the resolved Cypress config
   on("task", {
     deleteUserByEmail: User.deleteUserByEmail,
-    // resetDB: User.deleteDB, products.deleteDb;
 
     resetDB: async () => {
       await User.deleteDB();
       await Product.deleteDB();
       await Premise.deleteDB();
-      await Price.deleteDB();
+      await PriceCategory.deleteDB();
       return Promise.resolve("ok");
     },
     createUser: User.createUser,
@@ -255,30 +254,6 @@ module.exports = (on, config) => {
     createOrderSample: createOrderSample,
     createTestPriceCategory: async () => {
       const cat_a = await db.priceCategory.create({
-        data: {
-          name: "cat_a",
-          oneDay: 36,
-          twoDays: 18,
-          threeDays: 15,
-          fourDays: 12.5,
-          fiveDays: 11,
-          sixDays: 10,
-          sevenDays: 9.14,
-          eightDays: 8.5,
-          nineDays: 7.78,
-          tenDays: 7.2,
-          elevenDays: 6.73,
-          twelveDays: 6.33,
-          thirteenDays: 6,
-          fourteenDays: 5.71,
-          fifteenDays: 5.6,
-          sixteenDays: 5.5,
-        },
-      });
-      return cat_a;
-    },
-    createTestPrice: async () => {
-      const cat_a = await db.price.create({
         data: {
           name: "cat_a",
           oneDay: 36,

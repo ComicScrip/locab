@@ -88,6 +88,6 @@ module.exports.patchOnePrice = async (id, data) => {
   });
 };
 
-module.exports.deletePriceDB = async () => {
+module.exports.deleteDB = async () => {
   return await db.priceCategory.deleteMany();
 };
