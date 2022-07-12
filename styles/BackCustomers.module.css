@@ -62,8 +62,8 @@
 
 .tableCustomersContainer {
   width: 100%;
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
 }
 
 .tableCustomers {
@@ -77,8 +77,8 @@
 
 .tableCustomers th {
   text-align: center;
-  padding: 2rem 0 2rem 0;
-  width: 25%;
+  padding: 2rem 1rem 2rem 1rem;
+  width: 10%;
 }
 
 .tableCustomers td {

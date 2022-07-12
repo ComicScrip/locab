@@ -204,6 +204,7 @@ module.exports = (on, config) => {
     resetDB: () => {
       return Promise.all([User.deleteDB(), Product.deleteDB()]);
     },
+
     createUser: User.createUser,
     createTestProduct: async () => {
       const cat_a = await db.priceCategory.create({
@@ -244,6 +245,7 @@ module.exports = (on, config) => {
         },
       });
     },
+
     findUserByEmail: User.findByEmail,
     createOrderSample: createOrderSample,
     createTestPriceCategory: async () => {

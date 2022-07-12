@@ -26,6 +26,9 @@ const EditCustomer = () => {
         lastname: user.lastname,
         email: user.email,
         address: user.address,
+        zip: user.zip,
+        city: user.city,
+        phone: user.city,
       })
       .then(() => router.push("/admin/customers"))
       .catch(console.error);

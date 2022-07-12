@@ -42,8 +42,12 @@ export default function CustomersRow({ backCustomer }) {
       ) : null}
       <tr className={styles.line}>
         <td>{backCustomer.firstname}</td>
+        <td>{backCustomer.lastname}</td>
         <td>{backCustomer.email}</td>
+        <td>{backCustomer.phone}</td>
         <td>{backCustomer.address}</td>
+        <td>{backCustomer.city}</td>
+        <td>{backCustomer.zip}</td>
         <td>
           <ul>
             <Link

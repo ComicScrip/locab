@@ -36,6 +36,7 @@ export default function SearchCustomers() {
           />
           <BsPlusCircle
             onClick={handleClick}
+            data-cy="add_customer_button_add"
             className={styles.addCustomersButton}
           />
           <AddCustomersPopUp show={showPopup} setShow={setShowPopup} />
@@ -44,9 +45,13 @@ export default function SearchCustomers() {
           <table className={styles.tableCustomers}>
             <thead>
               <tr>
-                <th>NOM / PRENOM</th>
+                <th>PRENOM</th>
+                <th>NOM</th>
                 <th>ADRESSE MAIL</th>
+                <th>TELEPHONE</th>
                 <th>ADRESSE POSTALE</th>
+                <th>VILLE</th>
+                <th>CODE POSTAL</th>
               </tr>
             </thead>
             <tbody>
