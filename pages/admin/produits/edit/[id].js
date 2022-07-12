@@ -29,6 +29,11 @@ const EditProduct = () => {
       });
   }, []);
 
+  if (!product) return null;
+
+  const productPicture = product.pictures[0].url;
+  console.log(product.pictures);
+
   const handlePatchProduct = (e) => {
     e.preventDefault();
     axios
@@ -98,7 +103,7 @@ const EditProduct = () => {
                   <div className={styles.productLabelContainer}>
                     <label htmlFor="caution">Caution</label>
                     <input
-                      cclassName={styles.input}
+                      className={styles.input}
                       id="caution"
                       type="text"
                       value={product.caution || ""}
@@ -152,8 +157,8 @@ const EditProduct = () => {
 
             <aside className={styles.pictureContainer}>
               <img
-                // src={productPicture}
-                // alt={productSample.referenceNumber}
+                src={productPicture}
+                alt={product.referenceNumber}
                 className={styles.productPicture}
                 width="100%"
                 height="100%"
