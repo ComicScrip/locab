@@ -53,7 +53,7 @@ export default function CustomersRow({ backCustomer }) {
               <a>Modifier</a>
             </Link>
             <button
-              className={styles.suppButton}
+              className={styles.suppBtn}
               onClick={() => setDeleteContainer(!deleteContainer)}
               data-cy="add_product_button_delete"
             >

@@ -113,10 +113,10 @@ module.exports.deleteOneUser = (id) => {
   });
 };
 
-module.exports.patchOneUser = async (data) => {
+module.exports.patchOneUser = async (id, data) => {
   return await db.user
     .update({
-      where: { id: data.id },
+      where: { id: parseInt(id, 10) },
       data: {
         firstname: data.firstname,
         lastname: data.lastname,
