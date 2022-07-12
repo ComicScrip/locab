@@ -24,7 +24,7 @@ export default function MonCompte() {
           <div className={styles.compte}>
             <div className={styles.partie1}>
               <div className={styles.icon1}>
-                <Link href="/profile/orders">
+                <Link href="/profile/orders" rel="preload">
                   <img
                     style={{ cursor: "pointer" }}
                     src="/image/clipboard.png"
@@ -39,7 +39,7 @@ export default function MonCompte() {
             </div>
             <div className={styles.partie2}>
               <div className={styles.icon2}>
-                <Link href="/profile/infoperso">
+                <Link href="/profile/infoperso" rel="preload">
                   <img
                     style={{ cursor: "pointer" }}
                     src="/image/user.png"
