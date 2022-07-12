@@ -4,41 +4,43 @@
 // import styles from "../../../../styles/EditProduct.module.css";
 // import LayoutAdmin from "../../../../components/LayoutAdmin";
 
-// const EditProduct = () => {
+// const EditPrice = () => {
 //   const router = useRouter();
 //   const { id } = router.query;
 //   const [price, setPrice] = useState("");
-//   const [priceCategories, setPriceCategories] = useState([]);
 
 //   useEffect(() => {
 //     axios
-//       .get(`/api/products/${id}`)
+//       .get(`/api/price/${id}`)
 //       .then((res) => {
 //         setPrice(res.data);
 //       })
 //       .catch(console.error);
 //   }, [id]);
 
-//   useEffect(() => {
-//     axios
-//       .get(`/api/priceCategory`)
-//       .then((response) => response.data)
-//       .then((data) => {
-//         setPriceCategories(data);
-//       });
-//   }, []);
-
-//   const handlePatchProduct = (e) => {
+//   const handlePatchPrice = (e) => {
 //     e.preventDefault();
 //     axios
 //       .patch(`/api/price/${id}`, {
-//         name: product.name,
-//         brand: product.brand,
-//         caution: product.caution,
-//         description: product.description,
-//         priceCategoryId: product.priceCategoryId,
+//         name: price.name,
+// oneDay: price.oneDay,
+// twoDays: price.twoDays,
+// threeDays: price.threeDays,
+// fourDays: "",
+// fiveDays: "",
+// sixDays: "",
+// sevenDays: "",
+// eightDays: "",
+// nineDays: "",
+// tenDays: "",
+// elevenDays: "",
+// twelveDays: "",
+// thirteenDays: "",
+// fourteenDays: "",
+// fifteenDays: "",
+// sixteenDays: "",
 //       })
-//       .then(() => router.push("/admin/produits"))
+//       .then(() => router.push("/admin/prix"))
 //       .catch(console.error);
 //   };
 
@@ -150,4 +152,4 @@
 //   );
 // };
 
-// export default EditProduct;
+// export default EditPrice;
