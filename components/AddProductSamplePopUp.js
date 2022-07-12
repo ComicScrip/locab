@@ -164,7 +164,7 @@ function AddProductSamplePopUp({ show, setShow }) {
                   </option>
                   {premiseList.map((premise) => (
                     <option key={premise.id} value={premise.id}>
-                      {premise.name} {premise.city}
+                      {premise.name} - {premise.city}
                     </option>
                   ))}
                 </select>
