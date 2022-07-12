@@ -5,7 +5,7 @@ import LayoutAdmin from "../../../components/LayoutAdmin";
 
 function References() {
   return (
-    <LayoutAdmin>
+    <LayoutAdmin pageTitle="Back-office | Références">
       <section className={styles.productsMainContainer}>
         <div className={styles.productsContainer}>
           <NavProducts />

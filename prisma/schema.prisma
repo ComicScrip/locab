@@ -7,8 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-
 model PriceCategory {
   id           Int       @id @default(autoincrement())
   name         String    @db.VarChar(255)
@@ -78,6 +76,7 @@ model Order {
   deliveryCity        String?
   deliveryArrivalTime String?
 }
+
 model User {
   id             Int         @id @default(autoincrement())
   lastname       String      @db.VarChar(255)
@@ -109,7 +108,7 @@ model ProductSample {
   dateOfPurchase  DateTime         @default(now())
   comment         String?          @db.VarChar(255)
   condition       String           @db.VarChar(255)
-  lastDateOrder   DateTime
+  lastDateOrder   DateTime?
   product         Product          @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId       Int
   premise         Premise          @relation(fields: [premiseId], references: [id], onDelete: Cascade)
