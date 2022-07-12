@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import styles from "../styles/AddCustomer.module.css";
 import { useQueryClient } from "react-query";
+import { passwordStrength } from "check-password-strength";
 
 function AddCustomersPopUp({ show, setShow }) {
   const [firstname, setFirstName] = useState("");
@@ -12,10 +13,16 @@ function AddCustomersPopUp({ show, setShow }) {
   const [zip, setZip] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
+  const [error, setError] = useState("");
+
   const queryClient = useQueryClient();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (["Too weak", "Weak"].includes(passwordStrength(password).value))
+      return setError(
+        "Votre mot de passe doit contenir au moins une majuscule, une minuscule, un caractère spécial et un chiffre"
+      );
     axios
       .post(`/api/users`, {
         firstname,
@@ -36,6 +43,7 @@ function AddCustomersPopUp({ show, setShow }) {
         setZip("");
         setEmail("");
         setAddress("");
+        setError("");
       })
       .then(() => {
         setShow(false);
@@ -153,6 +161,7 @@ function AddCustomersPopUp({ show, setShow }) {
                 onChange={(e) => setPassword(e.target.value)}
                 data-cy="add_customer_password"
               ></input>
+              <p style={{ color: "#D28F71", textAlign: "center" }}>{error}</p>
             </div>
             <div className={styles.btnPopupDiv}>
               <button
