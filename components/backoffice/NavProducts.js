@@ -31,7 +31,7 @@ export default function NavProducts() {
             }
             data-cy="backReferencesNavButton"
           >
-            Références
+            Exemplaires
           </a>
         </Link>
       </nav>
