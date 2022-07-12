@@ -57,7 +57,7 @@ export const SelectCartProvider = ({ children }) => {
 
       setSelectProducts([...selectProducts, { ...product, quantity: 1 }]);
     } else {
-      const id = Object.values(cartItemToDelete).at(0);
+      const id = cartItemToDelete.id;
 
       axios
         .delete(`/api/cartItems/${id}`)
@@ -68,10 +68,10 @@ export const SelectCartProvider = ({ children }) => {
   };
 
   const onUpdate = (productId, productSampleId, newQuantity) => {
-    const cartItemToDelete = cartItems.find(
+    const cartItemToUpdate = cartItems.find(
       (x) => x.productSampleId === productSampleId
     );
-    const id = Object.values(cartItemToDelete).at(0);
+    const id = cartItemToUpdate.id;
 
     let quantity = parseInt(newQuantity, 10);
     if (isNaN(quantity)) {
@@ -92,10 +92,10 @@ export const SelectCartProvider = ({ children }) => {
   };
 
   const onValidate = (productId, productSampleId, newQuantity) => {
-    const cartItemToDelete = cartItems.find(
+    const cartItemToUpdate = cartItems.find(
       (x) => x.productSampleId === productSampleId
     );
-    const id = Object.values(cartItemToDelete).at(0);
+    const id = cartItemToUpdate.id;
 
     if (newQuantity === "") {
       axios
@@ -116,7 +116,7 @@ export const SelectCartProvider = ({ children }) => {
     const cartItemToDelete = cartItems.find(
       (x) => x.productSampleId === productSampleId
     );
-    const id = Object.values(cartItemToDelete).at(0);
+    const id = cartItemToDelete.id;
 
     axios
       .delete(`/api/cartItems/${id}`)
