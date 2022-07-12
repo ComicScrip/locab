@@ -80,6 +80,10 @@
   width: 50%;
 }
 
+.referencePremise {
+  width: 100%;
+}
+
 .productsDescription {
   display: flex;
   flex-direction: column;

@@ -3,6 +3,7 @@ const User = require("../../models/user");
 const db = require("../../db");
 const { hashPassword } = require("../../models/user");
 const Product = require("../../models/product");
+const Premise = require("../../models/premise");
 
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -201,8 +202,11 @@ module.exports = (on, config) => {
   on("task", {
     deleteUserByEmail: User.deleteUserByEmail,
     // resetDB: User.deleteDB, products.deleteDb;
-    resetDB: () => {
-      return Promise.all([User.deleteDB(), Product.deleteDB()]);
+    resetDB: async () => {
+      await User.deleteDB();
+      await Product.deleteDB();
+      await Premise.deleteDB();
+      return Promise.resolve("ok");
     },
 
     createUser: User.createUser,
