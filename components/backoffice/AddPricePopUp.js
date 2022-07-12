@@ -59,7 +59,7 @@ function AddPricePopUp({ show, setShow }) {
           <form
             className={styles.formPopUpAddProducts}
             onSubmit={handleSubmit}
-            data-cy="add_product_form"
+            data-cy="add_price_form"
           >
             <div className={styles.productsPrice}>
               <div className={styles.priceName}>
@@ -390,7 +390,7 @@ function AddPricePopUp({ show, setShow }) {
               <button
                 type="submit"
                 className={styles.buttonPopUp}
-                data-cy="add_product_button"
+                data-cy="add_price_button"
               >
                 Ajouter
               </button>
