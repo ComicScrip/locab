@@ -37,7 +37,6 @@ export default function ResetPasswordPage() {
         toast.error('invalid Token');
       });
   };
-
   return (
     <Layout pageTitle={'resetPassword'}>
       <Head>
