@@ -4,6 +4,6 @@ module.exports.findAllPremise = async () => {
   return await db.premise.findMany();
 };
 
-module.exports.deletePremise = async () => {
+module.exports.deleteDB = async () => {
   return await db.premise.deleteMany();
 };

@@ -202,12 +202,11 @@ module.exports = (on, config) => {
   on("task", {
     deleteUserByEmail: User.deleteUserByEmail,
     // resetDB: User.deleteDB, products.deleteDb;
-    resetDB: () => {
-      return Promise.all([
-        User.deleteDB(),
-        Product.deleteDB(),
-        Premise.deletePremise(),
-      ]);
+    resetDB: async () => {
+      await User.deleteDB();
+      await Product.deleteDB();
+      await Premise.deleteDB();
+      return Promise.resolve("ok");
     },
     createUser: User.createUser,
     createTestProduct: async () => {
