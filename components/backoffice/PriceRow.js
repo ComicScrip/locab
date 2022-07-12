@@ -23,7 +23,7 @@ export default function PriceRow({ backProduct }) {
 
   const handleDelete = async () => {
     return await axios
-      .delete(`/api/priceCategory/${id}`)
+      .delete(`/api/price/${id}`)
       .then(() => router.push("/admin/prix"))
       .then(() => notifySuccess())
       .then(() => setDeleteContainer(!deleteContainer))

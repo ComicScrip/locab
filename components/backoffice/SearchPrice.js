@@ -18,7 +18,7 @@ export default function SearchPrice() {
     ["price", { search: searchValue }],
     () => {
       return axios
-        .get(`/api/priceCategory?search=${searchValue}`)
+        .get(`/api/price?search=${searchValue}`)
         .then((response) => response.data);
     }
   );
