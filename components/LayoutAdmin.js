@@ -13,6 +13,7 @@ import {
   RiUserVoiceFill,
 } from "react-icons/ri";
 import { ImHome } from "react-icons/im";
+import Link from "next/link";
 
 export default function LayoutAdmin({ children, pageTitle }) {
   const { status } = useSession();
@@ -35,11 +36,19 @@ export default function LayoutAdmin({ children, pageTitle }) {
             />
 
             <ul className={styles.listeNavBack}>
-              <li className={styles.eltNavBack}>
-                <FaCalendarAlt className={styles.icon} /> Réservation
+              <li className={`${styles.eltNavBack} ${styles.eltNavBackActif}`}>
+                <Link href="/admin/reservations">
+                  <a>
+                    <FaCalendarAlt className={styles.icon} /> Réservation
+                  </a>
+                </Link>
               </li>
-              <li className={styles.eltNavBack}>
-                <IoCube className={styles.icon} /> Produits
+              <li className={`${styles.eltNavBack} ${styles.eltNavBackActif}`}>
+                <Link href="/admin/produits">
+                  <a>
+                    <IoCube className={styles.icon} /> Produits
+                  </a>
+                </Link>
               </li>
               <li className={styles.eltNavBack}>
                 <AiFillEuroCircle className={styles.icon} />
@@ -72,7 +81,7 @@ export default function LayoutAdmin({ children, pageTitle }) {
             </ul>
           </nav>
         </header>
-        <main>{children}</main>
+        <main style={{ marginLeft: "15rem" }}>{children}</main>
       </>
     );
   }

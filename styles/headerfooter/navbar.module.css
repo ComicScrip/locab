@@ -1,3 +1,9 @@
+.languageSelect {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
 .navbar {
   display: flex;
   justify-content: center;
@@ -13,6 +19,7 @@
   font-size: 2.2vw;
   z-index: 1;
 }
+
 .navbar .items {
   display: none;
   position: fixed;
@@ -33,17 +40,13 @@
   display: flex;
   position: fixed;
   visibility: visible;
-  align-items: center;
-  justify-content: center;
   margin-top: -19px;
 }
 .divlogoIcon a {
   position: fixed;
   display: flex;
   visibility: visible;
-  align-items: center;
-  justify-content: center;
-  margin-top: -29px;
+  margin-top: -26px;
 }
 .divlogoIcon {
   padding-left: 70%;
@@ -61,8 +64,10 @@
   font-size: 20px;
   line-height: 30px;
   border: none;
+  border-radius: 8px;
   text-transform: uppercase;
   color: #ffffff;
+  cursor: pointer;
 }
 .btnBurger {
   width: 45px;
@@ -87,13 +92,18 @@
   cursor: pointer;
   background: #ebc575;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 600 !important;
+  height: 32px !important;
   font-size: 15px;
-  line-height: 30px;
   border-radius: 8px;
   border: none;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #ffffff !important;
+  padding: 5px 24px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
 }
 .burger_Line,
 .burger_Line::before,
@@ -166,6 +176,10 @@
 }
 
 @media screen and (min-width: 900px) {
+  .languageSelect {
+    margin-top: 0px;
+  }
+
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -179,6 +193,7 @@
     font-size: 1vw;
     position: initial;
   }
+
   .languageBtn {
     cursor: pointer;
   }
@@ -187,12 +202,13 @@
     position: relative;
     visibility: visible;
     margin-left: initial;
-    padding: 0 25px;
+    margin-right: 25px;
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
     color: #626262;
   }
+
   .navbar .items .non_active {
     color: #626262;
   }
@@ -236,6 +252,18 @@
     text-transform: uppercase;
     cursor: pointer;
   }
+  .log {
+    cursor: pointer;
+    background: #ebc575;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    border-radius: 8px;
+    border: none;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+
   .btnBurger {
     display: none;
   }
@@ -250,5 +278,8 @@
   }
   .logocontainer img {
     position: initial;
+  }
+  .testSign {
+    margin-left: 20px;
   }
 }

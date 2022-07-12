@@ -7,6 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+<<<<<<< HEAD
 model User {
   id                 Int         @id @default(autoincrement())
   lastname           String      @db.VarChar(255)
@@ -23,6 +24,8 @@ model User {
   resetPasswordToken String?     @unique
 }
 
+=======
+>>>>>>> dev
 model PriceCategory {
   id           Int       @id @default(autoincrement())
   name         String    @db.VarChar(255)
@@ -93,6 +96,21 @@ model Order {
   deliveryArrivalTime String?
 }
 
+model User {
+  id             Int         @id @default(autoincrement())
+  lastname       String      @db.VarChar(255)
+  firstname      String      @db.VarChar(255)
+  address        String      @db.VarChar(255)
+  zip            String      @db.VarChar(10)
+  city           String      @db.VarChar(60)
+  email          String      @unique @db.VarChar(100)
+  hashedPassword String
+  phone          String      @db.VarChar(50)
+  role           String      @default("customer")
+  orders         Order[]
+  cartItems      CartItems[]
+}
+
 model ProductOnOrder {
   order           Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
   orderId         Int
@@ -104,25 +122,25 @@ model ProductOnOrder {
 }
 
 model ProductSample {
-  id               Int              @id @default(autoincrement())
-  referenceNumber  String           @db.VarChar(50)
-  dateOfPurchase   DateTime         @default(now())
-  comment          String?          @db.VarChar(255)
-  condition        String           @db.VarChar(255)
-  delegateParent   DelegateParent?  @relation(fields: [delegateParentId], references: [id], onDelete: SetNull)
-  delegateParentId Int?
-  product          Product          @relation(fields: [productId], references: [id], onDelete: Cascade)
-  productId        Int
-  premise          Premise          @relation(fields: [premiseId], references: [id], onDelete: Cascade)
-  premiseId        Int
-  orders           ProductOnOrder[]
-  cartItems        CartItems[]
+  id              Int              @id @default(autoincrement())
+  referenceNumber String           @db.VarChar(50)
+  dateOfPurchase  DateTime         @default(now())
+  comment         String?          @db.VarChar(255)
+  condition       String           @db.VarChar(255)
+  lastDateOrder   DateTime?
+  product         Product          @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId       Int
+  premise         Premise          @relation(fields: [premiseId], references: [id], onDelete: Cascade)
+  premiseId       Int
+  orders          ProductOnOrder[]
+  cartItems       CartItems[]
 }
 
 model Product {
   id              Int              @id @default(autoincrement())
   name            String           @db.VarChar(255)
   brand           String           @db.VarChar(255)
+  caution         Int
   description     String           @db.VarChar(255)
   priceCategoryId Int
   priceCategory   PriceCategory    @relation(fields: [priceCategoryId], references: [id], onDelete: Cascade)
@@ -132,13 +150,14 @@ model Product {
 
 model ProductPicture {
   id        Int     @id @default(autoincrement())
-  url       String  @db.VarChar(50)
+  url       String  @db.VarChar(255)
   productId Int
   product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
 
 model Premise {
   id             Int             @id @default(autoincrement())
+  name           String          @db.VarChar(255)
   address        String          @db.VarChar(255)
   zip            String          @db.VarChar(10)
   city           String          @db.VarChar(60)
@@ -148,14 +167,13 @@ model Premise {
 }
 
 model DelegateParent {
-  id             Int             @id @default(autoincrement())
-  lastname       String          @db.VarChar(255)
-  firstname      String          @db.VarChar(255)
-  city           String          @db.VarChar(60)
-  phone          String          @db.VarChar(20)
-  email          String          @db.VarChar(100)
-  productSamples ProductSample[]
-  orders         Order[]
+  id        Int     @id @default(autoincrement())
+  lastname  String  @db.VarChar(255)
+  firstname String  @db.VarChar(255)
+  city      String  @db.VarChar(60)
+  phone     String  @db.VarChar(20)
+  email     String  @db.VarChar(100)
+  orders    Order[]
 }
 
 model Partner {

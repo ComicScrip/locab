@@ -27,7 +27,7 @@ export default function SignIn({ csrfToken }) {
           <input
             className={styles.inputGrandSignUp}
             type="text"
-            id="email"
+            id="signin_email"
             name="username"
             data-cy="signin_email"
             required
@@ -38,7 +38,7 @@ export default function SignIn({ csrfToken }) {
           <input
             className={styles.inputGrandSignUp}
             type="password"
-            id="password"
+            id="signin_password"
             name="password"
             data-cy="signin_password"
             required

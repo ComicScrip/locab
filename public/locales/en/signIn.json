@@ -9,11 +9,11 @@
   "nom": "Name",
   "motdepasseoublié": "Forgeten password",
   "prenom": "Firstname",
-  "adresse": "address",
+  "adresse": "Address",
   "cp": "ZIP code",
   "ville": "City",
   "Numérodetelephone": "Phone number",
-  "email": "email",
+  "email": "Email",
   "confirmezvotremotdepasse": "Confirm your password",
   "sinscrire": "REGISTER",
   "deconnecter": "LOG OUT"

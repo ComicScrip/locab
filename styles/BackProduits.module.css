@@ -1,0 +1,104 @@
+.productsMainContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.productsContainer {
+  width: 90%;
+}
+
+.searchProductsNav {
+  margin: 2rem 0 2rem 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.searchActive {
+  color: #d28f71;
+}
+
+.searchNonActive {
+  color: #000000;
+}
+
+.searchProductsMainContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.searchProductsContainer {
+  width: 100%;
+}
+
+.searchAddProductsContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.searchProductsBar {
+  margin-right: 1rem;
+  height: 2rem;
+}
+
+.addProductsButton {
+  border-radius: 50%;
+  background: #d28f71;
+  height: 2rem;
+  width: 2rem;
+  box-shadow: 0px 1px 1px #000000;
+}
+
+.addProductsButton:hover {
+  cursor: pointer;
+}
+
+.tableProductsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tableProducts {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableProducts tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.tableProducts th {
+  text-align: center;
+  padding: 2rem 0 2rem 0;
+  width: 17%;
+}
+
+.tableProducts td {
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+  width: 17%;
+}
+
+.tableProducts td ul li {
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.suppButton {
+  color: #d28f71;
+  border: none;
+  background-color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Tableau */
+
+.tableProducts {
+  overflow: scroll;
+  display: block;
+  height: 80vh;
+}
