@@ -67,7 +67,7 @@ module.exports.patchOnePrice = async (id, data) => {
   return await db.priceCategory.update({
     where: { id: parseInt(id, 10) },
     data: {
-      name: parseFloat(data.oneDay, 10),
+      name: data.name,
       oneDay: parseFloat(data.oneDay, 10),
       twoDays: parseFloat(data.twoDays, 10),
       threeDays: parseFloat(data.threeDays, 10),
