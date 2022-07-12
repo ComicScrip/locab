@@ -22,17 +22,6 @@ describe("users", () => {
     cy.contains("jeanne").should("not.exist");
   });
 
-  // it("modify a customer", () => {
-  //   cy.task("createUser").then((user) => {
-  //     cy.visit(`/admin/customers/edit/${user.id}`);
-  //     cy.get('[data-cy="modify-customer-firstname]').type(
-  //       "{selectall}Contenu modifié"
-  //     );
-  //     cy.get('[data-cy="modify-customer-button"]').click();
-  //     cy.contains("Contenu modifié").should("be.visible");
-  //   });
-  // });
-
   it("can create a new customer", () => {
     cy.visit("/admin/customers");
     cy.get('[data-cy="add_customer_button_add"]').click();
