@@ -32,7 +32,7 @@ function AddPricePopUp({ show, setShow }) {
     e.preventDefault();
     axios
       .post(`/api/price`, {
-        formInfos,
+        ...formInfos,
       })
       .then(() => {
         setFormInfos(defaultState);
