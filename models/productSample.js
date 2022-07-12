@@ -108,6 +108,7 @@ module.exports.findOneProductSample = (id) => {
           order: {
             select: {
               orderNumber: true,
+              id: true,
             },
           },
         },

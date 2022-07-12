@@ -15,9 +15,9 @@ const EditProductSample = () => {
   const [premiseList, setPremiseList] = useState([]);
 
   const lastDate = productSample.lastDateOrder;
-  const lastDateNewFormat = dayjs(lastDate).format("DD/MM/YY");
+  const lastDateNewFormat = dayjs(lastDate).format("YYYY-MM-DD");
   const datePurchase = productSample.dateOfPurchase;
-  const datePurchaseNewFormat = dayjs(datePurchase).format("DD/MM/YY");
+  const datePurchaseNewFormat = dayjs(datePurchase).format("YYYY-MM-DD");
 
   useEffect(() => {
     id &&
@@ -178,7 +178,7 @@ const EditProductSample = () => {
                   <select id="premise" name="premise" className={styles.input}>
                     {premiseList.map((premise) => (
                       <option key={premise.id} value={premise.id}>
-                        {premise.name} {premise.city}
+                        {premise.city}
                       </option>
                     ))}
                   </select>
@@ -186,9 +186,22 @@ const EditProductSample = () => {
               </section>
               <section className={styles.commentContainer}>
                 <div className={styles.productLabelContainer}>
-                  <label htmlFor="order">Réservation</label>
-                  <div id="order" className={styles.orderCommentInput}>
-                    res
+                  <label htmlFor="order">Réservations</label>
+                  <div id="order" className={styles.orderListInput}>
+                    <ul>
+                      {productSample.orders.map((productOrders) => (
+                        <li
+                          key={productOrders.order.orderNumber}
+                          id={productOrders.order.orderNumber}
+                        >
+                          <Link
+                            href={`/admin/reservations/${productOrders.order.id}`}
+                          >
+                            {productOrders.order.orderNumber}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
                 <div className={styles.productLabelContainer}>

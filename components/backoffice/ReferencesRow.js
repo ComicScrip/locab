@@ -53,7 +53,7 @@ export default function ReferencesRow({ backReference }) {
             className={styles.modifyButton}
             href={`/admin/references/edit/${id}`}
           >
-            <a>Modifier</a>
+            <a data-cy="modify_button">Modifier</a>
           </Link>
         </div>
         <div>

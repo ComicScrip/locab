@@ -29,7 +29,8 @@ describe("admin references - back office", () => {
     cy.contains("CH-001").should("not.exist");
   });
 
-  it.only("admin references - can update a produce", () => {
+  it("admin references - can update a produce", () => {
+    cy.get('[data-cy="modify_button"]').first().click();
     cy.get('[data-cy="modify-reference-number"]').type(
       "{selectall}NEW-REF-001"
     );

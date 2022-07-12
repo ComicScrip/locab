@@ -38,11 +38,17 @@
   padding: 10px;
 }
 
-.orderCommentInput {
+.orderCommentInput,
+.orderListInput {
   border: none;
   background: #fbfbfb;
   padding: 10px;
   height: 20vh;
+}
+
+.orderListInput {
+  overflow: auto;
+  color: #d28f71;
 }
 
 /* PICTURE */
