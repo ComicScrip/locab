@@ -8,7 +8,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
 export default function ResetMdp() {
-  const { t } = useTranslation("sendEmailMdp");
+  const { t } = useTranslation("sendEmailResetPassword");
   const [email, setEmail] = useState("");
   const [showform, setShowForm] = useState(true);
   const [showResultMessage, setShowResultMessage] = useState(false);
