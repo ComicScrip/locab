@@ -53,7 +53,7 @@ export default function PriceRow({ backProduct }) {
           <div>
             <Link
               className={styles.modifyButton}
-              href={`/admin/produits/edit/${id}`}
+              href={`/admin/prix/edit/${id}`}
             >
               <a>Modifier</a>
             </Link>
