@@ -520,6 +520,7 @@ export default function Commande() {
                     name="subscribe"
                     type="checkbox"
                     className={styles.password}
+                    data-cy="payment_checkbox_pyapal"
                   />
                   <label htmlFor="city" className={styles.password}>
                     Paypal <BsPaypal />
@@ -530,6 +531,7 @@ export default function Commande() {
                     name="subscribe"
                     type="checkbox"
                     className={styles.password}
+                    data-cy="payment_checkbox_cb"
                   />
                   <label htmlFor="city" className={styles.password}>
                     {t("cb")} <FaCcVisa /> <FaCcMastercard />
@@ -540,6 +542,7 @@ export default function Commande() {
                     name="subscribe"
                     type="checkbox"
                     className={styles.password}
+                    data-cy="payment_checkbox_cgv"
                   />
                   <label htmlFor="city" className={styles.password}>
                     {t("cgv")}
@@ -551,6 +554,7 @@ export default function Commande() {
                     name="subscribe"
                     type="checkbox"
                     className={styles.password}
+                    data-cy="payment_checkbox_accept"
                   />
                   <label htmlFor="city" className={styles.password}>
                     {t("cgv2")}

@@ -14,7 +14,7 @@ describe("commande", () => {
     cy.contains("Partenaire");
   });
 
-  it.only("can register the partner informations", () => {
+  it("can register the partner informations", () => {
     cy.get('[data-cy="infos_submit_button"]').click();
     cy.get('[data-cy="partner_name"]').type("partenaire test");
     cy.get('[data-cy="partner_phone"]').type("0102030405");
@@ -27,6 +27,6 @@ describe("commande", () => {
     cy.get('[data-cy="partner_hour"]').type("15h00");
     cy.get('[data-cy="partner_comments"]').type("test commentaire");
     cy.get('[data-cy="partner_submit_button"]').click();
-    cy.contains("paiement");
+    cy.contains("Paypal");
   });
 });
