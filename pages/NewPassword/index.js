@@ -13,7 +13,7 @@ import axios from "axios";
 import { useRouter } from "next/dist/client/router";
 
 export default function ResetPasswordPage() {
-  const { t } = useTranslation("newPassword");
+  const { t } = useTranslation("NewPassword");
   const router = useRouter();
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordConfirmation, setNewPasswordConfirmation] = useState("");
@@ -22,23 +22,23 @@ export default function ResetPasswordPage() {
     e.preventDefault();
 
     if (newPassword !== newPasswordConfirmation)
-      return toast.error('Les deux mots de passe ne correspondent pas !');
+      return toast.error("Les deux mots de passe ne correspondent pas !");
     axios
-      .post('/api/users/reset-password', {
+      .post("/api/users/reset-password", {
         email: router.query.email,
         newPassword,
         newPasswordConfirmation,
         resetPasswordToken: router.query.resetPasswordToken,
       })
       .then(() => {
-        router.push('/signup');
+        router.push("/signup");
       })
       .catch(() => {
-        toast.error('invalid Token');
+        toast.error("invalid Token");
       });
   };
   return (
-    <Layout pageTitle={'resetPassword'}>
+    <Layout pageTitle={"resetPassword"}>
       <Head>
         <title>{t("Modifiervotremotdepasse")}</title>
         <meta
@@ -57,7 +57,8 @@ export default function ResetPasswordPage() {
           <p>
             <Link href="/signup">
               <a>
-                <span> &larr;</span>{t("Retouraucompte")}
+                <span> &larr;</span>
+                {t("Retouraucompte")}
               </a>
             </Link>
           </p>
@@ -67,37 +68,40 @@ export default function ResetPasswordPage() {
           <div className={styles.forms}>
             <form onSubmit={resetPassword}>
               <div>
-                <label htmlFor="newPassword" className={styles.label}>{t("Nouveaumotdepasse")}</label>
+                <label htmlFor="newPassword" className={styles.label}>
+                  {t("Nouveaumotdepasse")}
+                </label>
                 <input
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
-                  data-cy='newPassword'
-                  id='newPassword'
-                  name='newPassword'
-                  type='password'
+                  data-cy="newPassword"
+                  id="newPassword"
+                  name="newPassword"
+                  type="password"
                   required
-                  minLength='8'
+                  minLength="8"
                 />
               </div>
               <div>
-                <label htmlFor="newPasswordConfirmation" className={styles.label}>{t("Confirmezvotremotdepasse")}
+                <label
+                  htmlFor="newPasswordConfirmation"
+                  className={styles.label}
+                >
+                  {t("Confirmezvotremotdepasse")}
                 </label>
                 <input
-               
                   value={newPasswordConfirmation}
-                  onChange={(e) =>
-                    setNewPasswordConfirmation(e.target.value)
-                  }
-                  data-cy='newPasswordConfirmation'
-                  id='newPasswordConfirmation'
-                  name='newPasswordConfirmation'
-                  type='password'
+                  onChange={(e) => setNewPasswordConfirmation(e.target.value)}
+                  data-cy="newPasswordConfirmation"
+                  id="newPasswordConfirmation"
+                  name="newPasswordConfirmation"
+                  type="password"
                   required
-                  minLength='8'
+                  minLength="8"
                 />
               </div>
               <button className={styles.button}>{t("Valider")}</button>
-            </form> 
+            </form>
           </div>
         </div>
       </main>
@@ -116,8 +120,8 @@ export async function getStaticProps({ locale }) {
         "profile",
         "common",
         "signIn",
-        "newPassword",
-        "sendEmailResetPassword",
+        "NewPassword",
+        "SendEmailResetPassword",
         "footer",
         "reservation",
       ])),
