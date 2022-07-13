@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.mainContainer {
+  width: 80%;
+  margin: 50px auto;
+}
+
+.productSampleDetailsContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 0px;
+}
+
+.detailsTextContainer {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+/* INPUT */
+
+.productContainer,
+.dateContainer,
+.contiditionPremiseContainer,
+.commentContainer {
+  display: flex;
+  gap: 20px;
+  margin: 10px 0px;
+}
+
+.productLabelContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input {
+  border: none;
+  background: #fbfbfb;
+  padding: 10px;
+}
+
+.orderCommentInput,
+.orderListInput {
+  border: none;
+  background: #fbfbfb;
+  padding: 10px;
+  height: 20vh;
+}
+
+.orderListInput {
+  overflow: auto;
+  color: #d28f71;
+}
+
+/* PICTURE */
+
+.pictureContainer {
+  width: 30%;
+}
+
+.productPicture {
+  object-fit: cover;
+}
+
+/* BOUTON VADIDER */
+.btnContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0px;
+}
+
+.btn {
+  color: white;
+  background-color: #d28f71;
+  border-radius: 20px;
+  width: 10vw;
+  height: 5vh;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  cursor: pointer;
+}

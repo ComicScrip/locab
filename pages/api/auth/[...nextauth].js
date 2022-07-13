@@ -7,6 +7,7 @@ export default NextAuth({
     CredentialsProvider({
       name: "Credentials",
       async authorize(credentials) {
+        console.log("creds", credentials);
         const user = await findByEmail(credentials.username);
         if (
           user &&
@@ -20,6 +21,12 @@ export default NextAuth({
     }),
   ],
 
+  callbacks: {
+    session: async (session, user) => {
+      if (user) session.id = user.id;
+      return Promise.resolve(session);
+    },
+  },
   pages: {
     signIn: "/signup",
   },

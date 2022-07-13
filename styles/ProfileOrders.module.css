@@ -1,0 +1,108 @@
+/* PAS DE SESSION */
+
+.titleMainContent {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 100px 30px 20px 30px;
+}
+
+.connexionBtn {
+  display: block;
+  margin: 0px auto 50px auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #d28f71;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* SESSION MAIN CONTAINER */
+
+.commandsMainContainer {
+  width: 80%;
+  margin: auto;
+  padding: 90px 0px 50px 0px;
+}
+
+.title {
+  text-align: center;
+}
+
+.selectDate {
+  margin-top: 10px;
+  background-color: #f8f8f8;
+  border: 1px solid #b9b9b9;
+  border-radius: 15px;
+  padding: 10px 30px 10px 10px;
+  cursor: pointer;
+}
+
+/* ORDERS CARD */
+
+.cardContainer {
+  border-top: 1px solid black;
+  margin-top: 20px;
+}
+
+.orderTitleCard {
+  font-size: 1.2rem;
+}
+
+.orderDurationCard {
+  font-size: 0.8rem;
+}
+
+.productsImages {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0px;
+}
+
+.facture {
+  text-align: right;
+  color: #d28f71;
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 900px) {
+  .commandsMainContainer {
+    padding-top: 50px;
+  }
+  .titleSectionContainer {
+    display: flex;
+    align-items: center;
+  }
+
+  .titleMesCommandesContainer {
+    margin: auto;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .selectDate {
+    padding: 10px 120px 10px 10px;
+  }
+
+  /* ORDERS CARD */
+
+  .infoContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .orderTitleCard {
+    font-size: 1.3rem;
+  }
+
+  .productsImages {
+    flex-direction: row;
+    justify-content: start;
+  }
+}

@@ -15,6 +15,7 @@ export default function SearchForm() {
             placeholder="Où allez-vous ?"
             style={{ textIndent: 17 + "px" }}
             className={styles.locationInput}
+            required
           />
         </div>
         <div className={styles.divwatch1}>
@@ -24,6 +25,7 @@ export default function SearchForm() {
             placeholder="Arrivée"
             style={{ textIndent: 17 + "px" }}
             className={styles.watch1Input}
+            required
           />
         </div>
         <div className={styles.divwatch2}>
@@ -34,6 +36,7 @@ export default function SearchForm() {
             placeholder="Départ"
             style={{ textIndent: 17 + "px" }}
             className={styles.watch2Input}
+            required
           />
         </div>
         <button className={styles.button}>Je cherche !</button>
