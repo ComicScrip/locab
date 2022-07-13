@@ -25,6 +25,4 @@ async function handleGet(req, res) {
 
   res.send(await findAllOrders({ customerId, limitDatefilter, search }));
 }
-export default base()
-  .use(requireCurrentUser)
-  .get(requireCurrentUser, handleGet);
+export default base().use(requireCurrentUser).get(handleGet);
