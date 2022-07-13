@@ -47,8 +47,6 @@ async function handleGetProducts(req, res) {
     price: product.priceCategory[priceCategoryDuration],
   }));
 
-  console.log(availableProducts);
-
   if (req.query.showUnavailable === "true") {
     const unavailableProducts = (
       await findAllProductsUnavailable({

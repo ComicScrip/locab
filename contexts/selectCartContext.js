@@ -30,8 +30,6 @@ export const SelectCartProvider = ({ children }) => {
       });
   }, [router.query]);
 
-  console.log(productList);
-
   useEffect(() => {
     if (selectProducts.length > 0) {
       axios

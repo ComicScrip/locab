@@ -13,6 +13,10 @@ module.exports.findAllProductsAvailable = ({ city }) =>
     },
     include: {
       priceCategory: true,
+      productSamples: {
+        orderBy: { lastDateOrder: "asc" },
+        select: { id: true },
+      },
       pictures: {
         select: {
           url: true,
@@ -46,7 +50,7 @@ module.exports.findAllProductsUnavailable = ({ city }) =>
       ],
     },
     include: {
-      priceCategory: {},
+      priceCategory: true,
       pictures: {
         select: {
           url: true,
