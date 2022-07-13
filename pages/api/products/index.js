@@ -6,12 +6,12 @@ import {
 } from "../../../models/product";
 
 async function handleGetProducts(req, res) {
-  const from = new Date(req.query.from);
-  const to = new Date(req.query.to);
+  const from = new Date(req.query.from).getTime();
+  const to = new Date(req.query.to).getTime();
 
   console.log(req.query.from);
 
-  let days = (to.getTime() - from.getTime()) / (1000 * 3600 * 24);
+  let days = (to - from) / (1000 * 3600 * 24);
   if (days > 15) {
     days = 16;
   }

@@ -2,9 +2,12 @@ import Layout from "../components/Layout";
 import styles from "../styles/Home.module.css";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import useUserLocation from "../hooks/useUserLocation";
+import Link from "next/link";
 
 export default function Home() {
   const { t } = useTranslation("home");
+  const [userLocation, setUserLocation] = useUserLocation("");
 
   return (
     <Layout pageTitle="Location de poussette | Location de matériel de puériculture">
@@ -20,15 +23,22 @@ export default function Home() {
                   className={styles.whereHome}
                   type="text"
                   placeholder={t("ouallezvous")}
+                  value={userLocation}
+                  onChange={(e) => setUserLocation(e.target.value)}
                 ></input>
                 <input
                   className={styles.whenHome}
                   type="text"
                   placeholder={t("quand")}
                 ></input>
-                <button className={styles.buttonHome} type="submit">
-                  {t("jecherche")} !
-                </button>
+                <Link
+                  href={`/reservation?city=${userLocation}&showUnavailable=true`}
+                  className={styles.logo}
+                >
+                  <button className={styles.buttonHome} type="submit">
+                    {t("jecherche")} !
+                  </button>
+                </Link>
               </form>
             </div>
           </div>

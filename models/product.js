@@ -15,7 +15,12 @@ module.exports.findAllProductsAvailable = ({ city }) =>
       priceCategory: true,
       productSamples: {
         orderBy: { lastDateOrder: "asc" },
-        select: { id: true },
+        select: {
+          id: true,
+          orders: {
+            include: { order: { select: { startDate: true, endDate: true } } },
+          },
+        },
       },
       pictures: {
         select: {

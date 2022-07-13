@@ -11,7 +11,7 @@ export const SelectCartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   const router = useRouter();
-  const { city, showUnavailable } = router.query;
+  const { city = "", showUnavailable = true } = router.query;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -29,6 +29,8 @@ export const SelectCartProvider = ({ children }) => {
         setProductList(data);
       });
   }, [router.query]);
+
+  console.log(productList);
 
   useEffect(() => {
     if (selectProducts.length > 0) {
