@@ -2,6 +2,8 @@
 const User = require("../../models/user");
 const db = require("../../db");
 const { hashPassword } = require("../../models/user");
+const Product = require("../../models/product");
+const Premise = require("../../models/premise");
 
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -54,6 +56,7 @@ async function createOrderSample() {
     data: {
       name: "Chancelière",
       brand: "Chicco",
+      caution: 20,
       description: "Une chancelière",
       priceCategoryId: cat_a.id,
     },
@@ -62,12 +65,14 @@ async function createOrderSample() {
     data: {
       name: "Poussette",
       brand: "Yoyo",
+      caution: 20,
       description: "Une poussette marque Yoyo",
       priceCategoryId: cat_a.id,
     },
   });
   const premise_01 = await db.premise.create({
     data: {
+      name: "Ursule",
       address: "140 rue delandine",
       zip: "69002",
       city: "Lyon",
@@ -80,6 +85,7 @@ async function createOrderSample() {
       referenceNumber: "CH-001",
       dateOfPurchase: new Date("2022-05-21T00:00:00"),
       condition: "Neuf",
+      lastDateOrder: new Date("2022-05-21T00:00:00"),
       productId: chanceliere.id,
       premiseId: premise_01.id,
     },
@@ -89,6 +95,7 @@ async function createOrderSample() {
       referenceNumber: "CH-002",
       dateOfPurchase: new Date("2022-04-23 00:00:00"),
       condition: "Comme neuf",
+      lastDateOrder: new Date("2022-05-21T00:00:00"),
       productId: poussette.id,
       premiseId: premise_01.id,
     },
@@ -194,9 +201,79 @@ module.exports = (on, config) => {
   // `config` is the resolved Cypress config
   on("task", {
     deleteUserByEmail: User.deleteUserByEmail,
-    resetDB: User.deleteDB,
+    // resetDB: User.deleteDB, products.deleteDb;
+    resetDB: async () => {
+      await User.deleteDB();
+      await Product.deleteDB();
+      await Premise.deleteDB();
+      return Promise.resolve("ok");
+    },
     createUser: User.createUser,
+    createTestProduct: async () => {
+      const cat_a = await db.priceCategory.create({
+        data: {
+          name: "cat_a",
+          oneDay: 36,
+          twoDays: 18,
+          threeDays: 15,
+          fourDays: 12.5,
+          fiveDays: 11,
+          sixDays: 10,
+          sevenDays: 9.14,
+          eightDays: 8.5,
+          nineDays: 7.78,
+          tenDays: 7.2,
+          elevenDays: 6.73,
+          twelveDays: 6.33,
+          thirteenDays: 6,
+          fourteenDays: 5.71,
+          fifteenDays: 5.6,
+          sixteenDays: 5.5,
+        },
+      });
+      return db.product.create({
+        data: {
+          name: "Chancelière",
+          brand: "Chicco",
+          caution: 200,
+          pictures: {
+            create: [
+              {
+                url: "/image/products/lit.jpeg",
+              },
+            ],
+          },
+          description: "Une chancelière",
+          priceCategoryId: cat_a.id,
+        },
+      });
+    },
     findUserByEmail: User.findByEmail,
     createOrderSample: createOrderSample,
+    createTestPriceCategory: async () => {
+      const cat_a = await db.priceCategory.create({
+        data: {
+          name: "cat_a",
+          oneDay: 36,
+          twoDays: 18,
+          threeDays: 15,
+          fourDays: 12.5,
+          fiveDays: 11,
+          sixDays: 10,
+          sevenDays: 9.14,
+          eightDays: 8.5,
+          nineDays: 7.78,
+          tenDays: 7.2,
+          elevenDays: 6.73,
+          twelveDays: 6.33,
+          thirteenDays: 6,
+          fourteenDays: 5.71,
+          fifteenDays: 5.6,
+          sixteenDays: 5.5,
+        },
+      });
+      return cat_a;
+    },
   });
+  return config;
 };

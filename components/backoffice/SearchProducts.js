@@ -1,12 +1,27 @@
+import axios from "axios";
 import { useState } from "react";
 import { BsPlusCircle } from "react-icons/bs";
 import styles from "../../styles/BackProduits.module.css";
 import ProductsRow from "./ProductsRow";
-import dataBackProducts from "./dataBackProducts";
+import { useQuery } from "react-query";
+
+import AddProductsPopUp from "../../components/AddProductsPopUp";
 
 export default function SearchProducts() {
-  const { backProducts } = dataBackProducts;
   const [searchValue, setSearchValue] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+  const handleClick = () => {
+    setShowPopup(true);
+  };
+  const { data: productList = [] } = useQuery(
+    ["products", { search: searchValue }],
+    () => {
+      return axios
+        .get(`/api/products?search=${searchValue}`)
+        .then((response) => response.data)
+        .catch(console.error);
+    }
+  );
 
   return (
     <div className={styles.searchProductsMainContainer}>
@@ -18,35 +33,35 @@ export default function SearchProducts() {
             placeholder="Poussette, lit à barreaux..."
             value={searchValue}
             onChange={(event) => setSearchValue(event.target.value)}
+            data-cy="input-search-back-product"
           />
-          <BsPlusCircle className={styles.addProductsButton} />
+          <BsPlusCircle
+            onClick={handleClick}
+            data-cy="add_product_button_add"
+            className={styles.addProductsButton}
+          />
+          <AddProductsPopUp show={showPopup} setShow={setShowPopup} />
         </section>
         <section className={styles.tableProductsContainer}>
           <table className={styles.tableProducts}>
             <thead>
-              <tr>
+              <tr className={styles.line}>
                 <th></th>
                 <th>Nom</th>
                 <th>Catégorie de prix</th>
-                <th>Stock total</th>
+                {/* <th>Stock total</th> */}
                 <th>Marque</th>
                 <th></th>
               </tr>
             </thead>
-            <tbody>
-              {backProducts
-                .filter((backProduct) =>
-                  backProduct.name
-                    .toUpperCase()
-                    .includes(searchValue.toUpperCase())
-                )
-                .map((backProduct) => (
-                  <ProductsRow
-                    backProduct={backProduct}
-                    key={backProduct.id}
-                    id={backProduct.id}
-                  />
-                ))}
+            <tbody className={styles.tBody}>
+              {productList.map((backProduct) => (
+                <ProductsRow
+                  backProduct={backProduct}
+                  key={backProduct.id}
+                  id={backProduct.id}
+                />
+              ))}
             </tbody>
           </table>
         </section>

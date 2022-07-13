@@ -1,0 +1,118 @@
+/* GLOBAL RESERVATIONS PAGE*/
+.globalContainer {
+  width: 90%;
+  margin: auto;
+}
+.reservationTitle {
+  margin: 2rem 0 2rem 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* search bar and add button */
+
+.searchAddOrdersContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.searchOrdersBar {
+  margin-right: 1rem;
+  height: 2rem;
+}
+
+.addOrdersButton {
+  border-radius: 50%;
+  background: #d28f71;
+  height: 2rem;
+  width: 2rem;
+  box-shadow: 0px 1px 1px #000000;
+  opacity: 0.4;
+}
+
+/* TABLE : RESERVATIONS */
+
+.tableOrdersContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tableOrders {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: scroll;
+  display: block;
+  height: 80vh;
+  padding-right: 10px;
+}
+
+.tableOrders tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.tableOrders th {
+  text-align: center;
+  padding: 2rem 0 2rem 0;
+  width: 17%;
+}
+
+.tableOrders td {
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+  width: 17%;
+}
+
+.tableOrders td ul li {
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.suppButton {
+  color: #d28f71;
+  border: none;
+  background-color: white;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+/*DETAIL PAGE*/
+
+.reservationMainContainer {
+  width: 80%;
+  margin: 50px auto;
+}
+
+.productsContainer {
+  border: 1px solid #c5c5c5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  margin: 40px 0px 30px 0px;
+  padding: 20px 0px 20px 0px;
+}
+
+.infoContainer {
+  display: flex;
+  gap: 30px;
+}
+
+.infoDetail {
+  width: 50%;
+  border: 1px solid #c5c5c5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 0px 20px 20px 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.infoTitle {
+  grid-column: 1 / 3;
+}
+
+.infoFullWidth {
+  grid-column: 1 / 3;
+}

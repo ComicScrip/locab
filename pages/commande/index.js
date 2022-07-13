@@ -20,7 +20,6 @@ export default function Commande() {
   const [userLocation, setUserLocation] = useUserLocation("");
 
   // FIN CONTEXT //
-
   const [activeInformations, setActiveInformations] = useState(true);
   const [activeLivraison, setActiveLivraison] = useState(false);
   const [activePayment, setActivePayment] = useState(false);
@@ -173,7 +172,7 @@ export default function Commande() {
   return (
     <Layout>
       <Banner />
-      <div className={styles.title1}>
+      <div className={styles.title}>
         <div className={styles.ligne}>
           <hr className={styles.hr} />
         </div>
@@ -577,6 +576,7 @@ export default function Commande() {
     </Layout>
   );
 }
+
 export async function getStaticProps({ locale }) {
   return {
     props: {

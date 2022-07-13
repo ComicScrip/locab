@@ -49,16 +49,11 @@
   height: 2rem;
   width: 2rem;
   box-shadow: 0px 1px 1px #000000;
-  opacity: 0.4;
 }
 
 .addProductsButton:hover {
   cursor: pointer;
 }
-
-/* .addProductsButton:active {
-  box-shadow: inset 0px 2px 3px #000000;
-} */
 
 .tableProductsContainer {
   width: 100%;
@@ -92,11 +87,18 @@
   padding: 0.5rem;
 }
 
-.modifyButton {
-  opacity: 0.4;
-}
-
 .suppButton {
   color: #d28f71;
-  opacity: 0.4;
+  border: none;
+  background-color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Tableau */
+
+.tableProducts {
+  overflow: scroll;
+  display: block;
+  height: 80vh;
 }
