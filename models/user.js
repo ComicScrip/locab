@@ -97,6 +97,10 @@ module.exports.deleteDB = async () => {
   return await db.user.deleteMany();
 };
 
+module.exports.updateUser = async (id, data) => {
+  return db.user.update({ where: { id: parseInt(id, 10) }, data });
+};
+
 module.exports.findAllUsers = () => db.user.findMany();
 
 module.exports.getOneUser = (id) => {

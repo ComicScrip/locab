@@ -5,6 +5,8 @@ const { hashPassword } = require("../../models/user");
 const Product = require("../../models/product");
 const PriceCategory = require("../../models/priceCategory");
 const Premise = require("../../models/premise");
+const ms = require("smtp-tester");
+const dotenvPlugin = require("cypress-dotenv");
 
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -198,6 +200,15 @@ async function createOrderSample() {
  */
 // eslint-disable-next-line no-unused-vars
 module.exports = (on, config) => {
+  config = dotenvPlugin(config);
+  const mailServer = ms.init(7777);
+  const lastEmail = {};
+  mailServer.bind((addr, id, email) => {
+    lastEmail[email.headers.to] = {
+      body: email.body,
+      html: email.html,
+    };
+  });
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
   on("task", {
