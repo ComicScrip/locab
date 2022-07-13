@@ -3,6 +3,7 @@ const User = require("../../models/user");
 const db = require("../../db");
 const { hashPassword } = require("../../models/user");
 const Product = require("../../models/product");
+const PriceCategory = require("../../models/priceCategory");
 const Premise = require("../../models/premise");
 
 // ***********************************************************
@@ -201,11 +202,12 @@ module.exports = (on, config) => {
   // `config` is the resolved Cypress config
   on("task", {
     deleteUserByEmail: User.deleteUserByEmail,
-    // resetDB: User.deleteDB, products.deleteDb;
+
     resetDB: async () => {
       await User.deleteDB();
       await Product.deleteDB();
       await Premise.deleteDB();
+      await PriceCategory.deleteDB();
       return Promise.resolve("ok");
     },
     createUser: User.createUser,
