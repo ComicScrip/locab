@@ -18,5 +18,5 @@ async function handleDelete(req, res) {
 
 export default base()
   .use(requireCurrentUser)
-  .get(requireCurrentUser, handleGet)
+  .get(handleGet)
   .delete(requireAdmin, handleDelete);

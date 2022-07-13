@@ -6,6 +6,7 @@ import {
   findAllUsers,
   validateUser,
 } from "../../../models/user";
+import requireCurrentUser from "../../../middlewares/requireCurrentUser";
 
 async function handlePost(req, res) {
   const validationErrors = validateUser(req.body);
@@ -48,7 +49,7 @@ async function handlePost(req, res) {
 }
 
 async function handleGet(req, res) {
-  res.send(await findAllUsers());
+  res.send(await findAllUsers({ search: req.query.search }));
 }
 
-export default base().post(handlePost).get(handleGet);
+export default base().post(handlePost).get(requireCurrentUser, handleGet);

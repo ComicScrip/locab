@@ -74,9 +74,13 @@ export default function LayoutAdmin({ children, pageTitle }) {
                 <RiUserFill className={styles.icon} />
                 Utilisateurs
               </li>
-              <li className={styles.eltNavBack}>
-                <RiUserSettingsFill className={styles.icon} />
-                Clients
+              <li className={`${styles.eltNavBack} ${styles.eltNavBackActif}`}>
+                <Link href="/admin/customers">
+                  <a>
+                    <RiUserSettingsFill className={styles.icon} />
+                    Clients
+                  </a>
+                </Link>
               </li>
               <li className={styles.eltNavBack}>
                 <MdLocalPostOffice className={styles.icon} />

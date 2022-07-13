@@ -97,21 +97,32 @@ module.exports.deleteDB = async () => {
   return await db.user.deleteMany();
 };
 
+module.exports.findAllUsers = ({ search }) =>
+  db.user.findMany({
+    where: { firstname: { contains: search } },
+  });
 module.exports.updateUser = async (id, data) => {
   return db.user.update({ where: { id: parseInt(id, 10) }, data });
 };
-
-module.exports.findAllUsers = () => db.user.findMany();
 
 module.exports.getOneUser = (id) => {
   return db.user.findUnique({
     where: { id: parseInt(id, 10) },
   });
 };
-module.exports.patchOneUser = async (data) => {
+
+module.exports.deleteOneUser = (id) => {
+  return db.user.delete({
+    where: {
+      id: parseInt(id, 10),
+    },
+  });
+};
+
+module.exports.patchOneUser = async (id, data) => {
   return await db.user
     .update({
-      where: { id: data.id },
+      where: { id: parseInt(id, 10) },
       data: {
         firstname: data.firstname,
         lastname: data.lastname,

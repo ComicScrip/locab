@@ -221,6 +221,7 @@ module.exports = (on, config) => {
       await PriceCategory.deleteDB();
       return Promise.resolve("ok");
     },
+
     createUser: User.createUser,
     createTestProduct: async () => {
       const cat_a = await db.priceCategory.create({
@@ -261,6 +262,7 @@ module.exports = (on, config) => {
         },
       });
     },
+
     findUserByEmail: User.findByEmail,
     createOrderSample: createOrderSample,
     createTestPriceCategory: async () => {
