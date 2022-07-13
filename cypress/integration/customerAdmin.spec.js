@@ -2,6 +2,7 @@ describe("users", () => {
   beforeEach(() => {
     cy.task("resetDB");
     cy.setupCurrentUser({ role: "admin" });
+    cy.signup({ email: "jeanne@jeanne.com!", firstname: "jeanne" });
   });
 
   it("shows customers page", () => {
@@ -17,14 +18,14 @@ describe("users", () => {
 
   it("delete a customer", () => {
     cy.visit("/admin/customers");
-    cy.get('[data-cy="add_customer_button_delete"]').click();
+    cy.get('[data-cy="add_customer_button_delete"]').first().click();
     cy.get('[data-cy="add_product_button_delete_confirmation"]').click();
-    cy.contains("jeanne").should("not.exist");
+    cy.contains("jeanne,").should("not.exist");
   });
 
   it("modify a customer", () => {
     cy.visit("admin/customers");
-    cy.get('[data-cy="modify_customer_link"]').click();
+    cy.get('[data-cy="modify_customer_link"]').first().click();
     cy.get('[data-cy="modify-customer-firstname"]').type("{selectall}Toto");
     cy.get('[data-cy="modify-customer-button"]').click();
     cy.contains("Jeanne").should("not.exist");

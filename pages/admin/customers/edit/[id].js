@@ -71,7 +71,7 @@ const EditCustomer = () => {
                   onChange={(e) =>
                     setUser({ ...user, lastname: e.target.value })
                   }
-                  data-cy="modify-customer-firstname"
+                  data-cy="modify-customer-lastname"
                 ></input>
               </div>
             </div>
