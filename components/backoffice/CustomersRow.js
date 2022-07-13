@@ -54,7 +54,7 @@ export default function CustomersRow({ backCustomer }) {
               className={styles.modifyBtn}
               href={`/admin/customers/edit/${id}`}
             >
-              <a>Modifier</a>
+              <a data-cy="modify_customer_link">Modifier</a>
             </Link>
             <button
               className={styles.suppBtn}

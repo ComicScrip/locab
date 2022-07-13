@@ -55,19 +55,13 @@ export default function SearchCustomers() {
               </tr>
             </thead>
             <tbody>
-              {userList
-                .filter((backCustomer) =>
-                  backCustomer.firstname
-                    .toUpperCase()
-                    .includes(searchValue.toUpperCase())
-                )
-                .map((backCustomer) => (
-                  <CustomersRow
-                    backCustomer={backCustomer}
-                    key={backCustomer.id}
-                    id={backCustomer.id}
-                  />
-                ))}
+              {userList.map((backCustomer) => (
+                <CustomersRow
+                  backCustomer={backCustomer}
+                  key={backCustomer.id}
+                  id={backCustomer.id}
+                />
+              ))}
             </tbody>
           </table>
         </section>

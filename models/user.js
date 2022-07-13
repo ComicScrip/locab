@@ -97,7 +97,10 @@ module.exports.deleteDB = async () => {
   return await db.user.deleteMany();
 };
 
-module.exports.findAllUsers = () => db.user.findMany();
+module.exports.findAllUsers = ({ search }) =>
+  db.user.findMany({
+    where: { firstname: { contains: search } },
+  });
 
 module.exports.getOneUser = (id) => {
   return db.user.findUnique({

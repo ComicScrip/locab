@@ -22,6 +22,14 @@ describe("users", () => {
     cy.contains("jeanne").should("not.exist");
   });
 
+  it("modify a customer", () => {
+    cy.visit("admin/customers");
+    cy.get('[data-cy="modify_customer_link"]').click();
+    cy.get('[data-cy="modify-customer-firstname"]').type("{selectall}Toto");
+    cy.get('[data-cy="modify-customer-button"]').click();
+    cy.contains("Jeanne").should("not.exist");
+  });
+
   it("can create a new customer", () => {
     cy.visit("/admin/customers");
     cy.get('[data-cy="add_customer_button_add"]').click();
