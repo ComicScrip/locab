@@ -46,7 +46,7 @@ const EditCustomer = () => {
             <div className={styles.inputLign}>
               <div className={styles.userName}>
                 <label htmlFor="nom" className={styles.labelPopUp}>
-                  Nom / Prénom
+                  Prénom
                 </label>
                 <input
                   className={styles.inputPopUp}
@@ -55,6 +55,21 @@ const EditCustomer = () => {
                   value={user.firstname || ""}
                   onChange={(e) =>
                     setUser({ ...user, firstname: e.target.value })
+                  }
+                  data-cy="modify-customer-firstname"
+                ></input>
+              </div>
+              <div className={styles.userName}>
+                <label htmlFor="nom" className={styles.labelPopUp}>
+                  Nom
+                </label>
+                <input
+                  className={styles.inputPopUp}
+                  id="Nom"
+                  type="text"
+                  value={user.lastname || ""}
+                  onChange={(e) =>
+                    setUser({ ...user, lastname: e.target.value })
                   }
                   data-cy="modify-customer-firstname"
                 ></input>
@@ -76,6 +91,18 @@ const EditCustomer = () => {
             </div>
             <div className={styles.productsPrice}>
               <label htmlFor="adresse" className={styles.labelPopUp}>
+                Telephone
+              </label>
+              <input
+                className={styles.inputPopUp}
+                id="phone"
+                type="tel"
+                value={user.phone || ""}
+                onChange={(e) => setUser({ ...user, phone: e.target.value })}
+              ></input>
+            </div>
+            <div className={styles.productsPrice}>
+              <label htmlFor="adresse" className={styles.labelPopUp}>
                 Adresse
               </label>
               <input
@@ -86,6 +113,32 @@ const EditCustomer = () => {
                 onChange={(e) => setUser({ ...user, address: e.target.value })}
               ></input>
             </div>
+
+            <div className={styles.productsPrice}>
+              <label htmlFor="adresse" className={styles.labelPopUp}>
+                Ville
+              </label>
+              <input
+                className={styles.inputPopUp}
+                id="ville"
+                type="text"
+                value={user.city || ""}
+                onChange={(e) => setUser({ ...user, city: e.target.value })}
+              ></input>
+            </div>
+            <div className={styles.productsPrice}>
+              <label htmlFor="adresse" className={styles.labelPopUp}>
+                Code postal
+              </label>
+              <input
+                className={styles.inputPopUp}
+                id="zip"
+                type="text"
+                value={user.zip || ""}
+                onChange={(e) => setUser({ ...user, zip: e.target.value })}
+              ></input>
+            </div>
+
             <div className={styles.btnPopupDiv}>
               <button
                 type="submit"
