@@ -18,7 +18,8 @@ export default function SearchProducts() {
     () => {
       return axios
         .get(`/api/products?search=${searchValue}`)
-        .then((response) => response.data);
+        .then((response) => response.data)
+        .catch(console.error);
     }
   );
 
