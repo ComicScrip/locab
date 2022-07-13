@@ -8,6 +8,9 @@ module.exports.emailAlreadyExists = (email) =>
 module.exports.findByEmail = (email = "") =>
   db.user.findUnique({ where: { email } }).catch(() => null);
 
+module.exports.findById = (id) =>
+  db.user.findUnique({ where: { id } }).catch(() => null);
+
 module.exports.validateUser = (data, forUpdate = false) =>
   Joi.object({
     firstname: Joi.string()
@@ -94,4 +97,41 @@ module.exports.deleteDB = async () => {
   return await db.user.deleteMany();
 };
 
-module.exports.findAllUsers = () => db.user.findMany();
+module.exports.findAllUsers = ({ search }) =>
+  db.user.findMany({
+    where: { firstname: { contains: search } },
+  });
+module.exports.updateUser = async (id, data) => {
+  return db.user.update({ where: { id: parseInt(id, 10) }, data });
+};
+
+module.exports.getOneUser = (id) => {
+  return db.user.findUnique({
+    where: { id: parseInt(id, 10) },
+  });
+};
+
+module.exports.deleteOneUser = (id) => {
+  return db.user.delete({
+    where: {
+      id: parseInt(id, 10),
+    },
+  });
+};
+
+module.exports.patchOneUser = async (id, data) => {
+  return await db.user
+    .update({
+      where: { id: parseInt(id, 10) },
+      data: {
+        firstname: data.firstname,
+        lastname: data.lastname,
+        address: data.address,
+        zip: data.zip,
+        city: data.city,
+        phone: data.phone,
+        email: data.email,
+      },
+    })
+    .catch(() => false);
+};

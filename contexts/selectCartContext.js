@@ -17,7 +17,7 @@ export const SelectCartProvider = ({ children }) => {
     const controller = new AbortController();
     axios
       .get(
-        `/api/products?${qs.stringify(
+        `/api/productsFront?${qs.stringify(
           router.query
         )}&from=2022-05-21&to=2022-05-24`,
         {

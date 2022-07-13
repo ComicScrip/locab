@@ -1,3 +1,6 @@
 .next/*
 .github/*
 .husky/*
+
+.env
+.env.example
