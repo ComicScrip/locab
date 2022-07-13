@@ -2,7 +2,7 @@ describe("users", () => {
   beforeEach(() => {
     cy.task("resetDB");
     cy.setupCurrentUser({ role: "admin" });
-    cy.signup({ email: "jeanne@jeanne.com!", firstname: "jeanne" });
+    cy.signup({ email: "jeanne@jeanne.com", firstname: "jeanne" });
   });
 
   it("shows customers page", () => {
