@@ -5,6 +5,7 @@ import styles from "../../styles/Reservation.module.css";
 import { AiFillLock } from "react-icons/ai";
 import Pack from "../../components/Cart/Pack";
 import Banner from "../../components/Banner";
+import SearchForm from "../../components/SearchForm";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
@@ -13,6 +14,7 @@ function SearchPage() {
 
   return (
     <Layout pageTitle="Location de matériel de puériculture Lyon — Loca-b">
+      <SearchForm />
       <Banner />
 
       <div className={styles.main_title}>

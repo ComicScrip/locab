@@ -90,6 +90,7 @@ model User {
   role           String      @default("customer")
   orders         Order[]
   cartItems      CartItems[]
+  resetPasswordToken String?     @unique
 }
 
 model ProductOnOrder {
