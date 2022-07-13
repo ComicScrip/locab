@@ -78,7 +78,8 @@
     "husky": "^8.0.0",
     "lint-staged": "^12.3.7",
     "prettier": "2.6.2",
-    "prisma": "^3.14.0"
+    "prisma": "^3.14.0",
+    "smtp-tester": "^1.2.0"
   },
   "prisma": {
     "seed": "node prisma/seed.js"

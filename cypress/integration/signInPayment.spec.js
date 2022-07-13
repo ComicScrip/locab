@@ -13,7 +13,7 @@ describe("signInPayment", () => {
   });
 });
 
-it.only("can access to the informations page without log in", () => {
+it("can access to the informations page without log in", () => {
   cy.visit("/signInPayment");
   cy.get('[data-cy="continue_button"]').click();
   cy.url().should("include", "/commande");

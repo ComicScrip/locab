@@ -3,7 +3,7 @@ const transporter = nodemailer.createTransport(
   process.env.CI === "true"
     ? {
         host: "localhost",
-        port: 45,
+        port: 7777,
         secure: false,
         ignoreTLS: true,
       }
