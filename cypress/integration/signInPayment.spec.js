@@ -3,11 +3,16 @@ describe("signInPayment", () => {
     cy.visit("/signInPayment");
   });
 
-  it("can access to informations page when all inputs are field", () => {
-    cy.signup({ email: "test@test.com", role: "admin" });
+  it.only("can access to informations page when all inputs are filled", () => {
+    cy.task("resetDB");
+    cy.signup({
+      email: "test@test.com",
+      role: "visitor",
+      password: "locablocab",
+    });
     cy.visit("/signInPayment");
     cy.get('[data-cy="signin_email"]').type("test@test.com");
-    cy.get('[data-cy="signin_password"]').type("verysecure");
+    cy.get('[data-cy="signin_password"]').type("locablocab");
     cy.get('[data-cy="signin_button"]').click();
     cy.url().should("include", "/commande");
   });
