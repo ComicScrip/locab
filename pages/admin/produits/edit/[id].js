@@ -153,17 +153,16 @@ const EditProduct = () => {
                   </div>
                 </section>
               </section>
+              <aside className={styles.pictureContainer}>
+                <img
+                  src={productPicture}
+                  alt={product.referenceNumber}
+                  className={styles.productPicture}
+                  width="100%"
+                  height="100%"
+                />
+              </aside>
             </div>
-
-            <aside className={styles.pictureContainer}>
-              <img
-                src={productPicture}
-                alt={product.referenceNumber}
-                className={styles.productPicture}
-                width="100%"
-                height="100%"
-              />
-            </aside>
           </form>
         </div>
       </div>
