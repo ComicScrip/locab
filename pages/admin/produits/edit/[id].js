@@ -32,7 +32,6 @@ const EditProduct = () => {
   if (!product) return null;
 
   const productPicture = product.pictures[0].url;
-  console.log(product.pictures);
 
   const handlePatchProduct = (e) => {
     e.preventDefault();
