@@ -15,7 +15,7 @@ export default function Cart() {
   const { selectProducts, onUpdate, onValidate, onDelete } =
     useContext(SelectCartContext);
   const cartTotal = selectProducts.reduce(
-    (acc, cur) => acc + cur.priceCategoryId * cur.quantity,
+    (acc, cur) => acc + cur.price * cur.quantity,
     0
   );
 

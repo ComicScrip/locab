@@ -16,14 +16,21 @@ export const SelectCartProvider = ({ children }) => {
   useEffect(() => {
     const controller = new AbortController();
     axios
-      .get(`/api/products?${qs.stringify(router.query)}`, {
-        signal: controller.signal,
-      })
+      .get(
+        `/api/products?${qs.stringify(
+          router.query
+        )}&from=2022-05-21&to=2022-05-24`,
+        {
+          signal: controller.signal,
+        }
+      )
       .then((response) => response.data)
       .then((data) => {
         setProductList(data);
       });
   }, [router.query]);
+
+  console.log(productList);
 
   useEffect(() => {
     if (selectProducts.length > 0) {

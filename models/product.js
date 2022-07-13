@@ -12,19 +12,7 @@ module.exports.findAllProductsAvailable = ({ city }) =>
       },
     },
     include: {
-      priceCategory: {
-        select: {
-          name: true,
-        },
-      },
-      productSamples: {
-        orderBy: {
-          lastDateOrder: "asc",
-        },
-        select: {
-          id: true,
-        },
-      },
+      priceCategory: true,
       pictures: {
         select: {
           url: true,
@@ -58,16 +46,7 @@ module.exports.findAllProductsUnavailable = ({ city }) =>
       ],
     },
     include: {
-      priceCategory: {
-        select: {
-          name: true,
-        },
-      },
-      productSamples: {
-        select: {
-          referenceNumber: true,
-        },
-      },
+      priceCategory: {},
       pictures: {
         select: {
           url: true,

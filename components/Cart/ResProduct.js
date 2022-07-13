@@ -40,7 +40,7 @@ export default function ResProduct({ product }) {
       <p style={{ textAlign: "center", margin: "20px 0px 0px 0px" }}>
         <span style={{ fontWeight: "bold" }}>{product.name}</span>
         <br />
-        {product.priceCategoryId}€/{t("jour")}
+        {product.price}€/{t("jour")}
       </p>
     </div>
   );
