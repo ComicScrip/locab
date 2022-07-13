@@ -8,6 +8,7 @@ import Tooltip from "@mui/material/Tooltip";
 import Image from "next/image";
 import { SelectCartContext } from "../../contexts/selectCartContext";
 import { useTranslation } from "next-i18next";
+import Link from "next/link";
 
 export default function Cart() {
   const { t } = useTranslation("cart");
@@ -101,22 +102,23 @@ export default function Cart() {
       </div>
 
       <div className={styles.validerContainer}>
-        <Button
-          //onClick={() => alert("Commande enregistrée")}
-          variant="contained"
-          style={{
-            backgroundColor: "#D28F71",
-            borderRadius: "8px",
-            width: "100%",
-            color: "white",
-            fontWeight: "bold",
-            fontSize: "13pt",
-            padding: "15px 0px",
-            opacity: "0.4",
-          }}
-        >
-          {t("validermonpanier")}
-        </Button>
+        <Link href="/commande">
+          <Button
+            variant="contained"
+            style={{
+              backgroundColor: "#D28F71",
+              borderRadius: "8px",
+              width: "100%",
+              color: "white",
+              fontWeight: "bold",
+              fontSize: "13pt",
+              padding: "15px 0px",
+              opacity: "0.4",
+            }}
+          >
+            {t("validermonpanier")}
+          </Button>
+        </Link>
       </div>
     </div>
   );

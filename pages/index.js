@@ -33,7 +33,6 @@ export default function Home() {
                 ></input>
                 <Link
                   href={`/reservation?city=${userLocation}&showUnavailable=true`}
-                  className={styles.logo}
                 >
                   <button className={styles.buttonHome} type="submit">
                     {t("jecherche")} !
