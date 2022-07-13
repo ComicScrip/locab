@@ -87,13 +87,19 @@
 .titleSignUp {
   font-size: 30px;
 }
-
 .connexionText {
   margin-top: 100px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: center;
+}
+.forgetPassWord {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+  float: right;
+  font-style: italic;
 }
 
 @media screen and (max-width: 900px) {
