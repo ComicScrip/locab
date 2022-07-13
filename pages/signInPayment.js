@@ -13,8 +13,8 @@ export default function SignInPayment({ csrfToken }) {
   const HandleSubmitWelcome = (e) => {
     e.preventDefault();
     signIn("credentials", {
-      username: "admin@locab.com",
-      password: "locablocab",
+      username: mail,
+      password: password,
       callbackUrl: `${window.location.origin}/commande`,
     });
     setMail("");

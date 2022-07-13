@@ -60,6 +60,13 @@ module.exports.searchProducts = ({ search }) =>
 
 module.exports.getOneProduct = (id) => {
   return db.product.findUnique({
+    include: {
+      pictures: {
+        select: {
+          url: true,
+        },
+      },
+    },
     where: { id: parseInt(id, 10) },
   });
 };

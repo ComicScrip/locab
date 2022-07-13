@@ -101,6 +101,9 @@ module.exports.findAllUsers = ({ search }) =>
   db.user.findMany({
     where: { firstname: { contains: search } },
   });
+module.exports.updateUser = async (id, data) => {
+  return db.user.update({ where: { id: parseInt(id, 10) }, data });
+};
 
 module.exports.getOneUser = (id) => {
   return db.user.findUnique({
