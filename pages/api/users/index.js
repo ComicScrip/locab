@@ -52,4 +52,4 @@ async function handleGet(req, res) {
   res.send(await findAllUsers({ search: req.query.search }));
 }
 
-export default base().use(requireCurrentUser).post(handlePost).get(handleGet);
+export default base().post(handlePost).get(requireCurrentUser, handleGet);

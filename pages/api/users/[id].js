@@ -20,7 +20,6 @@ const handlePatch = async (req, res) => {
 };
 
 export default base()
-  .use(requireCurrentUser)
-  .get(handleGet)
-  .delete(handleDelete)
-  .patch(handlePatch);
+  .get(requireCurrentUser, handleGet)
+  .delete(handleDelete, requireCurrentUser)
+  .patch(handlePatch, requireCurrentUser);
