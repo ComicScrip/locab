@@ -7,7 +7,6 @@ async function seed() {
     data: {
       firstname: "admin",
       lastname: "admin",
-      // email: "admin@locab.com",
       email: "admin@locab.com",
       hashedPassword: await hashPassword("locablocab"),
       address: "test",
@@ -21,7 +20,7 @@ async function seed() {
     data: {
       firstname: "toto",
       lastname: "hallaplaje",
-      email: "pierregenthondev@gmail.com",
+      email: "visitor@locab.com",
       hashedPassword: await hashPassword("locablocab"),
       address: "rue de la plage",
       phone: "01 23 45 67 78",
