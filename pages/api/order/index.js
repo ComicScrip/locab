@@ -2,6 +2,8 @@ import base from "../../../middlewares/common";
 import requireCurrentUser from "../../../middlewares/requireCurrentUser";
 
 import { createOrder, findOrders } from "../../../models/order";
+import { findAllCartItems } from "../../../models/cartItem";
+import { createProductOnOrders } from "../../../models/productsOnOrder";
 
 async function handlePost(req, res) {
   const {
@@ -19,7 +21,6 @@ async function handlePost(req, res) {
     premiseId,
     delegateParentId,
     partnerId,
-    products,
   } = await createOrder(req.body);
 
   const orderNumber = () => {
@@ -46,9 +47,23 @@ async function handlePost(req, res) {
     premiseId,
     delegateParentId,
     partnerId,
-    products,
+    products: productsOnOrder(),
     customerId: req.currentUser.id,
   });
+
+  const productsOnOrder = async () => {
+    const cartItems = await findAllCartItems();
+    const order = await findOrders();
+    return res.status(201).send(
+      await cartItems.map((item) => {
+        createProductOnOrders({
+          orderId: order.id,
+          quantity: item.quantity,
+          productSampleId: item.productSampleId,
+        });
+      })
+    );
+  };
 }
 
 async function handleGet(req, res) {

@@ -233,6 +233,13 @@ async function seed() {
       customerId: visitor.id,
     },
   });
+  await db.cartItems.create({
+    data: {
+      customerId: visitor.id,
+      quantity: 3,
+      productSampleId: sample_01.id,
+    },
+  });
 }
 
 seed();
