@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.inputEdit {
+  background-color: rgb(248, 248, 248, 0.3);
+}
+
+/* Pop-Up active et fermée */
+
+.popup {
+  visibility: hidden;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(248, 248, 248, 0.3);
+  transition: 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.labelPopUp {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+}
+
+.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup__close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: black;
+}
+
+.popup__content {
+  width: 38vw;
+  background-color: #f8f8f8;
+  border-radius: 20px;
+  border: 2px solid black;
+  position: relative;
+  transition: ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0);
+}
+
+.popup__close:hover {
+  font-size: 4rem;
+  top: 4px;
+}
+
+.active .popup__content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Contenu Form */
+
+.titlePopupProducts {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.productsName,
+.productsMark,
+.productsQuantity,
+.productsPrice {
+  margin: auto;
+  align-items: center;
+  width: 50%;
+}
+
+.productsDescription {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+}
+
+.descriptionTextArea {
+  width: 100%;
+  border: none;
+  height: 30vh;
+}
+
+.productsName,
+.productsQuantity {
+  margin-right: 20px;
+}
+
+.inputLign {
+  display: flex;
+  justify-content: space-between;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.inputPopUp {
+  width: 100%;
+  height: 5vh;
+  border: none;
+}
+
+.formPopup {
+  margin: auto;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  background-color: rgb(248, 248, 248, 0.3);
+}
+
+/* Button */
+
+.btnPopupDiv {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.buttonPlus {
+  background-color: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.buttonPopUp {
+  color: white;
+  background-color: #d28f71;
+  border-radius: 20px;
+  width: 10vw;
+  height: 5vh;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}

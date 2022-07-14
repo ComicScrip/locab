@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import styles from "../../../../styles/EditProduct.module.css";
+import styles from "../../../../styles/EditPrice.module.css";
 import LayoutAdmin from "../../../../components/LayoutAdmin";
 
 const EditPrice = () => {
@@ -48,7 +48,7 @@ const EditPrice = () => {
     <LayoutAdmin>
       <div className={styles.pageEdit}>
         <div className={styles.formPopup}>
-          <h1 className={styles.titlePopupProducts}>Modifier un produit</h1>
+          <h1 className={styles.titlePopupProducts}>Modifier un prix</h1>
           <form
             className={styles.formPopUpAddProducts}
             onSubmit={handlePatchPrice}
