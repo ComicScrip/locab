@@ -59,7 +59,7 @@ async function createOrderSample() {
     data: {
       name: "Chancelière",
       brand: "Chicco",
-      caution: 20,
+      caution: 200,
       description: "Une chancelière",
       priceCategoryId: cat_a.id,
     },
@@ -68,8 +68,17 @@ async function createOrderSample() {
     data: {
       name: "Poussette",
       brand: "Yoyo",
-      caution: 20,
+      caution: 400,
       description: "Une poussette marque Yoyo",
+      priceCategoryId: cat_a.id,
+    },
+  });
+  const nidAnge = await db.product.create({
+    data: {
+      name: "Nid d'ange",
+      brand: "Ange",
+      caution: 200,
+      description: "Un nid d'ange marque ange",
       priceCategoryId: cat_a.id,
     },
   });
@@ -80,6 +89,15 @@ async function createOrderSample() {
       zip: "69002",
       city: "Lyon",
       premiseType: "Privé",
+    },
+  });
+  const premise_02 = await db.premise.create({
+    data: {
+      name: "titi",
+      address: "140 rue antoine",
+      zip: "69002",
+      city: "Bordeaux",
+      premiseType: "Public",
     },
   });
 
@@ -98,8 +116,18 @@ async function createOrderSample() {
       referenceNumber: "CH-002",
       dateOfPurchase: new Date("2022-04-23 00:00:00"),
       condition: "Comme neuf",
-      lastDateOrder: new Date("2022-05-21T00:00:00"),
+      lastDateOrder: new Date("2022-05-18T00:00:00"),
       productId: poussette.id,
+      premiseId: premise_02.id,
+    },
+  });
+  await db.productSample.create({
+    data: {
+      referenceNumber: "CH-003",
+      dateOfPurchase: new Date("2022-05-21T00:00:00"),
+      condition: "Neuf",
+      lastDateOrder: new Date("2022-05-10T00:00:00"),
+      productId: chanceliere.id,
       premiseId: premise_01.id,
     },
   });
@@ -112,6 +140,10 @@ async function createOrderSample() {
       {
         url: "/image/products/Poussette-YOYO-Nacelle.jpg",
         productId: poussette.id,
+      },
+      {
+        url: "/image/products/Poussette-YOYO-Nacelle.jpg",
+        productId: nidAnge.id,
       },
     ],
   });

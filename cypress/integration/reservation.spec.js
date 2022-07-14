@@ -1,6 +1,7 @@
 describe("reservation", () => {
   it("shows reservation page", () => {
     cy.task("resetDB");
+    cy.task("createOrderSample");
     cy.visit("/signInPayment");
     cy.signup({
       email: "test@test.com",
@@ -27,19 +28,19 @@ describe("reservation", () => {
   });
 
   it("can search product", () => {
-    cy.get('[data-cy="searchBar"]').type("pou");
-    cy.contains("Poussette").should("be.visible");
-    cy.contains("Chancelière").should("not.exist");
+    cy.get('[data-cy="searchBar"]').type("cha");
+    cy.contains("Chancelière").should("be.visible");
+    cy.contains("Poussette").should("not.exist");
     cy.contains("Nid d'ange").should("not.exist");
   });
-});
 
-it("Add a product to cart", () => {
-  cy.get('[data-cy="addProductToCartClick"]').click();
-  cy.contains("Votre panier est vide").should("not.exist");
-});
+  it("Add a product to cart", () => {
+    cy.get('[data-cy="addProductToCartClick"]').click();
+    cy.contains("Votre panier est vide").should("not.exist");
+  });
 
-it("Delete a product to cart", () => {
-  cy.get('[data-cy="deleteProductToCartClick"]').click();
-  cy.contains("Votre panier est vide").should("be.visible");
+  it("Delete a product to cart", () => {
+    cy.get('[data-cy="deleteProductToCartClick"]').click();
+    cy.contains("Votre panier est vide").should("be.visible");
+  });
 });
