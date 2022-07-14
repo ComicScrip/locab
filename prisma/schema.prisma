@@ -52,7 +52,6 @@ model Order {
   id                  Int              @id @default(autoincrement())
   orderNumber         String           @unique @db.VarChar(50)
   startDate           DateTime
-  startTime           DateTime
   endDate             DateTime
   orderDate           DateTime         @default(now())
   paymentType         String           @db.VarChar(50)
@@ -78,18 +77,18 @@ model Order {
 }
 
 model User {
-  id             Int         @id @default(autoincrement())
-  lastname       String      @db.VarChar(255)
-  firstname      String      @db.VarChar(255)
-  address        String      @db.VarChar(255)
-  zip            String      @db.VarChar(10)
-  city           String      @db.VarChar(60)
-  email          String      @unique @db.VarChar(100)
-  hashedPassword String
-  phone          String      @db.VarChar(50)
-  role           String      @default("customer")
-  orders         Order[]
-  cartItems      CartItems[]
+  id                 Int         @id @default(autoincrement())
+  lastname           String      @db.VarChar(255)
+  firstname          String      @db.VarChar(255)
+  address            String      @db.VarChar(255)
+  zip                String      @db.VarChar(10)
+  city               String      @db.VarChar(60)
+  email              String      @unique @db.VarChar(100)
+  hashedPassword     String
+  phone              String      @db.VarChar(50)
+  role               String      @default("customer")
+  orders             Order[]
+  cartItems          CartItems[]
   resetPasswordToken String?     @unique
 }
 

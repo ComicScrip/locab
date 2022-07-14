@@ -11,6 +11,8 @@ import { useTranslation } from "react-i18next";
 import Layout from "../../components/Layout";
 import Banner from "../../components/Banner";
 import useUserLocation from "../../hooks/useUserLocation";
+import useUserStartDate from "../../hooks/useUserStartDate";
+import useUserEndDate from "../../hooks/useUserEndDate";
 
 export default function Commande() {
   const { t } = useTranslation("signIn");
@@ -18,6 +20,8 @@ export default function Commande() {
   // IMPORT DU CONTEXT //
 
   const [userLocation, setUserLocation] = useUserLocation("");
+  const [userStartDate, setUserStartDate] = useUserStartDate("");
+  const [userEndDate, setUserEndDate] = useUserEndDate("");
 
   // FIN CONTEXT //
   const [activeInformations, setActiveInformations] = useState(true);
@@ -53,7 +57,7 @@ export default function Commande() {
 
   /* PARTIE INFORMATIONS */
 
-  const HandleSubmitInformations = (e) => {
+  const handleSubmitInformations = (e) => {
     e.preventDefault();
     setActiveInformations(!activeInformations);
     setActiveLivraison(!activeLivraison);
@@ -109,19 +113,12 @@ export default function Commande() {
         deliveryCity: partnerCity,
         deliveryArrivalTime: userHourArrived,
         comment: userCommentary,
-        orderNumber: "123456789",
-        startDate: "",
-        startTime: "",
-        endDate: "2022-06-25T22:00:00.000Z",
+        startDate: userStartDate,
+        endDate: userEndDate,
         orderDate: new Date(),
-        paymentType: "Carte bleue",
-        paidPrice: 100,
         premiseId: userLocation,
         delegateParentId: 2,
         partnerId: 5,
-        products: "",
-        status: "okay",
-        customerId: 25,
       })
       .then(() => {
         setUserPartner("");
@@ -134,6 +131,8 @@ export default function Commande() {
         setUserHourArrived("");
         setUserComentary("");
         setUserLocation("");
+        setUserStartDate("");
+        setUserEndDate("");
       })
       .catch((err) => {
         if (err.response && err.response.status === 409)
@@ -305,7 +304,7 @@ export default function Commande() {
                   <button
                     className={styles.button2}
                     type="submit"
-                    onClick={HandleSubmitInformations}
+                    onClick={handleSubmitInformations}
                     data-cy="infos_submit_button"
                   >
                     {t("tolivraison")}
@@ -452,8 +451,8 @@ export default function Commande() {
                     </label>
                     <input
                       className={styles.textarea}
-                      id="hour"
-                      type="hour"
+                      id="time"
+                      type="datetime-local"
                       required
                       data-cy="partner_hour"
                       onChange={(e) => setUserHourArrived(e.target.value)}

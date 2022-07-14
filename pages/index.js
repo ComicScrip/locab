@@ -3,11 +3,16 @@ import styles from "../styles/Home.module.css";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import useUserLocation from "../hooks/useUserLocation";
+import useUserStartDate from "../hooks/useUserStartDate";
+import useUserEndDate from "../hooks/useUserEndDate";
 
 export default function Home() {
   const { t } = useTranslation("home");
 
   const [userLocation, setUserLocation] = useUserLocation("");
+
+  const [userStartDate, setUserStartDate] = useUserStartDate("");
+  const [userEndDate, setUserEndDate] = useUserEndDate("");
 
   return (
     <Layout pageTitle="Location de poussette | Location de matériel de puériculture">
@@ -28,8 +33,17 @@ export default function Home() {
                 ></input>
                 <input
                   className={styles.whenHome}
-                  type="text"
+                  type="date"
                   placeholder={t("quand")}
+                  value={userStartDate}
+                  onChange={(e) => setUserStartDate(e.target.value)}
+                ></input>
+                <input
+                  className={styles.whenHome}
+                  type="date"
+                  placeholder={t("quand")}
+                  value={userEndDate}
+                  onChange={(e) => setUserEndDate(e.target.value)}
                 ></input>
                 <button className={styles.buttonHome} type="submit">
                   {t("jecherche")} !

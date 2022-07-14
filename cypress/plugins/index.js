@@ -183,7 +183,6 @@ async function createOrderSample() {
       },
       orderNumber: "A366UL",
       startDate: new Date("2022-06-16T00:00:00"),
-      startTime: new Date("2022-06-17T00:00:00"),
       endDate: new Date("2022-06-26T00:00:00"),
       orderDate: new Date("2022-02-15T00:00:00"),
       paymentType: "Carte bleue",

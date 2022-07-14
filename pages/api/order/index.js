@@ -5,7 +5,6 @@ import { createOrder, findOrders } from "../../../models/order";
 
 async function handlePost(req, res) {
   const {
-    id,
     deliveryPhoneNumber,
     deliveryFirstName,
     deliveryLastName,
@@ -14,22 +13,22 @@ async function handlePost(req, res) {
     deliveryCity,
     deliveryArrivalTime,
     comment,
-    orderNumber,
     startDate,
-    startTime,
     endDate,
     orderDate,
-    paymentType,
-    paidPrice,
     premiseId,
     delegateParentId,
     partnerId,
     products,
-    status,
-    customerId,
   } = await createOrder(req.body);
+
+  const orderNumber = () => {
+    return Math.floor((1 + Math.random()) * 0x10000000000)
+      .toString(16)
+      .substring(1)
+      .toUpperCase();
+  };
   res.status(201).send({
-    id,
     deliveryPhoneNumber,
     deliveryFirstName,
     deliveryLastName,
@@ -38,19 +37,17 @@ async function handlePost(req, res) {
     deliveryCity,
     deliveryArrivalTime,
     comment,
-    orderNumber,
+    orderNumber: orderNumber(),
     startDate,
-    startTime,
     endDate,
     orderDate,
-    paymentType,
-    paidPrice,
+    paymentType: "carte bleue",
+    paidPrice: 100,
     premiseId,
     delegateParentId,
     partnerId,
     products,
-    status,
-    customerId,
+    customerId: req.currentUser.id,
   });
 }
 
