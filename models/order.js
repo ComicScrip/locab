@@ -34,6 +34,7 @@ module.exports.createOrder = async ({
       comment,
       orderNumber,
       startDate,
+
       endDate,
       orderDate,
       paymentType,

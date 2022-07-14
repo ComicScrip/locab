@@ -23,6 +23,9 @@ async function handlePost(req, res) {
     partnerId,
   } = await createOrder(req.body);
 
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+
   const orderNumber = () => {
     return Math.floor((1 + Math.random()) * 0x10000000000)
       .toString(16)
@@ -39,8 +42,8 @@ async function handlePost(req, res) {
     deliveryArrivalTime,
     comment,
     orderNumber: orderNumber(),
-    startDate,
-    endDate,
+    startDate: start,
+    endDate: end,
     orderDate,
     paymentType: "carte bleue",
     paidPrice: 100,
