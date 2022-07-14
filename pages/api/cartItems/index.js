@@ -8,6 +8,7 @@ async function handlePostCartItem(req, res) {
   const productSamples = await findAllProductSamples({
     productId: req.query.productId,
   });
+
   return res.status(201).send(
     await createCartItem({
       customerId: req.currentUser.id,

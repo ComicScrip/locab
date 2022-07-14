@@ -1,7 +1,4 @@
 import styles from "../styles/SearchForm.module.css";
-//import Location from "../public/icons/location.png";
-//import Watch1 from "../public/icons/watch1.png";
-//import Watch2 from "../public/icons/watch2.png";
 
 export default function SearchForm() {
   return (

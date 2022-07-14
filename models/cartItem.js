@@ -10,18 +10,18 @@ module.exports.createCartItem = ({ customerId, quantity, productSampleId }) => {
   });
 };
 
-module.exports.deleteCartItem = (id) => {
-  return db.cartItems.delete({
+module.exports.deleteCartItem = (productSampleId) => {
+  return db.cartItems.deleteMany({
     where: {
-      id: parseInt(id, 10),
+      productSampleId: parseInt(productSampleId, 10),
     },
   });
 };
 
-module.exports.patchCartItem = async (id, data) => {
+module.exports.patchCartItem = async (productSampleId, data) => {
   return await db.cartItems
-    .update({
-      where: { id: parseInt(id, 10) },
+    .updateMany({
+      where: { productSampleId: parseInt(productSampleId, 10) },
       data: {
         quantity: data.quantity,
       },

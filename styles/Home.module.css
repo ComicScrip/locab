@@ -98,7 +98,6 @@
   width: 70%;
   font-size: 13px;
   background-color: #ededed;
-  opacity: 20%;
 }
 
 .whenHome {
@@ -120,7 +119,6 @@
   font-size: 13px;
   color: white;
   background-color: #d28f71;
-  opacity: 20%;
 }
 
 @media screen and (min-width: 900px) {

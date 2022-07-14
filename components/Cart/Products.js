@@ -53,7 +53,12 @@ export default function Products() {
           product.name.toUpperCase().includes(searchValue.toUpperCase())
         )
         .map((product) => (
-          <ResProduct product={product} key={product.id} id={product.id} />
+          <ResProduct
+            product={product}
+            key={product.id}
+            id={product.id}
+            data-cy="availabilityBtn"
+          />
         ))}
     </div>
   );

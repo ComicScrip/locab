@@ -30,6 +30,7 @@ export default function ResProduct({ product }) {
           ? { borderColor: "#96C0C0" }
           : { borderColor: "#ededed" }
       }
+      data-cy="addProductToCartClick"
     >
       <Image
         src={product.pictures[0].url}

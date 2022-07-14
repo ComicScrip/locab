@@ -8,7 +8,6 @@ export const SelectCartContext = createContext();
 export const SelectCartProvider = ({ children }) => {
   const [selectProducts, setSelectProducts] = useState([]);
   const [productList, setProductList] = useState([]);
-  const [cartItems, setCartItems] = useState([]);
 
   const router = useRouter();
   const { city = "", showUnavailable = true } = router.query;
@@ -30,19 +29,6 @@ export const SelectCartProvider = ({ children }) => {
       });
   }, [router.query]);
 
-  console.log(productList);
-
-  useEffect(() => {
-    if (selectProducts.length > 0) {
-      axios
-        .get(`/api/cartItems`)
-        .then((response) => response.data)
-        .then((data) => {
-          setCartItems(data);
-        });
-    }
-  }, [selectProducts.length]);
-
   const setSearchParams = (newSearch) => {
     const queryString = qs.stringify(
       { ...router.query, ...newSearch },
@@ -53,9 +39,6 @@ export const SelectCartProvider = ({ children }) => {
 
   const onAdd = (product) => {
     const exist = selectProducts.find((x) => x.id === product.id);
-    const cartItemToDelete = cartItems.find(
-      (x) => x.productSampleId === product.productSamples[0].id
-    );
 
     if (!exist) {
       axios.post(`/api/cartItems?productId=${product.id}`).catch((err) => {
@@ -64,10 +47,8 @@ export const SelectCartProvider = ({ children }) => {
 
       setSelectProducts([...selectProducts, { ...product, quantity: 1 }]);
     } else {
-      const id = cartItemToDelete.id;
-
       axios
-        .delete(`/api/cartItems/${id}`)
+        .delete(`/api/cartItems/${product.productSamples[0].id}`)
         .catch((err) => console.error(err.response.status));
 
       setSelectProducts(selectProducts.filter((x) => x.id !== product.id));
@@ -75,18 +56,13 @@ export const SelectCartProvider = ({ children }) => {
   };
 
   const onUpdate = (productId, productSampleId, newQuantity) => {
-    const cartItemToUpdate = cartItems.find(
-      (x) => x.productSampleId === productSampleId
-    );
-    const id = cartItemToUpdate.id;
-
     let quantity = parseInt(newQuantity, 10);
     if (isNaN(quantity)) {
       quantity = 0;
     }
 
     axios
-      .patch(`/api/cartItems/${id}`, {
+      .patch(`/api/cartItems/${productSampleId}`, {
         quantity: quantity,
       })
       .catch(console.error);
@@ -99,14 +75,9 @@ export const SelectCartProvider = ({ children }) => {
   };
 
   const onValidate = (productId, productSampleId, newQuantity) => {
-    const cartItemToUpdate = cartItems.find(
-      (x) => x.productSampleId === productSampleId
-    );
-    const id = cartItemToUpdate.id;
-
     if (newQuantity === "") {
       axios
-        .patch(`/api/cartItems/${id}`, {
+        .patch(`/api/cartItems/${productSampleId}`, {
           quantity: 1,
         })
         .catch(console.error);
@@ -120,13 +91,8 @@ export const SelectCartProvider = ({ children }) => {
   };
 
   const onDelete = (productId, productSampleId) => {
-    const cartItemToDelete = cartItems.find(
-      (x) => x.productSampleId === productSampleId
-    );
-    const id = cartItemToDelete.id;
-
     axios
-      .delete(`/api/cartItems/${id}`)
+      .delete(`/api/cartItems/${productSampleId}`)
       .catch((err) => console.error(err.response.status));
 
     setSelectProducts((prevList) =>

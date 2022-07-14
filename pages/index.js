@@ -20,6 +20,7 @@ export default function Home() {
             <div>
               <form className={styles.choixHome}>
                 <input
+                  data-cy="searchWhere"
                   className={styles.whereHome}
                   type="text"
                   placeholder={t("ouallezvous")}
@@ -34,7 +35,11 @@ export default function Home() {
                 <Link
                   href={`/reservation?city=${userLocation}&showUnavailable=true`}
                 >
-                  <button className={styles.buttonHome} type="submit">
+                  <button
+                    className={styles.buttonHome}
+                    type="submit"
+                    data-cy="searchBtnHomePage"
+                  >
                     {t("jecherche")} !
                   </button>
                 </Link>

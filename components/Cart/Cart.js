@@ -76,6 +76,7 @@ export default function Cart() {
             <IconButton
               aria-label="delete"
               onClick={() => onDelete(product.id, product.productSamples[0].id)}
+              data-cy="deleteProductToCartClick"
             >
               <DeleteIcon />
             </IconButton>
@@ -113,7 +114,6 @@ export default function Cart() {
               fontWeight: "bold",
               fontSize: "13pt",
               padding: "15px 0px",
-              opacity: "0.4",
             }}
           >
             {t("validermonpanier")}
