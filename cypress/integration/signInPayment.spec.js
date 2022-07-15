@@ -16,16 +16,16 @@ describe("signInPayment", () => {
     cy.get('[data-cy="signin_button"]').click();
     cy.url().should("include", "/commande");
   });
-});
 
-it("can access to the informations page without log in", () => {
-  cy.visit("/signInPayment");
-  cy.get('[data-cy="continue_button"]').click();
-  cy.url().should("include", "/commande");
-});
+  it("can access to the informations page without log in", () => {
+    cy.visit("/signInPayment");
+    cy.get('[data-cy="continue_button"]').click();
+    cy.url().should("include", "/commande");
+  });
 
-it("can access to the signup page", () => {
-  cy.visit("/signInPayment");
-  cy.get('[data-cy="continue_button_incription"]').click();
-  cy.url().should("include", "/signup");
+  it("can access to the signup page", () => {
+    cy.visit("/signInPayment");
+    cy.get('[data-cy="continue_button_incription"]').click();
+    cy.url().should("include", "/signup");
+  });
 });
