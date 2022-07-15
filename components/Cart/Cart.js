@@ -20,14 +20,7 @@ export default function Cart() {
     0
   );
 
-  let depositArray = [];
-  let deposit = 0;
-  for (let i = 0; i < selectProducts.length; i++) {
-    depositArray.push(selectProducts[i].caution);
-  }
-  if (depositArray.length > 0) {
-    deposit = Math.max(...depositArray);
-  }
+  const deposit = Math.max(...[0, ...selectProducts.map((ci) => ci.caution)]);
 
   return (
     <div className={styles.mainContainer}>
@@ -57,25 +50,13 @@ export default function Cart() {
                 type="number"
                 min="0"
                 value={product.quantity || ""}
-                onChange={(event) =>
-                  onUpdate(
-                    product.id,
-                    product.productSamples[0].id,
-                    event.target.value
-                  )
-                }
-                onBlur={(e) =>
-                  onValidate(
-                    product.id,
-                    product.productSamples[0].id,
-                    e.target.value
-                  )
-                }
+                onChange={(event) => onUpdate(product.id, event.target.value)}
+                onBlur={(e) => onValidate(product.id, e.target.value)}
               />
             </div>
             <IconButton
               aria-label="delete"
-              onClick={() => onDelete(product.id, product.productSamples[0].id)}
+              onClick={() => onDelete(product.id)}
               data-cy="deleteProductToCartClick"
             >
               <DeleteIcon />

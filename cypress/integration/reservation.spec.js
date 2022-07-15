@@ -2,12 +2,10 @@ describe("reservation", () => {
   it("shows reservation page", () => {
     cy.task("resetDB");
     cy.task("createOrderSample");
-    cy.visit("/signInPayment");
-    cy.signup({
-      email: "test@test.com",
-      role: "visitor",
-      password: "locablocab",
-    });
+    cy.visit("/signup");
+    cy.get('[data-cy="signin_email"]').type("tata@locab.com");
+    cy.get('[data-cy="signin_password"]').type("locablocab");
+    cy.get('[data-cy="signin_button"]').click();
     cy.visit("/");
     cy.get('[data-cy="searchWhere"]').type("Lyon");
     cy.get('[data-cy="searchBtnHomePage"]').click();

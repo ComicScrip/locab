@@ -1,27 +1,27 @@
 const db = require("../db");
 
-module.exports.createCartItem = ({ customerId, quantity, productSampleId }) => {
+module.exports.createCartItem = ({ customerId, quantity, productId }) => {
   return db.cartItems.create({
     data: {
       customerId,
       quantity,
-      productSampleId,
+      productId,
     },
   });
 };
 
-module.exports.deleteCartItem = (productSampleId) => {
+module.exports.deleteCartItem = (productId) => {
   return db.cartItems.deleteMany({
     where: {
-      productSampleId: parseInt(productSampleId, 10),
+      productId: parseInt(productId, 10),
     },
   });
 };
 
-module.exports.patchCartItem = async (productSampleId, data) => {
+module.exports.patchCartItem = async (productId, data) => {
   return await db.cartItems
     .updateMany({
-      where: { productSampleId: parseInt(productSampleId, 10) },
+      where: { productId: parseInt(productId, 10) },
       data: {
         quantity: data.quantity,
       },
@@ -29,4 +29,5 @@ module.exports.patchCartItem = async (productSampleId, data) => {
     .catch(() => false);
 };
 
-module.exports.findAllCartItems = () => db.cartItems.findMany();
+module.exports.findCartItems = ({ customerId }) =>
+  db.cartItems.findMany({ where: { customerId: customerId } });

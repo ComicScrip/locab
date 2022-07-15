@@ -44,8 +44,8 @@ model CartItems {
   customerId      Int
   customer        User          @relation(fields: [customerId], references: [id], onDelete: Cascade)
   quantity        Int           @default(1)
-  ProductSample   ProductSample @relation(fields: [productSampleId], references: [id], onDelete: Cascade)
-  productSampleId Int
+  Product         Product       @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId       Int
 }
 
 model Order {
@@ -114,7 +114,6 @@ model ProductSample {
   premise         Premise          @relation(fields: [premiseId], references: [id], onDelete: Cascade)
   premiseId       Int
   orders          ProductOnOrder[]
-  cartItems       CartItems[]
 }
 
 model Product {
@@ -127,6 +126,7 @@ model Product {
   priceCategory   PriceCategory    @relation(fields: [priceCategoryId], references: [id], onDelete: Cascade)
   productSamples  ProductSample[]
   pictures        ProductPicture[]
+  cartItems       CartItems[]
 }
 
 model ProductPicture {

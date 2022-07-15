@@ -9,8 +9,6 @@ async function handleGetProducts(req, res) {
   const from = new Date(req.query.from).getTime();
   const to = new Date(req.query.to).getTime();
 
-  console.log(req.query.from);
-
   let days = (to - from) / (1000 * 3600 * 24);
   if (days > 15) {
     days = 16;
@@ -39,8 +37,6 @@ async function handleGetProducts(req, res) {
   const availableProducts = (
     await findAllProductsAvailable({
       city: req.query.city,
-      from: req.query.from,
-      to: req.query.to,
     })
   ).map((product) => ({
     ...product,
@@ -51,8 +47,6 @@ async function handleGetProducts(req, res) {
     const unavailableProducts = (
       await findAllProductsUnavailable({
         city: req.query.city,
-        from: req.query.from,
-        to: req.query.to,
       })
     ).map((product) => ({
       ...product,

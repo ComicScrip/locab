@@ -101,15 +101,6 @@ module.exports.findAllProductsAvailable = ({ city }) =>
     },
     include: {
       priceCategory: true,
-      productSamples: {
-        orderBy: { lastDateOrder: "asc" },
-        select: {
-          id: true,
-          orders: {
-            include: { order: { select: { startDate: true, endDate: true } } },
-          },
-        },
-      },
       pictures: {
         select: {
           url: true,
