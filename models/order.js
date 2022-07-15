@@ -49,7 +49,12 @@ module.exports.createOrder = async ({
   });
 };
 
-module.exports.findOrders = () => db.order.findMany();
+module.exports.findOrders = ({ customerId }) =>
+  db.order.findMany({
+    where: {
+      id: customerId,
+    },
+  });
 
 module.exports.findAllOrders = ({ customerId, limitDatefilter, search }) => {
   return db.order.findMany({

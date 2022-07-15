@@ -70,6 +70,6 @@ async function handlePost(req, res) {
 }
 
 async function handleGet(req, res) {
-  res.send(await findOrders());
+  res.send(await findOrders({ customerId: req.currentUser.id }));
 }
-export default base().use(requireCurrentUser).post(handlePost).get(handleGet);
+export default base().use().post(handlePost).get(requireCurrentUser, handleGet);

@@ -6,16 +6,19 @@ import { BsPaypal } from "react-icons/bs";
 import { FaCcVisa } from "react-icons/fa";
 import { FaCcMastercard } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Layout from "../../components/Layout";
 import Banner from "../../components/Banner";
 import useUserLocation from "../../hooks/useUserLocation";
 import useUserStartDate from "../../hooks/useUserStartDate";
 import useUserEndDate from "../../hooks/useUserEndDate";
+import currentUserContext from "../../contexts/currentUserContext";
 
 export default function Commande() {
   const { t } = useTranslation("signIn");
+
+  const [currentUserProfile] = useContext(currentUserContext);
 
   // IMPORT DU CONTEXT //
 
@@ -38,6 +41,7 @@ export default function Commande() {
   const [userFirstname, setUserFirstName] = useState("");
   const [userLastName, setUserLastName] = useState("");
   const [userAddress, setUserAddress] = useState("");
+  const [userPhone, setUserPhone] = useState("");
   const [userZip, setUserZip] = useState("");
   const [userCity, setUserCity] = useState("");
 
@@ -62,33 +66,35 @@ export default function Commande() {
     setActiveInformations(!activeInformations);
     setActiveLivraison(!activeLivraison);
     setCheckedInformations(!checkedInformations);
-
-    axios
-      .post("/api/users", {
-        firstname: userFirstname,
-        lastname: userLastName,
-        address: userAddress,
-        zip: userZip,
-        city: userCity,
-        phone: "0102030405",
-        email: userMail,
-        password: "Toto123/",
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .then(() => {
-        setUserFirstName("");
-        setUserLastName("");
-        setUserAddress("");
-        setUserCity("");
-        setUserMail("");
-        setUserZip("");
-      })
-      .catch((err) => {
-        if (err.response && err.response.status === 409)
-          setError("Email déjà utilisé");
-      });
+    if (!currentUserProfile) {
+      axios
+        .post("/api/users", {
+          firstname: userFirstname,
+          lastname: userLastName,
+          address: userAddress,
+          zip: userZip,
+          city: userCity,
+          phone: userPhone,
+          email: userMail,
+          password: "Toto123/",
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .then(() => {
+          setUserFirstName("");
+          setUserLastName("");
+          setUserAddress("");
+          setUserCity("");
+          setUserMail("");
+          setUserZip("");
+          setUserPhone("");
+        })
+        .catch((err) => {
+          if (err.response && err.response.status === 409)
+            setError("Email déjà utilisé");
+        });
+    }
   };
 
   const OpenInformations = (e) => {
@@ -266,6 +272,19 @@ export default function Commande() {
                     onChange={(e) => setUserAddress(e.target.value)}
                     value={userAddress}
                     data-cy="infos_address"
+                  />
+                </div>
+                <div className={styles.formpassword}>
+                  <label htmlFor="adress" className={styles.password}>
+                    {t("Numérodetelephone")}
+                  </label>
+                  <input
+                    className={styles.textarea}
+                    id="phone"
+                    type="phone"
+                    onChange={(e) => setUserPhone(e.target.value)}
+                    value={userPhone}
+                    data-cy="infos_phone"
                   />
                 </div>
                 <div className={styles.name}>
