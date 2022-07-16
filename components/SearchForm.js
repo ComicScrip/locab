@@ -1,11 +1,16 @@
+import Link from "next/link";
+import useSearch from "../hooks/useSearch";
 import styles from "../styles/SearchForm.module.css";
 
 export default function SearchForm() {
+  const { params, setCity, queryString } = useSearch();
   return (
     <div className={styles.containerGlobal}>
       <div className={styles.forms}>
         <div className={styles.divlocation}>
           <input
+            value={params.city}
+            onChange={(e) => setCity(e.target.value)}
             type="text"
             name="destination"
             id="location"
@@ -36,7 +41,9 @@ export default function SearchForm() {
             required
           />
         </div>
-        <button className={styles.button}>Je cherche !</button>
+        <Link href={`/reservation?${queryString}`}>
+          <button className={styles.button}>Je cherche !</button>
+        </Link>
       </div>
     </div>
   );

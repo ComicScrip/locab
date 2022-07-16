@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import styles from "../../styles/Panier.module.css";
 import ErrorIcon from "@mui/icons-material/Error";
@@ -6,31 +6,40 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Tooltip from "@mui/material/Tooltip";
 import Image from "next/image";
-import { SelectCartContext } from "../../contexts/selectCartContext";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
+import useCart from "../../hooks/useCart";
+import useSearch from "../../hooks/useSearch";
+import dayjs from "dayjs";
 
 export default function Cart() {
   const { t } = useTranslation("cart");
 
-  const { selectProducts, onUpdate, onValidate, onDelete } =
-    useContext(SelectCartContext);
-  const cartTotal = selectProducts.reduce(
-    (acc, cur) => acc + cur.price * cur.quantity,
-    0
-  );
+  const { cartItems, updateProductQuantity, deposit, total, deleteProduct } =
+    useCart();
 
-  const deposit = Math.max(...[0, ...selectProducts.map((ci) => ci.caution)]);
+  const {
+    params: { fromDate, toDate },
+  } = useSearch();
+
+  const [onClient, setOnClient] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") setOnClient(true);
+  }, []);
+
+  if (!onClient) return null;
 
   return (
     <div className={styles.mainContainer}>
       <div className={styles.mainTitle}>
         <h2>{t("votrepanier")}</h2>
       </div>
-      {selectProducts.length === 0 && (
+      {cartItems.length === 0 && (
         <div className={styles.emptyShop}>{t("votrepanierestvide")}</div>
       )}
-      {selectProducts.map((product) => {
+
+      {cartItems.map(({ quantity, product }) => {
         return (
           <div key={product.id} className={styles.input_container}>
             <div className={styles.name_style}>
@@ -49,14 +58,16 @@ export default function Cart() {
                 size="1"
                 type="number"
                 min="0"
-                value={product.quantity || ""}
-                onChange={(event) => onUpdate(product.id, event.target.value)}
-                onBlur={(e) => onValidate(product.id, e.target.value)}
+                value={quantity || ""}
+                onChange={(event) =>
+                  updateProductQuantity(product.id, event.target.value)
+                }
+                onBlur={() => updateProductQuantity(product.id, quantity || 1)}
               />
             </div>
             <IconButton
               aria-label="delete"
-              onClick={() => onDelete(product.id)}
+              onClick={() => deleteProduct(product.id)}
               data-cy="deleteProductToCartClick"
             >
               <DeleteIcon />
@@ -68,10 +79,11 @@ export default function Cart() {
         <div className={styles.totalInfoContainer}>
           <h3>Total</h3>
           <p>
-            {t("du")} XX/XX {t("au")} XX/XX
+            {t("du")} {dayjs(fromDate).format("DD/MM")} {t("au")}{" "}
+            {dayjs(toDate).format("DD/MM")}
           </p>
         </div>
-        <h2>{cartTotal}€</h2>
+        <h2>{total}€</h2>
       </div>
       <div className={styles.cautionContainer}>
         <p>{t("montantdelacaution")}</p>
@@ -80,7 +92,7 @@ export default function Cart() {
             <ErrorIcon />
           </IconButton>
         </Tooltip>
-        <p>{deposit}</p>
+        <p>{deposit}€</p>
       </div>
 
       <div className={styles.validerContainer}>

@@ -30,4 +30,14 @@ module.exports.patchCartItem = async (productId, data) => {
 };
 
 module.exports.findCartItems = ({ customerId }) =>
-  db.cartItems.findMany({ where: { customerId: customerId } });
+  db.cartItems.findMany({
+    where: { customerId: customerId },
+    include: {
+      product: {
+        include: {
+          pictures: true,
+          priceCategory: true,
+        },
+      },
+    },
+  });

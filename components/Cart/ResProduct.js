@@ -1,21 +1,26 @@
-import { useContext } from "react";
 import styles from "../../styles/Reservation.module.css";
 import Image from "next/image";
-import { SelectCartContext } from "../../contexts/selectCartContext";
 import { useTranslation } from "next-i18next";
+import useCart from "../../hooks/useCart";
+import { getProductPrice } from "../../utils/getProductPrice";
+import useSearch from "../../hooks/useSearch";
 
 export default function ResProduct({ product }) {
   const { t } = useTranslation("cart");
 
-  const { selectProducts, onAdd } = useContext(SelectCartContext);
+  const { addProduct, productExistsInCart, deleteProduct } = useCart();
+  const { nbDays } = useSearch();
 
-  const existInCart = selectProducts.find((x) => x.id === product.id);
+  const existsInCart = productExistsInCart(product.id);
 
   const handleClickProduct = () => {
     if (!product.unavailable) {
-      onAdd(product);
+      if (existsInCart) deleteProduct(product.id);
+      else addProduct(product);
     }
   };
+
+  const price = getProductPrice(nbDays, product.priceCategory);
 
   return (
     <div
@@ -26,7 +31,7 @@ export default function ResProduct({ product }) {
       }
       onClick={handleClickProduct}
       style={
-        existInCart && !product.unavailable
+        existsInCart && !product.unavailable
           ? { borderColor: "#96C0C0" }
           : { borderColor: "#ededed" }
       }
@@ -41,7 +46,7 @@ export default function ResProduct({ product }) {
       <p style={{ textAlign: "center", margin: "20px 0px 0px 0px" }}>
         <span style={{ fontWeight: "bold" }}>{product.name}</span>
         <br />
-        {product.price}€/{t("jour")}
+        {price}€/{t("jour")}
       </p>
     </div>
   );
