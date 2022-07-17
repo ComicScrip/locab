@@ -58,8 +58,6 @@ model Order {
   paymentType         String           @db.VarChar(50)
   paidPrice           Float
   comment             String?          @db.VarChar(255)
-  premiseId           Int
-  premise             Premise          @relation(fields: [premiseId], references: [id], onDelete: Cascade)
   delegateParentId    Int?
   delegateParent      DelegateParent?  @relation(fields: [delegateParentId], references: [id], onDelete: SetNull)
   partnerId           Int?
@@ -75,6 +73,8 @@ model Order {
   deliveryZip         String?
   deliveryCity        String?
   deliveryArrivalTime String?
+  Premise             Premise?         @relation(fields: [premiseId], references: [id])
+  premiseId           Int?
 }
 
 model User {

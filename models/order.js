@@ -122,3 +122,46 @@ module.exports.deleteOneOrder = (id) => {
     },
   });
 };
+
+module.exports.createOrder = ({
+  startDate,
+  endDate,
+  paymentType,
+  paidPrice,
+  comment,
+  products,
+  customerId,
+  deliveryPhoneNumber,
+  deliveryFirstName,
+  deliveryLastName,
+  deliveryStreet,
+  deliveryZip,
+  deliveryCity,
+  deliveryArrivalTime,
+}) => {
+  const orderNumber = Math.floor((1 + Math.random()) * 0x10000000000)
+    .toString(16)
+    .substring(1)
+    .toUpperCase();
+  return db.order.create({
+    data: {
+      orderNumber,
+      startDate: new Date(startDate),
+      startTime: new Date(startDate),
+      endDate: new Date(endDate),
+      paymentType,
+      paidPrice,
+      comment,
+      products,
+
+      deliveryPhoneNumber,
+      deliveryFirstName,
+      deliveryLastName,
+      deliveryStreet,
+      deliveryZip,
+      deliveryCity,
+      deliveryArrivalTime,
+      customerId,
+    },
+  });
+};

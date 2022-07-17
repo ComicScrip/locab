@@ -1,6 +1,16 @@
 import base from "../../../middlewares/common";
 import requireCurrentUser from "../../../middlewares/requireCurrentUser";
-import { findAllOrders } from "../../../models/order";
+import { createOrder, findAllOrders } from "../../../models/order";
+
+async function handlePost(req, res) {
+  await createOrder({
+    ...req.body,
+    customerId: 1,
+    paymentType: "CB",
+    paidPrice: 200,
+  });
+  res.send("ok");
+}
 
 async function handleGet(req, res) {
   let customerId;
@@ -25,4 +35,4 @@ async function handleGet(req, res) {
 
   res.send(await findAllOrders({ customerId, limitDatefilter, search }));
 }
-export default base().use(requireCurrentUser).get(handleGet);
+export default base().get(requireCurrentUser, handleGet).post(handlePost);
