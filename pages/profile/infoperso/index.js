@@ -45,7 +45,6 @@ export default function MonCompte() {
   );
 
   useEffect(() => {
-    console.log(currentUserProfile);
     if (currentUserProfile) {
       setFirstName(currentUserProfile.firstname || "");
       setLastName(currentUserProfile.lastname || "");

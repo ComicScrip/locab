@@ -35,15 +35,18 @@ export default function ResProduct({ product }) {
           ? { borderColor: "#96C0C0" }
           : { borderColor: "#ededed" }
       }
-      data-cy="addProductToCartClick"
+      data-cy={`addProductToCartClick-${product.id}`}
     >
       <Image
-        src={product.pictures[0].url}
+        src={product.pictures[0]?.url}
         height={"70px"}
         width={"70px"}
         alt={product.name}
       />
-      <p style={{ textAlign: "center", margin: "20px 0px 0px 0px" }}>
+      <p
+        style={{ textAlign: "center", margin: "20px 0px 0px 0px" }}
+        data-cy={product.unavailable ? "unavailableItem" : ""}
+      >
         <span style={{ fontWeight: "bold" }}>{product.name}</span>
         <br />
         {price}€/{t("jour")}

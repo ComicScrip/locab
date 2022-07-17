@@ -7,6 +7,7 @@ const PriceCategory = require("../../models/priceCategory");
 const Premise = require("../../models/premise");
 const ms = require("smtp-tester");
 const dotenvPlugin = require("cypress-dotenv");
+const prepareReservation = require("./prepareReservation");
 
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -305,6 +306,7 @@ module.exports = (on, config) => {
       await Product.deleteDB();
       await Premise.deleteDB();
       await PriceCategory.deleteDB();
+      await db.productSample.deleteMany({});
       return Promise.resolve("ok");
     },
 
@@ -375,6 +377,7 @@ module.exports = (on, config) => {
       });
       return cat_a;
     },
+    prepareReservation,
   });
   return config;
 };

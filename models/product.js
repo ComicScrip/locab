@@ -88,14 +88,46 @@ module.exports.deleteDB = async () => {
   return await db.product.deleteMany();
 };
 
-module.exports.findAllProductsAvailable = ({ city }) =>
+module.exports.findAllProductsAvailable = ({
+  city,
+  fromDate,
+  toDate,
+  productNameContains,
+}) =>
   db.product.findMany({
     where: {
+      name: {
+        contains: productNameContains,
+      },
       productSamples: {
         some: {
           premise: {
             city: city,
           },
+          OR: [
+            {
+              unavailabilityStart: null,
+            },
+            {
+              AND: [
+                {
+                  unavailabilityStart: {
+                    gt: new Date(fromDate),
+                  },
+                },
+                {
+                  unavailabilityStart: {
+                    gt: new Date(toDate),
+                  },
+                },
+              ],
+            },
+            {
+              unavailabilityEnd: {
+                lt: new Date(fromDate),
+              },
+            },
+          ],
         },
       },
     },
@@ -109,9 +141,17 @@ module.exports.findAllProductsAvailable = ({ city }) =>
     },
   });
 
-module.exports.findAllProductsUnavailable = ({ city }) =>
+module.exports.findAllProductsUnavailable = ({
+  city,
+  toDate,
+  fromDate,
+  productNameContains,
+}) =>
   db.product.findMany({
     where: {
+      name: {
+        contains: productNameContains,
+      },
       OR: [
         {
           productSamples: {
@@ -130,6 +170,35 @@ module.exports.findAllProductsUnavailable = ({ city }) =>
               },
             },
           ],
+        },
+        {
+          NOT: {
+            productSamples: {
+              every: {
+                OR: [
+                  {
+                    AND: [
+                      {
+                        unavailabilityStart: {
+                          gt: new Date(fromDate),
+                        },
+                      },
+                      {
+                        unavailabilityStart: {
+                          gt: new Date(toDate),
+                        },
+                      },
+                    ],
+                  },
+                  {
+                    unavailabilityEnd: {
+                      lt: new Date(fromDate),
+                    },
+                  },
+                ],
+              },
+            },
+          },
         },
       ],
     },

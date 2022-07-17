@@ -11,7 +11,8 @@ const useCart = () => {
   const { nbDays } = useSearch();
   const { currentUserProfile } = useContext(CurrentUserContext);
 
-  const [cartItems, setCartItems] = useCartItems([]);
+  let [cartItems, setCartItems] = useCartItems([]);
+  if (cartItems === null) cartItems = []; // bypass strange bug in cypress...
 
   useEffect(() => {
     if (currentUserProfile) {

@@ -64,13 +64,13 @@
     background-size: 20px;
   }
   .watch1Input {
-    padding-left: 25px;
     background: url("../public/icons/watch1.png") no-repeat left;
     background-size: 18px;
+    background-position-x: 5px;
   }
   .watch2Input {
-    padding-left: 25px;
     background: url("../public/icons/watch1.png") no-repeat left;
+    background-position-x: 5px;
     background-size: 18px;
     text-indent: 17px;
   }

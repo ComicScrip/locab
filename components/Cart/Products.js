@@ -17,7 +17,7 @@ export default function Products() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push(`/reservation?${queryString}`);
+    router.push(`/reservation?${queryString}`, undefined, { scroll: false });
     axios
       .get(`/api/productsFront?${queryString}`)
       .then((response) => response.data)
@@ -25,8 +25,6 @@ export default function Products() {
         setProductList(data);
       });
   }, [queryString]);
-
-  console.log({ productList });
 
   return (
     <div className={styles.mainWrapper}>

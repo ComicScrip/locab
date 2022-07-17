@@ -36,7 +36,10 @@ async function handleGetProducts(req, res) {
 
   const availableProducts = (
     await findAllProductsAvailable({
-      city: req.query.city,
+      city: req.query.city || "",
+      fromDate: req.query.fromDate,
+      toDate: req.query.toDate,
+      productNameContains: req.query.productNameContains,
     })
   ).map((product) => ({
     ...product,
@@ -46,7 +49,10 @@ async function handleGetProducts(req, res) {
   if (req.query.showUnavailable === "true") {
     const unavailableProducts = (
       await findAllProductsUnavailable({
-        city: req.query.city,
+        city: req.query.city || "",
+        fromDate: req.query.fromDate,
+        toDate: req.query.toDate,
+        productNameContains: req.query.productNameContains,
       })
     ).map((product) => ({
       ...product,

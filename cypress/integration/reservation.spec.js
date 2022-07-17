@@ -1,44 +1,83 @@
 describe("reservation", () => {
-  it("shows reservation page", () => {
+  it("shows a message asking to search for a location when no location was selected", () => {
     cy.task("resetDB");
-    cy.task("createOrderSample");
-    cy.visit("/signup");
-    cy.get('[data-cy="signin_email"]').type("tata@locab.com");
-    cy.get('[data-cy="signin_password"]').type("locablocab");
-    cy.get('[data-cy="signin_button"]').click();
+    cy.task("prepareReservation");
+    cy.visit("/reservation");
+    cy.contains(
+      "Merci de selectionner un lieu plus haut pour trouver du materiel"
+    );
+  });
+
+  it("shows reservation page with availbale items by default", () => {
+    cy.task("resetDB");
+    cy.task("prepareReservation");
     cy.visit("/");
-    cy.get('[data-cy="searchWhere"]').type("Lyon");
+    cy.get('[data-cy="searchWhere"]').select("Lyon");
     cy.get('[data-cy="searchBtnHomePage"]').click();
+    cy.url().should("include", "showUnavailable=false");
     cy.contains("Chancelière").should("be.visible");
     cy.contains("Poussette").should("be.visible");
     cy.contains("Nid d'ange").should("be.visible");
+    cy.contains("Berceau").should("not.exist");
   });
 
-  it("shows only available products", () => {
+  it("shows unavailable products when checked", () => {
+    cy.task("resetDB");
+    cy.task("prepareReservation");
+    cy.visit("/reservation");
+    cy.get('[data-cy="selectWhere"]').select("Bordeaux");
     cy.get('[data-cy="availabilityBtn"]').click();
-    cy.get("body").should("not.have.css", "background", "#ededed");
-    cy.url().should("include", "showUnavailable=false");
-  });
-
-  it("shows all products", () => {
-    cy.get('[data-cy="availabilityBtn"]').click();
+    cy.get('[data-cy="unavailableItem"]').should("exist");
     cy.url().should("include", "showUnavailable=true");
   });
 
   it("can search product", () => {
+    cy.task("resetDB");
+    cy.task("prepareReservation");
+    cy.visit("/reservation");
+    cy.get('[data-cy="selectWhere"]').select("Lyon");
     cy.get('[data-cy="searchBar"]').type("cha");
     cy.contains("Chancelière").should("be.visible");
     cy.contains("Poussette").should("not.exist");
     cy.contains("Nid d'ange").should("not.exist");
   });
 
-  it("Add a product to cart", () => {
-    cy.get('[data-cy="addProductToCartClick"]').click();
-    cy.contains("Votre panier est vide").should("not.exist");
+  it("Can add a product to cart", () => {
+    cy.task("resetDB");
+    cy.task("prepareReservation").then(({ chanceliere }) => {
+      cy.visit("/reservation");
+      cy.get('[data-cy="selectWhere"]').select("Lyon");
+      cy.get(`[data-cy="addProductToCartClick-${chanceliere.id}"]`).click();
+      cy.contains("Votre panier est vide").should("not.exist");
+    });
   });
 
-  it("Delete a product to cart", () => {
-    cy.get('[data-cy="deleteProductToCartClick"]').click();
-    cy.contains("Votre panier est vide").should("be.visible");
+  it("Can delete a product from cart", () => {
+    cy.task("resetDB");
+    cy.task("prepareReservation").then(({ chanceliere }) => {
+      cy.visit("/reservation");
+      cy.get('[data-cy="selectWhere"]').select("Lyon");
+      cy.get(`[data-cy="addProductToCartClick-${chanceliere.id}"]`).click();
+      cy.get(`[data-cy="addProductToCartClick-${chanceliere.id}"]`).click();
+      cy.contains("Votre panier est vide").should("exist");
+    });
+  });
+
+  it.only("Can place an order", () => {
+    cy.task("resetDB");
+    cy.task("prepareReservation").then(({ chanceliere }) => {
+      cy.visit("/reservation");
+      cy.get('[data-cy="selectWhere"]').select("Lyon");
+      cy.get(`[data-cy="addProductToCartClick-${chanceliere.id}"]`).click();
+      cy.contains("VALIDER MON PANIER").click();
+      cy.url().should("include", "/commande");
+      cy.get('[data-cy="infos_email"]').type("user@gmail.com");
+      cy.get('[data-cy="infos_firstname"]').type("John");
+      cy.get('[data-cy="infos_lastname"]').type("Doe");
+      cy.get('[data-cy="infos_address"]').type("17 rue delandine");
+      cy.get('[data-cy="infos_phone"]').type("0677554433");
+      cy.get('[data-cy="infos_zip"]').type("69002");
+      cy.get('[data-cy="infos_city"]').type("Lyon");
+    });
   });
 });

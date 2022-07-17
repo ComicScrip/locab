@@ -17,7 +17,8 @@ const defaultParams = {
 };
 
 const useSearch = () => {
-  const [params, setParams] = useSearchParams(defaultParams);
+  let [params, setParams] = useSearchParams(defaultParams);
+  if (params === null) params = defaultParams; // bypass strange bug in cypress...
 
   const mergeParams = useCallback(
     (newParams) => {
@@ -28,12 +29,12 @@ const useSearch = () => {
 
   useEffect(() => {
     // if start date is before today
-    //if (dayjs().isAfter(params.fromDate))
-    //mergeParams({ fromDate: dayjs().format("YYYY-MM-DD") });
+    if (dayjs().subtract(1, "day").isAfter(params.fromDate))
+      mergeParams({ fromDate: dayjs().format("YYYY-MM-DD") });
     // if start > end
-    //if (dayjs(params.fromDate).isAfter(params.toDate))
-    //mergeParams({ toDate: params.fromDate });
-  }, [params.fromDate, params.toDate, mergeParams]);
+    if (dayjs(params.fromDate).isAfter(params.toDate))
+      mergeParams({ toDate: params.fromDate });
+  }, [params?.fromDate, params?.toDate, mergeParams]);
 
   const queryString = qs.stringify(params, { skipEmptyString: true });
 
@@ -41,6 +42,8 @@ const useSearch = () => {
     mergeParams({ productNameContains: search });
 
   const setCity = (name) => mergeParams({ city: name });
+  const setFromDate = (date) => mergeParams({ fromDate: date });
+  const setToDate = (date) => mergeParams({ toDate: date });
 
   const toggleShowUnavailable = () =>
     mergeParams({ showUnavailable: !params.showUnavailable });
@@ -56,6 +59,8 @@ const useSearch = () => {
     setCity,
     toggleShowUnavailable,
     nbDays,
+    setFromDate,
+    setToDate,
   };
 };
 

@@ -4,13 +4,15 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import useSearch from "../hooks/useSearch";
+import dayjs from "dayjs";
 
 export default function Home() {
   const { t } = useTranslation("home");
   const {
-    params: { city },
+    params: { city, fromDate },
     setCity,
     queryString,
+    setFromDate,
   } = useSearch();
 
   return (
@@ -23,18 +25,29 @@ export default function Home() {
             <p className={styles.textFirst}>{t("activityDescription")}</p>
             <div>
               <form className={styles.choixHome}>
-                <input
-                  data-cy="searchWhere"
-                  className={styles.whereHome}
-                  type="text"
-                  placeholder={t("ouallezvous")}
+                <select
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                ></input>
+                  type="text"
+                  name="destination"
+                  id="location"
+                  data-cy="searchWhere"
+                  placeholder="Où allez-vous ?"
+                  className={styles.whereHome}
+                  required
+                >
+                  <option value="">{t("ouallezvous")}</option>
+                  <option value="Lyon">Lyon</option>
+                  <option value="Bordeaux">Bordeaux</option>
+                </select>
+
                 <input
                   className={styles.whenHome}
-                  type="text"
+                  type="date"
+                  min={dayjs().format("YYYY-MM-DD")}
                   placeholder={t("quand")}
+                  value={fromDate}
+                  onChange={(e) => setFromDate(e.target.value)}
                 ></input>
                 <Link href={`/reservation?${queryString}`}>
                   <button
