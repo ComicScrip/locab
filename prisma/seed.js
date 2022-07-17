@@ -19,15 +19,15 @@ async function seed() {
 
   const visitor = await db.user.create({
     data: {
-      firstname: "toto",
-      lastname: "hallaplaje",
-      email: "pierregenthondev@gmail.com",
+      firstname: "jane",
+      lastname: "doe",
+      email: "jane.doe@gmail.com",
       hashedPassword: await hashPassword("locablocab"),
       address: "rue de la plage",
       phone: "01 23 45 67 78",
       role: "visitor",
-      city: "plage",
-      zip: "12345",
+      city: "Lyon",
+      zip: "69000",
     },
   });
 
@@ -110,7 +110,7 @@ async function seed() {
   await db.premise.deleteMany();
   const premise_01 = await db.premise.create({
     data: {
-      name: "tata",
+      name: "Dépot 1",
       address: "140 rue delandine",
       zip: "69002",
       city: "Lyon",
@@ -120,7 +120,7 @@ async function seed() {
 
   const premise_02 = await db.premise.create({
     data: {
-      name: "titi",
+      name: "Dépot 2",
       address: "140 rue antoine",
       zip: "69002",
       city: "Bordeaux",
@@ -134,7 +134,16 @@ async function seed() {
       referenceNumber: "CH-001",
       dateOfPurchase: new Date("2022-05-21T00:00:00"),
       condition: "Neuf",
-      lastDateOrder: new Date("2022-05-21T00:00:00"),
+      productId: chanceliere.id,
+      premiseId: premise_01.id,
+    },
+  });
+
+  const sample_01_bis = await db.productSample.create({
+    data: {
+      referenceNumber: "CH-003",
+      dateOfPurchase: new Date("2022-04-23T00:00:00"),
+      condition: "OK",
       productId: chanceliere.id,
       premiseId: premise_01.id,
     },
@@ -145,7 +154,6 @@ async function seed() {
       referenceNumber: "CH-002",
       dateOfPurchase: new Date("2022-04-23T00:00:00"),
       condition: "Comme neuf",
-      lastDateOrder: new Date("2022-05-18T00:00:00"),
       productId: poussette.id,
       premiseId: premise_02.id,
     },
@@ -156,7 +164,6 @@ async function seed() {
       referenceNumber: "CH-003",
       dateOfPurchase: new Date("2022-05-21T00:00:00"),
       condition: "Neuf",
-      lastDateOrder: new Date("2022-05-10T00:00:00"),
       productId: chanceliere.id,
       premiseId: premise_01.id,
     },
@@ -183,18 +190,38 @@ async function seed() {
   await db.order.deleteMany();
   await db.order.create({
     data: {
-      products: {
+      city: "Lyon",
+      items: {
         create: [
           {
             quantity: 1,
-            productSampleId: sample_01.id,
+            productName: chanceliere.name,
+            productSamples: {
+              connect: {
+                id: sample_01.id,
+              },
+            },
+            unitPrice: 30,
           },
           {
             quantity: 1,
-            productSampleId: sample_02.id,
+            productName: poussette.name,
+            productSamples: {
+              connect: {
+                id: sample_02.id,
+              },
+            },
+            unitPrice: 60,
           },
         ],
       },
+      billingCity: visitor.city,
+      billingEmail: visitor.email,
+      billingFirstname: visitor.firstname,
+      billingLastname: visitor.lastname,
+      billingPhoneNumber: visitor.phone,
+      billingStreet: visitor.address,
+      billingZip: visitor.zip,
       orderNumber: "ZRT123",
       startDate: new Date("2022-06-16T00:00:00"),
       startTime: new Date("2022-06-17T00:00:00"),
@@ -202,7 +229,6 @@ async function seed() {
       orderDate: new Date("2022-06-15T00:00:00"),
       paymentType: "Paypal",
       paidPrice: 67,
-      premiseId: premise_01.id,
       status: "Terminé",
       customerId: visitor.id,
     },
@@ -210,18 +236,33 @@ async function seed() {
 
   await db.order.create({
     data: {
-      products: {
+      city: "Lyon",
+      items: {
         create: [
           {
-            quantity: 3,
-            productSampleId: sample_01.id,
-          },
-          {
-            quantity: 10,
-            productSampleId: sample_02.id,
+            quantity: 2,
+            productName: chanceliere.name,
+            productSamples: {
+              connect: [
+                {
+                  id: sample_01.id,
+                },
+                {
+                  id: sample_01_bis.id,
+                },
+              ],
+            },
+            unitPrice: 30,
           },
         ],
       },
+      billingCity: visitor.city,
+      billingEmail: visitor.email,
+      billingFirstname: visitor.firstname,
+      billingLastname: visitor.lastname,
+      billingPhoneNumber: visitor.phone,
+      billingStreet: visitor.address,
+      billingZip: visitor.zip,
       orderNumber: "R54363",
       startDate: new Date("2022-06-16T00:00:00"),
       startTime: new Date("2022-06-17T00:00:00"),
@@ -229,7 +270,6 @@ async function seed() {
       orderDate: new Date("2022-06-15T00:00:00"),
       paymentType: "Carte bleue",
       paidPrice: 234,
-      premiseId: premise_02.id,
       status: "Terminé",
       customerId: visitor.id,
     },

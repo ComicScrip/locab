@@ -30,7 +30,7 @@ module.exports.findAllProductSample = ({ search }) => {
           premiseType: true,
         },
       },
-      orders: {
+      orderItems: {
         select: {
           order: {
             select: {
@@ -103,7 +103,7 @@ module.exports.findOneProductSample = (id) => {
           premiseType: true,
         },
       },
-      orders: {
+      orderItems: {
         select: {
           order: {
             select: {
@@ -121,14 +121,39 @@ module.exports.findOneProductSample = (id) => {
 module.exports.patchOneProductSample = async (id, data) => {
   return await db.productSample.update({
     where: { id: parseInt(id, 10) },
-    data: {
-      referenceNumber: data.referenceNumber,
-      productId: data.productId,
-      condition: data.condition,
-      dateOfPurchase: data.dateOfPurchase,
-      comment: data.comment,
-      premiseId: data.premiseId,
-      lastDateOrder: data.lastDateOrder,
+    data,
+  });
+};
+
+module.exports.findAvailableInCity = ({
+  city,
+  startDate,
+  quantity = 1,
+  productId,
+}) => {
+  return db.productSample.findMany({
+    where: {
+      AND: [
+        {
+          premise: {
+            city,
+          },
+          productId,
+        },
+        {
+          OR: [
+            {
+              unavailabilityEnd: null,
+            },
+            {
+              unavailabilityEnd: {
+                lt: new Date(startDate),
+              },
+            },
+          ],
+        },
+      ],
     },
+    take: quantity,
   });
 };

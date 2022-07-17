@@ -3,11 +3,6 @@ const db = require("../db");
 module.exports.findAllOrders = ({ customerId, limitDatefilter, search }) => {
   return db.order.findMany({
     include: {
-      premise: {
-        select: {
-          address: true,
-        },
-      },
       delegateParent: {
         select: {
           lastname: true,
@@ -19,9 +14,9 @@ module.exports.findAllOrders = ({ customerId, limitDatefilter, search }) => {
           company: true,
         },
       },
-      products: {
+      items: {
         include: {
-          productSample: {
+          productSamples: {
             include: {
               product: {
                 include: {
@@ -63,11 +58,6 @@ module.exports.findAllOrders = ({ customerId, limitDatefilter, search }) => {
 module.exports.findOneOrder = ({ customerId, id }) => {
   return db.order.findUnique({
     include: {
-      premise: {
-        select: {
-          address: true,
-        },
-      },
       delegateParent: {
         select: {
           lastname: true,
@@ -79,9 +69,9 @@ module.exports.findOneOrder = ({ customerId, id }) => {
           company: true,
         },
       },
-      products: {
+      items: {
         include: {
-          productSample: {
+          productSamples: {
             include: {
               product: {
                 include: {
@@ -129,8 +119,7 @@ module.exports.createOrder = ({
   paymentType,
   paidPrice,
   comment,
-  products,
-  customerId,
+  itemsWithSamples,
   deliveryPhoneNumber,
   deliveryFirstName,
   deliveryLastName,
@@ -138,7 +127,15 @@ module.exports.createOrder = ({
   deliveryZip,
   deliveryCity,
   deliveryArrivalTime,
+  billingFirstname,
+  billingLastname,
+  billingStreet,
+  billingZip,
+  billingCity,
+  billingPhoneNumber,
+  billingEmail,
 }) => {
+  console.log("samples", itemsWithSamples);
   const orderNumber = Math.floor((1 + Math.random()) * 0x10000000000)
     .toString(16)
     .substring(1)
@@ -152,8 +149,18 @@ module.exports.createOrder = ({
       paymentType,
       paidPrice,
       comment,
-      products,
-
+      items: {
+        create: itemsWithSamples.map(({ quantity, samples, product }) => ({
+          quantity,
+          productName: product.name,
+          productSamples: {
+            connect: samples.map((sample) => ({
+              id: sample.id,
+            })),
+          },
+          unitPrice: 30,
+        })),
+      },
       deliveryPhoneNumber,
       deliveryFirstName,
       deliveryLastName,
@@ -161,7 +168,13 @@ module.exports.createOrder = ({
       deliveryZip,
       deliveryCity,
       deliveryArrivalTime,
-      customerId,
+      billingFirstname,
+      billingLastname,
+      billingStreet,
+      billingZip,
+      billingCity,
+      billingPhoneNumber,
+      billingEmail,
     },
   });
 };

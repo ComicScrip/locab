@@ -11,6 +11,8 @@ import { useTranslation } from "react-i18next";
 import Layout from "../../components/Layout";
 import Banner from "../../components/Banner";
 import useSearch from "../../hooks/useSearch";
+import useCart from "../../hooks/useCart";
+import Cart from "../../components/Cart/Cart";
 
 export default function Commande() {
   const { t } = useTranslation("signIn");
@@ -18,6 +20,8 @@ export default function Commande() {
   const {
     params: { toDate, fromDate, city },
   } = useSearch();
+
+  const { cartItems } = useCart();
 
   const [openSection, setOpenSection] = useState("payment");
 
@@ -59,13 +63,19 @@ export default function Commande() {
         endDate: toDate,
         orderCity: city,
         partnerId: 5,
-        firstname: userFirstname,
-        lastname: userLastName,
-        address: userAddress,
-        zip: userZip,
-        city: userCity,
-        phone: userPhone,
-        email: userMail,
+        billingFirstname: userFirstname,
+        billingLastname: userLastName,
+        billingStreet: userAddress,
+        billingZip: userZip,
+        billingCity: userCity,
+        billingPhoneNumber: userPhone,
+        billingEmail: userMail,
+        cartItems,
+      })
+      .catch((err) => {
+        if (err.response?.code === "OUT_OF_STOCK") {
+          console.log(err.response?.details);
+        }
       })
       .then(() => {
         setUserPartner("");
@@ -115,7 +125,7 @@ export default function Commande() {
         </div>
         <div className={styles.h2}>
           <h2
-            onClick={() => setOpenSection("delivery")}
+            onClick={() => setOpenSection("userInfo")}
             style={openSection === "userInfo" ? styleDefault : setStyle}
           >
             {openSection === "delivery" ? (
@@ -494,6 +504,7 @@ export default function Commande() {
                     {t("cgv2")}
                   </label>
                 </div>
+                <Cart />
                 <div className={styles.formbutton}>
                   <button
                     type="submit"

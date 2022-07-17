@@ -14,9 +14,9 @@ describe("admin orders - back office", () => {
   it("admin orders - can search an order by its number or customer name", () => {
     cy.get("[data-cy='searchBar']").type("ART123");
     cy.contains("A366UL").should("not.exist");
-    cy.get("[data-cy='searchBar']").type("{selectall}toto");
+    cy.get("[data-cy='searchBar']").type("{selectall}jane");
     cy.contains("A366UL").should("not.exist");
-    cy.get("[data-cy='searchBar']").type("{selectall}hallaplaje");
+    cy.get("[data-cy='searchBar']").type("{selectall}doe");
     cy.contains("A366UL").should("be.visible");
   });
 

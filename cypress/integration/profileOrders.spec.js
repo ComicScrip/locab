@@ -8,9 +8,10 @@ describe("orders - without session", () => {
 describe("orders - with an active session", () => {
   beforeEach(() => {
     cy.task("resetDB");
-    cy.task("createOrderSample");
-    cy.loginProfile({ email: "tata@locab.com", password: "locablocab" });
-    cy.visit("/profile/orders");
+    cy.setupCurrentUser({ role: "visitor" }).then((user) => {
+      cy.task("createOrderSample", { user });
+      cy.visit("/profile/orders");
+    });
   });
 
   it("can access the profile page if the user is signed in", () => {

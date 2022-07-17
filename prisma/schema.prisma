@@ -7,6 +7,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id                 Int         @id @default(autoincrement())
+  lastname           String      @db.VarChar(255)
+  firstname          String      @db.VarChar(255)
+  address            String      @db.VarChar(255)
+  zip                String      @db.VarChar(10)
+  city               String      @db.VarChar(60)
+  email              String      @unique @db.VarChar(100)
+  hashedPassword     String
+  phone              String      @db.VarChar(50)
+  role               String      @default("customer")
+  orders             Order[]
+  cartItems          CartItems[]
+  resetPasswordToken String?     @unique
+}
+
 model PriceCategory {
   id           Int       @id @default(autoincrement())
   name         String    @db.VarChar(255)
@@ -49,23 +65,31 @@ model CartItems {
 }
 
 model Order {
-  id                  Int              @id @default(autoincrement())
-  orderNumber         String           @unique @db.VarChar(50)
+  id                  Int             @id @default(autoincrement())
+  orderNumber         String          @unique @db.VarChar(50)
   startDate           DateTime
   startTime           DateTime
   endDate             DateTime
-  orderDate           DateTime         @default(now())
-  paymentType         String           @db.VarChar(50)
+  orderDate           DateTime        @default(now())
+  paymentType         String          @db.VarChar(50)
   paidPrice           Float
-  comment             String?          @db.VarChar(255)
+  comment             String?         @db.VarChar(255)
   delegateParentId    Int?
-  delegateParent      DelegateParent?  @relation(fields: [delegateParentId], references: [id], onDelete: SetNull)
+  delegateParent      DelegateParent? @relation(fields: [delegateParentId], references: [id], onDelete: SetNull)
   partnerId           Int?
-  partner             Partner?         @relation(fields: [partnerId], references: [id], onDelete: SetNull)
-  products            ProductOnOrder[]
-  status              String           @default("pending")
-  customerId          Int
-  customer            User             @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  partner             Partner?        @relation(fields: [partnerId], references: [id], onDelete: SetNull)
+  items               OrderItem[]
+  status              String          @default("pending")
+  customerId          Int?
+  customer            User?           @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  city                String
+  billingEmail        String
+  billingFirstname    String
+  billingLastname     String
+  billingPhoneNumber  String
+  billingStreet       String
+  billingCity         String
+  billingZip          String
   deliveryPhoneNumber String?
   deliveryFirstName   String?
   deliveryLastName    String?
@@ -73,48 +97,31 @@ model Order {
   deliveryZip         String?
   deliveryCity        String?
   deliveryArrivalTime String?
-  Premise             Premise?         @relation(fields: [premiseId], references: [id])
-  premiseId           Int?
 }
 
-model User {
-  id                 Int         @id @default(autoincrement())
-  lastname           String      @db.VarChar(255)
-  firstname          String      @db.VarChar(255)
-  address            String      @db.VarChar(255)
-  zip                String      @db.VarChar(10)
-  city               String      @db.VarChar(60)
-  email              String      @unique @db.VarChar(100)
-  hashedPassword     String
-  phone              String      @db.VarChar(50)
-  role               String      @default("customer")
-  orders             Order[]
-  cartItems          CartItems[]
-  resetPasswordToken String?     @unique
-}
-
-model ProductOnOrder {
-  order           Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  orderId         Int
-  quantity        Int           @default(1)
-  productSample   ProductSample @relation(fields: [productSampleId], references: [id], onDelete: Cascade)
-  productSampleId Int
-
-  @@id([productSampleId, orderId])
+model OrderItem {
+  id             Int             @id @default(autoincrement())
+  order          Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId        Int
+  quantity       Int             @default(1)
+  productName    String
+  unitPrice      Float
+  productSamples ProductSample[]
 }
 
 model ProductSample {
-  id              Int              @id @default(autoincrement())
-  referenceNumber String           @db.VarChar(50)
-  dateOfPurchase  DateTime         @default(now())
-  comment         String?          @db.VarChar(255)
-  condition       String           @db.VarChar(255)
-  lastDateOrder   DateTime?
-  product         Product          @relation(fields: [productId], references: [id], onDelete: Cascade)
-  productId       Int
-  premise         Premise          @relation(fields: [premiseId], references: [id], onDelete: Cascade)
-  premiseId       Int
-  orders          ProductOnOrder[]
+  id                  Int         @id @default(autoincrement())
+  referenceNumber     String      @db.VarChar(50)
+  dateOfPurchase      DateTime    @default(now())
+  comment             String?     @db.VarChar(255)
+  condition           String      @db.VarChar(255)
+  unavailabilityStart DateTime?
+  unavailabilityEnd   DateTime?
+  product             Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId           Int
+  premise             Premise     @relation(fields: [premiseId], references: [id], onDelete: Cascade)
+  premiseId           Int
+  orderItems          OrderItem[]
 }
 
 model Product {
@@ -144,7 +151,6 @@ model Premise {
   zip            String          @db.VarChar(10)
   city           String          @db.VarChar(60)
   premiseType    String          @db.VarChar(10)
-  orders         Order[]
   productSamples ProductSample[]
 }
 

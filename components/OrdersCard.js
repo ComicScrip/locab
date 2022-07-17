@@ -11,8 +11,8 @@ export default function OrdersCard({ order }) {
   const orderDateOld = order.orderDate;
   const orderDateNewFormat = dayjs(orderDateOld).format("DD/MM/YY");
 
-  const imagesProducts = order.products.map(
-    (image) => image.productSample.product.pictures
+  const imagesProducts = order.items.map(
+    (item) => item.productSamples[0].product.pictures
   );
 
   return (

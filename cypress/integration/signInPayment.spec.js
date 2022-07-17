@@ -3,7 +3,7 @@ describe("signInPayment", () => {
     cy.visit("/signInPayment");
   });
 
-  it.only("can access to informations page when all inputs are filled", () => {
+  it("can access to informations page when all inputs are filled", () => {
     cy.task("resetDB");
     cy.signup({
       email: "test@test.com",
