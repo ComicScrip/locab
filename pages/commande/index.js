@@ -6,8 +6,8 @@ import { FaCcVisa } from "react-icons/fa";
 import { FaCcMastercard } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
 import { useState } from "react";
-import Layout from "../../components/Layout";
 import { signIn } from "next-auth/react";
+import Layout from "../../components/Layout";
 
 export default function Commande({ csrfToken }) {
   /* PARTIE WELCOME */
@@ -39,6 +39,7 @@ export default function Commande({ csrfToken }) {
         redirect: false,
       }
     );
+    console.log(signIn);
     setMail("");
     setPassword("");
   };
