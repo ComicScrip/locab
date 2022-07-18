@@ -29,17 +29,20 @@ export default function MonCompte() {
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      const data = new FormData();
-      data.append("firstname", firstName);
-      data.append("lastname", lastName);
-      data.append("address", address);
-      data.append("city", city);
-      data.append("phonenumber", phone);
-      data.append("zip", zip);
-      data.append("email", email);
-      updateProfileOnAPI(data, () => {
-        toast.success("Vos modifications ont bien été prises en compte");
-      });
+      updateProfileOnAPI(
+        {
+          firstname: firstName,
+          lastname: lastName,
+          address,
+          city,
+          phone,
+          email,
+          zip,
+        },
+        () => {
+          toast.success("Vos modifications ont bien été prises en compte");
+        }
+      );
     },
     [firstName, lastName, address, city, phone, zip, email, updateProfileOnAPI]
   );

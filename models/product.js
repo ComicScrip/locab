@@ -66,6 +66,7 @@ module.exports.getOneProduct = (id) => {
           url: true,
         },
       },
+      priceCategory: true,
     },
     where: { id: parseInt(id, 10) },
   });

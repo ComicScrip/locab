@@ -6,7 +6,7 @@ import { BsPaypal } from "react-icons/bs";
 import { FaCcVisa } from "react-icons/fa";
 import { FaCcMastercard } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Layout from "../../components/Layout";
 import Banner from "../../components/Banner";
@@ -57,6 +57,20 @@ export default function Commande() {
   const [partnerCity, setPartnerCity] = useState("");
   const [userHourArrived, setUserHourArrived] = useState("");
   const [userCommentary, setUserComentary] = useState("");
+
+  const [formFilled, setFormFilled] = useState(false);
+  useEffect(() => {
+    if (!formFilled && currentUserProfile) {
+      setFormFilled(true);
+      setUserMail(currentUserProfile.email);
+      setUserFirstName(currentUserProfile.firstname);
+      setUserLastName(currentUserProfile.lastname);
+      setUserAddress(currentUserProfile.address);
+      setUserZip(currentUserProfile.zip);
+      setUserCity(currentUserProfile.city);
+      setUserPhone(currentUserProfile.phone);
+    }
+  }, [currentUserProfile, formFilled]);
 
   /* PARTIE LIVRAISON */
 

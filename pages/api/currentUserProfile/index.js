@@ -7,6 +7,7 @@ async function handleGet(req, res) {
   res.send(getSafeAttributes(req.currentUser));
 }
 const handlePatch = async (req, res) => {
+  console.log("data", req.body);
   const userToPatch = await patchOneUser(req.currentUser.id, req.body);
   return res.status(200).send(userToPatch);
 };

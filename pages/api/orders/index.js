@@ -7,7 +7,8 @@ import {
 } from "../../../models/productSample";
 import dayjs from "dayjs";
 import { getProductPrice } from "../../../utils/getProductPrice";
-import { getOnePrice } from "../../../models/priceCategory";
+import extractCurrentUser from "../../../middlewares/extractCurrentUser";
+import { getOneProduct } from "../../../models/product";
 
 async function handlePost(req, res) {
   const { cartItems, startDate, endDate, orderCity } = req.body;
@@ -19,6 +20,7 @@ async function handlePost(req, res) {
   if (isNaN(nbDays) || nbDays < 1)
     return res.status(422).send("incorrect dates range");
 
+  const deposists = [];
   const outOfStockProducts = [];
   const itemsWithSamples = await Promise.all(
     cartItems.map(async (item) => {
@@ -30,17 +32,24 @@ async function handlePost(req, res) {
         quantity: item.quantity,
       });
 
-      if (samples.length !== item.quantity)
+      if (
+        isNaN(item.quantity) ||
+        item.quantity < 1 ||
+        samples.length !== item.quantity
+      )
         return outOfStockProducts.push({
           productId: item.productId,
           missingQuantity: item.quantity - samples.length,
         });
 
-      // making sure the client does not send an incorrect price category
-      const priceCategory = await getOnePrice(item.product.priceCategoryId);
+      // making sure the client does not send an incorrect product
+
+      const product = await getOneProduct(item.productId);
+      deposists.push(product.caution);
+
       return {
         ...item,
-        unitPrice: getProductPrice(nbDays, priceCategory),
+        unitPrice: getProductPrice(nbDays, product.priceCategory),
         samples,
       };
     })
@@ -54,12 +63,20 @@ async function handlePost(req, res) {
     });
 
   // TODO later : charge customer credit card before creating a new order
+  const deposit = Math.max(...[0, ...deposists]);
+
+  const total = itemsWithSamples.reduce(
+    (acc, item) => acc + Number((item.unitPrice * item.quantity).toFixed(2)),
+    0
+  );
+
+  console.log({ deposit, total, deposists });
 
   await createOrder({
     ...req.body,
-    customerId: 2,
+    customerId: req.currentUser?.id,
     paymentType: "CB",
-    paidPrice: 200,
+    paidPrice: deposit + total,
     itemsWithSamples,
     city: orderCity,
   });
@@ -104,4 +121,6 @@ async function handleGet(req, res) {
 
   res.send(await findAllOrders({ customerId, limitDatefilter, search }));
 }
-export default base().get(requireCurrentUser, handleGet).post(handlePost);
+export default base()
+  .get(requireCurrentUser, handleGet)
+  .post(extractCurrentUser, handlePost);
