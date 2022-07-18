@@ -4,20 +4,24 @@ import { useRouter } from "next/router";
 import styles from "../../../../styles/EditProduct.module.css";
 import LayoutAdmin from "../../../../components/LayoutAdmin";
 import Link from "next/link";
+import { Widget } from "@uploadcare/react-widget";
 
 const EditProduct = () => {
   const router = useRouter();
   const { id } = router.query;
   const [product, setProduct] = useState("");
   const [priceCategories, setPriceCategories] = useState([]);
+  const [productPicture, setProductPicture] = useState("");
 
   useEffect(() => {
-    axios
-      .get(`/api/products/${id}`)
-      .then((res) => {
-        setProduct(res.data);
-      })
-      .catch(console.error);
+    if (id)
+      axios
+        .get(`/api/products/${id}`)
+        .then((res) => {
+          setProduct(res.data);
+          setProductPicture(res.data.pictures[0].url);
+        })
+        .catch(console.error);
   }, [id]);
 
   useEffect(() => {
@@ -31,7 +35,17 @@ const EditProduct = () => {
 
   if (!product) return null;
 
-  const productPicture = product.pictures[0].url;
+  // const productPicture = product.pictures[0].url;
+
+  const buttonName = () => ({
+    buttons: {
+      choose: {
+        files: {
+          one: "Modifier",
+        },
+      },
+    },
+  });
 
   const handlePatchProduct = (e) => {
     e.preventDefault();
@@ -42,10 +56,13 @@ const EditProduct = () => {
         caution: product.caution,
         description: product.description,
         priceCategoryId: product.priceCategoryId,
+        picture: productPicture,
       })
       .then(() => router.push("/admin/produits"))
       .catch(console.error);
   };
+
+  console.log(productPicture);
 
   return (
     <LayoutAdmin pageTitle="Back-office | Editer un produit">
@@ -153,13 +170,38 @@ const EditProduct = () => {
                 </section>
               </section>
               <aside className={styles.pictureContainer}>
-                <img
+                <label htmlFor="picture" className={styles.labelPopUp}>
+                  <Widget
+                    publicKey={process.env.NEXT_PUBLIC_UPLOADCARE_KEY}
+                    id="picture"
+                    localeTranslations={buttonName()}
+                    className={styles.productPicture}
+                    onChange={({ cdnUrl }) => {
+                      // setProduct({ ...product, pictures: cdnUrl });
+                      setProductPicture(cdnUrl);
+                    }}
+                    data-cy="add_product_picture"
+                  />
+                </label>
+
+                {productPicture && (
+                  <div className="mt-5">
+                    <img
+                      src={productPicture}
+                      alt={product.referenceNumber}
+                      width="100%"
+                      height="100%"
+                    />
+                  </div>
+                )}
+
+                {/* <img
                   src={productPicture}
                   alt={product.referenceNumber}
-                  className={styles.productPicture}
+                  
                   width="100%"
                   height="100%"
-                />
+                /> */}
               </aside>
             </div>
           </form>
