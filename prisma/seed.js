@@ -19,9 +19,10 @@ async function seed() {
 
   const visitor = await db.user.create({
     data: {
-      firstname: "jane",
-      lastname: "doe",
-      email: "vistor@locab.com",
+
+      firstname: "toto",
+      lastname: "hallaplaje",
+      email: "visitor@locab.com",
       hashedPassword: await hashPassword("locablocab"),
       address: "rue de la plage",
       phone: "01 23 45 67 78",
