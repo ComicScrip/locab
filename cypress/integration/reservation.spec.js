@@ -63,7 +63,7 @@ describe("reservation", () => {
     });
   });
 
-  it.only("Can place an order", () => {
+  it("Can place an order", () => {
     cy.task("resetDB");
     cy.task("prepareReservation").then(({ chanceliere }) => {
       cy.visit("/reservation");
@@ -78,6 +78,19 @@ describe("reservation", () => {
       cy.get('[data-cy="infos_phone"]').type("0677554433");
       cy.get('[data-cy="infos_zip"]').type("69002");
       cy.get('[data-cy="infos_city"]').type("Lyon");
+      cy.contains("CONTINUER VERS LA LIVRAISON").click();
+      cy.get('[data-cy="partner_name"]').type("Ibis hotel");
+      cy.get('[data-cy="partner_phone"]').type("0388709988");
+      cy.get('[data-cy="partner_firstname"]').type("Martin");
+      cy.get('[data-cy="partner_lastname"]').type("Dupont");
+      cy.get('[data-cy="partner_adress"]').type("1 rue de la gare");
+      cy.get('[data-cy="partner_zip"]').type("69000");
+      cy.get('[data-cy="partner_city"]').type("Lyon");
+      cy.get('[data-cy="partner_hour"]').type("10:00");
+      cy.get('[data-cy="partner_comments"]').type("etage 5, chambre 67");
+      cy.contains("CONTINUER VERS LE PAIEMENT").click();
+      cy.contains("CONFIRMER LA COMMANDE").click();
+      cy.contains("Merci de votre commande");
     });
   });
 });

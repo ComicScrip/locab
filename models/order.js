@@ -134,6 +134,7 @@ module.exports.createOrder = ({
   billingCity,
   billingPhoneNumber,
   billingEmail,
+  city,
 }) => {
   const orderNumber = Math.floor((1 + Math.random()) * 0x10000000000)
     .toString(16)
@@ -174,6 +175,7 @@ module.exports.createOrder = ({
       billingCity,
       billingPhoneNumber,
       billingEmail,
+      city,
     },
   });
 };

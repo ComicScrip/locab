@@ -10,19 +10,7 @@ import { getProductPrice } from "../../../utils/getProductPrice";
 import { getOnePrice } from "../../../models/priceCategory";
 
 async function handlePost(req, res) {
-  const {
-    cartItems,
-    startDate,
-    endDate,
-    billingFirstname,
-    billingLastname,
-    billingStreet,
-    billingZip,
-    billingCity,
-    billingPhoneNumber,
-    billingEmail,
-    orderCity,
-  } = req.body;
+  const { cartItems, startDate, endDate, orderCity } = req.body;
 
   if (!cartItems?.length) return res.status(422).send("no cart items");
 
@@ -71,13 +59,7 @@ async function handlePost(req, res) {
     paymentType: "CB",
     paidPrice: 200,
     itemsWithSamples,
-    billingFirstname,
-    billingLastname,
-    billingStreet,
-    billingZip,
-    billingCity,
-    billingPhoneNumber,
-    billingEmail,
+    city: orderCity,
   });
 
   // updating the product samples unavailabilities

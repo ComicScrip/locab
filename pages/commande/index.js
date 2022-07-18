@@ -36,15 +36,15 @@ export default function Commande() {
   const [userZip, setUserZip] = useState("");
   const [userCity, setUserCity] = useState("");
 
-  const [userPartner, setUserPartner] = useState("mon hotel");
-  const [phonePartner, setPhonePartner] = useState("0666666666");
-  const [partnerFirstName, setPartnerFirstName] = useState("partnerfirstname");
-  const [partnerLastName, setPartnerLastName] = useState("partnerlastname");
-  const [partnerAddress, setPartnerAdress] = useState("addrpartenaire");
-  const [partnerZip, setPartnerZip] = useState("zip partenaire");
-  const [partnerCity, setPartnerCity] = useState("citypartner");
-  const [userHourArrived, setUserHourArrived] = useState("10:00");
-  const [userCommentary, setUserComentary] = useState("commdelivery");
+  const [userPartner, setUserPartner] = useState("");
+  const [phonePartner, setPhonePartner] = useState("");
+  const [partnerFirstName, setPartnerFirstName] = useState("");
+  const [partnerLastName, setPartnerLastName] = useState("");
+  const [partnerAddress, setPartnerAdress] = useState("");
+  const [partnerZip, setPartnerZip] = useState("");
+  const [partnerCity, setPartnerCity] = useState("");
+  const [userHourArrived, setUserHourArrived] = useState("");
+  const [userCommentary, setUserComentary] = useState("");
 
   /* PARTIE LIVRAISON */
 
@@ -309,7 +309,13 @@ export default function Commande() {
                   <h3 className={styles.h3}>{t("lieudesejour")}</h3>
                   <div className={styles.containerbloc}>
                     <div className={styles.bloc1}>
-                      <form className={styles.inscrit}>
+                      <form
+                        className={styles.inscrit}
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          setOpenSection("payment");
+                        }}
+                      >
                         <div className={styles.formemail}>
                           <label htmlFor="partenaire" className={styles.email}>
                             {t("Partenaire")}
@@ -455,7 +461,6 @@ export default function Commande() {
                             type="submit"
                             data-cy="partner_submit_button"
                             className={styles.button2}
-                            onClick={() => setOpenSection("payment")}
                           >
                             {t("topayment")}
                           </button>
