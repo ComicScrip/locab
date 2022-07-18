@@ -2,13 +2,10 @@ import styles from "../styles/Welcome.module.css";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import Layout from "../components/Layout";
-import { useRouter } from "next/router";
 
 export default function SignInPayment({ csrfToken }) {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
-
-  const router = useRouter();
 
   const HandleSubmitWelcome = (e) => {
     e.preventDefault();
@@ -19,16 +16,6 @@ export default function SignInPayment({ csrfToken }) {
     });
     setMail("");
     setPassword("");
-  };
-
-  const HandleSubmitIncription = (e) => {
-    e.preventDefault();
-    router.push("/signup");
-  };
-
-  const HandleSubmitWithoutInscription = (e) => {
-    e.preventDefault();
-    router.push("/commande");
   };
 
   return (
@@ -107,30 +94,38 @@ export default function SignInPayment({ csrfToken }) {
             </form>
           </div>
           <div className={styles.bloc2}>
-            <h3>Je commande sans inscription</h3>
-            <div className={styles.div2}>
-              <button
-                type="submit"
-                className={styles.button}
-                data-cy="continue_button"
-                onClick={HandleSubmitWithoutInscription}
-              >
-                CONTINUER
-              </button>
-            </div>
-
-            <h3>Pas encore inscrit ?</h3>
-            <div>
-              <button
-                type="submit"
-                className={styles.button}
-                data-cy="continue_button_incription"
-                onClick={HandleSubmitIncription}
-              >
-                INSCRIPTION
-              </button>
-            </div>
+            <h3>Je comande sans inscription</h3>
+            <form className={styles.inscrit}>
+              <div className={styles.forminscription}>
+                <label htmlFor="email" className={styles.email}>
+                  Adresse mail
+                </label>
+                <input
+                  className={styles.textarea}
+                  id="email"
+                  type="email"
+                  required
+                />
+                <div className={styles.formbutton}>
+                  <button type="submit" className={styles.button}>
+                    SE CONNECTER
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
+        </div>
+        <div className={styles.forminscrire}>
+          <h3>Pas encore inscrit ?</h3>
+          <form className={styles.isncrit}>
+            <div className={styles.forminscription}>
+              <div className={styles.formbutton}>
+                <button type="submit" className={styles.button}>
+                  INSCRIPTION
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </Layout>

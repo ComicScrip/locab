@@ -50,8 +50,8 @@ export default function OrderRow({ order }) {
 
       <tr className={styles.line}>
         <td>{order.orderNumber}</td>
-        <td>{order.premise.city || order.customer.city}</td>
-        <td>{order.customer.lastname}</td>
+        <td>{order.city || order.billingCity}</td>
+        <td>{order.billingLastname}</td>
         <td>{orderStartDateNewFormat}</td>
         <td>{orderEndDateNewFormat}</td>
         <td>{order.paidPrice}</td>

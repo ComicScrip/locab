@@ -7,6 +7,7 @@ const PriceCategory = require("../../models/priceCategory");
 const Premise = require("../../models/premise");
 const ms = require("smtp-tester");
 const dotenvPlugin = require("cypress-dotenv");
+const prepareReservation = require("./prepareReservation");
 
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -20,20 +21,22 @@ const dotenvPlugin = require("cypress-dotenv");
 
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
-async function createOrderSample() {
-  const visitor = await db.user.create({
-    data: {
-      firstname: "tata",
-      lastname: "hallaplaje",
-      email: "tata@locab.com",
-      hashedPassword: await hashPassword("locablocab"),
-      address: "rue de la plage",
-      phone: "01 23 45 67 78",
-      role: "visitor",
-      city: "plage",
-      zip: "12345",
-    },
-  });
+async function createOrderSample({ user }) {
+  const visitor =
+    user ||
+    (await db.user.create({
+      data: {
+        firstname: "Jane",
+        lastname: "Doe",
+        email: "jane.doe@locab.com",
+        hashedPassword: await hashPassword("locablocab"),
+        address: "rue de la plage",
+        phone: "0123456778",
+        role: "visitor",
+        city: "plage",
+        zip: "12345",
+      },
+    }));
   const cat_a = await db.priceCategory.create({
     data: {
       name: "cat_a",
@@ -59,7 +62,7 @@ async function createOrderSample() {
     data: {
       name: "Chancelière",
       brand: "Chicco",
-      caution: 20,
+      caution: 200,
       description: "Une chancelière",
       priceCategoryId: cat_a.id,
     },
@@ -68,8 +71,17 @@ async function createOrderSample() {
     data: {
       name: "Poussette",
       brand: "Yoyo",
-      caution: 20,
+      caution: 400,
       description: "Une poussette marque Yoyo",
+      priceCategoryId: cat_a.id,
+    },
+  });
+  const nidAnge = await db.product.create({
+    data: {
+      name: "Nid d'ange",
+      brand: "Ange",
+      caution: 200,
+      description: "Un nid d'ange marque ange",
       priceCategoryId: cat_a.id,
     },
   });
@@ -82,13 +94,30 @@ async function createOrderSample() {
       premiseType: "Privé",
     },
   });
+  const premise_02 = await db.premise.create({
+    data: {
+      name: "titi",
+      address: "140 rue antoine",
+      zip: "69002",
+      city: "Bordeaux",
+      premiseType: "Public",
+    },
+  });
 
   const sample_01 = await db.productSample.create({
     data: {
       referenceNumber: "CH-001",
       dateOfPurchase: new Date("2022-05-21T00:00:00"),
       condition: "Neuf",
-      lastDateOrder: new Date("2022-05-21T00:00:00"),
+      productId: chanceliere.id,
+      premiseId: premise_01.id,
+    },
+  });
+  const sample_01_bis = await db.productSample.create({
+    data: {
+      referenceNumber: "CH-003",
+      dateOfPurchase: new Date("2022-05-21T00:00:00"),
+      condition: "Neuf",
       productId: chanceliere.id,
       premiseId: premise_01.id,
     },
@@ -98,11 +127,11 @@ async function createOrderSample() {
       referenceNumber: "CH-002",
       dateOfPurchase: new Date("2022-04-23 00:00:00"),
       condition: "Comme neuf",
-      lastDateOrder: new Date("2022-05-21T00:00:00"),
       productId: poussette.id,
-      premiseId: premise_01.id,
+      premiseId: premise_02.id,
     },
   });
+
   await db.productPicture.createMany({
     data: [
       {
@@ -113,19 +142,25 @@ async function createOrderSample() {
         url: "/image/products/Poussette-YOYO-Nacelle.jpg",
         productId: poussette.id,
       },
+      {
+        url: "/image/products/Poussette-YOYO-Nacelle.jpg",
+        productId: nidAnge.id,
+      },
     ],
   });
   await db.order.create({
     data: {
-      products: {
+      items: {
         create: [
           {
             quantity: 1,
-            productSampleId: sample_01.id,
-          },
-          {
-            quantity: 1,
-            productSampleId: sample_02.id,
+            unitPrice: 30,
+            productName: "Chanceliere",
+            productSamples: {
+              connect: {
+                id: sample_01.id,
+              },
+            },
           },
         ],
       },
@@ -136,25 +171,53 @@ async function createOrderSample() {
       orderDate: new Date("2022-06-15T00:00:00"),
       paymentType: "Paypal",
       paidPrice: 67,
-      premiseId: premise_01.id,
       status: "Terminé",
+      city: "Lyon",
       customerId: visitor.id,
+      billingCity: visitor.city,
+      billingEmail: visitor.email,
+      billingFirstname: visitor.firstname,
+      billingLastname: visitor.lastname,
+      billingPhoneNumber: visitor.phone,
+      billingStreet: visitor.address,
+      billingZip: visitor.zip,
     },
   });
   await db.order.create({
     data: {
-      products: {
+      items: {
         create: [
           {
-            quantity: 3,
-            productSampleId: sample_01.id,
+            quantity: 2,
+            unitPrice: 30,
+            productName: "Chanceliere",
+            productSamples: {
+              connect: {
+                id: sample_01.id,
+              },
+            },
           },
           {
-            quantity: 10,
-            productSampleId: sample_02.id,
+            quantity: 1,
+            unitPrice: 20,
+            productName: "Pousette",
+            productSamples: {
+              connect: {
+                id: sample_02.id,
+              },
+            },
           },
         ],
       },
+      billingCity: visitor.city,
+      billingEmail: visitor.email,
+      billingFirstname: visitor.firstname,
+      billingLastname: visitor.lastname,
+      billingPhoneNumber: visitor.phone,
+      billingStreet: visitor.address,
+      billingZip: visitor.zip,
+      city: "Lyon",
+
       orderNumber: "A54363",
       startDate: new Date("2022-06-16T00:00:00"),
       startTime: new Date("2022-06-17T00:00:00"),
@@ -162,22 +225,38 @@ async function createOrderSample() {
       orderDate: new Date("2022-04-15T00:00:00"),
       paymentType: "Carte bleue",
       paidPrice: 234,
-      premiseId: premise_01.id,
       status: "Terminé",
       customerId: visitor.id,
     },
   });
   return db.order.create({
     data: {
-      products: {
+      items: {
         create: [
           {
-            quantity: 3,
-            productSampleId: sample_01.id,
+            quantity: 2,
+            unitPrice: 30,
+            productName: "Chanceliere",
+            productSamples: {
+              connect: [
+                {
+                  id: sample_01.id,
+                },
+                {
+                  id: sample_01_bis.id,
+                },
+              ],
+            },
           },
           {
-            quantity: 10,
-            productSampleId: sample_02.id,
+            quantity: 1,
+            unitPrice: 20,
+            productName: "Pousette",
+            productSamples: {
+              connect: {
+                id: sample_02.id,
+              },
+            },
           },
         ],
       },
@@ -188,9 +267,16 @@ async function createOrderSample() {
       orderDate: new Date("2022-02-15T00:00:00"),
       paymentType: "Carte bleue",
       paidPrice: 314,
-      premiseId: premise_01.id,
       status: "Terminé",
+      city: "Lyon",
       customerId: visitor.id,
+      billingCity: visitor.city,
+      billingEmail: visitor.email,
+      billingFirstname: visitor.firstname,
+      billingLastname: visitor.lastname,
+      billingPhoneNumber: visitor.phone,
+      billingStreet: visitor.address,
+      billingZip: visitor.zip,
     },
   });
 }
@@ -215,10 +301,12 @@ module.exports = (on, config) => {
     deleteUserByEmail: User.deleteUserByEmail,
 
     resetDB: async () => {
+      await db.order.deleteMany({});
       await User.deleteDB();
       await Product.deleteDB();
       await Premise.deleteDB();
       await PriceCategory.deleteDB();
+      await db.productSample.deleteMany({});
       return Promise.resolve("ok");
     },
 
@@ -264,7 +352,7 @@ module.exports = (on, config) => {
     },
 
     findUserByEmail: User.findByEmail,
-    createOrderSample: createOrderSample,
+    createOrderSample: ({ user } = {}) => createOrderSample({ user }),
     createTestPriceCategory: async () => {
       const cat_a = await db.priceCategory.create({
         data: {
@@ -289,6 +377,7 @@ module.exports = (on, config) => {
       });
       return cat_a;
     },
+    prepareReservation,
   });
   return config;
 };

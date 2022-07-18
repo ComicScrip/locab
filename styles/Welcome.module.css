@@ -1,5 +1,3 @@
-/* ----- PAGE COMMANDE ----- */
-
 .title {
   margin: 0 auto;
   width: 100%;
@@ -66,16 +64,6 @@
 
 .formbutton {
   margin-top: 2rem;
-  cursor: pointer;
-}
-
-.forgotpassword {
-  text-align: end;
-  cursor: pointer;
-}
-
-.div2 {
-  margin-bottom: 2rem;
 }
 
 .forminscription {
@@ -112,6 +100,8 @@
   cursor: pointer;
 }
 
+/* ----- FIN PARTIE BIENVENUE ---- */
+
 /* ----- PARTIE INFORMATIONS ----- */
 
 .name {
@@ -142,6 +132,7 @@
   color: #ffffff;
   text-align: center;
   border: none;
+  cursor: pointer;
 }
 
 /* ----- FIN PARTIE INFORMATIONS ---- */
@@ -185,4 +176,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.orderContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+
+  padding-bottom: 50px;
+}
+
+@media screen and (min-width: 900px) {
+  .orderContainer {
+    flex-direction: row;
+  }
 }

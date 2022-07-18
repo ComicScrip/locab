@@ -66,6 +66,7 @@ module.exports.getOneProduct = (id) => {
           url: true,
         },
       },
+      priceCategory: true,
     },
     where: { id: parseInt(id, 10) },
   });
@@ -87,3 +88,140 @@ module.exports.patchOneProduct = async (id, data) => {
 module.exports.deleteDB = async () => {
   return await db.product.deleteMany();
 };
+
+module.exports.findAllProductsAvailable = ({
+  city,
+  fromDate,
+  toDate,
+  productNameContains,
+}) =>
+  db.product.findMany({
+    where: {
+      name: {
+        contains: productNameContains,
+      },
+      productSamples: {
+        some: {
+          premise: {
+            city: city,
+          },
+          OR: [
+            {
+              unavailabilityStart: null,
+            },
+            {
+              AND: [
+                {
+                  unavailabilityStart: {
+                    gt: new Date(fromDate),
+                  },
+                },
+                {
+                  unavailabilityStart: {
+                    gt: new Date(toDate),
+                  },
+                },
+              ],
+            },
+            {
+              unavailabilityEnd: {
+                lt: new Date(fromDate),
+              },
+            },
+          ],
+        },
+      },
+    },
+    include: {
+      priceCategory: true,
+      pictures: {
+        select: {
+          url: true,
+        },
+      },
+    },
+  });
+
+module.exports.findAllProductsUnavailable = ({
+  city,
+  toDate,
+  fromDate,
+  productNameContains,
+}) =>
+  db.product.findMany({
+    where: {
+      name: {
+        contains: productNameContains,
+      },
+      OR: [
+        {
+          productSamples: {
+            none: {},
+          },
+        },
+        {
+          NOT: [
+            {
+              productSamples: {
+                some: {
+                  premise: {
+                    city: city,
+                  },
+                },
+              },
+            },
+          ],
+        },
+        {
+          NOT: {
+            productSamples: {
+              every: {
+                OR: [
+                  {
+                    AND: [
+                      {
+                        unavailabilityStart: {
+                          gt: new Date(fromDate),
+                        },
+                      },
+                      {
+                        unavailabilityStart: {
+                          gt: new Date(toDate),
+                        },
+                      },
+                    ],
+                  },
+                  {
+                    unavailabilityEnd: {
+                      lt: new Date(fromDate),
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        },
+      ],
+    },
+    include: {
+      priceCategory: true,
+      pictures: {
+        select: {
+          url: true,
+        },
+      },
+    },
+  });
+
+module.exports.findAllProductSamples = ({ productId }) =>
+  db.productSample.findMany({
+    where: {
+      productId: parseInt(productId, 10),
+    },
+    orderBy: {
+      lastDateOrder: "asc",
+    },
+    select: {
+      id: true,
+    },
+  });

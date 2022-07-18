@@ -103,7 +103,10 @@ const Navbar = () => {
           </Link>
         </li>
         <li className={styles.navbar_item}>
-          <Link href="/reservation" className={styles.navbarlink}>
+          <Link
+            href="/reservation?showUnavailable=true"
+            className={styles.navbarlink}
+          >
             <a>
               <button className={styles.reservationButton}>Reservation</button>
             </a>

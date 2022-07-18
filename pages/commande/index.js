@@ -1,64 +1,120 @@
 import styles from "../../styles/Welcome.module.css";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import axios from "axios";
 import { GiPadlock } from "react-icons/gi";
 import { BsPaypal } from "react-icons/bs";
 import { FaCcVisa } from "react-icons/fa";
 import { FaCcMastercard } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import Layout from "../../components/Layout";
 import Banner from "../../components/Banner";
+import useSearch from "../../hooks/useSearch";
+import useCart from "../../hooks/useCart";
+import OrderCart from "../../components/Cart/OrderCart";
+import { useToasts } from "react-toast-notifications";
+import SearchForm from "../../components/SearchForm";
+import { signIn } from "next-auth/react";
+import { CurrentUserContext } from "../../contexts/currentUserContext";
 
 export default function Commande() {
-  const [activeInformations, setActiveInformations] = useState(true);
-  const [activeLivraison, setActiveLivraison] = useState(false);
-  const [activePayment, setActivePayment] = useState(false);
+  const { t } = useTranslation("order");
+  const { addToast } = useToasts();
 
-  const [checkedInformations, setCheckedInformations] = useState(false);
-  const [checkedLivraison, setCheckedLivraison] = useState(false);
-  const [checkedPayment, setCheckedPayment] = useState(false);
+  const {
+    params: { toDate, fromDate, city },
+  } = useSearch();
 
-  /* PARTIE INFORMATIONS */
+  const { cartItems, setCartItems } = useCart();
+  const { currentUserProfile } = useContext(CurrentUserContext);
 
-  const HandleSubmitInformations = (e) => {
-    e.preventDefault();
-    setActiveInformations(!activeInformations);
-    setActiveLivraison(!activeLivraison);
-    setCheckedInformations(!checkedInformations);
-  };
+  const [openSection, setOpenSection] = useState("userInfo");
+  const [confirmed, setConfimed] = useState(false);
 
-  const OpenInformations = (e) => {
-    e.preventDefault();
-    setActiveInformations(!activeInformations);
-  };
+  const [error] = useState("");
+
+  const [userMail, setUserMail] = useState(currentUserProfile?.email || "");
+  const [userFirstname, setUserFirstName] = useState(
+    currentUserProfile?.firstname || ""
+  );
+  const [userLastName, setUserLastName] = useState(
+    currentUserProfile?.lastname || ""
+  );
+  const [userAddress, setUserAddress] = useState(
+    currentUserProfile?.address || ""
+  );
+  const [userPhone, setUserPhone] = useState(currentUserProfile?.phone || "");
+  const [userZip, setUserZip] = useState(currentUserProfile?.zip || "");
+  const [userCity, setUserCity] = useState(currentUserProfile?.city || "");
+
+  const [userPartner, setUserPartner] = useState("");
+  const [phonePartner, setPhonePartner] = useState("");
+  const [partnerFirstName, setPartnerFirstName] = useState("");
+  const [partnerLastName, setPartnerLastName] = useState("");
+  const [partnerAddress, setPartnerAdress] = useState("");
+  const [partnerZip, setPartnerZip] = useState("");
+  const [partnerCity, setPartnerCity] = useState("");
+  const [userHourArrived, setUserHourArrived] = useState("");
+  const [userCommentary, setUserComentary] = useState("");
+
+  const [formFilled, setFormFilled] = useState(false);
+  useEffect(() => {
+    if (!formFilled && currentUserProfile) {
+      setFormFilled(true);
+      setUserMail(currentUserProfile.email);
+      setUserFirstName(currentUserProfile.firstname);
+      setUserLastName(currentUserProfile.lastname);
+      setUserAddress(currentUserProfile.address);
+      setUserZip(currentUserProfile.zip);
+      setUserCity(currentUserProfile.city);
+      setUserPhone(currentUserProfile.phone);
+    }
+  }, [currentUserProfile, formFilled]);
 
   /* PARTIE LIVRAISON */
 
-  const HandleSubmitLivraison = (e) => {
+  const createOrder = (e) => {
     e.preventDefault();
-    setActiveLivraison(!activeLivraison);
-    setActivePayment(!activePayment);
-    setCheckedLivraison(!checkedLivraison);
+    axios
+      .post("/api/orders", {
+        deliveryPhoneNumber: phonePartner,
+        deliveryFirstName: partnerFirstName,
+        deliveryLastName: partnerLastName,
+        deliveryStreet: partnerAddress,
+        deliveryZip: partnerZip,
+        deliveryCity: partnerCity,
+        deliveryArrivalTime: userHourArrived,
+        comment: userCommentary,
+        startDate: fromDate,
+        endDate: toDate,
+        orderCity: city,
+        billingFirstname: userFirstname,
+        billingLastname: userLastName,
+        billingStreet: userAddress,
+        billingZip: userZip,
+        billingCity: userCity,
+        billingPhoneNumber: userPhone,
+        billingEmail: userMail,
+        cartItems,
+      })
+      .then(() => {
+        setConfimed(true);
+        setCartItems([]);
+      })
+      .catch((err) => {
+        if (err.response?.data?.code === "OUT_OF_STOCK") {
+          console.log(err.response?.details);
+          // TODO: update cart
+          addToast(
+            "impossible de passer la commande, certains items de votre panier ne sont malheureusement plus en stock",
+            {
+              appearance: "error",
+            }
+          );
+        }
+      });
   };
-
-  const OpenLivraison = (e) => {
-    e.preventDefault();
-    setActiveLivraison(!activeLivraison);
-  };
-
-  // PARTIE PAIEMENT
-
-  const HandleSubmitPayment = (e) => {
-    e.preventDefault();
-    setActivePayment(!activePayment);
-    setCheckedPayment(!checkedPayment);
-  };
-
-  const OpenPayment = (e) => {
-    e.preventDefault();
-    setActivePayment(!activePayment);
-  };
-
-  // CHANGEMENT DE STYLE SUR LES TITRES //
 
   const styleDefault = {
     color: "#000000",
@@ -70,361 +126,507 @@ export default function Commande() {
 
   return (
     <Layout>
+      <SearchForm />
       <Banner />
-      <div className={styles.title}>
-        <div className={styles.ligne}>
-          <hr className={styles.hr} />
-        </div>
-        <div className={styles.payment}>
-          <h3>
-            {" "}
-            <GiPadlock className={styles.icon} />
-            Paiement sécurisé
-          </h3>
-        </div>
-        <div className={styles.ligne}>
-          <hr className={styles.hr} />
-        </div>
-      </div>
-      <div className={styles.title}>
-        <div className={styles.ligne}>
-          <hr className={styles.hr} />
-        </div>
-        <div className={styles.h2}>
-          <h2
-            onClick={OpenInformations}
-            style={activeInformations ? styleDefault : setStyle}
-          >
-            {checkedInformations ? (
-              <AiOutlineCheck className={styles.check} />
-            ) : (
-              ""
-            )}{" "}
-            Informations
-          </h2>
-        </div>
-        <div className={styles.ligne}>
-          <hr className={styles.hr} />
-        </div>
-      </div>
-
-      {activeInformations && (
-        <>
-          <h3 className={styles.h3}>
-            Indispensable pour que nous puissions traiter votre commande
-          </h3>
-          <div className={styles.containerbloc}>
-            <div className={styles.bloc1}>
-              <form className={styles.inscrit}>
-                <div className={styles.formemail}>
-                  <label htmlFor="email" className={styles.email}>
-                    Adresse mail
-                  </label>
-                  <input className={styles.textarea} id="email" type="email" />
-                </div>
-                <div className={styles.name}>
-                  <div className={styles.formpassword}>
-                    <label htmlFor="name" className={styles.password}>
-                      Prénom
-                    </label>
-                    <input
-                      className={styles.textarea}
-                      id="firstname"
-                      type="name"
-                    />
-                  </div>
-                  <div className={styles.formpassword}>
-                    <label htmlFor="name" className={styles.password}>
-                      Nom
-                    </label>
-                    <input
-                      className={styles.textarea}
-                      id="secondname"
-                      type="name"
-                    />
-                  </div>
-                </div>
-                <div className={styles.formpassword}>
-                  <label htmlFor="adress" className={styles.password}>
-                    Adresse
-                  </label>
-                  <input
-                    className={styles.textarea}
-                    id="adress"
-                    type="adress"
-                  />
-                </div>
-                <div className={styles.name}>
-                  <div className={styles.formpassword}>
-                    <label htmlFor="codepostale" className={styles.password}>
-                      Code postal
-                    </label>
-                    <input
-                      className={styles.textarea}
-                      id="codepostal"
-                      type="adress"
-                    />
-                  </div>
-                  <div className={styles.formpassword}>
-                    <label htmlFor="city" className={styles.password}>
-                      Ville
-                    </label>
-                    <input className={styles.textarea} id="city" type="city" />
-                  </div>
-                </div>
-                <div className={styles.checkbox}>
-                  <input
-                    name="subscribe"
-                    type="checkbox"
-                    className={styles.password}
-                  />
-                  <label htmlFor="city" className={styles.password}>
-                    Je souhaite m&apos;inscrire
-                  </label>
-                </div>
-                <div className={styles.formbutton}>
-                  <button
-                    className={styles.button2}
-                    type="submit"
-                    onClick={HandleSubmitInformations}
-                  >
-                    CONTINUER VERS LA LIVRAISON
-                  </button>
-                </div>
-              </form>
+      {confirmed ? (
+        <p style={{ maxWidth: 1200, margin: "auto", padding: 50 }}>
+          {t("thanks")}
+        </p>
+      ) : (
+        <div className={styles.orderContainer}>
+          <div>
+            <div className={styles.title}>
+              <div className={styles.ligne}>
+                <hr className={styles.hr} />
+              </div>
+              <div className={styles.payment}>
+                <h3>
+                  {" "}
+                  <GiPadlock className={styles.icon} />
+                  {t("securepayment")}
+                </h3>
+              </div>
+              <div className={styles.ligne}>
+                <hr className={styles.hr} />
+              </div>
             </div>
-          </div>{" "}
-        </>
-      )}
-      <div className={styles.container}>
-        <div className={styles.title}>
-          <div className={styles.ligne}>
-            <hr className={styles.hr} />
-          </div>
-          <div className={styles.h2}>
-            <h2
-              onClick={OpenLivraison}
-              style={activeLivraison ? styleDefault : setStyle}
-            >
-              {checkedLivraison ? (
-                <AiOutlineCheck className={styles.check} />
-              ) : (
-                ""
-              )}{" "}
-              Livraison
-            </h2>
-          </div>
-          <div className={styles.ligne}>
-            <hr className={styles.hr} />
-          </div>
-        </div>
-        {activeLivraison && (
-          <>
-            <h3 className={styles.h3}>
-              Renseignez-nous sur votre lieu de séjour
-            </h3>
-            <div className={styles.containerbloc}>
-              <div className={styles.bloc1}>
-                <form className={styles.inscrit}>
-                  <div className={styles.formemail}>
-                    <label htmlFor="partenaire" className={styles.email}>
-                      Partenaire
-                    </label>
-                    <input
-                      className={styles.textarea}
-                      id="partenaire"
-                      type="text"
-                      required
-                    />
-                  </div>
-                  <div className={styles.formpassword}>
-                    <label htmlFor="partenaire" className={styles.password}>
-                      Numéro de téléphone de l&apos;hébergeur
-                    </label>
-                    <input
-                      className={styles.textarea}
-                      id="partenaire"
-                      type="text"
-                      required
-                    />
-                  </div>
-                  <div className={styles.name}>
-                    <div className={styles.formpassword}>
-                      <label htmlFor="name" className={styles.password}>
-                        Prénom de l&apos;hébergeur
-                      </label>
-                      <input
-                        className={styles.textarea}
-                        id="firstname"
-                        type="name"
-                        required
-                      />
-                    </div>
-                    <div className={styles.formpassword}>
-                      <label htmlFor="name" className={styles.password}>
-                        Nom de l&apos;hébergeur
-                      </label>
-                      <input
-                        className={styles.textarea}
-                        id="secondname"
-                        type="name"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className={styles.formpassword}>
-                    <label htmlFor="adress" className={styles.password}>
-                      Adresse
-                    </label>
-                    <input
-                      className={styles.textarea}
-                      id="adress"
-                      type="adress"
-                      required
-                    />
-                  </div>
-                  <div className={styles.name}>
-                    <div className={styles.formpassword}>
-                      <label htmlFor="codepostale" className={styles.password}>
-                        Code postal
-                      </label>
-                      <input
-                        className={styles.textarea}
-                        id="codepostal"
-                        type="adress"
-                        required
-                      />
-                    </div>
-                    <div className={styles.formpassword}>
-                      <label htmlFor="city" className={styles.password}>
-                        Ville
-                      </label>
-                      <input
-                        className={styles.textarea}
-                        id="city"
-                        type="city"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className={styles.formpassword}>
-                    <label htmlFor="hour" className={styles.password}>
-                      Heure d&apos;arrivée
-                    </label>
-                    <input
-                      className={styles.textarea}
-                      id="hour"
-                      type="hour"
-                      required
-                    />
-                  </div>
-                  <div className={styles.formpassword}>
-                    <label htmlFor="hour" className={styles.password}>
-                      Commentaires
-                    </label>
-                    <input
-                      className={styles.textarea2}
-                      id="commentaire"
-                      type="commentaire"
-                      required
-                    />
-                  </div>
-                  <div className={styles.formbutton}>
+            <div className={styles.title}>
+              <div className={styles.ligne}>
+                <hr className={styles.hr} />
+              </div>
+              <div className={styles.h2}>
+                <h2
+                  onClick={() => setOpenSection("userInfo")}
+                  style={openSection === "userInfo" ? styleDefault : setStyle}
+                >
+                  {openSection === "delivery" || openSection === "payment" ? (
+                    <AiOutlineCheck className={styles.check} />
+                  ) : (
+                    ""
+                  )}{" "}
+                  {t("Informations")}
+                </h2>
+              </div>
+              <div className={styles.ligne}>
+                <hr className={styles.hr} />
+              </div>
+            </div>
+
+            {openSection === "userInfo" && (
+              <>
+                <h3 className={styles.h3}>{t("traitementcommande")}</h3>
+                {!currentUserProfile && (
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <p>
+                      Vous pouvez vous connecter pour saisir les informations
+                      suivantes automatiquement et gagner du temps.
+                    </p>
+                    <p>
+                      En vous connectant, vous pourrez également retrouver votre
+                      réservation dans votre espace client.
+                    </p>
                     <button
-                      type="submit"
-                      className={styles.button2}
-                      onClick={HandleSubmitLivraison}
+                      type="button"
+                      data-cy="signin_button"
+                      className={styles.button}
+                      onClick={() =>
+                        signIn("credentials", {
+                          callbackUrl: `${window.location.origin}/commande`,
+                        })
+                      }
                     >
-                      CONTINUER VERS LE PAIEMENT
+                      SE CONNECTER
                     </button>
                   </div>
-                </form>
-              </div>
-            </div>
-          </>
-        )}
-        <div className={styles.title}>
-          <div className={styles.ligne}>
-            <hr className={styles.hr} />
-          </div>
-          <div className={styles.h2}>
-            <h2
-              onClick={OpenPayment}
-              style={activePayment ? styleDefault : setStyle}
-            >
-              Paiement
-            </h2>
-          </div>
-          <div className={styles.ligne}>
-            <hr className={styles.hr} />
-          </div>
-        </div>
-        {activePayment && (
-          <>
-            <h3 className={styles.h3}>
-              {" "}
-              <GiPadlock />
-              Choisissez votre moyen de paiement
-            </h3>
-            <div className={styles.paymentparent}>
-              <div className={styles.paymentcontainer}>
-                <div className={styles.checkbox}>
-                  <input
-                    name="subscribe"
-                    type="checkbox"
-                    className={styles.password}
-                  />
-                  <label htmlFor="city" className={styles.password}>
-                    Paypal <BsPaypal />
-                  </label>
-                </div>
-                <div className={styles.checkbox}>
-                  <input
-                    name="subscribe"
-                    type="checkbox"
-                    className={styles.password}
-                  />
-                  <label htmlFor="city" className={styles.password}>
-                    Carte bancaire <FaCcVisa /> <FaCcMastercard />
-                  </label>
-                </div>
-                <div className={styles.checkbox}>
-                  <input
-                    name="subscribe"
-                    type="checkbox"
-                    className={styles.password}
-                  />
-                  <label htmlFor="city" className={styles.password}>
-                    J&apos;accepte les conditions générales de prestations de
-                    services
-                  </label>
-                </div>
+                )}
+                <div className={styles.containerbloc}>
+                  <div className={styles.bloc1}>
+                    <form
+                      className={styles.inscrit}
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        setOpenSection("delivery");
+                      }}
+                    >
+                      <div className={styles.formemail}>
+                        <label htmlFor="email" className={styles.email}>
+                          {t("email")}
+                        </label>
+                        <input
+                          className={styles.textarea}
+                          id="email"
+                          type="email"
+                          required
+                          onChange={(e) => setUserMail(e.target.value)}
+                          value={userMail}
+                          data-cy="infos_email"
+                        />
+                      </div>
+                      <div className={styles.name}>
+                        <div className={styles.formpassword}>
+                          <label htmlFor="name" className={styles.password}>
+                            {t("prenom")}
+                          </label>
+                          <input
+                            className={styles.textarea}
+                            id="firstname"
+                            type="name"
+                            required
+                            onChange={(e) => setUserFirstName(e.target.value)}
+                            value={userFirstname}
+                            data-cy="infos_firstname"
+                          />
+                        </div>
+                        <div className={styles.formpassword}>
+                          <label htmlFor="name" className={styles.password}>
+                            {t("nom")}
+                          </label>
+                          <input
+                            className={styles.textarea}
+                            id="secondname"
+                            required
+                            type="name"
+                            onChange={(e) => setUserLastName(e.target.value)}
+                            value={userLastName}
+                            data-cy="infos_lastname"
+                          />
+                        </div>
+                      </div>
+                      <div className={styles.formpassword}>
+                        <label htmlFor="adress" className={styles.password}>
+                          {t("adresse")}
+                        </label>
+                        <input
+                          className={styles.textarea}
+                          id="adress"
+                          required
+                          type="adress"
+                          onChange={(e) => setUserAddress(e.target.value)}
+                          value={userAddress}
+                          data-cy="infos_address"
+                        />
+                      </div>
+                      <div className={styles.formpassword}>
+                        <label htmlFor="adress" className={styles.password}>
+                          {t("Numérodetelephone")}
+                        </label>
+                        <input
+                          className={styles.textarea}
+                          id="phone"
+                          type="phone"
+                          required
+                          onChange={(e) => setUserPhone(e.target.value)}
+                          value={userPhone}
+                          data-cy="infos_phone"
+                        />
+                      </div>
+                      <div className={styles.name}>
+                        <div className={styles.formpassword}>
+                          <label
+                            htmlFor="codepostale"
+                            className={styles.password}
+                          >
+                            {t("cp")}
+                          </label>
+                          <input
+                            className={styles.textarea}
+                            id="codepostal"
+                            required
+                            type="adress"
+                            onChange={(e) => setUserZip(e.target.value)}
+                            value={userZip}
+                            data-cy="infos_zip"
+                          />
+                        </div>
+                        <div className={styles.formpassword}>
+                          <label htmlFor="city" className={styles.password}>
+                            {t("ville")}
+                          </label>
+                          <input
+                            className={styles.textarea}
+                            id="city"
+                            type="city"
+                            required
+                            onChange={(e) => setUserCity(e.target.value)}
+                            value={userCity}
+                            data-cy="infos_city"
+                          />
+                        </div>
+                      </div>
 
-                <div className={styles.checkbox}>
-                  <input
-                    name="subscribe"
-                    type="checkbox"
-                    className={styles.password}
-                  />
-                  <label htmlFor="city" className={styles.password}>
-                    J&apos;accepte que l’exécution du service débute dès la
-                    confirmation de la commande.
-                  </label>
+                      <div className={styles.formbutton}>
+                        <p style={{ color: "#D28F71", textAlign: "center" }}>
+                          {error}
+                        </p>
+                        <button
+                          className={styles.button2}
+                          type="submit"
+                          data-cy="infos_submit_button"
+                        >
+                          {t("tolivraison")}
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>{" "}
+              </>
+            )}
+            <div className={styles.container}>
+              <div className={styles.title}>
+                <div className={styles.ligne}>
+                  <hr className={styles.hr} />
                 </div>
-                <div className={styles.formbutton}>
-                  <button
-                    type="submit"
-                    className={styles.button2}
-                    onClick={HandleSubmitPayment}
+                <div className={styles.h2}>
+                  <h2
+                    onClick={() => setOpenSection("delivery")}
+                    style={openSection === "delivery" ? styleDefault : setStyle}
                   >
-                    CONFIRMER LA COMMANDE
-                  </button>
+                    {openSection === "payment" ? (
+                      <AiOutlineCheck className={styles.check} />
+                    ) : (
+                      ""
+                    )}{" "}
+                    {t("Livraison")}
+                  </h2>
+                </div>
+                <div className={styles.ligne}>
+                  <hr className={styles.hr} />
                 </div>
               </div>
+              {openSection === "delivery" && (
+                <>
+                  <h3 className={styles.h3}>{t("lieudesejour")}</h3>
+                  <div className={styles.containerbloc}>
+                    <div className={styles.bloc1}>
+                      <form
+                        className={styles.inscrit}
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          setOpenSection("payment");
+                        }}
+                      >
+                        <div className={styles.formemail}>
+                          <label htmlFor="partenaire" className={styles.email}>
+                            {t("Partenaire")}
+                          </label>
+                          <input
+                            className={styles.textarea}
+                            id="partenaire"
+                            type="text"
+                            required
+                            data-cy="partner_name"
+                            onChange={(e) => setUserPartner(e.target.value)}
+                            value={userPartner}
+                          />
+                        </div>
+                        <div className={styles.formpassword}>
+                          <label
+                            htmlFor="partenaire"
+                            className={styles.password}
+                          >
+                            {t("hebergeurphone")}
+                          </label>
+                          <input
+                            className={styles.textarea}
+                            id="partenaire"
+                            type="text"
+                            required
+                            data-cy="partner_phone"
+                            onChange={(e) => setPhonePartner(e.target.value)}
+                            value={phonePartner}
+                          />
+                        </div>
+                        <div className={styles.name}>
+                          <div className={styles.formpassword}>
+                            <label htmlFor="name" className={styles.password}>
+                              {t("hebergeurname")}
+                            </label>
+                            <input
+                              className={styles.textarea}
+                              id="firstname"
+                              type="name"
+                              required
+                              data-cy="partner_firstname"
+                              onChange={(e) =>
+                                setPartnerFirstName(e.target.value)
+                              }
+                              value={partnerFirstName}
+                            />
+                          </div>
+                          <div className={styles.formpassword}>
+                            <label htmlFor="name" className={styles.password}>
+                              {t("hebergeurlastname")}
+                            </label>
+                            <input
+                              className={styles.textarea}
+                              id="secondname"
+                              type="name"
+                              required
+                              data-cy="partner_lastname"
+                              onChange={(e) =>
+                                setPartnerLastName(e.target.value)
+                              }
+                              value={partnerLastName}
+                            />
+                          </div>
+                        </div>
+                        <div className={styles.formpassword}>
+                          <label htmlFor="adress" className={styles.password}>
+                            {t("adresse")}
+                          </label>
+                          <input
+                            className={styles.textarea}
+                            id="adress"
+                            type="adress"
+                            required
+                            data-cy="partner_adress"
+                            onChange={(e) => setPartnerAdress(e.target.value)}
+                            value={partnerAddress}
+                          />
+                        </div>
+                        <div className={styles.name}>
+                          <div className={styles.formpassword}>
+                            <label
+                              htmlFor="codepostale"
+                              className={styles.password}
+                            >
+                              {t("cp")}
+                            </label>
+                            <input
+                              className={styles.textarea}
+                              id="zip"
+                              type="adress"
+                              required
+                              data-cy="partner_zip"
+                              onChange={(e) => setPartnerZip(e.target.value)}
+                              value={partnerZip}
+                            />
+                          </div>
+                          <div className={styles.formpassword}>
+                            <label htmlFor="city" className={styles.password}>
+                              {t("ville")}
+                            </label>
+                            <input
+                              className={styles.textarea}
+                              id="city"
+                              type="city"
+                              required
+                              data-cy="partner_city"
+                              onChange={(e) => setPartnerCity(e.target.value)}
+                              value={partnerCity}
+                            />
+                          </div>
+                        </div>
+                        <div className={styles.formpassword}>
+                          <label htmlFor="hour" className={styles.password}>
+                            {t("heurearrive")}
+                          </label>
+                          <input
+                            className={styles.textarea}
+                            id="time"
+                            type="time"
+                            required
+                            data-cy="partner_hour"
+                            onChange={(e) => setUserHourArrived(e.target.value)}
+                            value={userHourArrived}
+                          />
+                        </div>
+                        <div className={styles.formpassword}>
+                          <label htmlFor="hour" className={styles.password}>
+                            {t("commentaire")}
+                          </label>
+                          <input
+                            className={styles.textarea2}
+                            id="commentaire"
+                            type="commentaire"
+                            data-cy="partner_comments"
+                            required
+                            onChange={(e) => setUserComentary(e.target.value)}
+                            value={userCommentary}
+                          />
+                        </div>
+                        <div className={styles.formbutton}>
+                          <button
+                            type="submit"
+                            data-cy="partner_submit_button"
+                            className={styles.button2}
+                          >
+                            {t("topayment")}
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </>
+              )}
+              <div className={styles.title}>
+                <div className={styles.ligne}>
+                  <hr className={styles.hr} />
+                </div>
+                <div className={styles.h2}>
+                  <h2
+                    onClick={() => setOpenSection("payment")}
+                    style={openSection === "payment" ? styleDefault : setStyle}
+                  >
+                    {t("Paiement")}
+                  </h2>
+                </div>
+                <div className={styles.ligne}>
+                  <hr className={styles.hr} />
+                </div>
+              </div>
+              {openSection === "payment" && (
+                <>
+                  <h3 className={styles.h3}>
+                    {" "}
+                    <GiPadlock />
+                    {t("moyendepaiement")}
+                  </h3>
+                  <div className={styles.paymentparent}>
+                    <div className={styles.paymentcontainer}>
+                      <div className={styles.checkbox}>
+                        <input
+                          name="subscribe"
+                          type="checkbox"
+                          className={styles.password}
+                          data-cy="payment_checkbox_pyapal"
+                        />
+                        <label htmlFor="city" className={styles.password}>
+                          Paypal <BsPaypal />
+                        </label>
+                      </div>
+                      <div className={styles.checkbox}>
+                        <input
+                          name="subscribe"
+                          type="checkbox"
+                          className={styles.password}
+                          data-cy="payment_checkbox_cb"
+                        />
+                        <label htmlFor="city" className={styles.password}>
+                          {t("cb")} <FaCcVisa /> <FaCcMastercard />
+                        </label>
+                      </div>
+                      <div className={styles.checkbox}>
+                        <input
+                          name="subscribe"
+                          type="checkbox"
+                          className={styles.password}
+                          data-cy="payment_checkbox_cgv"
+                        />
+                        <label htmlFor="city" className={styles.password}>
+                          {t("cgv")}
+                        </label>
+                      </div>
+
+                      <div className={styles.checkbox}>
+                        <input
+                          name="subscribe"
+                          type="checkbox"
+                          className={styles.password}
+                          data-cy="payment_checkbox_accept"
+                        />
+                        <label htmlFor="city" className={styles.password}>
+                          {t("cgv2")}
+                        </label>
+                      </div>
+                      <div className={styles.formbutton}>
+                        <button
+                          type="submit"
+                          className={styles.button2}
+                          onClick={createOrder}
+                        >
+                          {t("confirmcommand")}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
-          </>
-        )}
-      </div>
+          </div>
+          <OrderCart />
+        </div>
+      )}
     </Layout>
   );
+}
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        "banner",
+        "header",
+        "footer",
+        "signIn",
+        "order",
+      ])),
+    },
+  };
 }
