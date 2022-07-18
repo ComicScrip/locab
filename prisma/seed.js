@@ -3,6 +3,13 @@ const db = require("../db");
 const { hashPassword } = require("../models/user");
 
 async function seed() {
+  await db.order.deleteMany();
+  await db.productSample.deleteMany();
+  await db.product.deleteMany();
+  await db.priceCategory.deleteMany();
+  await db.premise.deleteMany();
+  await db.user.deleteMany();
+
   await db.user.create({
     data: {
       firstname: "admin",
