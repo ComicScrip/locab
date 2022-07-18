@@ -25,6 +25,7 @@ async function handlePost(req, res) {
       const samples = await findAvailableInCity({
         city: orderCity,
         startDate,
+        endDate,
         productId: item.productId,
         quantity: item.quantity,
       });

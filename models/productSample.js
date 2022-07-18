@@ -130,6 +130,7 @@ module.exports.findAvailableInCity = ({
   startDate,
   quantity = 1,
   productId,
+  endDate,
 }) => {
   return db.productSample.findMany({
     where: {
@@ -143,7 +144,21 @@ module.exports.findAvailableInCity = ({
         {
           OR: [
             {
-              unavailabilityEnd: null,
+              unavailabilityStart: null,
+            },
+            {
+              AND: [
+                {
+                  unavailabilityStart: {
+                    gt: new Date(startDate),
+                  },
+                },
+                {
+                  unavailabilityStart: {
+                    gt: new Date(endDate),
+                  },
+                },
+              ],
             },
             {
               unavailabilityEnd: {
