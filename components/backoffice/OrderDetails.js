@@ -1,8 +1,8 @@
 import styles from "../../styles/BackReservations.module.css";
 
 export default function OrderDetails({ orderDetails }) {
-  const imagesProducts = orderDetails.products.map(
-    (product) => product.productSample.product.pictures
+  const imagesProducts = orderDetails.items.map(
+    (item) => item.productSamples[0]?.product?.pictures
   );
 
   return (
@@ -24,37 +24,37 @@ export default function OrderDetails({ orderDetails }) {
           <div>
             <b>Prénom</b>
             <br />
-            {orderDetails.deliveryFirstName || orderDetails.customer.firstname}
+            {orderDetails.billingFirstname}
           </div>
           <div>
             <b>Nom</b>
             <br />
-            {orderDetails.deliveryLastName || orderDetails.customer.lastname}
+            {orderDetails.billingLastname}
           </div>
           <div className={styles.infoFullWidth}>
             <b>Adresse</b>
             <br />
-            {orderDetails.deliveryStreet || orderDetails.customer.address}
+            {orderDetails.billingStreet}
           </div>
           <div>
             <b>Ville</b>
             <br />
-            {orderDetails.deliveryCity || orderDetails.customer.city}
+            {orderDetails.billingCity}
           </div>
           <div>
             <b>Code postal</b>
             <br />
-            {orderDetails.deliveryZip || orderDetails.customer.zip}
+            {orderDetails.billingZip}
           </div>
           <div>
             <b>Adresse mail</b>
             <br />
-            {orderDetails.customer.email}
+            {orderDetails.billingEmail}
           </div>
           <div>
             <b>N° de téléphone</b>
             <br />
-            {orderDetails.customer.phone}
+            {orderDetails.billingPhoneNumber}
           </div>
           <div>
             <b>Mode de paiement</b>
@@ -72,37 +72,32 @@ export default function OrderDetails({ orderDetails }) {
           <div>
             <b>Prénom</b>
             <br />
-            {orderDetails.customer.firstname}
+            {orderDetails.deliveryFirstName}
           </div>
           <div>
             <b>Nom</b>
             <br />
-            {orderDetails.customer.lastname}
+            {orderDetails.deliveryLastName}
           </div>
           <div className={styles.infoFullWidth}>
             <b>Adresse</b>
             <br />
-            {orderDetails.customer.address}
+            {orderDetails.deliveryStreet}
           </div>
           <div>
             <b>Ville</b>
             <br />
-            {orderDetails.customer.city}
+            {orderDetails.deliveryCity}
           </div>
           <div>
             <b>Code postal</b>
             <br />
-            {orderDetails.customer.zip}
-          </div>
-          <div>
-            <b>Adresse mail</b>
-            <br />
-            {orderDetails.customer.email}
+            {orderDetails.deliveryZip}
           </div>
           <div>
             <b>N° de téléphone</b>
             <br />
-            {orderDetails.customer.phone}
+            {orderDetails.deliveryPhone}
           </div>
           <div>
             <b>Partenaire</b>

@@ -44,7 +44,11 @@ export default function Footer() {
           </div>
         </div>
         <div className={styles.sectionFooter}>
-          <p className={styles.footerTitle}>{t("moncompte")}</p>
+          <Link href="/profile">
+            <a>
+              <p className={styles.footerTitle}>{t("moncompte")}</p>
+            </a>
+          </Link>
           <div className={styles.links}>
             {/* <div className={styles.grise}>
               <div href="#">

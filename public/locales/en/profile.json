@@ -1,4 +1,7 @@
 {
+  "moncompte": "My account",
+  "mescommandes": "My orders",
+  "infosperso": "Personal informations",
   "mesinfoperso": "My personal information",
   "adressemail": "Email address",
   "nom": "Name",
@@ -10,5 +13,6 @@
   "email": "Email",
   "retourcompte": "back to account",
   "valider": "Save",
-  "toastmodif": "Your changes have been saved"
+  "toastmodif": "Your changes have been saved",
+  "connexion": "Log In"
 }

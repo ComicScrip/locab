@@ -1,29 +1,40 @@
 import ResProduct from "./ResProduct";
 import styles from "../../styles/Reservation.module.css";
-import { useState, useContext } from "react";
-import { SelectCartContext } from "../../contexts/selectCartContext";
+import { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
+import axios from "axios";
+import useSearch from "../../hooks/useSearch";
 
 export default function Products() {
   const { t } = useTranslation("cart");
 
-  const { products } = useContext(SelectCartContext);
-  const [searchValue, setSearchValue] = useState("");
-  const [showAvailable, setShowAvailable] = useState(true);
+  const { queryString, params, setProductNameContains, toggleShowUnavailable } =
+    useSearch();
 
-  const handleCheckAvailability = () => {
-    setShowAvailable(!showAvailable);
-  };
+  const [productList, setProductList] = useState([]);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push(`/reservation?${queryString}`, undefined, { scroll: false });
+    axios
+      .get(`/api/productsFront?${queryString}`)
+      .then((response) => response.data)
+      .then((data) => {
+        setProductList(data);
+      });
+  }, [queryString]);
 
   return (
     <div className={styles.mainWrapper}>
       <section className={styles.searchContainer}>
         <input
           data-cy="searchBar"
-          value={searchValue}
+          value={params.productNameContains}
           type="text"
           placeholder={t("inputSeach")}
-          onChange={(event) => setSearchValue(event.target.value)}
+          onChange={(event) => setProductNameContains(event.target.value)}
           className={styles.searchBar}
         />
       </section>
@@ -32,25 +43,22 @@ export default function Products() {
           <input
             data-cy="availabilityBtn"
             type="checkbox"
-            onClick={() => handleCheckAvailability()}
+            onClick={() => toggleShowUnavailable()}
             id="availability"
-            defaultChecked={true}
+            defaultChecked={params.showUnavailable}
           />
           {t("afficherlesproduitsindisponibles")}
         </label>
       </section>
 
-      {products
-        .filter((product) => (product.isAvailable ? products : showAvailable))
-        .filter((product) =>
-          product.name.toUpperCase().includes(searchValue.toUpperCase())
-        )
-        .filter((product) =>
-          product.category.includes(searchValue.toLowerCase())
-        )
-        .map((product) => (
-          <ResProduct product={product} key={product.id} id={product.id} />
-        ))}
+      {productList.map((product) => (
+        <ResProduct
+          product={product}
+          key={product.id}
+          id={product.id}
+          data-cy="availabilityBtn"
+        />
+      ))}
     </div>
   );
 }

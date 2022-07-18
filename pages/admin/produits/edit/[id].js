@@ -50,7 +50,7 @@ const EditProduct = () => {
   return (
     <LayoutAdmin pageTitle="Back-office | Editer un produit">
       <div className={styles.mainContainer}>
-        <Link href="/admin/produit">
+        <Link href="/admin/produits">
           <a>← Retour aux produits</a>
         </Link>
         <div className={styles.formPopup}>

@@ -2,9 +2,18 @@ import Layout from "../components/Layout";
 import styles from "../styles/Home.module.css";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import Link from "next/link";
+import useSearch from "../hooks/useSearch";
+import dayjs from "dayjs";
 
 export default function Home() {
   const { t } = useTranslation("home");
+  const {
+    params: { city, fromDate },
+    setCity,
+    queryString,
+    setFromDate,
+  } = useSearch();
 
   return (
     <Layout pageTitle="Location de poussette | Location de matériel de puériculture">
@@ -16,19 +25,39 @@ export default function Home() {
             <p className={styles.textFirst}>{t("activityDescription")}</p>
             <div>
               <form className={styles.choixHome}>
-                <input
-                  className={styles.whereHome}
+                <select
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
                   type="text"
-                  placeholder={t("ouallezvous")}
-                ></input>
+                  name="destination"
+                  id="location"
+                  data-cy="searchWhere"
+                  placeholder="Où allez-vous ?"
+                  className={styles.whereHome}
+                  required
+                >
+                  <option value="">{t("ouallezvous")}</option>
+                  <option value="Lyon">Lyon</option>
+                  <option value="Bordeaux">Bordeaux</option>
+                </select>
+
                 <input
                   className={styles.whenHome}
-                  type="text"
+                  type="date"
+                  min={dayjs().format("YYYY-MM-DD")}
                   placeholder={t("quand")}
+                  value={fromDate}
+                  onChange={(e) => setFromDate(e.target.value)}
                 ></input>
-                <button className={styles.buttonHome} type="submit">
-                  {t("jecherche")} !
-                </button>
+                <Link href={`/reservation?${queryString}`}>
+                  <button
+                    className={styles.buttonHome}
+                    type="submit"
+                    data-cy="searchBtnHomePage"
+                  >
+                    {t("jecherche")} !
+                  </button>
+                </Link>
               </form>
             </div>
           </div>

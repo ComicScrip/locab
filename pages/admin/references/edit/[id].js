@@ -189,15 +189,13 @@ const EditProductSample = () => {
                   <label htmlFor="order">Réservations</label>
                   <div id="order" className={styles.orderListInput}>
                     <ul>
-                      {productSample.orders.map((productOrders) => (
+                      {productSample.orderItems.map((item) => (
                         <li
-                          key={productOrders.order.orderNumber}
-                          id={productOrders.order.orderNumber}
+                          key={item.order.orderNumber}
+                          id={item.order.orderNumber}
                         >
-                          <Link
-                            href={`/admin/reservations/${productOrders.order.id}`}
-                          >
-                            {productOrders.order.orderNumber}
+                          <Link href={`/admin/reservations/${item.order.id}`}>
+                            {item.order.orderNumber}
                           </Link>
                         </li>
                       ))}

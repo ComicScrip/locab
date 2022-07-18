@@ -8,39 +8,48 @@ import Banner from "../../components/Banner";
 import SearchForm from "../../components/SearchForm";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import useSearch from "../../hooks/useSearch";
 
 function SearchPage() {
   const { t } = useTranslation("reservation");
+  const { params } = useSearch();
 
   return (
     <Layout pageTitle="Location de matériel de puériculture Lyon — Loca-b">
       <SearchForm />
-      <Banner />
-
-      <div className={styles.main_title}>
-        <h1>{t("dequoiavezvousbesoin")}</h1>
-      </div>
-      <div className={styles.paiement_container}>
-        <div className={styles.trait_gauche}></div>
-        <p className={styles.paiementSecurColor}>
-          <AiFillLock
-            style={{
-              color: "#66c65e",
-              verticalAlign: "middle",
-              marginTop: "-4px",
-            }}
-          />{" "}
-          {t("paiementsecurise")}
-        </p>
-        <div className={styles.trait_droit}></div>
-      </div>
-      <div className={styles.main_container}>
-        <Products />
-        <div className={styles.panier_style}>
-          <Cart />
-          <Pack className={styles.packStyle} />
-        </div>
-      </div>
+      {params.city ? (
+        <>
+          <Banner />
+          <div className={styles.main_title}>
+            <h1>{t("dequoiavezvousbesoin")}</h1>
+          </div>
+          <div className={styles.paiement_container}>
+            <div className={styles.trait_gauche}></div>
+            <p className={styles.paiementSecurColor}>
+              <AiFillLock
+                style={{
+                  color: "#66c65e",
+                  verticalAlign: "middle",
+                  marginTop: "-4px",
+                }}
+              />{" "}
+              {t("paiementsecurise")}
+            </p>
+            <div className={styles.trait_droit}></div>
+          </div>
+          <div className={styles.main_container}>
+            <Products />
+            <div className={styles.panier_style}>
+              <Cart />
+              <div style={{ opacity: 0.6 }}>
+                <Pack className={styles.packStyle} />
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        t("selectALocation")
+      )}
     </Layout>
   );
 }
