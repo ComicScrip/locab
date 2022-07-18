@@ -2,9 +2,13 @@ import React from "react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import styles from "../styles/headerfooter/footer.module.css";
+import { useContext } from "react";
+
+import { CurrentUserContext } from "../contexts/currentUserContext";
 
 export default function Footer() {
   const { t } = useTranslation("footer");
+  const { currentUserProfile } = useContext(CurrentUserContext);
 
   return (
     <div className={styles.mainContainerFooter}>
@@ -44,11 +48,13 @@ export default function Footer() {
           </div>
         </div>
         <div className={styles.sectionFooter}>
-          <Link href="/profile">
-            <a>
-              <p className={styles.footerTitle}>{t("moncompte")}</p>
-            </a>
-          </Link>
+          {currentUserProfile?.role === "admin" && (
+            <Link href="/admin">
+              <a>
+                <p className={styles.footerTitle}>Admin</p>
+              </a>
+            </Link>
+          )}
           <div className={styles.links}>
             {/* <div className={styles.grise}>
               <div href="#">

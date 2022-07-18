@@ -94,7 +94,7 @@ export default function SignInPayment({ csrfToken }) {
             </form>
           </div>
           <div className={styles.bloc2}>
-            <h3>Je comande sans inscription</h3>
+            <h3>Je commande sans inscription</h3>
             <form className={styles.inscrit}>
               <div className={styles.forminscription}>
                 <label htmlFor="email" className={styles.email}>
