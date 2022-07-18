@@ -64,7 +64,9 @@ export default function OrderDetails({ orderDetails }) {
           <div>
             <b>Statut</b>
             <br />
-            {orderDetails.status}
+            {orderDetails.status === "pending"
+              ? "En cours"
+              : orderDetails.status}
           </div>
         </article>
         <div className={styles.infoDetail}>

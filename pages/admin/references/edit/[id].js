@@ -21,6 +21,7 @@ const EditProductSample = () => {
     const lastDate = productSample.unavailabilityEnd;
     lastDateNewFormat = dayjs(lastDate).format("YYYY-MM-DD");
   }
+
   if (productSample.dateOfPurchase !== null) {
     const datePurchase = productSample.dateOfPurchase;
     datePurchaseNewFormat = dayjs(datePurchase).format("YYYY-MM-DD");
