@@ -14,10 +14,17 @@ const EditProductSample = () => {
   const [productList, setProductList] = useState([]);
   const [premiseList, setPremiseList] = useState([]);
 
-  const lastDate = productSample.lastDateOrder;
-  const lastDateNewFormat = dayjs(lastDate).format("YYYY-MM-DD");
-  const datePurchase = productSample.dateOfPurchase;
-  const datePurchaseNewFormat = dayjs(datePurchase).format("YYYY-MM-DD");
+  let lastDateNewFormat;
+  let datePurchaseNewFormat;
+
+  if (productSample.unavailabilityEnd !== null) {
+    const lastDate = productSample.unavailabilityEnd;
+    lastDateNewFormat = dayjs(lastDate).format("YYYY-MM-DD");
+  }
+  if (productSample.dateOfPurchase !== null) {
+    const datePurchase = productSample.dateOfPurchase;
+    datePurchaseNewFormat = dayjs(datePurchase).format("YYYY-MM-DD");
+  }
 
   useEffect(() => {
     id &&
@@ -52,7 +59,9 @@ const EditProductSample = () => {
   const handlePatchProductSample = (e) => {
     e.preventDefault();
     const dateOfPurchase = new Date(productSample.dateOfPurchase);
-    const lastDateOrder = new Date(productSample.lastDateOrder);
+    const unavailabilityEnd = new Date(productSample.unavailabilityEnd);
+    const productId = parseInt(productSample.productId, 10);
+    const premiseId = parseInt(productSample.premiseId, 10);
 
     axios
       .patch(`/api/productSamples/${id}`, {
@@ -60,9 +69,9 @@ const EditProductSample = () => {
         dateOfPurchase: dateOfPurchase,
         comment: productSample.comment,
         condition: productSample.condition,
-        lastDateOrder: lastDateOrder,
-        productId: productSample.productId,
-        premiseId: productSample.premiseId,
+        unavailabilityEnd: unavailabilityEnd,
+        productId: productId,
+        premiseId: premiseId,
       })
       .then(() => router.push("/admin/references"))
       .catch(console.error);
@@ -146,11 +155,11 @@ const EditProductSample = () => {
                     name="lastDate"
                     type="date"
                     className={styles.input}
-                    value={lastDateNewFormat || ""}
+                    value={lastDateNewFormat || datePurchaseNewFormat}
                     onChange={(e) =>
                       setProductSample({
                         ...productSample,
-                        lastDateOrder: e.target.value,
+                        unavailabilityEnd: e.target.value,
                       })
                     }
                   />{" "}
@@ -175,7 +184,17 @@ const EditProductSample = () => {
                 </div>
                 <div className={styles.productLabelContainer}>
                   <label htmlFor="premise">Ville</label>
-                  <select id="premise" name="premise" className={styles.input}>
+                  <select
+                    id="premise"
+                    name="premise"
+                    className={styles.input}
+                    onChange={(e) =>
+                      setProductSample({
+                        ...productSample,
+                        premiseId: e.target.value,
+                      })
+                    }
+                  >
                     {premiseList.map((premise) => (
                       <option key={premise.id} value={premise.id}>
                         {premise.city}

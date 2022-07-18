@@ -72,32 +72,32 @@ export default function OrderDetails({ orderDetails }) {
           <div>
             <b>Prénom</b>
             <br />
-            {orderDetails.deliveryFirstName}
+            {orderDetails.deliveryFirstName || "---"}
           </div>
           <div>
             <b>Nom</b>
             <br />
-            {orderDetails.deliveryLastName}
+            {orderDetails.deliveryLastName || "---"}
           </div>
           <div className={styles.infoFullWidth}>
             <b>Adresse</b>
             <br />
-            {orderDetails.deliveryStreet}
+            {orderDetails.deliveryStreet || "---"}
           </div>
           <div>
             <b>Ville</b>
             <br />
-            {orderDetails.deliveryCity}
+            {orderDetails.deliveryCity || "---"}
           </div>
           <div>
             <b>Code postal</b>
             <br />
-            {orderDetails.deliveryZip}
+            {orderDetails.deliveryZip || "---"}
           </div>
           <div>
             <b>N° de téléphone</b>
             <br />
-            {orderDetails.deliveryPhone}
+            {orderDetails.deliveryPhoneNumber || "---"}
           </div>
           <div>
             <b>Partenaire</b>
