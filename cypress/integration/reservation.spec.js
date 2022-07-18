@@ -27,7 +27,6 @@ describe("reservation", () => {
     cy.get('[data-cy="selectWhere"]').select("Bordeaux");
     cy.get('[data-cy="availabilityBtn"]').click();
     cy.get('[data-cy="unavailableItem"]').should("exist");
-    cy.url().should("include", "showUnavailable=true");
   });
 
   it("can search product", () => {
