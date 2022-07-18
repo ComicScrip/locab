@@ -149,6 +149,7 @@ function AddProductsPopUp({ show, setShow }) {
                 className={(styles.inputPopUp, styles.descriptionTextArea)}
                 id="description"
                 type="textarea"
+                crop="1:1"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 data-cy="add_product_description"
