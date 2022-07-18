@@ -9,10 +9,11 @@ import dayjs from "dayjs";
 export default function Home() {
   const { t } = useTranslation("home");
   const {
-    params: { city, fromDate },
+    params: { city, fromDate, toDate },
     setCity,
     queryString,
     setFromDate,
+    setToDate,
   } = useSearch();
 
   return (
@@ -45,9 +46,16 @@ export default function Home() {
                   className={styles.whenHome}
                   type="date"
                   min={dayjs().format("YYYY-MM-DD")}
-                  placeholder={t("quand")}
                   value={fromDate}
                   onChange={(e) => setFromDate(e.target.value)}
+                ></input>
+
+                <input
+                  className={styles.whenHome}
+                  type="date"
+                  min={fromDate}
+                  value={toDate}
+                  onChange={(e) => setToDate(e.target.value)}
                 ></input>
                 <Link href={`/reservation?${queryString}`}>
                   <button

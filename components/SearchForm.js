@@ -34,7 +34,6 @@ export default function SearchForm() {
             type="date"
             min={dayjs().format("YYYY-MM-DD")}
             name="destination"
-            placeholder="Arrivée"
             style={{ textIndent: 17 + "px" }}
             className={styles.watch1Input}
             required
@@ -48,7 +47,6 @@ export default function SearchForm() {
             min={params.fromDate}
             name="departure"
             id="departure"
-            placeholder="Départ"
             style={{ textIndent: 17 + "px" }}
             className={styles.watch2Input}
             required
