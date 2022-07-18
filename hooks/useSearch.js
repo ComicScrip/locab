@@ -49,7 +49,8 @@ const useSearch = () => {
     mergeParams({ showUnavailable: !params.showUnavailable });
 
   const nbDays =
-    dayjs.duration(dayjs(params.fromDate).diff(params.toDate)).asDays() + 1;
+    dayjs.duration(dayjs(params.toDate).diff(params.fromDate)).asDays() + 1;
+  console.log(nbDays);
 
   return {
     params,

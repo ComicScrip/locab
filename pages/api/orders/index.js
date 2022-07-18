@@ -14,9 +14,10 @@ async function handlePost(req, res) {
 
   if (!cartItems?.length) return res.status(422).send("no cart items");
 
-  const nbDays = dayjs.duration(dayjs(startDate).diff(endDate)).asDays() + 1;
+  const nbDays = dayjs.duration(dayjs(endDate).diff(startDate)).asDays() + 1;
 
-  if (nbDays < 1) res.status(422).send("incorrect dates range");
+  if (isNaN(nbDays) || nbDays < 1)
+    return res.status(422).send("incorrect dates range");
 
   const outOfStockProducts = [];
   const itemsWithSamples = await Promise.all(

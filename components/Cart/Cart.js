@@ -35,84 +35,88 @@ export default function Cart() {
       <div className={styles.mainTitle}>
         <h2>{t("votrepanier")}</h2>
       </div>
-      {cartItems.length === 0 && (
+      {cartItems.length === 0 ? (
         <div className={styles.emptyShop}>{t("votrepanierestvide")}</div>
-      )}
+      ) : (
+        <div>
+          {cartItems.map(({ quantity, product }) => {
+            return (
+              <div key={product.id} className={styles.input_container}>
+                <div className={styles.name_style}>
+                  <Image
+                    src={product.pictures[0].url}
+                    height="35px"
+                    width="35px"
+                    alt={product.name}
+                  />
 
-      {cartItems.map(({ quantity, product }) => {
-        return (
-          <div key={product.id} className={styles.input_container}>
-            <div className={styles.name_style}>
-              <Image
-                src={product.pictures[0].url}
-                height="35px"
-                width="35px"
-                alt={product.name}
-              />
-
-              {product.name}
+                  {product.name}
+                </div>
+                <div className={styles.input_style}>
+                  <input
+                    className={styles.input}
+                    size="1"
+                    type="number"
+                    min="0"
+                    value={quantity || ""}
+                    onChange={(event) =>
+                      updateProductQuantity(product.id, event.target.value)
+                    }
+                    onBlur={() =>
+                      updateProductQuantity(product.id, quantity || 1)
+                    }
+                  />
+                </div>
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => deleteProduct(product.id)}
+                  data-cy="deleteProductToCartClick"
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </div>
+            );
+          })}
+          <div className={styles.totalContainer}>
+            <div className={styles.totalInfoContainer}>
+              <h3>Total</h3>
+              <p>
+                {t("du")} {dayjs(fromDate).format("DD/MM")} {t("au")}{" "}
+                {dayjs(toDate).format("DD/MM")}
+              </p>
             </div>
-            <div className={styles.input_style}>
-              <input
-                className={styles.input}
-                size="1"
-                type="number"
-                min="0"
-                value={quantity || ""}
-                onChange={(event) =>
-                  updateProductQuantity(product.id, event.target.value)
-                }
-                onBlur={() => updateProductQuantity(product.id, quantity || 1)}
-              />
-            </div>
-            <IconButton
-              aria-label="delete"
-              onClick={() => deleteProduct(product.id)}
-              data-cy="deleteProductToCartClick"
-            >
-              <DeleteIcon />
-            </IconButton>
+            <h2>{total}€</h2>
           </div>
-        );
-      })}
-      <div className={styles.totalContainer}>
-        <div className={styles.totalInfoContainer}>
-          <h3>Total</h3>
-          <p>
-            {t("du")} {dayjs(fromDate).format("DD/MM")} {t("au")}{" "}
-            {dayjs(toDate).format("DD/MM")}
-          </p>
-        </div>
-        <h2>{total}€</h2>
-      </div>
-      <div className={styles.cautionContainer}>
-        <p>{t("montantdelacaution")}</p>
-        <Tooltip title={t("textinfo")}>
-          <IconButton>
-            <ErrorIcon />
-          </IconButton>
-        </Tooltip>
-        <p>{deposit}€</p>
-      </div>
+          <div className={styles.cautionContainer}>
+            <p>{t("montantdelacaution")}</p>
+            <Tooltip title={t("textinfo")}>
+              <IconButton>
+                <ErrorIcon />
+              </IconButton>
+            </Tooltip>
+            <p>{deposit}€</p>
+          </div>
 
-      <div className={styles.validerContainer}>
-        <Link href="/commande">
-          <Button
-            variant="contained"
-            style={{
-              backgroundColor: "#D28F71",
-              borderRadius: "8px",
-              width: "100%",
-              color: "white",
-              fontWeight: "bold",
-              fontSize: "13pt",
-              padding: "15px 0px",
-            }}
-          >
-            {t("validermonpanier")}
-          </Button>
-        </Link>
-      </div>
+          <div className={styles.validerContainer}>
+            <Link href="/commande">
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: "#D28F71",
+                  borderRadius: "8px",
+                  width: "100%",
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: "13pt",
+                  padding: "15px 0px",
+                }}
+              >
+                {t("validermonpanier")}
+              </Button>
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

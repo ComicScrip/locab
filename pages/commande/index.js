@@ -13,20 +13,23 @@ import Banner from "../../components/Banner";
 import useSearch from "../../hooks/useSearch";
 import useCart from "../../hooks/useCart";
 import OrderCart from "../../components/Cart/OrderCart";
+import { useToasts } from "react-toast-notifications";
+import SearchForm from "../../components/SearchForm";
 
 export default function Commande() {
   const { t } = useTranslation("order");
+  const { addToast } = useToasts();
 
   const {
     params: { toDate, fromDate, city },
   } = useSearch();
 
-  const { cartItems } = useCart();
+  const { cartItems, setCartItems } = useCart();
 
   const [openSection, setOpenSection] = useState("userInfo");
   const [confirmed, setConfimed] = useState(false);
 
-  const [error, setError] = useState("");
+  const [error] = useState("");
 
   const [userMail, setUserMail] = useState("");
   const [userFirstname, setUserFirstName] = useState("");
@@ -63,7 +66,6 @@ export default function Commande() {
         startDate: fromDate,
         endDate: toDate,
         orderCity: city,
-        partnerId: 5,
         billingFirstname: userFirstname,
         billingLastname: userLastName,
         billingStreet: userAddress,
@@ -73,16 +75,21 @@ export default function Commande() {
         billingEmail: userMail,
         cartItems,
       })
-      .catch((err) => {
-        if (err.response?.code === "OUT_OF_STOCK") {
-          console.log(err.response?.details);
-        }
-      })
       .then(() => {
         setConfimed(true);
+        setCartItems([]);
       })
-      .catch(() => {
-        setError("impossible de passer la commande, veuillez rééssayer");
+      .catch((err) => {
+        if (err.response?.data?.code === "OUT_OF_STOCK") {
+          console.log(err.response?.details);
+          // TODO: update cart
+          addToast(
+            "impossible de passer la commande, certains items de votre panier ne sont malheureusement plus en stock",
+            {
+              appearance: "error",
+            }
+          );
+        }
       });
   };
 
@@ -96,19 +103,14 @@ export default function Commande() {
 
   return (
     <Layout>
+      <SearchForm />
       <Banner />
       {confirmed ? (
         <p style={{ maxWidth: 1200, margin: "auto", padding: 50 }}>
           {t("thanks")}
         </p>
       ) : (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            paddingBottom: 50,
-          }}
-        >
+        <div className={styles.orderContainer}>
           <div>
             <div className={styles.title}>
               <div className={styles.ligne}>

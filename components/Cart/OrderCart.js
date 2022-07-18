@@ -71,12 +71,12 @@ export default function OrderCart() {
                 <div
                   style={{
                     padding: 10,
-                    width: 70,
+                    width: 100,
                     fontWeight: 900,
                     borderBottom: "1px solid #B9B9B9",
                   }}
                 >
-                  {ci.quantity * pricePerDay}€
+                  {Number(ci.quantity * pricePerDay * nbDays).toFixed(2)}€
                 </div>
               </div>
             );
@@ -95,11 +95,11 @@ export default function OrderCart() {
             <div
               style={{
                 padding: 10,
-                width: 70,
+                width: 100,
                 fontWeight: 900,
               }}
             >
-              {total + deposit}€
+              {Number(total + deposit).toFixed(2)}€
             </div>
           </div>
         </div>

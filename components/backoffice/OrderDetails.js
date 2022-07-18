@@ -1,6 +1,7 @@
 import styles from "../../styles/BackReservations.module.css";
 
 export default function OrderDetails({ orderDetails }) {
+  console.log(orderDetails);
   const imagesProducts = orderDetails.items.map(
     (item) => item.productSamples[0]?.product?.pictures
   );
@@ -24,12 +25,12 @@ export default function OrderDetails({ orderDetails }) {
           <div>
             <b>Prénom</b>
             <br />
-            {orderDetails.billingFirstName}
+            {orderDetails.billingFirstname}
           </div>
           <div>
             <b>Nom</b>
             <br />
-            {orderDetails.billingLastName}
+            {orderDetails.billingLastname}
           </div>
           <div className={styles.infoFullWidth}>
             <b>Adresse</b>
@@ -54,7 +55,7 @@ export default function OrderDetails({ orderDetails }) {
           <div>
             <b>N° de téléphone</b>
             <br />
-            {orderDetails.billingPhone}
+            {orderDetails.billingPhoneNumber}
           </div>
           <div>
             <b>Mode de paiement</b>

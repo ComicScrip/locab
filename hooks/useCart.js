@@ -9,6 +9,7 @@ const useCartItems = createPersistedState("cartItems");
 
 const useCart = () => {
   const { nbDays } = useSearch();
+
   const { currentUserProfile } = useContext(CurrentUserContext);
 
   let [cartItems, setCartItems] = useCartItems([]);
@@ -73,10 +74,17 @@ const useCart = () => {
     ...[0, ...cartItems.map((ci) => ci.product.caution)]
   );
 
-  const total = cartItems.reduce(
-    (acc, cur) =>
-      acc + getProductPrice(nbDays, cur.product.priceCategory) * cur.quantity,
-    0
+  const total = Number(
+    cartItems
+      .reduce(
+        (acc, cur) =>
+          acc +
+          nbDays *
+            getProductPrice(nbDays, cur.product.priceCategory) *
+            cur.quantity,
+        0
+      )
+      .toFixed(2)
   );
 
   return {
@@ -86,6 +94,7 @@ const useCart = () => {
     updateProductQuantity,
     productExistsInCart,
     deposit,
+    setCartItems,
     total,
   };
 };
