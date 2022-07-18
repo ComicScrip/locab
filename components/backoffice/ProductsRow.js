@@ -53,7 +53,7 @@ export default function ProductsRow({ backProduct }) {
           />
         </td>
         <td>{backProduct.name}</td>
-        <td>{backProduct.priceCategoryId}</td>
+        <td>{backProduct.priceCategory.name}</td>
         <td>{backProduct.brand}</td>
         <td>
           <div>
