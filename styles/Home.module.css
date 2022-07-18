@@ -1,3 +1,7 @@
+.container {
+  margin-top: 2rem;
+}
+
 .firstParagraphe {
   text-align: center;
   background-color: #fbfbfb;
@@ -77,6 +81,7 @@
 
 .thirdParagrapheContainer {
   background-color: #fbfbfb;
+  padding-bottom: 2rem;
 }
 
 .imgCouple {
@@ -118,6 +123,7 @@
   font-size: 13px;
   color: white;
   background-color: #d28f71;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 900px) {
