@@ -1,10 +1,9 @@
 import dayjs from "dayjs";
-import Link from "next/link";
 import useSearch from "../hooks/useSearch";
 import styles from "../styles/SearchForm.module.css";
 
 export default function SearchForm() {
-  const { params, setCity, queryString, setFromDate, setToDate } = useSearch();
+  const { params, setCity, setFromDate, setToDate } = useSearch();
   return (
     <div className={styles.containerGlobal}>
       <div className={styles.forms}>
@@ -52,9 +51,6 @@ export default function SearchForm() {
             required
           />
         </div>
-        <Link href={`/reservation?${queryString}`}>
-          <button className={styles.button}>Je cherche !</button>
-        </Link>
       </div>
     </div>
   );
