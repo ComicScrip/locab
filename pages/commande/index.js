@@ -6,7 +6,7 @@ import { BsPaypal } from "react-icons/bs";
 import { FaCcVisa } from "react-icons/fa";
 import { FaCcMastercard } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Layout from "../../components/Layout";
 import Banner from "../../components/Banner";
@@ -15,6 +15,8 @@ import useCart from "../../hooks/useCart";
 import OrderCart from "../../components/Cart/OrderCart";
 import { useToasts } from "react-toast-notifications";
 import SearchForm from "../../components/SearchForm";
+import { signIn } from "next-auth/react";
+import { CurrentUserContext } from "../../contexts/currentUserContext";
 
 export default function Commande() {
   const { t } = useTranslation("order");
@@ -25,19 +27,26 @@ export default function Commande() {
   } = useSearch();
 
   const { cartItems, setCartItems } = useCart();
+  const { currentUserProfile } = useContext(CurrentUserContext);
 
   const [openSection, setOpenSection] = useState("userInfo");
   const [confirmed, setConfimed] = useState(false);
 
   const [error] = useState("");
 
-  const [userMail, setUserMail] = useState("");
-  const [userFirstname, setUserFirstName] = useState("");
-  const [userLastName, setUserLastName] = useState("");
-  const [userAddress, setUserAddress] = useState("");
-  const [userPhone, setUserPhone] = useState("");
-  const [userZip, setUserZip] = useState("");
-  const [userCity, setUserCity] = useState("");
+  const [userMail, setUserMail] = useState(currentUserProfile?.email || "");
+  const [userFirstname, setUserFirstName] = useState(
+    currentUserProfile?.firstname || ""
+  );
+  const [userLastName, setUserLastName] = useState(
+    currentUserProfile?.lastname || ""
+  );
+  const [userAddress, setUserAddress] = useState(
+    currentUserProfile?.address || ""
+  );
+  const [userPhone, setUserPhone] = useState(currentUserProfile?.phone || "");
+  const [userZip, setUserZip] = useState(currentUserProfile?.zip || "");
+  const [userCity, setUserCity] = useState(currentUserProfile?.city || "");
 
   const [userPartner, setUserPartner] = useState("");
   const [phonePartner, setPhonePartner] = useState("");
@@ -152,6 +161,36 @@ export default function Commande() {
             {openSection === "userInfo" && (
               <>
                 <h3 className={styles.h3}>{t("traitementcommande")}</h3>
+                {!currentUserProfile && (
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <p>
+                      Vous pouvez vous connecter pour saisir les informations
+                      suivantes automatiquement et gagner du temps.
+                    </p>
+                    <p>
+                      En vous connectant, vous pourrez également retrouver votre
+                      réservation dans votre espace client.
+                    </p>
+                    <button
+                      type="button"
+                      data-cy="signin_button"
+                      className={styles.button}
+                      onClick={() =>
+                        signIn("credentials", {
+                          callbackUrl: `${window.location.origin}/commande`,
+                        })
+                      }
+                    >
+                      SE CONNECTER
+                    </button>
+                  </div>
+                )}
                 <div className={styles.containerbloc}>
                   <div className={styles.bloc1}>
                     <form

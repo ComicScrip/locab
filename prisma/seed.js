@@ -21,7 +21,7 @@ async function seed() {
     data: {
       firstname: "jane",
       lastname: "doe",
-      email: "jane.doe@gmail.com",
+      email: "vistor@locab.com",
       hashedPassword: await hashPassword("locablocab"),
       address: "rue de la plage",
       phone: "01 23 45 67 78",

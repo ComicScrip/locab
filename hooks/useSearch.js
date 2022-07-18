@@ -50,7 +50,6 @@ const useSearch = () => {
 
   const nbDays =
     dayjs.duration(dayjs(params.toDate).diff(params.fromDate)).asDays() + 1;
-  console.log(nbDays);
 
   return {
     params,

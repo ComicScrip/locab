@@ -1,7 +1,6 @@
 import styles from "../../styles/BackReservations.module.css";
 
 export default function OrderDetails({ orderDetails }) {
-  console.log(orderDetails);
   const imagesProducts = orderDetails.items.map(
     (item) => item.productSamples[0]?.product?.pictures
   );
