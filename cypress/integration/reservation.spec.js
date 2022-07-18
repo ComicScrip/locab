@@ -14,7 +14,6 @@ describe("reservation", () => {
     cy.visit("/");
     cy.get('[data-cy="searchWhere"]').select("Lyon");
     cy.get('[data-cy="searchBtnHomePage"]').click();
-    cy.url().should("include", "showUnavailable=false");
     cy.contains("Chancelière").should("be.visible");
     cy.contains("Poussette").should("be.visible");
     cy.contains("Nid d'ange").should("be.visible");
