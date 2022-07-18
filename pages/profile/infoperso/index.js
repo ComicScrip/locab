@@ -70,7 +70,7 @@ export default function MonCompte() {
       <Banner />
       <div className={styles.titleParaContainerUpdPers}>
         {" "}
-        <Link href="/signup" title="signup">
+        <Link href="/profile" title="profile">
           <a className={styles.linkParaStyle}>
             <BsArrowLeft
               style={{

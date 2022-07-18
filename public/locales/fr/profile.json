@@ -1,4 +1,7 @@
 {
+  "moncompte": "Mon compte",
+  "mescommandes": "Mes commandes",
+  "infosperso": "Informations personnelles",
   "adressemail": "Adresse email",
   "mesinfoperso": "Mes informations personelles",
   "nom": "Nom",
@@ -10,5 +13,6 @@
   "email": "Adresse mail",
   "retourcompte": "retour au compte",
   "valider": "Enregistrer",
-  "toastmodif": "Vos modifications ont bien été prises en comptes"
+  "toastmodif": "Vos modifications ont bien été prises en comptes",
+  "connexion": "Connectez-vous"
 }

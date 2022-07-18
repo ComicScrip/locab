@@ -30,6 +30,7 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@mui/icons-material": "^5.8.0",
     "@mui/material": "^5.8.1",
+    "@next/bundle-analyzer": "^12.2.2",
     "@prisma/client": "^4.0.0",
     "@uploadcare/react-widget": "2.1.1",
     "argon2": "^0.28.5",
