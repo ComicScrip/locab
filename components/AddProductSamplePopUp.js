@@ -92,6 +92,7 @@ function AddProductSamplePopUp({ show, setShow }) {
                   value={reference}
                   onChange={(e) => setReference(e.target.value)}
                   data-cy="add_reference_reference"
+                  required
                 ></input>
               </div>
               <div className={styles.productsMark}>
@@ -105,6 +106,7 @@ function AddProductSamplePopUp({ show, setShow }) {
                   value={productId}
                   onChange={(e) => setProductId(e.target.value)}
                   data-cy="add_reference_product"
+                  required
                 >
                   <option value="" selected disabled>
                     Produit
@@ -129,6 +131,7 @@ function AddProductSamplePopUp({ show, setShow }) {
                   value={condition}
                   onChange={(e) => setCondition(e.target.value)}
                   data-cy="add_reference_condition"
+                  required
                 ></input>
               </div>
               <div className={styles.productsPrice}>
@@ -142,6 +145,7 @@ function AddProductSamplePopUp({ show, setShow }) {
                   value={purchaseDate}
                   onChange={(e) => setPurchaseDate(e.target.value)}
                   data-cy="add_reference_purchatedate"
+                  required
                 ></input>
               </div>
             </div>
@@ -158,6 +162,7 @@ function AddProductSamplePopUp({ show, setShow }) {
                   value={premiseId}
                   onChange={(e) => setPremiseId(e.target.value)}
                   data-cy="add_reference_premise"
+                  required
                 >
                   <option value="" selected disabled>
                     Lieu
