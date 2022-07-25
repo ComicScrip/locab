@@ -16,5 +16,10 @@
   "email": "Email",
   "confirmezvotremotdepasse": "Confirm your password",
   "sinscrire": "REGISTER",
-  "deconnecter": "LOG OUT"
+  "deconnecter": "LOG OUT",
+  "passwordConfirmation": "Your passwords are not identical",
+  "passwordStrength": "Your password must contain at least one uppercase letter, one lowercase letter, one special character and one number",
+  "inscription": "Thank you for your registration !",
+  "emailUtilisé": "Email already used",
+  "connectéentantque": "You are logged in as"
 }

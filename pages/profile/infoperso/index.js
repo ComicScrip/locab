@@ -40,11 +40,21 @@ export default function MonCompte() {
           zip,
         },
         () => {
-          toast.success("Vos modifications ont bien été prises en compte");
+          toast.success(t("TOASTprofil"));
         }
       );
     },
-    [firstName, lastName, address, city, phone, zip, email, updateProfileOnAPI]
+    [
+      firstName,
+      lastName,
+      address,
+      city,
+      phone,
+      zip,
+      email,
+      updateProfileOnAPI,
+      t,
+    ]
   );
 
   useEffect(() => {
@@ -66,7 +76,7 @@ export default function MonCompte() {
   }, [status]);
 
   return (
-    <Layout>
+    <Layout pageTitle="Mes informations personnelles | Location de matériel de puériculture">
       <Banner />
       <div className={styles.titleParaContainerUpdPers}>
         {" "}

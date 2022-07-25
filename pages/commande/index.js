@@ -19,7 +19,7 @@ import { signIn } from "next-auth/react";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
 
 export default function Commande() {
-  const { t } = useTranslation("order");
+  const { t } = useTranslation("order", "reservation");
   const { addToast } = useToasts();
 
   const {
@@ -106,12 +106,9 @@ export default function Commande() {
         if (err.response?.data?.code === "OUT_OF_STOCK") {
           console.log(err.response?.details);
           // TODO: update cart
-          addToast(
-            "impossible de passer la commande, certains items de votre panier ne sont malheureusement plus en stock",
-            {
-              appearance: "error",
-            }
-          );
+          addToast(t("TOAST"), {
+            appearance: "error",
+          });
         }
       });
   };
@@ -621,6 +618,7 @@ export async function getStaticProps({ locale }) {
         "signIn",
         "order",
         "cart",
+        "reservation",
       ])),
     },
   };
