@@ -38,7 +38,7 @@ function AddProductsPopUp({ show, setShow }) {
         priceCategoryId: priceCatNumber,
         pictures:
           productUrl === ""
-            ? setProductUrl("/logo/logo_noir.webp")
+            ? setProductUrl("/logo/logo_rose.webp")
             : productUrl,
       })
       .then(() => {
