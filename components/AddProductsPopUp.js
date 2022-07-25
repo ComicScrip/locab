@@ -4,6 +4,14 @@ import { Widget } from "@uploadcare/react-widget";
 import styles from "../styles/AddProductsPopUp.module.css";
 import { useQueryClient } from "react-query";
 
+const validators = [
+  function imagesOnly(fileInfo) {
+    if (fileInfo.isImage === false) {
+      throw new Error("image");
+    }
+  },
+];
+
 function AddProductsPopUp({ show, setShow }) {
   const [name, setName] = useState("");
   const [brand, setBrand] = useState("");
@@ -87,6 +95,7 @@ function AddProductsPopUp({ show, setShow }) {
                   className={styles.inputPopUp}
                   id="nom"
                   type="text"
+                  required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   data-cy="add_product_name"
@@ -100,6 +109,7 @@ function AddProductsPopUp({ show, setShow }) {
                   className={styles.inputPopUp}
                   id="brand"
                   type="text"
+                  required
                   value={brand}
                   onChange={(e) => setBrand(e.target.value)}
                   data-cy="add_product_brand"
@@ -115,6 +125,7 @@ function AddProductsPopUp({ show, setShow }) {
                   className={styles.inputPopUp}
                   id="caution"
                   type="text"
+                  required
                   value={caution}
                   onChange={(e) => setCaution(e.target.value)}
                   data-cy="add_product_caution"
@@ -128,6 +139,7 @@ function AddProductsPopUp({ show, setShow }) {
                   className={styles.inputPopUp}
                   id="price"
                   type="text"
+                  required
                   value={priceCategoryId}
                   onChange={(e) => setPriceCategoryId(e.target.value)}
                   data-cy="add_product_price_category"
@@ -149,7 +161,7 @@ function AddProductsPopUp({ show, setShow }) {
                 className={(styles.inputPopUp, styles.descriptionTextArea)}
                 id="description"
                 type="textarea"
-                crop="1:1"
+                required
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 data-cy="add_product_description"
@@ -161,6 +173,8 @@ function AddProductsPopUp({ show, setShow }) {
                 <Widget
                   publicKey={process.env.NEXT_PUBLIC_UPLOADCARE_KEY}
                   localeTranslations={buttonName()}
+                  crop="1:1"
+                  validators={validators}
                   onChange={(file) => {
                     setProductUrl(file.cdnUrl);
                   }}
