@@ -10,7 +10,7 @@ export default function AboutUs() {
   const { t } = useTranslation("aboutus");
 
   return (
-    <Layout pageTitle="Qui sommes-nous ? | Location de matériel de puériculture">
+    <Layout pageTitle={t("title")}>
       <Banner />
       <div className={styles.mainContainer}>
         <section className={styles.aProposContainer}>
