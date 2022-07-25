@@ -19,7 +19,6 @@ async function seed() {
 
   const visitor = await db.user.create({
     data: {
-
       firstname: "toto",
       lastname: "hallaplaje",
       email: "visitor@locab.com",

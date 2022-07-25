@@ -5,6 +5,8 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import useSearch from "../hooks/useSearch";
 import dayjs from "dayjs";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Home() {
   const { t } = useTranslation("home");
@@ -15,6 +17,17 @@ export default function Home() {
     setFromDate,
     setToDate,
   } = useSearch();
+
+  const [cityList, setCityList] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`/api/premiseFront`)
+      .then((response) => response.data)
+      .then((data) => {
+        setCityList(data);
+      });
+  }, [queryString]);
 
   return (
     <Layout pageTitle="Location de poussette | Location de matériel de puériculture">
@@ -38,8 +51,11 @@ export default function Home() {
                   required
                 >
                   <option value="">{t("ouallezvous")}</option>
-                  <option value="Lyon">Lyon</option>
-                  <option value="Bordeaux">Bordeaux</option>
+                  {cityList.map((city) => (
+                    <option key={city} value={city}>
+                      {city}
+                    </option>
+                  ))}
                 </select>
 
                 <input
