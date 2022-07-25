@@ -60,8 +60,6 @@ const EditProduct = () => {
       .catch(console.error);
   };
 
-  console.log(productPicture);
-
   return (
     <LayoutAdmin pageTitle="Back-office | Editer un produit">
       <div className={styles.mainContainer}>
