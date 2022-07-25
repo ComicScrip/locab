@@ -73,7 +73,6 @@ module.exports.getOneProduct = (id) => {
 };
 
 module.exports.patchOneProduct = async (id, data) => {
-  console.log(data);
   await db.productPicture.deleteMany({
     where: { productId: parseInt(id, 10) },
   });
