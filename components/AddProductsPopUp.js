@@ -36,10 +36,7 @@ function AddProductsPopUp({ show, setShow }) {
         caution: priceCaution,
         description,
         priceCategoryId: priceCatNumber,
-        pictures:
-          productUrl === ""
-            ? setProductUrl("/logo/logo_rose.webp")
-            : productUrl,
+        pictures: productUrl === "" ? "/logo/logo_rose.webp" : productUrl,
       })
       .then(() => {
         setName("");
