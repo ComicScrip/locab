@@ -28,5 +28,6 @@
   "email": "Email",
   "envousconnectant": "By logging in, you can also find your reservation in your customer area.",
   "connecter": "LOG IN",
-  "TOAST": "impossible to place the order, some items in your shopping cart are unfortunately no longer in stock"
+  "TOAST": "impossible to place the order, some items in your shopping cart are unfortunately no longer in stock",
+  "thanks": "Thank you for your order !"
 }
