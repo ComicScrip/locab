@@ -21,5 +21,6 @@
   "passwordStrength": "Votre mot de passe doit contenir au moins une majuscule, une minuscule, un caractère spécial et un chiffre",
   "inscription": "Merci pour votre inscription !",
   "emailUtilisé": "Email déjà utilisé",
-  "connectéentantque": "Vous êtes connecté en tant que"
+  "connectéentantque": "Vous êtes connecté en tant que",
+  "title": "Connection | Location de matériel de puériculture"
 }

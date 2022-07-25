@@ -21,5 +21,6 @@
   "passwordStrength": "Your password must contain at least one uppercase letter, one lowercase letter, one special character and one number",
   "inscription": "Thank you for your registration !",
   "emailUtilisé": "Email already used",
-  "connectéentantque": "You are logged in as"
+  "connectéentantque": "You are logged in as",
+  "title": "Login | Childcare equipment rental"
 }

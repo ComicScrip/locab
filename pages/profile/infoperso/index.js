@@ -76,7 +76,7 @@ export default function MonCompte() {
   }, [status]);
 
   return (
-    <Layout pageTitle="Mes informations personnelles | Location de matériel de puériculture">
+    <Layout pageTitle={t("title")}>
       <Banner />
       <div className={styles.titleParaContainerUpdPers}>
         {" "}

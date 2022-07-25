@@ -65,7 +65,7 @@ export default function SignUpPage({ csrfToken }) {
   const { currentUserProfile } = useContext(CurrentUserContext);
 
   return (
-    <Layout pageTitle="Connection | Location de matériel de puériculture">
+    <Layout pageTitle={t("title")}>
       {currentUserProfile ? (
         <div className={styles.connexionText}>
           {t("connectéentantque")} {currentUserProfile.firstname}
