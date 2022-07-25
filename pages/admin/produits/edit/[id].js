@@ -177,10 +177,8 @@ const EditProduct = () => {
                     localeTranslations={buttonName()}
                     className={styles.productPicture}
                     onChange={({ cdnUrl }) => {
-                      // setProduct({ ...product, pictures: cdnUrl });
                       setProductPicture(cdnUrl);
                     }}
-                    data-cy="add_product_picture"
                   />
                 </label>
 
@@ -194,14 +192,6 @@ const EditProduct = () => {
                     />
                   </div>
                 )}
-
-                {/* <img
-                  src={productPicture}
-                  alt={product.referenceNumber}
-                  
-                  width="100%"
-                  height="100%"
-                /> */}
               </aside>
             </div>
           </form>
