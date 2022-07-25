@@ -17,10 +17,12 @@ import { useToasts } from "react-toast-notifications";
 import SearchForm from "../../components/SearchForm";
 import { signIn } from "next-auth/react";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
+// import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Commande() {
-  const { t } = useTranslation("order");
+  const { t } = useTranslation("order", "reservation");
   const { addToast } = useToasts();
+  // const [isLoading, setIsLoading] = useState(true);
 
   const {
     params: { toDate, fromDate, city },
@@ -106,14 +108,12 @@ export default function Commande() {
         if (err.response?.data?.code === "OUT_OF_STOCK") {
           console.log(err.response?.details);
           // TODO: update cart
-          addToast(
-            "impossible de passer la commande, certains items de votre panier ne sont malheureusement plus en stock",
-            {
-              appearance: "error",
-            }
-          );
+          addToast(t("TOAST"), {
+            appearance: "error",
+          });
         }
       });
+    // .finally(() => setIsLoading(false));
   };
 
   const styleDefault = {
@@ -123,6 +123,14 @@ export default function Commande() {
   const setStyle = {
     color: "#ACACAC",
   };
+
+  // if (isLoading) {
+  //   return (
+  //     <div>
+  //       <CircularProgress />
+  //     </div>
+  //   );
+  // }
 
   return (
     <Layout>
@@ -183,14 +191,8 @@ export default function Commande() {
                       alignItems: "center",
                     }}
                   >
-                    <p>
-                      Vous pouvez vous connecter pour saisir les informations
-                      suivantes automatiquement et gagner du temps.
-                    </p>
-                    <p>
-                      En vous connectant, vous pourrez également retrouver votre
-                      réservation dans votre espace client.
-                    </p>
+                    <p>{t("vouspouvez")}</p>
+                    <p>{t("envousconnectant")}</p>
                     <button
                       type="button"
                       data-cy="signin_button"
@@ -201,7 +203,7 @@ export default function Commande() {
                         })
                       }
                     >
-                      SE CONNECTER
+                      {t("connecter")}
                     </button>
                   </div>
                 )}
@@ -626,6 +628,8 @@ export async function getStaticProps({ locale }) {
         "footer",
         "signIn",
         "order",
+        "cart",
+        "reservation",
       ])),
     },
   };

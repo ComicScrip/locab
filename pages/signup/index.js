@@ -28,12 +28,10 @@ export default function SignUpPage({ csrfToken }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== passwordConfirmation)
-      return setError("Vos mots de passe ne sont pas identiques");
+      return setError(t("passwordConfirmation"));
 
     if (["Too weak", "Weak"].includes(passwordStrength(password).value))
-      return setError(
-        "Votre mot de passe doit contenir au moins une majuscule, une minuscule, un caractère spécial et un chiffre"
-      );
+      return setError(t("passwordStrength"));
 
     axios
       .post("/api/users", {
@@ -47,7 +45,7 @@ export default function SignUpPage({ csrfToken }) {
         password,
       })
       .then(() => {
-        toast.success("Merci pour votre inscription !");
+        toast.success(t("inscription"));
         setFirstName("");
         setName("");
         setAddress("");
@@ -61,16 +59,16 @@ export default function SignUpPage({ csrfToken }) {
       })
       .catch((err) => {
         if (err.response && err.response.status === 409)
-          setError("Email déjà utilisé");
+          setError(t("emailUtilisé"));
       });
   };
   const { currentUserProfile } = useContext(CurrentUserContext);
 
   return (
-    <Layout pageTitle="Connection | Location de matériel de puériculture">
+    <Layout pageTitle={t("title")}>
       {currentUserProfile ? (
         <div className={styles.connexionText}>
-          Vous êtes connecté en tant que {currentUserProfile.firstname}
+          {t("connectéentantque")} {currentUserProfile.firstname}
           <button
             type="submit"
             id="credentials-login-btn"

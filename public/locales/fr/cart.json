@@ -15,5 +15,8 @@
   "jour": "jour",
   "textinfo": "Une empreinte sera faite sur votre carte au moment du paiement. Vous ne serez pas débité.",
   "du": "du",
-  "au": "au"
+  "au": "au",
+  "caution": "Montant de la caution ",
+  "yourcart": "Votre panier",
+  "p/u": "unité/jour"
 }
