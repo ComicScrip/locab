@@ -183,14 +183,8 @@ export default function Commande() {
                       alignItems: "center",
                     }}
                   >
-                    <p>
-                      Vous pouvez vous connecter pour saisir les informations
-                      suivantes automatiquement et gagner du temps.
-                    </p>
-                    <p>
-                      En vous connectant, vous pourrez également retrouver votre
-                      réservation dans votre espace client.
-                    </p>
+                    <p>{t("vouspouvez")}</p>
+                    <p>{t("envousconnectant")}</p>
                     <button
                       type="button"
                       data-cy="signin_button"
@@ -201,7 +195,7 @@ export default function Commande() {
                         })
                       }
                     >
-                      SE CONNECTER
+                      {t("connecter")}
                     </button>
                   </div>
                 )}
@@ -626,6 +620,7 @@ export async function getStaticProps({ locale }) {
         "footer",
         "signIn",
         "order",
+        "cart",
       ])),
     },
   };

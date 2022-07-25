@@ -66,7 +66,9 @@ export default function OrderCart() {
                     {ci.product.name}
                     {ci.quantity !== 1 ? ` X${ci.quantity}` : ""}
                   </div>
-                  <div style={{ fontSize: 12 }}>{pricePerDay}€/unité/jour</div>
+                  <div style={{ fontSize: 12 }}>
+                    {pricePerDay}€/{t("p/u")}
+                  </div>
                 </div>
                 <div
                   style={{
@@ -90,7 +92,9 @@ export default function OrderCart() {
               }}
             >
               <div>Total</div>
-              <div style={{ fontSize: 12 }}>dont caution de {deposit}€</div>
+              <div style={{ fontSize: 12 }}>
+                {t("caution")} {deposit}€
+              </div>
             </div>
             <div
               style={{
@@ -99,7 +103,7 @@ export default function OrderCart() {
                 fontWeight: 900,
               }}
             >
-              {Number(total + deposit).toFixed(2)}€
+              {Number(total).toFixed(2)}€
             </div>
           </div>
         </div>

@@ -25,5 +25,7 @@
   "cp": "ZIP code",
   "ville": "City",
   "Numérodetelephone": "Phone number",
-  "email": "Email"
+  "email": "Email",
+  "envousconnectant": "By logging in, you can also find your reservation in your customer area.",
+  "connecter": "LOG IN"
 }

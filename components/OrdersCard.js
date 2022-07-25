@@ -60,7 +60,7 @@ export default function OrdersCard({ order }) {
           />
         ))}
       </section>
-      <p className={styles.facture}>Télécharger la facture</p>
+      <p className={styles.facture}>{t("dlfacture")}</p>
     </div>
   );
 }

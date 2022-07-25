@@ -15,5 +15,8 @@
   "jour": "day",
   "textinfo": "An imprint will be made on your card at the time of payment. You will not be charged.",
   "du": "from",
-  "au": "to"
+  "au": "to",
+  "caution": "Amount of the deposit",
+  "yourcart": "Your shooping cart",
+  "p/u": "product/day"
 }

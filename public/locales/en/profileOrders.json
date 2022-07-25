@@ -13,5 +13,6 @@
   "modepaiement": "Payment method",
   "total": "Total",
   "statut": "Status",
-  "adresse": "Delivery address"
+  "adresse": "Delivery address",
+  "dlfacture": "Download invoice"
 }

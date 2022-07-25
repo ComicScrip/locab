@@ -27,5 +27,8 @@
   "cgv2": "J'accepte que l’exécution du service débute dès confirmation de la commande.",
   "confirmcommand": "CONFIRMER LA COMMANDE",
   "traitementcommande": "Indispensable pour que nous puissions traiter votre commande",
-  "thanks": "Merci de votre commande !"
+  "thanks": "Merci de votre commande !",
+  "vouspouvez": "Vous pouvez vous connecter pour saisir les informations suivantes automatiquement et gagner du temps.",
+  "envousconnectant": "En vous connectant, vous pourrez également retrouver votre réservation dans votre espace client.",
+  "connecter": "SE CONNECTER"
 }
