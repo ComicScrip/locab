@@ -74,6 +74,8 @@ export default function Commande() {
 
   /* PARTIE LIVRAISON */
 
+  const [isDisabled, setIsDisabled] = useState(true);
+
   const createOrder = (e) => {
     e.preventDefault();
     axios
@@ -212,6 +214,7 @@ export default function Commande() {
                       onSubmit={(e) => {
                         e.preventDefault();
                         setOpenSection("delivery");
+                        setIsDisabled(false);
                       }}
                     >
                       <div className={styles.formemail}>
@@ -351,9 +354,11 @@ export default function Commande() {
                   <hr className={styles.hr} />
                 </div>
                 <div className={styles.h2}>
-                  <h2
+                  <button
+                    disabled={isDisabled}
                     onClick={() => setOpenSection("delivery")}
                     style={openSection === "delivery" ? styleDefault : setStyle}
+                    className={styles.titleForForm}
                   >
                     {openSection === "payment" ? (
                       <AiOutlineCheck className={styles.check} />
@@ -361,7 +366,7 @@ export default function Commande() {
                       ""
                     )}{" "}
                     {t("Livraison")}
-                  </h2>
+                  </button>
                 </div>
                 <div className={styles.ligne}>
                   <hr className={styles.hr} />
