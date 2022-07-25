@@ -4,14 +4,6 @@ import { Widget } from "@uploadcare/react-widget";
 import styles from "../styles/AddProductsPopUp.module.css";
 import { useQueryClient } from "react-query";
 
-const validators = [
-  function imagesOnly(fileInfo) {
-    if (fileInfo.isImage === false) {
-      throw new Error("image");
-    }
-  },
-];
-
 function AddProductsPopUp({ show, setShow }) {
   const [name, setName] = useState("");
   const [brand, setBrand] = useState("");
@@ -36,6 +28,7 @@ function AddProductsPopUp({ show, setShow }) {
     e.preventDefault();
     const priceCatNumber = parseInt(priceCategoryId);
     const priceCaution = parseInt(caution);
+
     axios
       .post(`/api/products`, {
         name,
@@ -43,7 +36,10 @@ function AddProductsPopUp({ show, setShow }) {
         caution: priceCaution,
         description,
         priceCategoryId: priceCatNumber,
-        pictures: productUrl,
+        pictures:
+          productUrl === ""
+            ? setProductUrl("/logo/logo_noir.webp")
+            : productUrl,
       })
       .then(() => {
         setName("");
@@ -174,7 +170,6 @@ function AddProductsPopUp({ show, setShow }) {
                   publicKey={process.env.NEXT_PUBLIC_UPLOADCARE_KEY}
                   localeTranslations={buttonName()}
                   crop="1:1"
-                  validators={validators}
                   onChange={(file) => {
                     setProductUrl(file.cdnUrl);
                   }}
