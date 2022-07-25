@@ -35,8 +35,6 @@ const EditProduct = () => {
 
   if (!product) return null;
 
-  // const productPicture = product.pictures[0].url;
-
   const buttonName = () => ({
     buttons: {
       choose: {
