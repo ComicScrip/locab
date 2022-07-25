@@ -7,6 +7,7 @@ import useSearch from "../hooks/useSearch";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Select from "react-select";
 
 export default function Home() {
   const { t } = useTranslation("home");
@@ -20,6 +21,11 @@ export default function Home() {
 
   const [cityList, setCityList] = useState([]);
 
+  const options = cityList.map((city) => ({
+    value: city,
+    label: city,
+  }));
+
   useEffect(() => {
     axios
       .get(`/api/premiseFront`)
@@ -27,7 +33,15 @@ export default function Home() {
       .then((data) => {
         setCityList(data);
       });
-  }, [queryString]);
+  }, []);
+
+  const [onClient, setOnClient] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") setOnClient(true);
+  }, []);
+
+  if (!onClient) return null;
 
   return (
     <Layout pageTitle="Location de poussette | Location de matériel de puériculture">
@@ -39,24 +53,16 @@ export default function Home() {
             <p className={styles.textFirst}>{t("activityDescription")}</p>
             <div>
               <form className={styles.choixHome}>
-                <select
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                  type="text"
-                  name="destination"
-                  id="location"
-                  data-cy="searchWhere"
-                  placeholder="Où allez-vous ?"
+                <Select
                   className={styles.whereHome}
-                  required
-                >
-                  <option value="">{t("ouallezvous")}</option>
-                  {cityList.map((city) => (
-                    <option key={city} value={city}>
-                      {city}
-                    </option>
-                  ))}
-                </select>
+                  id="selectbox"
+                  instanceId="selectbox"
+                  data-cy="searchWhere"
+                  name="destination"
+                  options={options}
+                  value={{ value: city, label: city ? city : t("ouallezvous") }}
+                  onChange={(e) => setCity(e.value)}
+                />
 
                 <input
                   className={styles.whenHome}
@@ -73,6 +79,7 @@ export default function Home() {
                   value={toDate}
                   onChange={(e) => setToDate(e.target.value)}
                 ></input>
+
                 <Link href={`/reservation?${queryString}`}>
                   <button
                     className={styles.buttonHome}

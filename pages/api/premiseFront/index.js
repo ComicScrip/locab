@@ -8,8 +8,6 @@ async function handleGetCity(req, res) {
     (ele, pos) => AllCity.indexOf(ele) == pos
   );
 
-  console.log(cityWithoutDouble);
-
   res.send(cityWithoutDouble);
 }
 
