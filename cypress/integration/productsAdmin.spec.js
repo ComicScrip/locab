@@ -19,7 +19,7 @@ describe("products", () => {
     });
   });
 
-  it("can create a new product", () => {
+  it.only("can create a new product", () => {
     cy.task("createTestPriceCategory").then(({ id }) => {
       cy.visit("/admin/produits");
       cy.get('[data-cy="add_product_button_add"]').click();
@@ -39,6 +39,13 @@ describe("products", () => {
       cy.get('input[type="file"]');
 
       cy.get('input[type="file"]').attachFile(fileName);
+
+      cy.get(
+        ".uploadcare--tab_name_preview > .uploadcare--footer > .uploadcare--button_primary"
+      ).should("be.visible");
+      cy.get(
+        ".uploadcare--tab_name_preview > .uploadcare--footer > .uploadcare--button_primary"
+      ).click();
 
       cy.get(".uploadcare--progress").should("exist");
       cy.get(".uploadcare--link")
