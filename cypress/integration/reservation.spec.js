@@ -87,8 +87,12 @@ describe("reservation", () => {
       cy.get('[data-cy="partner_hour"]').type("10:00");
       cy.get('[data-cy="partner_comments"]').type("etage 5, chambre 67");
       cy.contains("CONTINUER VERS LE PAIEMENT").click();
+      cy.get('[data-cy="payment_checkbox_cgv"]').click();
+      cy.get('[data-cy="payment_checkbox_accept"]').click();
       cy.contains("CONFIRMER LA COMMANDE").click();
-      cy.contains("Merci de votre commande");
+      cy.contains(
+        "Votre commande a bien été validée. Nous vous remercions de votre confiance."
+      );
     });
   });
 });
