@@ -58,6 +58,7 @@ export default function SearchForm() {
             name="destination"
             style={{ textIndent: 17 + "px" }}
             className={styles.watch1Input}
+            data-cy="searchFromDate"
             required
           />
         </div>
