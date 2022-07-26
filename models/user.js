@@ -99,7 +99,12 @@ module.exports.deleteDB = async () => {
 
 module.exports.findAllUsers = ({ search }) =>
   db.user.findMany({
-    where: { firstname: { contains: search } },
+    where: {
+      OR: [
+        { lastname: { contains: search } },
+        { firstname: { contains: search } },
+      ],
+    },
   });
 module.exports.updateUser = async (id, data) => {
   return db.user.update({ where: { id: parseInt(id, 10) }, data });

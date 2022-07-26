@@ -44,6 +44,7 @@ export default function ReferencesRow({ backReference }) {
       ) : null}
 
       <td>{backReference.referenceNumber}</td>
+      <td>{backReference.product.name}</td>
       <td>{backReference.premise.name}</td>
       <td>{backReference.premise.city}</td>
       <td>{backReference.condition}</td>

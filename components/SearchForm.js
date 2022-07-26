@@ -2,9 +2,12 @@ import dayjs from "dayjs";
 import Link from "next/link";
 import useSearch from "../hooks/useSearch";
 import styles from "../styles/SearchForm.module.css";
+import { useTranslation } from "next-i18next";
 
 export default function SearchForm() {
   const { params, setCity, queryString, setFromDate, setToDate } = useSearch();
+  const { t } = useTranslation("reservation");
+
   return (
     <div className={styles.containerGlobal}>
       <div className={styles.forms}>
@@ -21,7 +24,7 @@ export default function SearchForm() {
               style={{ textIndent: 17 + "px", width: 200 }}
               required
             >
-              <option value="">Où allez-vous ?</option>
+              <option value="">{t("ouallezvous")}</option>
               <option value="Lyon">Lyon</option>
               <option value="Bordeaux">Bordeaux</option>
             </select>
@@ -55,7 +58,7 @@ export default function SearchForm() {
           />
         </div>
         <Link href={`/reservation?${queryString}`}>
-          <button className={styles.button}>Je cherche !</button>
+          <button className={styles.button}>{t("jecherche")}</button>
         </Link>
       </div>
     </div>

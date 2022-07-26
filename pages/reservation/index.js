@@ -15,7 +15,7 @@ function SearchPage() {
   const { params } = useSearch();
 
   return (
-    <Layout pageTitle="Location de matériel de puériculture Lyon — Loca-b">
+    <Layout pageTitle={t("title")}>
       <SearchForm />
       {params.city ? (
         <>

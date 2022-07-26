@@ -46,3 +46,10 @@
 .eltNavBackActif {
   opacity: initial;
 }
+.bkHomePage {
+  cursor: pointer;
+  text-align: center;
+}
+.divBkHomePage {
+  margin: 7% 13%;
+}

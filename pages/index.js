@@ -16,7 +16,7 @@ export default function Home() {
   } = useSearch();
 
   return (
-    <Layout pageTitle="Location de poussette | Location de matériel de puériculture">
+    <Layout pageTitle={t("title")}>
       <div className={styles.container}>
         <div className={styles.firstParagraphe}>
           <div className={styles.titleandtextHome}>

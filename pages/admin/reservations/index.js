@@ -4,7 +4,6 @@ import { useQuery } from "react-query";
 
 import LayoutAdmin from "../../../components/LayoutAdmin";
 import styles from "../../../styles/BackReservations.module.css";
-import { BsPlusCircle } from "react-icons/bs";
 import OrderRow from "../../../components/backoffice/OrderRow";
 
 export default function Reservations() {
@@ -33,7 +32,6 @@ export default function Reservations() {
             onChange={(event) => setSearchValue(event.target.value)}
             data-cy="searchBar"
           />
-          <BsPlusCircle className={styles.addOrdersButton} />
         </section>
 
         <section className={styles.tableOrdersContainer}>
