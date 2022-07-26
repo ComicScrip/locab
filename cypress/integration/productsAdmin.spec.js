@@ -19,7 +19,7 @@ describe("products", () => {
     });
   });
 
-  it.only("can create a new product", () => {
+  it("can create a new product", () => {
     cy.task("createTestPriceCategory").then(({ id }) => {
       cy.visit("/admin/produits");
       cy.get('[data-cy="add_product_button_add"]').click();
