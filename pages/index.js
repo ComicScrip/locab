@@ -70,7 +70,6 @@ export default function Home() {
                   className={styles.whereHome}
                   id="selectbox"
                   instanceId="selectbox"
-                  data-cy="searchWhere"
                   name="destination"
                   options={options}
                   value={{ value: city, label: city ? city : t("ouallezvous") }}
@@ -80,6 +79,7 @@ export default function Home() {
 
                 <input
                   className={styles.whenHome}
+                  data-cy="searchFromDate"
                   type="date"
                   min={dayjs().format("YYYY-MM-DD")}
                   value={fromDate}
