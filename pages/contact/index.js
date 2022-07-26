@@ -13,7 +13,7 @@ export default function Contact() {
   const { t } = useTranslation("contact");
 
   return (
-    <Layout pageTitle="Nous contacter | Location de matériel de puériculture">
+    <Layout pageTitle={t("title")}>
       <Banner />
       <section className={styles.mainContainer}>
         <h1>{t("nouscontacter")}</h1>

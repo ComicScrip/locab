@@ -12,6 +12,7 @@ import {
   RiUserFill,
   RiUserVoiceFill,
 } from "react-icons/ri";
+import Button from "@mui/material/Button";
 import { ImHome } from "react-icons/im";
 import Link from "next/link";
 
@@ -87,6 +88,21 @@ export default function LayoutAdmin({ children, pageTitle }) {
                 Messagerie
               </li>
             </ul>
+            <div className={styles.divBkHomePage}>
+              {" "}
+              <Button
+                variant="contained"
+                href="/"
+                className={styles.bkHomePage}
+                style={{
+                  backgroundColor: "white",
+                  color: "black",
+                  fontWeight: "bold",
+                }}
+              >
+                Retour à la page d'accueil
+              </Button>
+            </div>
           </nav>
         </header>
         <main style={{ marginLeft: "15rem" }}>{children}</main>

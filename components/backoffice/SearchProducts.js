@@ -49,7 +49,6 @@ export default function SearchProducts() {
                 <th></th>
                 <th>Nom</th>
                 <th>Catégorie de prix</th>
-                {/* <th>Stock total</th> */}
                 <th>Marque</th>
                 <th></th>
               </tr>
