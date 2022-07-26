@@ -13,7 +13,7 @@ jobs:
       - name: Setup Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: 16.x
+          node-version: 14.x
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set up pnpm and install deps
@@ -40,7 +40,7 @@ jobs:
         uses: cypress-io/github-action@v2
         timeout-minutes: 30
         with:
-          install: false
+          install: true
           record: false
           browser: chrome
           config: pageLoadTimeout=30000,defaultCommandTimeout=30000
