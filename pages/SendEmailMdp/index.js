@@ -69,7 +69,7 @@ export default function ResetMdp() {
         )}
         {showResultMessage && (
           <div className={styles.divMessage}>
-            <h2 className={styles.title1}>{t("Vérifiervotreboiteemail")}</h2>
+            <h2 className={styles.title1}>{t("Vérifiezvotreboiteemail")}</h2>
             <span>
               <Toaster position="top-center" reverseOrder={true} />
             </span>
