@@ -534,12 +534,14 @@ export default function Commande() {
                   <hr className={styles.hr} />
                 </div>
                 <div className={styles.h2}>
-                  <h2
+                  <button
+                    disabled={isDisabled}
                     onClick={() => setOpenSection("payment")}
-                    style={openSection === "payment" ? styleDefault : setStyle}
+                    style={openSection === "delivery" ? styleDefault : setStyle}
+                    className={styles.titleForForm}
                   >
                     {t("Paiement")}
-                  </h2>
+                  </button>
                 </div>
                 <div className={styles.ligne}>
                   <hr className={styles.hr} />
