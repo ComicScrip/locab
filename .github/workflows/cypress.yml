@@ -40,7 +40,7 @@ jobs:
         uses: cypress-io/github-action@v4
         timeout-minutes: 30
         with:
-          install: true
+          install: false
           record: false
           browser: chrome
           config: pageLoadTimeout=30000,defaultCommandTimeout=30000
