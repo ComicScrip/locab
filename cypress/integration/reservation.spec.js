@@ -14,7 +14,6 @@ describe("reservation", () => {
     cy.visit("/");
     cy.get('[data-cy="searchWhere"]').select("Lyon");
     cy.get('[data-cy="searchBtnHomePage"]').click();
-    cy.url().should("include", "showUnavailable=false");
     cy.contains("Chancelière").should("be.visible");
     cy.contains("Poussette").should("be.visible");
     cy.contains("Nid d'ange").should("be.visible");
@@ -28,7 +27,6 @@ describe("reservation", () => {
     cy.get('[data-cy="selectWhere"]').select("Bordeaux");
     cy.get('[data-cy="availabilityBtn"]').click();
     cy.get('[data-cy="unavailableItem"]').should("exist");
-    cy.url().should("include", "showUnavailable=true");
   });
 
   it("can search product", () => {

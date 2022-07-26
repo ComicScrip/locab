@@ -147,3 +147,9 @@
   cursor: pointer;
   margin-top: 20px;
 }
+
+/* Image Widget */
+
+.imgWidget {
+  display: none;
+}

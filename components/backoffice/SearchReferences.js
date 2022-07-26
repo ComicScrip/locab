@@ -50,6 +50,7 @@ export default function SearchReferences() {
             <thead>
               <tr>
                 <th>Référence</th>
+                <th>Produit</th>
                 <th>Nom du lieu</th>
                 <th>Ville</th>
                 <th>Etat</th>

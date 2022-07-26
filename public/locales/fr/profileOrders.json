@@ -13,5 +13,7 @@
   "modepaiement": "Mode de paiement",
   "total": "Total",
   "statut": "Statut",
-  "adresse": "Adresse de livraison"
+  "adresse": "Adresse de livraison",
+  "dlfacture": "Télécharger la facture",
+  "title": "Mes commandes | Location de matériel de puériculture"
 }

@@ -10,6 +10,9 @@ import { getProductPrice } from "../../../utils/getProductPrice";
 import extractCurrentUser from "../../../middlewares/extractCurrentUser";
 import { getOneProduct } from "../../../models/product";
 
+const duration = require("dayjs/plugin/duration");
+dayjs.extend(duration);
+
 async function handlePost(req, res) {
   const { cartItems, startDate, endDate, orderCity } = req.body;
 

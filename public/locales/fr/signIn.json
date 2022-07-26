@@ -16,5 +16,11 @@
   "email": "Adresse mail",
   "confirmezvotremotdepasse": "Confirmez votre mot de passe",
   "sinscrire": "S'INSCRIRE",
-  "deconnecter": "SE DECONNECTER"
+  "deconnecter": "SE DECONNECTER",
+  "passwordConfirmation": "Vos mots de passe ne sont pas identiques",
+  "passwordStrength": "Votre mot de passe doit contenir au moins une majuscule, une minuscule, un caractère spécial et un chiffre",
+  "inscription": "Merci pour votre inscription !",
+  "emailUtilisé": "Email déjà utilisé",
+  "connectéentantque": "Vous êtes connecté en tant que",
+  "title": "Connection | Location de matériel de puériculture"
 }

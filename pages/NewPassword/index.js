@@ -22,7 +22,7 @@ export default function ResetPasswordPage() {
     e.preventDefault();
 
     if (newPassword !== newPasswordConfirmation)
-      return toast.error("Les deux mots de passe ne correspondent pas !");
+      return toast.error(t("TOASTmdp"));
     axios
       .post("/api/users/reset-password", {
         email: router.query.email,

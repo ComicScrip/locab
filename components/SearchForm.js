@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function SearchForm() {
-  const { t } = useTranslation("home");
+  const { t } = useTranslation("reservation");
   const { params, setCity, setFromDate, setToDate } = useSearch();
 
   const [cityList, setCityList] = useState([]);

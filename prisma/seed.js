@@ -3,12 +3,19 @@ const db = require("../db");
 const { hashPassword } = require("../models/user");
 
 async function seed() {
+  await db.order.deleteMany();
+  await db.productSample.deleteMany();
+  await db.product.deleteMany();
+  await db.priceCategory.deleteMany();
+  await db.premise.deleteMany();
+  await db.user.deleteMany();
+
   await db.user.create({
     data: {
       firstname: "admin",
       lastname: "admin",
-      email: "admin@locab.com",
-      hashedPassword: await hashPassword("locablocab"),
+      email: "admin@locab.fr",
+      hashedPassword: await hashPassword("w5kYjujGPq@r9E!esx"),
       address: "test",
       phone: "01 23 45 67 78",
       role: "admin",
