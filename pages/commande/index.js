@@ -82,14 +82,16 @@ export default function Commande() {
     e.preventDefault();
     axios
       .post("/api/orders", {
-        deliveryPhoneNumber: phonePartner,
-        deliveryFirstName: partnerFirstName,
-        deliveryLastName: partnerLastName,
-        deliveryStreet: partnerAddress,
-        deliveryZip: partnerZip,
-        deliveryCity: partnerCity,
-        deliveryArrivalTime: userHourArrived,
-        comment: userCommentary,
+        deliveryPhoneNumber: phonePartner === "" ? undefined : phonePartner,
+        deliveryFirstName:
+          partnerFirstName === "" ? undefined : partnerFirstName,
+        deliveryLastName: partnerLastName === "" ? undefined : partnerLastName,
+        deliveryStreet: partnerAddress === "" ? undefined : partnerAddress,
+        deliveryZip: partnerZip === "" ? undefined : partnerZip,
+        deliveryCity: partnerCity === "" ? undefined : partnerCity,
+        deliveryArrivalTime:
+          userHourArrived === "" ? undefined : userHourArrived,
+        comment: userCommentary === "" ? undefined : userCommentary,
         startDate: fromDate,
         endDate: toDate,
         orderCity: city,
