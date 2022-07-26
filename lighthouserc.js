@@ -19,15 +19,15 @@ module.exports = {
         ],
         "categories:accessibility": [
           "error",
-          { minScore: 0.9, aggregationMethod: "pessimistic" },
+          { minScore: 0.8, aggregationMethod: "optimistic" },
         ],
         "categories:best-practices": [
           "error",
-          { minScore: 0.9, aggregationMethod: "pessimistic" },
+          { minScore: 0.8, aggregationMethod: "optimistic" },
         ],
         "categories:seo": [
           "error",
-          { minScore: 0.9, aggregationMethod: "pessimistic" },
+          { minScore: 0.8, aggregationMethod: "optimistic" },
         ],
       },
     },

@@ -7,3 +7,7 @@ module.exports.findAllPremise = async () => {
 module.exports.deleteDB = async () => {
   return await db.premise.deleteMany();
 };
+
+module.exports.findAllCity = async () => {
+  return await db.premise.findMany({ orderBy: { city: "asc" } });
+};
