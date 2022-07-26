@@ -36,6 +36,11 @@ export default function SearchForm() {
               style={{ textIndent: 17 + "px", width: 200 }}
               required
             >
+              {params.city ? (
+                ""
+              ) : (
+                <option value={t("ouallezvous")}>{t("ouallezvous")}</option>
+              )}
               {cityList.map((city) => (
                 <option key={city} value={city}>
                   {city}

@@ -26,6 +26,19 @@ export default function Home() {
     label: city,
   }));
 
+  const customStyles = {
+    control: (base) => ({
+      ...base,
+      borderRadius: "10px",
+      height: "38px",
+      background: "#ededed",
+      "@media only screen and (min-width: 900px)": {
+        ...base["@media only screen and (min-width: 900px)"],
+        height: "52px",
+      },
+    }),
+  };
+
   useEffect(() => {
     axios
       .get(`/api/premiseFront`)
@@ -62,6 +75,7 @@ export default function Home() {
                   options={options}
                   value={{ value: city, label: city ? city : t("ouallezvous") }}
                   onChange={(e) => setCity(e.value)}
+                  styles={customStyles}
                 />
 
                 <input
