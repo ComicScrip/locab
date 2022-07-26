@@ -2,7 +2,7 @@ name: Cypress
 on: [push]
 jobs:
   run-e2e-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: "Setup mySQL"
         uses: haltuf/mysql-action@master
@@ -10,10 +10,10 @@ jobs:
           host port: 3306
           mysql database: "test"
           mysql root password: "root"
-      - name: Setup Node.js 14.x
+      - name: Setup Node.js 16.x
         uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 16.x
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set up pnpm and install deps
@@ -37,7 +37,7 @@ jobs:
           HCAPTCHA_SECRET: "0x0000000000000000000000000000000000000000"
           UPLOAD_API_URL: ${{ secrets.UPLOAD_API_URL }}
       - name: Run Cypress 🌲
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         timeout-minutes: 30
         with:
           install: true
