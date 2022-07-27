@@ -243,14 +243,8 @@ module.exports.createOrder = ({
   });
 };
 
-module.exports.findOneOrderEmail = ({
-  lastname,
-  firstname,
-  email,
-  endDate,
-  startDate,
-}) => {
-  return db.order.findUnique({
+module.exports.findOneOrderEmail = ({ billingEmail, startDate, endDate }) => {
+  return db.order.findMany({
     include: {
       delegateParent: {
         select: {
@@ -293,11 +287,7 @@ module.exports.findOneOrderEmail = ({
       },
     },
     where: {
-      lastname,
-      firstname,
-      email,
-      endDate,
-      startDate,
+      AND: [{ startDate }, { endDate }, { billingEmail }],
     },
   });
 };
