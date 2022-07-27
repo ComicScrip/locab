@@ -37,28 +37,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1em;
 }
 .links a,
 .footerContact {
   color: #ffffff;
   font-style: normal;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 0.7rem;
 }
 .footerTitle {
   color: #ffffff;
   margin: 0 0 1rem 0;
-  font-size: 1.3rem;
+  font-size: 0.9rem;
 }
 .logo_icon {
   height: 100%;
   width: 100%;
 }
 
-/* .grise a {
+.grise a {
   opacity: 0.3;
-} */
+}
 @media screen and (min-width: 900px) {
   .mainContainerFooter {
     display: flex;
@@ -90,6 +89,9 @@
     margin: 10px 12px 0 0;
   }
   .sectionFooter {
+    display: initial;
+  }
+  .links {
     display: initial;
   }
 }
