@@ -28,17 +28,18 @@ export default function Footer() {
           <p className={styles.footerTitle}>{t("liensutiles")}</p>
           <div className={styles.links}>
             <Link href="/">
-              <a>{t("Accueil")}</a>
+              <a>{t("accueil")}</a>
             </Link>
-            <Link href="/signup">
-              <a>{t("Se connecter")}</a>
+            <Link href="/aboutUs">
+              <a>{t("quisommesnous")}</a>
             </Link>
             <Link href="/reservation">
               <a>{t("reservation")}</a>
             </Link>
-            <Link href="/aboutUs">
-              <a>{t("Qui sommes-nous ?")}</a>
+            <Link href="/signup">
+              <a>{t("seconnecter")}</a>
             </Link>
+
             {/* <div className={styles.grise}>
               <div href="../pages/pagesFooter/mentionlegale">
                 <a>{t("mentionslegales")}</a>
@@ -64,23 +65,23 @@ export default function Footer() {
               </a>
             </Link>
           )}
-          {/* <div className={styles.links}> */}
-          {/* <div className={styles.grise}>
-              <div href="#">
-                <a>{t("commande")}</a>
-              </div>
-            </div>  */}
-          {/* <div className={styles.grise}>
+          {/* <div className={styles.links}>  
+              <div className={styles.grise}>
+                <div href="#">
+                  <a>{t("commande")}</a>
+                </div>
+            </div>  
+           <div className={styles.grise}>
               <div href="#">
                 <a>{t("infoperso")}</a>
               </div>
-            </div> */}
-          {/* <div className={styles.grise}>
+            </div> 
+           <div className={styles.grise}>
               <div href="#">
                 <a>Newsletter</a>
               </div>
+            </div> 
             </div>  */}
-          {/* </div> */}
         </div>
         <div className={styles.sectionFooter}>
           <p className={styles.footerTitle}>{t("nouscontacter")}</p>

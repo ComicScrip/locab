@@ -56,9 +56,9 @@
   width: 100%;
 }
 
-.grise a {
-  /* opacity: 0.3; */
-}
+/* .grise a {
+  opacity: 0.3;
+} */
 @media screen and (min-width: 900px) {
   .mainContainerFooter {
     display: flex;
@@ -83,7 +83,7 @@
   .footerContact {
     font-style: normal;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: 25px;
   }
   .icons {
