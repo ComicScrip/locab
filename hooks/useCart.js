@@ -4,10 +4,15 @@ import createPersistedState from "use-persisted-state";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 import { getProductPrice } from "../utils/getProductPrice";
 import useSearch from "./useSearch";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import { useTranslation } from "next-i18next";
 
 const useCartItems = createPersistedState("cartItems");
 
 const useCart = () => {
+  const { t } = useTranslation("reservation");
+
   const {
     nbDays,
     params: { city, fromDate, toDate },
@@ -44,19 +49,22 @@ const useCart = () => {
   };
 
   const updateProductQuantity = (productId, newQuantity) => {
-    axios
-      .get(
-        `/api/productSamplesStock?productId=${productId}&city=${city}&fromDate=${fromDate}&toDate=${toDate}`
-      )
-      .then((res) => {
-        if (res.data < newQuantity) {
-          setCartItems((prevList) =>
-            prevList.map((ci) =>
-              ci.productId === productId ? { ...ci, quantity: res.data } : ci
-            )
-          );
-        }
-      });
+    if (newQuantity) {
+      axios
+        .get(
+          `/api/productSamplesStock?productId=${productId}&city=${city}&fromDate=${fromDate}&toDate=${toDate}`
+        )
+        .then((res) => {
+          if (res.data < newQuantity) {
+            setCartItems((prevList) =>
+              prevList.map((ci) =>
+                ci.productId === productId ? { ...ci, quantity: res.data } : ci
+              )
+            );
+            toast.success(t("erreurStock"));
+          }
+        });
+    }
 
     let quantity = parseInt(newQuantity, 10);
     if (isNaN(quantity)) {
