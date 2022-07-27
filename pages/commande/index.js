@@ -107,6 +107,7 @@ export default function Commande() {
       .then(() => {
         setConfimed(true);
         setCartItems([]);
+        handleSubmitMail();
       })
       .catch((err) => {
         if (err.response?.data?.code === "OUT_OF_STOCK") {
@@ -118,6 +119,37 @@ export default function Commande() {
         }
       });
     // .finally(() => setIsLoading(false));
+  };
+
+  const handleSubmitMail = (e) => {
+    e.preventDefault();
+    axios
+      .post("/api/orders/mail-order", {
+        deliveryPhoneNumber: phonePartner === "" ? undefined : phonePartner,
+        deliveryFirstName:
+          partnerFirstName === "" ? undefined : partnerFirstName,
+        deliveryLastName: partnerLastName === "" ? undefined : partnerLastName,
+        deliveryStreet: partnerAddress === "" ? undefined : partnerAddress,
+        deliveryZip: partnerZip === "" ? undefined : partnerZip,
+        deliveryCity: partnerCity === "" ? undefined : partnerCity,
+        deliveryArrivalTime:
+          userHourArrived === "" ? undefined : userHourArrived,
+        comment: userCommentary === "" ? undefined : userCommentary,
+        startDate: fromDate,
+        endDate: toDate,
+        orderCity: city,
+        billingFirstname: userFirstname,
+        billingLastname: userLastName,
+        billingStreet: userAddress,
+        billingZip: userZip,
+        billingCity: userCity,
+        billingPhoneNumber: userPhone,
+        billingEmail: userMail,
+        cartItems,
+      })
+      .catch(() => {
+        console.error;
+      });
   };
 
   const styleDefault = {
