@@ -17,12 +17,11 @@ import { useToasts } from "react-toast-notifications";
 import SearchForm from "../../components/SearchForm";
 import { signIn } from "next-auth/react";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
-// import CircularProgress from "@mui/material/CircularProgress";
+import Link from "next/link";
 
 export default function Commande() {
   const { t } = useTranslation("order", "reservation");
   const { addToast } = useToasts();
-  // const [isLoading, setIsLoading] = useState(true);
 
   const {
     params: { toDate, fromDate, city },
@@ -117,7 +116,6 @@ export default function Commande() {
           });
         }
       });
-    // .finally(() => setIsLoading(false));
   };
 
   const styleDefault = {
@@ -128,20 +126,37 @@ export default function Commande() {
     color: "#ACACAC",
   };
 
-  // if (isLoading) {
-  //   return (
-  //     <div>
-  //       <CircularProgress />
-  //     </div>
-  //   );
-  // }
+  if (cartItems.length === 0 && !confirmed) {
+    return (
+      <>
+        <Layout>
+          <Banner />
+          <div className={styles.paniervide}>
+            <h3>{t("paniervide")}</h3>
+            <p>{t("retourversreservation")}</p>
+            <Link href="/reservation">
+              <button className={styles.button2}>
+                {t("continuerversreservation")}
+              </button>
+            </Link>
+          </div>
+        </Layout>
+      </>
+    );
+  }
 
   return (
     <Layout>
       <SearchForm />
       <Banner />
       {confirmed ? (
-        <p style={{ maxWidth: 1200, margin: "auto", padding: 50 }}>
+        <p
+          style={{
+            margin: "auto",
+            padding: 50,
+            textAlign: "center",
+          }}
+        >
           {t("thanks")}
         </p>
       ) : (
@@ -623,7 +638,9 @@ export default function Commande() {
               )}
             </div>
           </div>
-          <OrderCart />
+          <div className={styles.divpanier}>
+            <OrderCart />
+          </div>
         </div>
       )}
     </Layout>
