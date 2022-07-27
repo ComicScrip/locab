@@ -28,5 +28,10 @@
   "email": "Email",
   "paniervide": "Your basket is empty :",
   "continuerversreservation": "Go to reservation",
-  "retourversreservation": "Please go back to the reservation page"
+  "retourversreservation": "Please go back to the reservation page",
+  "connecter": "LOG IN",
+  "TOAST": "impossible to place the order, some items in your shopping cart are unfortunately no longer in stock",
+  "thanks": "Thank you for your order !",
+  "vouspouvez": "Vous pouvez vous connecter pour saisir les informations suivantes automatiquement et gagner du temps.",
+  "envousconnectant": "En vous connectant, vous pourrez également retrouver votre réservation dans votre espace client."
 }

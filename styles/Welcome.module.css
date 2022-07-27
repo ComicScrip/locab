@@ -206,6 +206,11 @@
   margin-top: 5rem;
 }
 
+.divpanier {
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (max-width: 600px) {
   .orderContainer {
     display: flex;

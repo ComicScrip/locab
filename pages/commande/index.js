@@ -126,7 +126,7 @@ export default function Commande() {
     color: "#ACACAC",
   };
 
-  if (cartItems.length === 0) {
+  if (cartItems.length === 0 && !confirmed) {
     return (
       <>
         <Layout>
@@ -150,7 +150,13 @@ export default function Commande() {
       <SearchForm />
       <Banner />
       {confirmed ? (
-        <p style={{ maxWidth: 1200, margin: "auto", padding: 50 }}>
+        <p
+          style={{
+            margin: "auto",
+            padding: 50,
+            textAlign: "center",
+          }}
+        >
           {t("thanks")}
         </p>
       ) : (
@@ -632,7 +638,9 @@ export default function Commande() {
               )}
             </div>
           </div>
-          <OrderCart />
+          <div className={styles.divpanier}>
+            <OrderCart />
+          </div>
         </div>
       )}
     </Layout>
