@@ -17,6 +17,7 @@ import { useToasts } from "react-toast-notifications";
 import SearchForm from "../../components/SearchForm";
 import { signIn } from "next-auth/react";
 import { CurrentUserContext } from "../../contexts/currentUserContext";
+
 // import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Commande() {
@@ -105,7 +106,6 @@ export default function Commande() {
         cartItems,
       })
       .then(() => {
-        handleSubmitMail();
         setConfimed(true);
         setCartItems([]);
       })
@@ -119,37 +119,6 @@ export default function Commande() {
         }
       });
     // .finally(() => setIsLoading(false));
-  };
-
-  const handleSubmitMail = (e) => {
-    e.preventDefault();
-    axios
-      .post("/api/orders/mail-order", {
-        deliveryPhoneNumber: phonePartner === "" ? undefined : phonePartner,
-        deliveryFirstName:
-          partnerFirstName === "" ? undefined : partnerFirstName,
-        deliveryLastName: partnerLastName === "" ? undefined : partnerLastName,
-        deliveryStreet: partnerAddress === "" ? undefined : partnerAddress,
-        deliveryZip: partnerZip === "" ? undefined : partnerZip,
-        deliveryCity: partnerCity === "" ? undefined : partnerCity,
-        deliveryArrivalTime:
-          userHourArrived === "" ? undefined : userHourArrived,
-        comment: userCommentary === "" ? undefined : userCommentary,
-        startDate: fromDate,
-        endDate: toDate,
-        orderCity: city,
-        billingFirstname: userFirstname,
-        billingLastname: userLastName,
-        billingStreet: userAddress,
-        billingZip: userZip,
-        billingCity: userCity,
-        billingPhoneNumber: userPhone,
-        billingEmail: userMail,
-        cartItems,
-      })
-      .catch(() => {
-        console.error;
-      });
   };
 
   const styleDefault = {
