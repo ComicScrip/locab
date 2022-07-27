@@ -1,6 +1,10 @@
 import base from "../../../middlewares/common";
 import requireCurrentUser from "../../../middlewares/requireCurrentUser";
-import { createOrder, findAllOrders } from "../../../models/order";
+import {
+  createOrder,
+  findAllOrders,
+  validateUserOrder,
+} from "../../../models/order";
 import {
   findAvailableInCity,
   patchOneProductSample,
@@ -14,6 +18,9 @@ const duration = require("dayjs/plugin/duration");
 dayjs.extend(duration);
 
 async function handlePost(req, res) {
+  const validationErrors = validateUserOrder(req.body);
+  if (validationErrors) return res.status(422).send(validationErrors);
+
   const { cartItems, startDate, endDate, orderCity } = req.body;
 
   if (!cartItems?.length) return res.status(422).send("no cart items");

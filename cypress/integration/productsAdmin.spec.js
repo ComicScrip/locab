@@ -40,6 +40,13 @@ describe("products", () => {
 
       cy.get('input[type="file"]').attachFile(fileName);
 
+      cy.get(
+        ".uploadcare--tab_name_preview > .uploadcare--footer > .uploadcare--button_primary"
+      ).should("be.visible");
+      cy.get(
+        ".uploadcare--tab_name_preview > .uploadcare--footer > .uploadcare--button_primary"
+      ).click();
+
       cy.get(".uploadcare--progress").should("exist");
       cy.get(".uploadcare--link")
         .should("exist")

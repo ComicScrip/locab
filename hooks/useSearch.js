@@ -8,8 +8,12 @@ dayjs.extend(duration);
 
 const useSearchParams = createPersistedState("searchParams");
 
+const today = new Date();
+const todayToTomorrow = new Date(today);
+const tomorrow = todayToTomorrow.setDate(todayToTomorrow.getDate() + 1);
+
 const defaultParams = {
-  fromDate: dayjs().format("YYYY-MM-DD"),
+  fromDate: dayjs(tomorrow).format("YYYY-MM-DD"),
   toDate: dayjs().format("YYYY-MM-DD"),
   city: "",
   showUnavailable: false,
