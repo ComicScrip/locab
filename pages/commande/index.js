@@ -270,7 +270,7 @@ export default function Commande() {
                         </label>
                         <input
                           className={styles.textarea}
-                          id="secondname"
+                          id="lastname"
                           required
                           type="name"
                           onChange={(e) => setUserLastName(e.target.value)}
@@ -309,10 +309,7 @@ export default function Commande() {
                     </div>
                     <div className={styles.name}>
                       <div className={styles.formpassword}>
-                        <label
-                          htmlFor="codepostale"
-                          className={styles.password}
-                        >
+                        <label htmlFor="codepostal" className={styles.password}>
                           {t("cp")}
                         </label>
                         <input
