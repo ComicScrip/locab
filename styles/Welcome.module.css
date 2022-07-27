@@ -1,3 +1,9 @@
+.ordercart {
+  margin-top: 7vh;
+  display: flex;
+  justify-content: center;
+}
+
 .title {
   margin: 0 auto;
   width: 100%;
@@ -188,14 +194,86 @@
 
 .orderContainer {
   display: flex;
-  justify-content: center;
-  flex-direction: column-reverse;
-
+  flex-direction: column;
+  justify-content: space-around;
   padding-bottom: 50px;
 }
 
-@media screen and (min-width: 900px) {
+.paniervide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.divpanier {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
   .orderContainer {
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .ordercart {
+    display: flex;
+    justify-content: center;
+  }
+
+  .title {
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+
+  .bloc1 {
+    width: 95%;
+  }
+
+  .button2 {
+    width: 90%;
+    font-size: medium;
+  }
+
+  .button {
+    width: 90%;
+  }
+
+  .h3 {
+    text-align: center;
+  }
+
+  .text {
+    text-align: center;
+  }
+
+  .password {
+    margin-top: 2rem;
+    font-size: 15px;
+  }
+
+  .paymentparent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .paymentcontainer {
+    width: 95%;
+  }
+
+  .formbutton {
+    text-align: center;
+  }
+
+  .paniervide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+    text-align: center;
   }
 }

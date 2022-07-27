@@ -37,6 +37,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 1em;
 }
 .links a,
 .footerContact {
@@ -92,6 +93,8 @@
     display: initial;
   }
   .links {
-    display: initial;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

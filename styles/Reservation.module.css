@@ -40,6 +40,19 @@
 }
 
 /* Index style */
+.AlertLocationContainer {
+  width: 100vw;
+  height: 35vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AlertLocation {
+  width: 70%;
+  text-align: center;
+}
+
 .main_container {
   display: flex;
   justify-content: center;

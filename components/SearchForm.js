@@ -33,7 +33,7 @@ export default function SearchForm() {
               name="destination"
               id="location"
               placeholder={t("ouallezvous")}
-              style={{ textIndent: 17 + "px", width: 200 }}
+              style={{ textIndent: 17 + "px", width: 200, height: 27 }}
               required
             >
               {params.city ? (
