@@ -27,5 +27,8 @@
   "cgv2": "J'accepte que l’exécution du service débute dès confirmation de la commande.",
   "confirmcommand": "CONFIRMER LA COMMANDE",
   "traitementcommande": "Indispensable pour que nous puissions traiter votre commande",
-  "thanks": "Merci de votre commande !"
+  "thanks": "Merci de votre commande !",
+  "paniervide": "Votre panier est vide :",
+  "continuerversreservation": "Continuer vers la réservation",
+  "retourversreservation": "Merci de retourner à la page de selection des produits"
 }

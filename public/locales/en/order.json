@@ -25,5 +25,8 @@
   "cp": "ZIP code",
   "ville": "City",
   "Numérodetelephone": "Phone number",
-  "email": "Email"
+  "email": "Email",
+  "paniervide": "Your basket is empty :",
+  "continuerversreservation": "Go to reservation",
+  "retourversreservation": "Thank's to go back to the reservation page"
 }
