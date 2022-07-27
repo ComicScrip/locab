@@ -219,6 +219,48 @@ module.exports.findAllProductsUnavailable = ({
     },
   });
 
+module.exports.countProductSamples = ({ city, productId, fromDate, toDate }) =>
+  db.productSample.count({
+    where: {
+      AND: [
+        {
+          productId: parseInt(productId, 10),
+        },
+        {
+          premise: {
+            city: city,
+          },
+        },
+        {
+          OR: [
+            {
+              unavailabilityStart: null,
+            },
+            {
+              AND: [
+                {
+                  unavailabilityStart: {
+                    gt: new Date(fromDate),
+                  },
+                },
+                {
+                  unavailabilityStart: {
+                    gt: new Date(toDate),
+                  },
+                },
+              ],
+            },
+            {
+              unavailabilityEnd: {
+                lt: new Date(fromDate),
+              },
+            },
+          ],
+        },
+      ],
+    },
+  });
+
 module.exports.findAllProductSamples = ({ productId }) =>
   db.productSample.findMany({
     where: {

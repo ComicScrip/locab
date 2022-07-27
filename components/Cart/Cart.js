@@ -11,6 +11,7 @@ import Link from "next/link";
 import useCart from "../../hooks/useCart";
 import useSearch from "../../hooks/useSearch";
 import dayjs from "dayjs";
+import { ToastContainer } from "react-toastify";
 
 export default function Cart() {
   const { t } = useTranslation("cart");
@@ -74,6 +75,7 @@ export default function Cart() {
                 >
                   <DeleteIcon />
                 </IconButton>
+                <ToastContainer />
               </div>
             );
           })}
