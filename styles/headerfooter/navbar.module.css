@@ -6,20 +6,19 @@
 
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  flex-direction: column;
   background: #ebc575;
   height: 65px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   font-size: 2.2vw;
   z-index: 1;
+  padding: 0 20px;
 }
-
 .navbar .items {
   display: none;
   position: fixed;
@@ -36,24 +35,6 @@
   transition: all 0.3s ease-in-out;
 }
 
-.divlogoIcon1 a {
-  display: flex;
-  position: fixed;
-  visibility: visible;
-  margin-top: -19px;
-}
-.divlogoIcon a {
-  position: fixed;
-  display: flex;
-  visibility: visible;
-  margin-top: -26px;
-}
-.divlogoIcon {
-  padding-left: 70%;
-}
-.divlogoIcon1 {
-  padding-right: 33%;
-}
 .logocontainer {
   display: none;
 }
@@ -70,22 +51,7 @@
   cursor: pointer;
 }
 .btnBurger {
-  width: 45px;
-  display: block;
-  position: absolute;
-  left: 15px;
-  cursor: pointer;
-}
-.btnBurger:hover {
-  cursor: pointer;
-}
-.burger_Line {
-  display: block;
-  position: absolute;
-  cursor: pointer;
-}
-.burger_Line:hover {
-  cursor: pointer;
+  width: 40px;
 }
 
 .log {

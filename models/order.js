@@ -1,4 +1,5 @@
 const db = require("../db");
+const Joi = require("joi");
 
 module.exports.findAllOrders = ({ customerId, limitDatefilter, search }) => {
   return db.order.findMany({
@@ -112,6 +113,66 @@ module.exports.deleteOneOrder = (id) => {
     },
   });
 };
+
+module.exports.validateUserOrder = (data, forUpdate = false) =>
+  Joi.object({
+    deliveryPhoneNumber: Joi.string()
+      .max(50)
+      .presence(forUpdate ? "optional" : "optional"),
+    deliveryFirstName: Joi.string()
+      .max(255)
+      .presence(forUpdate ? "optional" : "optional"),
+    deliveryLastName: Joi.string()
+      .max(255)
+      .presence(forUpdate ? "optional" : "optional"),
+    deliveryStreet: Joi.string()
+      .max(255)
+      .presence(forUpdate ? "optional" : "optional"),
+    deliveryZip: Joi.string()
+      .max(10)
+      .presence(forUpdate ? "optional" : "optional"),
+    deliveryCity: Joi.string()
+      .max(60)
+      .presence(forUpdate ? "optional" : "optional"),
+    deliveryArrivalTime: Joi.string()
+      .max(100)
+      .presence(forUpdate ? "optional" : "optional"),
+    comment: Joi.string()
+      .max(500)
+      .presence(forUpdate ? "optional" : "optional"),
+    billingFirstname: Joi.string()
+      .max(255)
+      .presence(forUpdate ? "optional" : "required"),
+    billingLastname: Joi.string()
+      .max(255)
+      .presence(forUpdate ? "optional" : "required"),
+    billingStreet: Joi.string()
+      .max(255)
+      .presence(forUpdate ? "optional" : "required"),
+    billingZip: Joi.string()
+      .max(10)
+      .presence(forUpdate ? "optional" : "required"),
+    billingCity: Joi.string()
+      .max(60)
+      .presence(forUpdate ? "optional" : "required"),
+    billingPhoneNumber: Joi.string()
+      .max(50)
+      .presence(forUpdate ? "optional" : "required"),
+    billingEmail: Joi.string()
+      .email()
+      .max(100)
+      .presence(forUpdate ? "optional" : "required"),
+    startDate: Joi.string()
+      .max(255)
+      .presence(forUpdate ? "optional" : "required"),
+    endDate: Joi.string()
+      .max(255)
+      .presence(forUpdate ? "optional" : "required"),
+    orderCity: Joi.string()
+      .max(255)
+      .presence(forUpdate ? "optional" : "required"),
+    cartItems: Joi.array().presence(forUpdate ? "optional" : "required"),
+  }).validate(data, { abortEarly: false }).error;
 
 module.exports.createOrder = ({
   startDate,

@@ -96,13 +96,23 @@ async function prepareReservation() {
     },
   });
 
-  const bordeauxPremise = await db.premise.create({
+  const deauvillePremise = await db.premise.create({
     data: {
       name: "Dépot 2",
       address: "140 rue antoine",
       zip: "69002",
-      city: "Bordeaux",
+      city: "Deauville",
       premiseType: "Public",
+    },
+  });
+
+  await db.premise.create({
+    data: {
+      name: "Dépot 3",
+      address: "139 rue delandine",
+      zip: "69002",
+      city: "Lyon",
+      premiseType: "Privé",
     },
   });
 
@@ -164,7 +174,7 @@ async function prepareReservation() {
       dateOfPurchase: new Date("2022-04-23T00:00:00"),
       condition: "Comme neuf",
       productId: poussette.id,
-      premiseId: bordeauxPremise.id,
+      premiseId: deauvillePremise.id,
     },
   });
 
@@ -174,7 +184,7 @@ async function prepareReservation() {
       dateOfPurchase: new Date("2022-05-21T00:00:00"),
       condition: "Neuf",
       productId: chanceliere.id,
-      premiseId: bordeauxPremise.id,
+      premiseId: deauvillePremise.id,
     },
   });
 
@@ -199,7 +209,7 @@ async function prepareReservation() {
     ],
   });
   return Promise.resolve({
-    bordeauxPremise,
+    deauvillePremise,
     lyonPremise,
     chanceliereInBordeaux,
     chanceliereInLyon,

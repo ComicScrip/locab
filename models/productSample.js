@@ -41,7 +41,12 @@ module.exports.findAllProductSample = ({ search }) => {
       },
     },
     orderBy: { referenceNumber: "asc" },
-    where: { referenceNumber: { contains: search } },
+    where: {
+      OR: [
+        { referenceNumber: { contains: search } },
+        { product: { name: { contains: search } } },
+      ],
+    },
   });
 };
 

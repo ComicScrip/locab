@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useContext } from "react";
@@ -6,6 +6,11 @@ import styles from "../styles/headerfooter/navbar.module.css";
 import { useTranslation } from "next-i18next";
 import { CurrentUserContext } from "../contexts/currentUserContext";
 import { signOut } from "next-auth/react";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import useCart from "../hooks/useCart";
 
 const Navbar = () => {
   const onSelectChange = (e) => {
@@ -25,6 +30,19 @@ const Navbar = () => {
   const currentRoute = router.pathname;
 
   const { currentUserProfile } = useContext(CurrentUserContext);
+
+  const StyledBadge = styled(Badge)(({ theme }) => ({
+    "& .MuiBadge-badge": {
+      right: -3,
+      top: 13,
+      border: `2px solid ${theme.palette.background.paper}`,
+      padding: "0 4px",
+      background: "#d28f71",
+      color: "white",
+    },
+  }));
+
+  const { cartItems } = useCart();
 
   return (
     <nav
@@ -147,6 +165,9 @@ const Navbar = () => {
           </div>
         </li>
       </ul>
+      <div className={styles.btnBurger} onClick={handleShowLinks}>
+        <span className={styles.burger_Line} />
+      </div>
       <div className={styles.divlogoIcon1}>
         <Link href="/" className={styles.linklogotransparent}>
           <a>
@@ -160,19 +181,17 @@ const Navbar = () => {
         </Link>
       </div>
       <div className={styles.divlogoIcon}>
-        <Link href="/">
+        <Link href="/reservation">
           <a>
-            <img
-              src="/logo/icon_logo.webp"
-              alt="logo_icon"
-              width="45w"
-              height="45px"
-            />
+            <IconButton aria-label="cart" style={{ padding: "0" }}>
+              <StyledBadge badgeContent={cartItems.length}>
+                <ShoppingCartIcon
+                  style={{ color: "white", fontSize: "40px", padding: "0" }}
+                />
+              </StyledBadge>
+            </IconButton>
           </a>
         </Link>
-      </div>
-      <div className={styles.btnBurger} onClick={handleShowLinks}>
-        <span className={styles.burger_Line} />
       </div>
     </nav>
   );

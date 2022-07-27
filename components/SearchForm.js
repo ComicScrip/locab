@@ -1,29 +1,51 @@
 import dayjs from "dayjs";
-import Link from "next/link";
 import useSearch from "../hooks/useSearch";
 import styles from "../styles/SearchForm.module.css";
+import { useTranslation } from "next-i18next";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function SearchForm() {
-  const { params, setCity, queryString, setFromDate, setToDate } = useSearch();
+  const { t } = useTranslation("reservation");
+  const { params, setCity, setFromDate, setToDate } = useSearch();
+
+  const [cityList, setCityList] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`/api/premiseFront`)
+      .then((response) => response.data)
+      .then((data) => {
+        setCityList(data);
+      });
+  }, []);
+
   return (
     <div className={styles.containerGlobal}>
       <div className={styles.forms}>
         <div className={styles.divlocation}>
           <div className={styles.locationInput}>
             <select
-              value={params.city}
+              value={params.city ? params.city : t("ouallezvous")}
               onChange={(e) => setCity(e.target.value)}
               type="text"
               data-cy="selectWhere"
               name="destination"
               id="location"
-              placeholder="Où allez-vous ?"
+              placeholder={t("ouallezvous")}
               style={{ textIndent: 17 + "px", width: 200 }}
               required
             >
-              <option value="">Où allez-vous ?</option>
-              <option value="Lyon">Lyon</option>
-              <option value="Bordeaux">Bordeaux</option>
+              {params.city ? (
+                ""
+              ) : (
+                <option value={t("ouallezvous")}>{t("ouallezvous")}</option>
+              )}
+              {cityList.map((city) => (
+                <option key={city} value={city}>
+                  {city}
+                </option>
+              ))}
             </select>
           </div>
         </div>
@@ -34,9 +56,9 @@ export default function SearchForm() {
             type="date"
             min={dayjs().format("YYYY-MM-DD")}
             name="destination"
-            placeholder="Arrivée"
             style={{ textIndent: 17 + "px" }}
             className={styles.watch1Input}
+            data-cy="searchFromDate"
             required
           />
         </div>
@@ -48,15 +70,11 @@ export default function SearchForm() {
             min={params.fromDate}
             name="departure"
             id="departure"
-            placeholder="Départ"
             style={{ textIndent: 17 + "px" }}
             className={styles.watch2Input}
             required
           />
         </div>
-        <Link href={`/reservation?${queryString}`}>
-          <button className={styles.button}>Je cherche !</button>
-        </Link>
       </div>
     </div>
   );

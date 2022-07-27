@@ -5,18 +5,59 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import useSearch from "../hooks/useSearch";
 import dayjs from "dayjs";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Select from "react-select";
 
 export default function Home() {
   const { t } = useTranslation("home");
   const {
-    params: { city, fromDate },
+    params: { city, fromDate, toDate },
     setCity,
     queryString,
     setFromDate,
+    setToDate,
   } = useSearch();
 
+  const [cityList, setCityList] = useState([]);
+
+  const options = cityList.map((city) => ({
+    value: city,
+    label: city,
+  }));
+
+  const customStyles = {
+    control: (base) => ({
+      ...base,
+      borderRadius: "10px",
+      height: "38px",
+      background: "#ededed",
+      "@media only screen and (min-width: 900px)": {
+        ...base["@media only screen and (min-width: 900px)"],
+        height: "52px",
+      },
+    }),
+  };
+
+  useEffect(() => {
+    axios
+      .get(`/api/premiseFront`)
+      .then((response) => response.data)
+      .then((data) => {
+        setCityList(data);
+      });
+  }, []);
+
+  const [onClient, setOnClient] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") setOnClient(true);
+  }, []);
+
+  if (!onClient) return null;
+
   return (
-    <Layout pageTitle="Location de poussette | Location de matériel de puériculture">
+    <Layout pageTitle={t("title")}>
       <div className={styles.container}>
         <div className={styles.firstParagraphe}>
           <div className={styles.titleandtextHome}>
@@ -25,30 +66,34 @@ export default function Home() {
             <p className={styles.textFirst}>{t("activityDescription")}</p>
             <div>
               <form className={styles.choixHome}>
-                <select
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                  type="text"
-                  name="destination"
-                  id="location"
-                  data-cy="searchWhere"
-                  placeholder="Où allez-vous ?"
+                <Select
                   className={styles.whereHome}
-                  required
-                >
-                  <option value="">{t("ouallezvous")}</option>
-                  <option value="Lyon">Lyon</option>
-                  <option value="Bordeaux">Bordeaux</option>
-                </select>
+                  id="selectbox"
+                  instanceId="selectbox"
+                  name="destination"
+                  options={options}
+                  value={{ value: city, label: city ? city : t("ouallezvous") }}
+                  onChange={(e) => setCity(e.value)}
+                  styles={customStyles}
+                />
+
+                <input
+                  className={styles.whenHome}
+                  data-cy="searchFromDate"
+                  type="date"
+                  min={dayjs().format("YYYY-MM-DD")}
+                  value={fromDate}
+                  onChange={(e) => setFromDate(e.target.value)}
+                ></input>
 
                 <input
                   className={styles.whenHome}
                   type="date"
-                  min={dayjs().format("YYYY-MM-DD")}
-                  placeholder={t("quand")}
-                  value={fromDate}
-                  onChange={(e) => setFromDate(e.target.value)}
+                  min={fromDate}
+                  value={toDate}
+                  onChange={(e) => setToDate(e.target.value)}
                 ></input>
+
                 <Link href={`/reservation?${queryString}`}>
                   <button
                     className={styles.buttonHome}

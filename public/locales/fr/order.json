@@ -20,15 +20,16 @@
   "heurearrive": "Heure d'arrivée",
   "commentaire": "Commentaires",
   "topayment": "CONTINUER VERS LE PAIEMENT",
-  "Paiement": "Paiment",
+  "Paiement": "Paiement",
   "moyendepaiement": "Choisissez votre moyen de paiement",
   "cb": "Carte bancaire",
   "cgv": "J'accepte les conditions générales de prestations de services",
   "cgv2": "J'accepte que l’exécution du service débute dès confirmation de la commande.",
   "confirmcommand": "CONFIRMER LA COMMANDE",
   "traitementcommande": "Indispensable pour que nous puissions traiter votre commande",
-  "thanks": "Merci de votre commande !",
-  "paniervide": "Votre panier est vide :",
-  "continuerversreservation": "Continuer vers la réservation",
-  "retourversreservation": "Merci de retourner à la page de selection des produits"
+  "thanks": "Votre commande a bien été validée. Nous vous remercions de votre confiance.",
+  "vouspouvez": "Vous pouvez vous connecter pour saisir les informations suivantes automatiquement et gagner du temps.",
+  "envousconnectant": "En vous connectant, vous pourrez également retrouver votre réservation dans votre espace client.",
+  "connecter": "SE CONNECTER",
+  "TOAST": "impossible de passer la commande, certains items de votre panier ne sont malheureusement plus en stock"
 }

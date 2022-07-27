@@ -17,7 +17,10 @@ const useCart = () => {
 
   useEffect(() => {
     if (currentUserProfile) {
-      axios.get("/api/cartItems", (res) => setCartItems(res.data));
+      axios
+        .get("/api/cartItems")
+        .then((res) => setCartItems(res.data))
+        .catch(console.error);
     }
   }, [currentUserProfile, setCartItems]);
 

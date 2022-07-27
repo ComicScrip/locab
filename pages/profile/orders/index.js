@@ -40,7 +40,7 @@ export default function ProfileOrders() {
 
   if (currentUserProfile) {
     return (
-      <Layout pageTitle="Mes commandes | Location de matériel de puériculture">
+      <Layout pageTitle={t("title")}>
         <Banner />
         <div className={styles.commandsMainContainer}>
           <section className={styles.titleSectionContainer}>
@@ -73,7 +73,7 @@ export default function ProfileOrders() {
   }
 
   return (
-    <Layout pageTitle="Mes commandes | Location de matériel de puériculture">
+    <Layout pageTitle={t("title")}>
       <Banner />
       <h1 className={styles.titleMainContent}>{t("connectezvous")}</h1>
       <button
