@@ -83,16 +83,13 @@
   .footerContact {
     font-style: normal;
     font-weight: 400;
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 25px;
   }
   .icons {
     margin: 10px 12px 0 0;
   }
   .sectionFooter {
-    display: initial;
-  }
-  .links {
     display: initial;
   }
 }
