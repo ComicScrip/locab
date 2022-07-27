@@ -162,7 +162,6 @@ export default function AboutUs() {
     </Layout>
   );
 }
-
 export async function getStaticProps({ locale }) {
   return {
     props: {
