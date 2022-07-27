@@ -242,3 +242,62 @@ module.exports.createOrder = ({
     },
   });
 };
+
+module.exports.findOneOrderEmail = ({
+  lastname,
+  firstname,
+  email,
+  endDate,
+  startDate,
+}) => {
+  return db.order.findUnique({
+    include: {
+      delegateParent: {
+        select: {
+          lastname: true,
+          firstname: true,
+        },
+      },
+      partner: {
+        select: {
+          company: true,
+        },
+      },
+      items: {
+        include: {
+          productSamples: {
+            include: {
+              product: {
+                include: {
+                  pictures: {
+                    select: {
+                      url: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      customer: {
+        select: {
+          lastname: true,
+          firstname: true,
+          address: true,
+          zip: true,
+          city: true,
+          phone: true,
+          email: true,
+        },
+      },
+    },
+    where: {
+      lastname,
+      firstname,
+      email,
+      endDate,
+      startDate,
+    },
+  });
+};

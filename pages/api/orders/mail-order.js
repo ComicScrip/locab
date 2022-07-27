@@ -1,5 +1,6 @@
 import base from "../../../middlewares/common";
 import mailer from "../../../mailer";
+import { findOneOrderEmail } from "../../../models/order";
 
 async function handlePost(req, res) {
   try {
@@ -24,30 +25,40 @@ async function handlePost(req, res) {
       cartItems,
     } = req.body;
 
+    const order = await findOneOrderEmail({
+      billingFirstname,
+      billingLastname,
+      billingEmail,
+      startDate,
+      endDate,
+    });
+    const id = order.id;
+
     const mailBody = `Voici un récapitulatif de votre commande : 
     adresse mail, dates, contenu, nom, adresse de livraison etc, montant payé
     
+    ${deliveryPhoneNumber}
+    ${deliveryFirstName}
+    ${deliveryLastName}
+    ${deliveryStreet}
+    ${deliveryZip}
+    ${deliveryCity}
+    ${deliveryArrivalTime}
+    ${startDate}
+    ${endDate}
+    ${orderCity}
+    ${billingFirstname}
+    ${billingLastname}
+    ${billingStreet}
+    ${billingZip}
+    ${billingCity}
+    ${billingPhoneNumber}
+    ${billingEmail}
+    ${cartItems}   
+    ${id}
     `;
-    await mailer.sendMail({
-      deliveryPhoneNumber,
-      deliveryFirstName,
-      deliveryLastName,
-      deliveryStreet,
-      deliveryZip,
-      deliveryCity,
-      deliveryArrivalTime,
-      startDate,
-      endDate,
-      orderCity,
-      billingFirstname,
-      billingLastname,
-      billingStreet,
-      billingZip,
-      billingCity,
-      billingPhoneNumber,
-      billingEmail,
-      cartItems,
 
+    await mailer.sendMail({
       from: process.env.MAILER_FROM,
       to: billingEmail,
       subject: "Réinitialisez votre mot de passe",

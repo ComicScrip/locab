@@ -105,9 +105,9 @@ export default function Commande() {
         cartItems,
       })
       .then(() => {
+        handleSubmitMail();
         setConfimed(true);
         setCartItems([]);
-        handleSubmitMail();
       })
       .catch((err) => {
         if (err.response?.data?.code === "OUT_OF_STOCK") {
