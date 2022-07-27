@@ -8,7 +8,10 @@ import useSearch from "./useSearch";
 const useCartItems = createPersistedState("cartItems");
 
 const useCart = () => {
-  const { nbDays } = useSearch();
+  const {
+    nbDays,
+    params: { city, fromDate, toDate },
+  } = useSearch();
 
   const { currentUserProfile } = useContext(CurrentUserContext);
 
@@ -41,6 +44,20 @@ const useCart = () => {
   };
 
   const updateProductQuantity = (productId, newQuantity) => {
+    axios
+      .get(
+        `/api/productSamplesStock?productId=${productId}&city=${city}&fromDate=${fromDate}&toDate=${toDate}`
+      )
+      .then((res) => {
+        if (res.data < newQuantity) {
+          setCartItems((prevList) =>
+            prevList.map((ci) =>
+              ci.productId === productId ? { ...ci, quantity: res.data } : ci
+            )
+          );
+        }
+      });
+
     let quantity = parseInt(newQuantity, 10);
     if (isNaN(quantity)) {
       quantity = 1;
