@@ -28,9 +28,5 @@
   "email": "Email",
   "paniervide": "Your basket is empty :",
   "continuerversreservation": "Go to reservation",
-  "retourversreservation": "Thank's to go back to the reservation page",
-  "envousconnectant": "By logging in, you can also find your reservation in your customer area.",
-  "connecter": "LOG IN",
-  "TOAST": "impossible to place the order, some items in your shopping cart are unfortunately no longer in stock",
-  "thanks": "Your order has been placed. Thank you for your support!"
+  "retourversreservation": "Thank's to go back to the reservation page"
 }
