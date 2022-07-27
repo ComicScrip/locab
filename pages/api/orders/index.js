@@ -36,6 +36,13 @@ async function handlePost(req, res) {
     billingCity,
     billingPhoneNumber,
     billingEmail,
+    deliveryPhoneNumber,
+    deliveryFirstName,
+    deliveryLastName,
+    deliveryStreet,
+    deliveryZip,
+    deliveryCity,
+    deliveryArrivalTime,
   } = req.body;
 
   if (!cartItems?.length) return res.status(422).send("no cart items");
@@ -146,6 +153,22 @@ async function handlePost(req, res) {
   ${billingZip},
   ${billingCity},
   ${billingPhoneNumber}.
+
+  ADRESSE DE LIVRAISON : ${
+    deliveryFirstName === undefined ? billingFirstname : deliveryFirstName
+  }, 
+  ${deliveryLastName === undefined ? billingLastname : deliveryLastName}, 
+  ${deliveryStreet === undefined ? billingStreet : deliveryStreet},
+  ${deliveryZip === undefined ? billingZip : deliveryZip},
+  ${deliveryCity === undefined ? billingCity : deliveryCity},
+   ${
+     deliveryPhoneNumber === undefined
+       ? billingPhoneNumber
+       : deliveryPhoneNumber
+   }.
+   
+   HEURE D'ARRIVEE : 
+   ${deliveryArrivalTime === undefined ? "---" : deliveryArrivalTime}.
 
   PRODUITS : ${cartItems.map((item) => item.product.name)} * ${cartItems.map(
     (item) => item.quantity
