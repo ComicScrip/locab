@@ -1,18 +1,21 @@
+import dayjs from "dayjs";
+
 describe("reservation", () => {
   it("shows a message asking to search for a location when no location was selected", () => {
     cy.task("resetDB");
     cy.task("prepareReservation");
     cy.visit("/reservation");
     cy.contains(
-      "Merci de selectionner un lieu plus haut pour trouver du materiel"
+      "Nous avons besoin de connaître votre destination pour vous proposer le matériel disponible aux dates choisies"
     );
   });
 
   it("shows reservation page with availbale items by default", () => {
-    cy.task("resetDB");
-    cy.task("prepareReservation");
     cy.visit("/");
-    cy.get('[data-cy="searchWhere"]').select("Lyon");
+    cy.get("#selectbox").click().contains("Lyon").click();
+    cy.get('[data-cy="searchFromDate"]').type(
+      dayjs(new Date()).format("YYYY-MM-DD")
+    );
     cy.get('[data-cy="searchBtnHomePage"]').click();
     cy.contains("Chancelière").should("be.visible");
     cy.contains("Poussette").should("be.visible");
@@ -23,8 +26,12 @@ describe("reservation", () => {
   it("shows unavailable products when checked", () => {
     cy.task("resetDB");
     cy.task("prepareReservation");
-    cy.visit("/reservation");
-    cy.get('[data-cy="selectWhere"]').select("Bordeaux");
+    cy.visit("/");
+    cy.get("#selectbox").click().type("Deauvil{enter}");
+    cy.get('[data-cy="searchFromDate"]').type(
+      dayjs(new Date()).format("YYYY-MM-DD")
+    );
+    cy.get('[data-cy="searchBtnHomePage"]').click();
     cy.get('[data-cy="availabilityBtn"]').click();
     cy.get('[data-cy="unavailableItem"]').should("exist");
   });
@@ -32,8 +39,12 @@ describe("reservation", () => {
   it("can search product", () => {
     cy.task("resetDB");
     cy.task("prepareReservation");
-    cy.visit("/reservation");
-    cy.get('[data-cy="selectWhere"]').select("Lyon");
+    cy.visit("/");
+    cy.get("#selectbox").click().contains("Lyon").click();
+    cy.get('[data-cy="searchFromDate"]').type(
+      dayjs(new Date()).format("YYYY-MM-DD")
+    );
+    cy.get('[data-cy="searchBtnHomePage"]').click();
     cy.get('[data-cy="searchBar"]').type("cha");
     cy.contains("Chancelière").should("be.visible");
     cy.contains("Poussette").should("not.exist");
@@ -43,8 +54,12 @@ describe("reservation", () => {
   it("Can add a product to cart", () => {
     cy.task("resetDB");
     cy.task("prepareReservation").then(({ chanceliere }) => {
-      cy.visit("/reservation");
-      cy.get('[data-cy="selectWhere"]').select("Lyon");
+      cy.visit("/");
+      cy.get("#selectbox").click().contains("Lyon").click();
+      cy.get('[data-cy="searchFromDate"]').type(
+        dayjs(new Date()).format("YYYY-MM-DD")
+      );
+      cy.get('[data-cy="searchBtnHomePage"]').click();
       cy.get(`[data-cy="addProductToCartClick-${chanceliere.id}"]`).click();
       cy.contains("Votre panier est vide").should("not.exist");
     });
@@ -53,8 +68,12 @@ describe("reservation", () => {
   it("Can delete a product from cart", () => {
     cy.task("resetDB");
     cy.task("prepareReservation").then(({ chanceliere }) => {
-      cy.visit("/reservation");
-      cy.get('[data-cy="selectWhere"]').select("Lyon");
+      cy.visit("/");
+      cy.get("#selectbox").click().contains("Lyon").click();
+      cy.get('[data-cy="searchFromDate"]').type(
+        dayjs(new Date()).format("YYYY-MM-DD")
+      );
+      cy.get('[data-cy="searchBtnHomePage"]').click();
       cy.get(`[data-cy="addProductToCartClick-${chanceliere.id}"]`).click();
       cy.get(`[data-cy="addProductToCartClick-${chanceliere.id}"]`).click();
       cy.contains("Votre panier est vide").should("exist");
@@ -64,8 +83,12 @@ describe("reservation", () => {
   it("Can place an order", () => {
     cy.task("resetDB");
     cy.task("prepareReservation").then(({ chanceliere }) => {
-      cy.visit("/reservation");
-      cy.get('[data-cy="selectWhere"]').select("Lyon");
+      cy.visit("/");
+      cy.get("#selectbox").click().contains("Lyon").click();
+      cy.get('[data-cy="searchFromDate"]').type(
+        dayjs(new Date()).format("YYYY-MM-DD")
+      );
+      cy.get('[data-cy="searchBtnHomePage"]').click();
       cy.get(`[data-cy="addProductToCartClick-${chanceliere.id}"]`).click();
       cy.contains("VALIDER MON PANIER").click();
       cy.url().should("include", "/commande");
@@ -87,8 +110,12 @@ describe("reservation", () => {
       cy.get('[data-cy="partner_hour"]').type("10:00");
       cy.get('[data-cy="partner_comments"]').type("etage 5, chambre 67");
       cy.contains("CONTINUER VERS LE PAIEMENT").click();
+      cy.get('[data-cy="payment_checkbox_cgv"]').click();
+      cy.get('[data-cy="payment_checkbox_accept"]').click();
       cy.contains("CONFIRMER LA COMMANDE").click();
-      cy.contains("Merci de votre commande");
+      cy.contains(
+        "Votre commande a bien été validée. Nous vous remercions de votre confiance."
+      );
     });
   });
 });

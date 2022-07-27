@@ -76,18 +76,22 @@ export default function Commande() {
 
   /* PARTIE LIVRAISON */
 
+  const [isDisabled, setIsDisabled] = useState(true);
+
   const createOrder = (e) => {
     e.preventDefault();
     axios
       .post("/api/orders", {
-        deliveryPhoneNumber: phonePartner,
-        deliveryFirstName: partnerFirstName,
-        deliveryLastName: partnerLastName,
-        deliveryStreet: partnerAddress,
-        deliveryZip: partnerZip,
-        deliveryCity: partnerCity,
-        deliveryArrivalTime: userHourArrived,
-        comment: userCommentary,
+        deliveryPhoneNumber: phonePartner === "" ? undefined : phonePartner,
+        deliveryFirstName:
+          partnerFirstName === "" ? undefined : partnerFirstName,
+        deliveryLastName: partnerLastName === "" ? undefined : partnerLastName,
+        deliveryStreet: partnerAddress === "" ? undefined : partnerAddress,
+        deliveryZip: partnerZip === "" ? undefined : partnerZip,
+        deliveryCity: partnerCity === "" ? undefined : partnerCity,
+        deliveryArrivalTime:
+          userHourArrived === "" ? undefined : userHourArrived,
+        comment: userCommentary === "" ? undefined : userCommentary,
         startDate: fromDate,
         endDate: toDate,
         orderCity: city,
@@ -214,11 +218,13 @@ export default function Commande() {
                       onSubmit={(e) => {
                         e.preventDefault();
                         setOpenSection("delivery");
+                        setIsDisabled(false);
                       }}
                     >
                       <div className={styles.formemail}>
                         <label htmlFor="email" className={styles.email}>
                           {t("email")}
+                          <span style={{ color: "red" }}>*</span>
                         </label>
                         <input
                           className={styles.textarea}
@@ -234,6 +240,7 @@ export default function Commande() {
                         <div className={styles.formpassword}>
                           <label htmlFor="name" className={styles.password}>
                             {t("prenom")}
+                            <span style={{ color: "red" }}>*</span>
                           </label>
                           <input
                             className={styles.textarea}
@@ -248,6 +255,7 @@ export default function Commande() {
                         <div className={styles.formpassword}>
                           <label htmlFor="name" className={styles.password}>
                             {t("nom")}
+                            <span style={{ color: "red" }}>*</span>
                           </label>
                           <input
                             className={styles.textarea}
@@ -263,6 +271,7 @@ export default function Commande() {
                       <div className={styles.formpassword}>
                         <label htmlFor="adress" className={styles.password}>
                           {t("adresse")}
+                          <span style={{ color: "red" }}>*</span>
                         </label>
                         <input
                           className={styles.textarea}
@@ -274,20 +283,6 @@ export default function Commande() {
                           data-cy="infos_address"
                         />
                       </div>
-                      <div className={styles.formpassword}>
-                        <label htmlFor="adress" className={styles.password}>
-                          {t("Numérodetelephone")}
-                        </label>
-                        <input
-                          className={styles.textarea}
-                          id="phone"
-                          type="phone"
-                          required
-                          onChange={(e) => setUserPhone(e.target.value)}
-                          value={userPhone}
-                          data-cy="infos_phone"
-                        />
-                      </div>
                       <div className={styles.name}>
                         <div className={styles.formpassword}>
                           <label
@@ -295,6 +290,7 @@ export default function Commande() {
                             className={styles.password}
                           >
                             {t("cp")}
+                            <span style={{ color: "red" }}>*</span>
                           </label>
                           <input
                             className={styles.textarea}
@@ -309,6 +305,7 @@ export default function Commande() {
                         <div className={styles.formpassword}>
                           <label htmlFor="city" className={styles.password}>
                             {t("ville")}
+                            <span style={{ color: "red" }}>*</span>
                           </label>
                           <input
                             className={styles.textarea}
@@ -320,6 +317,22 @@ export default function Commande() {
                             data-cy="infos_city"
                           />
                         </div>
+                      </div>
+
+                      <div className={styles.formpassword}>
+                        <label htmlFor="adress" className={styles.password}>
+                          {t("Numérodetelephone")}
+                          <span style={{ color: "red" }}>*</span>
+                        </label>
+                        <input
+                          className={styles.textarea}
+                          id="phone"
+                          type="phone"
+                          required
+                          onChange={(e) => setUserPhone(e.target.value)}
+                          value={userPhone}
+                          data-cy="infos_phone"
+                        />
                       </div>
 
                       <div className={styles.formbutton}>
@@ -345,9 +358,11 @@ export default function Commande() {
                   <hr className={styles.hr} />
                 </div>
                 <div className={styles.h2}>
-                  <h2
+                  <button
+                    disabled={isDisabled}
                     onClick={() => setOpenSection("delivery")}
                     style={openSection === "delivery" ? styleDefault : setStyle}
+                    className={styles.titleForForm}
                   >
                     {openSection === "payment" ? (
                       <AiOutlineCheck className={styles.check} />
@@ -355,7 +370,7 @@ export default function Commande() {
                       ""
                     )}{" "}
                     {t("Livraison")}
-                  </h2>
+                  </button>
                 </div>
                 <div className={styles.ligne}>
                   <hr className={styles.hr} />
@@ -381,7 +396,6 @@ export default function Commande() {
                             className={styles.textarea}
                             id="partenaire"
                             type="text"
-                            required
                             data-cy="partner_name"
                             onChange={(e) => setUserPartner(e.target.value)}
                             value={userPartner}
@@ -398,7 +412,6 @@ export default function Commande() {
                             className={styles.textarea}
                             id="partenaire"
                             type="text"
-                            required
                             data-cy="partner_phone"
                             onChange={(e) => setPhonePartner(e.target.value)}
                             value={phonePartner}
@@ -413,7 +426,6 @@ export default function Commande() {
                               className={styles.textarea}
                               id="firstname"
                               type="name"
-                              required
                               data-cy="partner_firstname"
                               onChange={(e) =>
                                 setPartnerFirstName(e.target.value)
@@ -429,7 +441,6 @@ export default function Commande() {
                               className={styles.textarea}
                               id="secondname"
                               type="name"
-                              required
                               data-cy="partner_lastname"
                               onChange={(e) =>
                                 setPartnerLastName(e.target.value)
@@ -446,7 +457,6 @@ export default function Commande() {
                             className={styles.textarea}
                             id="adress"
                             type="adress"
-                            required
                             data-cy="partner_adress"
                             onChange={(e) => setPartnerAdress(e.target.value)}
                             value={partnerAddress}
@@ -464,7 +474,6 @@ export default function Commande() {
                               className={styles.textarea}
                               id="zip"
                               type="adress"
-                              required
                               data-cy="partner_zip"
                               onChange={(e) => setPartnerZip(e.target.value)}
                               value={partnerZip}
@@ -478,7 +487,6 @@ export default function Commande() {
                               className={styles.textarea}
                               id="city"
                               type="city"
-                              required
                               data-cy="partner_city"
                               onChange={(e) => setPartnerCity(e.target.value)}
                               value={partnerCity}
@@ -493,7 +501,6 @@ export default function Commande() {
                             className={styles.textarea}
                             id="time"
                             type="time"
-                            required
                             data-cy="partner_hour"
                             onChange={(e) => setUserHourArrived(e.target.value)}
                             value={userHourArrived}
@@ -508,7 +515,6 @@ export default function Commande() {
                             id="commentaire"
                             type="commentaire"
                             data-cy="partner_comments"
-                            required
                             onChange={(e) => setUserComentary(e.target.value)}
                             value={userCommentary}
                           />
@@ -532,12 +538,14 @@ export default function Commande() {
                   <hr className={styles.hr} />
                 </div>
                 <div className={styles.h2}>
-                  <h2
+                  <button
+                    disabled={isDisabled}
                     onClick={() => setOpenSection("payment")}
-                    style={openSection === "payment" ? styleDefault : setStyle}
+                    style={openSection === "delivery" ? styleDefault : setStyle}
+                    className={styles.titleForForm}
                   >
                     {t("Paiement")}
-                  </h2>
+                  </button>
                 </div>
                 <div className={styles.ligne}>
                   <hr className={styles.hr} />
@@ -551,7 +559,10 @@ export default function Commande() {
                     {t("moyendepaiement")}
                   </h3>
                   <div className={styles.paymentparent}>
-                    <div className={styles.paymentcontainer}>
+                    <form
+                      className={styles.paymentcontainer}
+                      onSubmit={createOrder}
+                    >
                       <div className={styles.checkbox}>
                         <input
                           name="subscribe"
@@ -580,9 +591,11 @@ export default function Commande() {
                           type="checkbox"
                           className={styles.password}
                           data-cy="payment_checkbox_cgv"
+                          required
                         />
                         <label htmlFor="city" className={styles.password}>
                           {t("cgv")}
+                          <span style={{ color: "red" }}>*</span>
                         </label>
                       </div>
 
@@ -592,21 +605,19 @@ export default function Commande() {
                           type="checkbox"
                           className={styles.password}
                           data-cy="payment_checkbox_accept"
+                          required
                         />
                         <label htmlFor="city" className={styles.password}>
                           {t("cgv2")}
+                          <span style={{ color: "red" }}>*</span>
                         </label>
                       </div>
                       <div className={styles.formbutton}>
-                        <button
-                          type="submit"
-                          className={styles.button2}
-                          onClick={createOrder}
-                        >
+                        <button type="submit" className={styles.button2}>
                           {t("confirmcommand")}
                         </button>
                       </div>
-                    </div>
+                    </form>
                   </div>
                 </>
               )}
