@@ -48,7 +48,9 @@ function SearchPage() {
           </div>
         </>
       ) : (
-        t("selectALocation")
+        <div className={styles.AlertLocationContainer}>
+          <div className={styles.AlertLocation}>{t("selectALocation")}</div>
+        </div>
       )}
     </Layout>
   );
