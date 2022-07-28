@@ -3,6 +3,7 @@ import requireCurrentUser from "../../../middlewares/requireCurrentUser";
 import {
   createOrder,
   findAllOrders,
+  findOneOrderEmail,
   validateUserOrder,
 } from "../../../models/order";
 import {
@@ -14,6 +15,8 @@ import { getProductPrice } from "../../../utils/getProductPrice";
 import extractCurrentUser from "../../../middlewares/extractCurrentUser";
 import { getOneProduct } from "../../../models/product";
 
+import mailer from "../../../mailer";
+
 const duration = require("dayjs/plugin/duration");
 dayjs.extend(duration);
 
@@ -21,7 +24,26 @@ async function handlePost(req, res) {
   const validationErrors = validateUserOrder(req.body);
   if (validationErrors) return res.status(422).send(validationErrors);
 
-  const { cartItems, startDate, endDate, orderCity } = req.body;
+  const {
+    cartItems,
+    startDate,
+    endDate,
+    orderCity,
+    billingFirstname,
+    billingLastname,
+    billingStreet,
+    billingZip,
+    billingCity,
+    billingPhoneNumber,
+    billingEmail,
+    deliveryPhoneNumber,
+    deliveryFirstName,
+    deliveryLastName,
+    deliveryStreet,
+    deliveryZip,
+    deliveryCity,
+    deliveryArrivalTime,
+  } = req.body;
 
   if (!cartItems?.length) return res.status(422).send("no cart items");
 
@@ -104,6 +126,65 @@ async function handlePost(req, res) {
       )
     )
   );
+
+  const starDateFormat = new Date(startDate);
+  const endDateFormat = new Date(endDate);
+  const orderRetrieved = await findOneOrderEmail({
+    billingEmail,
+    starDateFormat,
+    endDateFormat,
+  });
+
+  const orderNumber = orderRetrieved[0].orderNumber;
+  const orderDateOldFormat = orderRetrieved[0].orderDate;
+  const orderDate = dayjs(orderDateOldFormat).format("YYYY-MM-DD");
+  const paidPrice = orderRetrieved[0].paidPrice;
+
+  const mailBody = `Bonjour ${billingFirstname}, Merci pour votre commande n°${orderNumber} ! 
+
+  DATE DE COMMANDE : ${orderDate}.
+
+  DU : ${startDate} AU ${endDate}.
+
+  ADRESSE DE FACTURATION : ${billingFirstname}, ${billingLastname},
+  ${billingStreet},
+  ${billingZip},
+  ${billingCity},
+  ${billingPhoneNumber}.
+
+  ADRESSE DE LIVRAISON : ${
+    deliveryFirstName === undefined ? billingFirstname : deliveryFirstName
+  }, 
+  ${deliveryLastName === undefined ? billingLastname : deliveryLastName}, 
+  ${deliveryStreet === undefined ? billingStreet : deliveryStreet},
+  ${deliveryZip === undefined ? billingZip : deliveryZip},
+  ${deliveryCity === undefined ? billingCity : deliveryCity},
+   ${
+     deliveryPhoneNumber === undefined
+       ? billingPhoneNumber
+       : deliveryPhoneNumber
+   }.
+   
+   HEURE D'ARRIVEE : 
+   ${deliveryArrivalTime === undefined ? "---" : deliveryArrivalTime}.
+
+  PRODUITS : ${cartItems.map((item) => item.product.name)} * ${cartItems.map(
+    (item) => item.quantity
+  )}.
+
+  TOTAL : ${paidPrice}€.
+  
+  A bientôt !
+  L'équipe Loca-B
+`;
+
+  mailer.sendMail({
+    from: process.env.MAILER_FROM,
+    to: billingEmail,
+    subject: `LOCA-B : Commande n°${orderNumber}`,
+    text: mailBody,
+    html: mailBody,
+  });
 
   res.send("your order is confirmed");
 }
