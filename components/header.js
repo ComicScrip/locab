@@ -93,6 +93,17 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
+        <li className={styles.navbar_item}>
+          <Link href="/profile" className={styles.navbarlink}>
+            <a
+              className={
+                currentRoute === "/profile" ? styles.active : styles.non_active
+              }
+            >
+              {t("moncompte")}
+            </a>
+          </Link>
+        </li>
         <li
           className={`${styles.navbar_item} ${styles.none}`}
           style={{ display: "none" }}

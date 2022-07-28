@@ -44,7 +44,7 @@ export default function ProfileOrders() {
         <Banner />
         <div className={styles.commandsMainContainer}>
           <section className={styles.titleSectionContainer}>
-            <Link href="/" style={{ cursor: "pointer" }}>
+            <Link href="/profile" style={{ cursor: "pointer" }}>
               <a>← {t("retourcompte")}</a>
             </Link>
 

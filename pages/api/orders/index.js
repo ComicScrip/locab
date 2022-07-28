@@ -127,8 +127,6 @@ async function handlePost(req, res) {
     )
   );
 
-  console.log(cartItems);
-
   const starDateFormat = new Date(startDate);
   const endDateFormat = new Date(endDate);
   const orderRetrieved = await findOneOrderEmail({
