@@ -6,6 +6,7 @@ describe("footer", () => {
     cy.visit("aboutUs");
     cy.visit("contact");
     cy.visit("signup");
+    cy.visit("reservation");
   });
 
   it("displays all links and Image", () => {
