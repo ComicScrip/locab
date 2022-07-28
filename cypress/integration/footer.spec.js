@@ -5,6 +5,7 @@ describe("footer", () => {
     cy.visit("blog");
     cy.visit("aboutUs");
     cy.visit("contact");
+    cy.visit("signup");
   });
 
   it("displays all links and Image", () => {
