@@ -92,7 +92,7 @@ describe("reservation", () => {
       cy.get(`[data-cy="addProductToCartClick-${chanceliere.id}"]`).click();
       cy.contains("VALIDER MON PANIER").click();
       cy.url().should("include", "/commande");
-      cy.get('[data-cy="infos_email"]').type("user@gmail.com");
+      cy.get('[data-cy="infos_email"]').type("test@gmail.com");
       cy.get('[data-cy="infos_firstname"]').type("John");
       cy.get('[data-cy="infos_lastname"]').type("Doe");
       cy.get('[data-cy="infos_address"]').type("17 rue delandine");

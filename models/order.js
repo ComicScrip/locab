@@ -242,3 +242,60 @@ module.exports.createOrder = ({
     },
   });
 };
+
+module.exports.findOneOrderEmail = ({
+  billingEmail,
+  starDateFormat,
+  endDateFormat,
+}) => {
+  return db.order.findMany({
+    include: {
+      delegateParent: {
+        select: {
+          lastname: true,
+          firstname: true,
+        },
+      },
+      partner: {
+        select: {
+          company: true,
+        },
+      },
+      items: {
+        include: {
+          productSamples: {
+            include: {
+              product: {
+                include: {
+                  pictures: {
+                    select: {
+                      url: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      customer: {
+        select: {
+          lastname: true,
+          firstname: true,
+          address: true,
+          zip: true,
+          city: true,
+          phone: true,
+          email: true,
+        },
+      },
+    },
+    where: {
+      AND: [
+        { billingEmail },
+        { startDate: starDateFormat },
+        { endDate: endDateFormat },
+      ],
+    },
+  });
+};
