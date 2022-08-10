@@ -34,7 +34,6 @@ export default function Home() {
           </div>
 
           <div className={styles.designHome}>
-            {" "}
             <img
               src="/image/design1.webp"
               alt="design"
